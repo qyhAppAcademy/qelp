@@ -23,11 +23,13 @@ function Navigation() {
 
     return (
         <header className="site-header">
-            <NavLink exact to="/" className="nav-title">
-                <h1>Qelp</h1>
-            </NavLink>
-            <div className="session-links">
-                {sessionLinks}
+            <div className='nav-container'>
+                <NavLink exact to="/" className="nav-title">
+                    <h1><span>qelp</span><i className="fab fa-yelp"></i></h1>
+                </NavLink>
+                <div className="session-links">
+                    {sessionLinks}
+                </div>
             </div>
         </header>
     );

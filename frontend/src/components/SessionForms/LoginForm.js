@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import * as sessionActions from "../../store/session";
 import { useInput, useSubmit } from "../../hooks";
-import { FormErrors, Input } from "../Forms";
+import { Input } from "../Forms";
 import "./SessionForm.css";
 
-function LoginForm({ onSuccess }) {
+function LoginForm({ onSuccess, setShowAlert }) {
     const [credential, onCredentialChange] = useInput("");
     const [password, onPasswordChange] = useInput("");
     const [errors, onSubmit] = useSubmit({
@@ -12,9 +12,15 @@ function LoginForm({ onSuccess }) {
         action: sessionActions.login({ credential, password })
     });
 
+    useEffect(()=>{
+        if (errors.length > 0){
+            setShowAlert(true);
+        }
+    }, [setShowAlert, errors]);
+
     return (
         <form onSubmit={onSubmit} className="form">
-            <FormErrors errors={errors} />
+            {/* <FormErrors errors={errors} /> */}
             <Input
                 // label="Username or Email"
                 type="email"

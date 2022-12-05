@@ -1,0 +1,97 @@
+.profile-icon {
+    color: #EEEEEF;
+    font-size: 37px;
+}
+
+.profile-icon:hover {
+    cursor: pointer;
+}
+
+.profile-dropdown {
+    position: absolute;
+    right: 30px;
+    width: 250px;
+
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 18px #00000026;
+    padding: 16px;
+}
+
+.profile-dropdown .list-item {
+    display: flex;
+    align-items: center;
+
+    padding: 8px;
+}
+
+.profile-dropdown .icon-container {
+    display: inline-block;
+    width: 24px;
+    margin: 0 12px 0 0;
+    text-align: center;
+    color: rgb(45, 46, 47);
+}
+
+.profile-dropdown .icon-container i {
+    font-size: 23px;
+    padding: 0;
+    margin: 0;
+}
+
+.profile-dropdown .text-container {
+    display: inline-block;
+    color: rgb(45, 46, 47);
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.profile-dropdown li:last-child {
+    border-top: 1px solid #EBEBEB;
+    margin-top: 16px;
+    padding-top: 16px;
+}
+
+.profile-dropdown .list-item:hover {
+    background-color: #EBEBEB;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.list-item button:hover {
+    cursor: pointer;
+}
+
+.site-header {
+    background-color: gray;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 0 40px 0 40px;
+    padding: 27px 0 0 0;
+
+    background-color: #D32323;
+}
+
+.nav-title {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.nav-title h1 {
+    display: inline-block;
+}
+
+.nav-title span {
+    padding: 0 3px 0 0;
+
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 26px;
+}
+
+.nav-title i {
+    font-size: 29px;
+}

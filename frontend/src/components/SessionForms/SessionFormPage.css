@@ -10,9 +10,9 @@
 
 .session-page-header h1 {
     display: inline-block;
-    font-family: 'Avenir', Helvetica, sans-serif;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 26px;
-    font-weight: 600;
+    font-weight: 500;
     color: #FFFFFF;
 }
 
@@ -29,13 +29,14 @@
 }
 
 .session-page-body {
-    display: flex;
-    justify-content: center;
-
-    width: 990px;
-
+    width: 990px;    
     margin: 0 auto;
     padding: 15px 0 36px 0;
+}
+
+.session-page-body-main {
+    display: flex;
+    justify-content: center;
 }
 
 .session-page-body-column {
@@ -150,4 +151,32 @@ small {
 .forgot-password {
     text-align: right;
     margin-top: -3px;
+}
+
+.session-alert {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    box-sizing: border-box;
+    position: relative;
+
+    margin: 0 15px 12px 15px;
+    /* width: 90%;
+    margin: 0 auto;
+    margin-bottom: 12px; */
+    padding: 18px 18px 18px 24px;
+
+    border-radius: 3px;
+    font-size: 16px;
+    line-height: 1.5em;
+    background: #fff7cc;
+}
+
+.session-alert-error {
+    background: #fcd6d3;
+}
+
+.session-alert-dismiss:hover {
+    cursor: pointer;
 }
