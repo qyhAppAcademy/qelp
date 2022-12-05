@@ -33,7 +33,7 @@
     color: rgb(45, 46, 47);
 }
 
-.profile-dropdown .icon-container i {
+.profile-dropdown .icon-container svg {
     font-size: 23px;
     padding: 0;
     margin: 0;
@@ -92,6 +92,6 @@
     font-size: 26px;
 }
 
-.nav-title i {
+.nav-title svg {
     font-size: 29px;
 }

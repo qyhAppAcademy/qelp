@@ -10,13 +10,14 @@
 
 .session-page-header h1 {
     display: inline-block;
-    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /* font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; */
+    font-family: Helvetica, Arial, sans-serif;
     font-size: 26px;
     font-weight: 500;
     color: #FFFFFF;
 }
 
-.session-page-header i {
+.session-page-header svg {
     margin: 0;
     margin-left: 3px;
     font-size: 30px;
