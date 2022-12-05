@@ -1,17 +1,23 @@
 {
-    "name": "qelp",
-    "version": "1.0.0",
-    "description": "Qelp",
-    "engines": {
-        "node": "16.x"
-    },
-    "directories": {
-        "lib": "lib"
-    },
-    "scripts": {
-        "build": "npm install --prefix frontend && npm run build --prefix frontend"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC"
+  "name": "qelp",
+  "version": "1.0.0",
+  "description": "Qelp",
+  "engines": {
+    "node": "16.x"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "build": "npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qyhAppAcademy/qelp.git"
+  },
+  "homepage": "https://github.com/qyhAppAcademy/qelp#readme"
 }
