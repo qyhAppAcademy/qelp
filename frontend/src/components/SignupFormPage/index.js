@@ -27,6 +27,7 @@ function SignupFormPage() {
                 <h1><a href="/">qelp<i className="fab fa-yelp"></i></a></h1>
             </div>
             <div className="session-page-body">
+                <div className="session-page-body-main">
                 <div className="session-page-body-column">
                     <div className="session-form-container">
                         <div className="session-form-header">
@@ -62,6 +63,7 @@ function SignupFormPage() {
                     <div className="session-picture-container">
                         <img src="https://s3-media0.fl.yelpcdn.com/assets/2/www/img/7922e77f338d/signup/signup_illustration.png" alt="" />
                     </div>
+                </div>
                 </div>
             </div>
         </>
