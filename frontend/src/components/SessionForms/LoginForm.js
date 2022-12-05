@@ -34,7 +34,7 @@ function LoginForm({ onSuccess }) {
             <div className="forgot-password">
                 <small><a href="/login" className="forgot-link">Forgot password?</a></small>
             </div>
-            <button type="submit" className="qbtn qbtn-login">Log In </button>
+            <button type="submit" className="qbtn qbtn-login">Log In</button>
         </form>
     );
 }
