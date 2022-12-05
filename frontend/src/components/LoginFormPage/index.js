@@ -21,11 +21,6 @@ const LoginFormPage = () => {
 
     const [showAlert, setShowAlert] = useState(false);
 
-    // const openAlert = () => {
-    //     if (showAlert) return;
-    //     setShowAlert(true);
-    // };
-
     const closeAlert = () => {
         setShowAlert(false);
     };
