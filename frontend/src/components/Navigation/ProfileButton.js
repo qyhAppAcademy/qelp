@@ -46,10 +46,23 @@ const ProfileButton = ({ user }) => {
             </button>
             {showMenu && (
                 <ul className="profile-dropdown">
-                    <li>About Me</li>
-                    <li>Account Settings</li>
                     <li>
-                        <button onClick={logout} className="button">Log Out</button>
+                        <div className="list-item">
+                            <div className="icon-container"><i className="fas fa-user-astronaut"></i></div>
+                            <div className="text-container"><span>About Me</span></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div className="list-item">
+                            <div className="icon-container"><i className="fas fa-cog"></i></div>
+                            <div className="text-container"><span>Account Settings</span></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div className="list-item">
+                            <div className="icon-container"><i className="fas fa-sign-out-alt"></i></div>
+                            <div className="text-container"><span><button onClick={logout} className="button">Log Out</button></span></div>
+                        </div>
                     </li>
                 </ul>
             )}

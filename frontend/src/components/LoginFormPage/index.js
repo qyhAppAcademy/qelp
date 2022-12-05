@@ -26,6 +26,18 @@ const LoginFormPage = () => {
             <div className="session-page-header">
                     <h1><a href="/">qelp<i className="fab fa-yelp"></i></a></h1>
             </div>
+            <div id="session-alert-container">
+                <div class="session-alert session-alert-error">
+                    <button class="session-alert-dismiss">×</button>
+                    <p class="session-alert-message">
+                        <ul>
+                            <li>
+                                The email address or password you entered is incorrect.
+                            </li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
             <div className="session-page-body">
                 <div className="session-page-body-column">
                     <div className="session-form-container">
