@@ -1,0 +1,153 @@
+.session-page-header {
+    display: inline-block;
+    padding: 15px 0 19px 0;
+    width: 100%;
+
+    text-align: center;
+
+    background: #d32323;
+}
+
+.session-page-header h1 {
+    display: inline-block;
+    font-family: 'Avenir', Helvetica, sans-serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: #FFFFFF;
+}
+
+.session-page-header i {
+    margin: 0;
+    margin-left: 3px;
+    font-size: 30px;
+}
+
+.session-page-header a,
+.session-page-header a:hover {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.session-page-body {
+    display: flex;
+    justify-content: center;
+
+    width: 990px;
+
+    margin: 0 auto;
+    padding: 15px 0 36px 0;
+}
+
+.session-page-body-column {
+    width: 50%;
+
+    padding: 0 15px;
+
+    min-height: 1px;
+    box-sizing: border-box;
+}
+
+.session-form-container {
+    margin: auto;
+    margin-top: 144px;
+
+    max-width: 300px;
+}
+
+.session-picture-container {
+    margin: auto;
+    margin-top: 117px;
+
+    padding-bottom: 12px;
+
+    text-align: center;
+}
+
+.session-picture-container img {
+    width: 382px;
+    height: 342px;
+}
+
+.session-form-header {
+    margin-bottom: 30px;
+}
+
+.session-form-header h2 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 6px;
+    line-height: 1.28571em;
+    color: #d32323;
+    text-align: center;
+}
+
+.session-form-header .subheading {
+    font-weight: bold;
+    text-align: center;
+}
+
+.legal-copy {
+    padding: 12px 0 0 0;
+    color: #333;
+    font-size: 12px;
+    line-height: 1.5em;
+    text-align: center;
+}
+
+.session-form-container a {
+    color: #0073bb;
+    text-decoration: none;
+}
+
+.session-form-container a:hover {
+    color: #0073bb;
+    text-decoration: underline;
+}
+
+.demo-btn {
+    background-color: #1877f2;
+    border: 1px solid #1877f2;
+}
+
+.demo-btn span {
+    margin: 0 12px 0 0;
+}
+
+.demo-btn span i {
+    font-size: 18px;
+}
+
+.hr-line {
+    margin: 24px 0;
+
+    border: none;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid transparent;
+    text-align: center;
+}
+
+.hr-line legend {
+    padding: 0 15px;
+    margin: 0 auto;
+    color: #666;
+}
+
+.sub-text-box {
+    margin: 12px auto 0;
+    text-align: right;
+}
+
+.subtle-text {
+    color: #999;
+    font-weight: normal;
+}
+
+small {
+    font-size: 12px;
+    line-height: 1.5em;
+}
+
+.forgot-password {
+    text-align: right;
+    margin-top: -3px;
+}

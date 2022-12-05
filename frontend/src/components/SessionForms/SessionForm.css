@@ -1,0 +1,43 @@
+input[type=email],
+input[type=password] {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 0 9px;
+    padding: 5px 9px;
+    background: #fff;
+    border: 1px solid #999;
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 1.29em;
+}
+
+.qbtn {
+    padding: 10px 13px;
+    font-size: 16px;
+    line-height: 1.3125em;
+
+    color: #fff;
+    background: #d32323;
+    border: 1px solid #d32323;
+
+    width: 100%;
+    box-sizing: border-box;
+
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    user-select: none;
+    border-radius: 3px;
+}
+
+.qbtn-login {
+    margin-top: 12px;
+}
+
+.qbtn-signup {
+    margin-top: 3px;
+}
