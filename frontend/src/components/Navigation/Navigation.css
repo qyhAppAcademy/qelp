@@ -1,0 +1,25 @@
+.profile-icon {
+    color: black;
+    font-size: 36px;
+}
+
+.profile-dropdown {
+    position: absolute;
+    right: -12px;
+    width: 226px;
+
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 18px #00000026;
+    padding: 16px;
+}
+
+.profile-dropdown li {
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0px;
+    line-height: 20px;
+    color: inherit;
+    text-align: left;
+}
