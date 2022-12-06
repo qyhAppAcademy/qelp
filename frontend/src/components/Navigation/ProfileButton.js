@@ -50,9 +50,9 @@ const ProfileButton = ({ user }) => {
                         </div>
                     </li>
                     <li>
-                        <div className="list-item">
+                        <div className="list-item" onClick={logout}>
                             <div className="icon-container"><i className="fas fa-sign-out-alt"></i></div>
-                            <div className="text-container"><span><button onClick={logout} className="button">Log Out</button></span></div>
+                            <div className="text-container"><span>Log Out</span></div>
                         </div>
                     </li>
                 </ul>

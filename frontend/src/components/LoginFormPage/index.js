@@ -34,7 +34,7 @@ const LoginFormPage = () => {
     ) : (
         <>
             <div className="session-page-header">
-                    <h1><a href="/">qelp<i className="fab fa-yelp"></i></a></h1>
+                <h1><a href="/">qelp<i className="fab fa-yelp"></i></a></h1>
             </div>
             <div className="session-page-body">
                 {showAlert && (

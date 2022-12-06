@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import * as sessionActions from "../../store/session";
 import { useInput, useSubmit } from "../../hooks";
-import { FormErrors, Input } from "../Forms";
+import { Input } from "../Forms";
 import "./SessionForm.css";
 
-const SignupForm = ({ onSuccess }) => {
+const SignupForm = ({ onSuccess, setShowAlert, setErrors }) => {
     const [email, onEmailChange] = useInput("");
     // const [username, onUsernameChange] = useInput("");
     const [password, onPasswordChange] = useInput("");
@@ -19,9 +19,15 @@ const SignupForm = ({ onSuccess }) => {
         }
     });
 
+    useEffect(() => {
+        if (errors.length > 0) {
+            setErrors(errors);
+            setShowAlert(true);
+        }
+    }, [setErrors, setShowAlert, errors]);
+
     return (
         <form onSubmit={onSubmit} className="form">
-            <FormErrors errors={errors} />
             <Input
                 type="email"
                 placeholder="Email"

@@ -9,7 +9,7 @@
 
 .profile-dropdown {
     position: absolute;
-    right: 30px;
+    right: 28px;
     width: 250px;
 
     background-color: #fff;
@@ -42,7 +42,7 @@
 .profile-dropdown .text-container {
     display: inline-block;
     color: rgb(45, 46, 47);
-    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /* font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; */
 }
 
 .profile-dropdown li:last-child {
@@ -79,6 +79,7 @@
 .nav-title {
     text-decoration: none;
     color: #FFFFFF;
+    font-weight: 600;
 }
 
 .nav-title h1 {
@@ -87,11 +88,10 @@
 
 .nav-title span {
     padding: 0 3px 0 0;
-
-    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 26px;
+    /* font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; */
+    font-size: 27px;
 }
 
 .nav-title svg {
-    font-size: 29px;
+    font-size: 30px;
 }

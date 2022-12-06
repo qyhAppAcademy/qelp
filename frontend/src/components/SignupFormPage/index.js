@@ -20,6 +20,7 @@ function SignupFormPage() {
     }
 
     const [showAlert, setShowAlert] = useState(false);
+    const [errors, setErrors] = useState([]);
 
     const closeAlert = () => {
         setShowAlert(false);
@@ -42,9 +43,7 @@ function SignupFormPage() {
                     <div className="session-alert session-alert-error">
                         <div className="session-alert-message">
                             <ul>
-                                <li>
-                                    The email address or password you entered is incorrect.
-                                </li>
+                                {errors.map(error => <li key={error}>{error}</li>)}
                             </ul>
                         </div>
                         <button className="session-alert-dismiss" onClick={closeAlert}>×</button>
@@ -76,7 +75,7 @@ function SignupFormPage() {
                             <fieldset className="hr-line">
                                 <legend align="center">OR</legend>
                             </fieldset>
-                            <SignupForm />
+                                <SignupForm setShowAlert={setShowAlert} setErrors={setErrors} />
                             <div className="sub-text-box">
                                 <small className="subtle-text">Already on Qelp? <a href="/login">Log in</a></small>
                             </div>
