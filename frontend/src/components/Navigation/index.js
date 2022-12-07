@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
+import '../../fontawesome/css/all.min.css';
+import { Helmet } from "react-helmet";
 
 function Navigation() {
     const sessionUser = useSelector(state => state.session.user);
@@ -22,16 +24,21 @@ function Navigation() {
     }
 
     return (
-        <header className="site-header">
-            <div className='nav-container'>
-                <NavLink exact to="/" className="nav-title">
-                    <h1><span>qelp</span><i className="fab fa-yelp"></i></h1>
-                </NavLink>
-                <div className="session-links">
-                    {sessionLinks}
+        <>
+            <Helmet>
+                <script defer src="../../fontawesome/js/all.min.js"></script>
+            </Helmet>
+            <header className="site-header">
+                <div className='nav-container'>
+                    <NavLink exact to="/" className="nav-title">
+                        <h1><span>qelp</span><i className="fab fa-yelp"></i></h1>
+                    </NavLink>
+                    <div className="session-links">
+                        {sessionLinks}
+                    </div>
                 </div>
-            </div>
-        </header>
+            </header>
+        </>
     );
 }
 

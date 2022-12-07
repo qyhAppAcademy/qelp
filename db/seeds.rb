@@ -34,5 +34,23 @@ ApplicationRecord.transaction do
     }) 
   end
 
+  puts "Creating businesses..."
+
+  Business.create!(
+    name: 'Patisserie Fouet', 
+    address: '15 E 13th St', 
+    city: 'New York',
+    state: 'NY',
+    zip_code: '10003',
+    lat: 40.73519603396201,
+    lng: -73.9930646316334,
+    open: '10:00AM',
+    close: '08:00PM',
+    category: 'Coffee & Tea, Desserts, Wine Bars',
+    price: '$$',
+    phone_number: '(212) 620-0622',
+    website: 'https://www.fouetnyc.com'
+  )
+
   puts "Done!"
 end

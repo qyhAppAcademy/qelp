@@ -3,10 +3,12 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import session from './session';
 import users from './users';
+import businesses from "./businesses";
 
 const rootReducer = combineReducers({
     session,
-    users
+    users,
+    businesses
 });
 
 let enhancer;

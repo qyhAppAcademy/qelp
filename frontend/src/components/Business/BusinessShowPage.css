@@ -1,0 +1,68 @@
+.business-show-page-side-bar {
+    border-radius: 3px;
+    /* border: 1px solid #EBEBEB; */
+    border: 1px solid #EBEBEB;
+}
+
+.business-show-page-side-bar-item {
+    padding: 19px 16px;
+    border-bottom: 1px solid #EBEBEB;
+}
+
+.business-show-page-side-bar-item div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.business-show-page-side-bar div svg {
+    font-size: 23px;
+}
+
+.business-show-page-side-bar-item p {
+    font-size: 16px;
+}
+
+.business-show-page-side-bar-item p a {
+    color: rgba(2, 122, 151, 1);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.business-show-page-side-bar-item span a {
+    color: #2D2E2F;
+}
+
+.business-show-page-side-bar-item span {
+    width: 26px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.business-show-page-side-bar li:last-child {
+    border-bottom: 0px;
+}
+
+.business-show-page-side-bar li:last-child div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.business-show-page-side-bar li:last-child div div a, .business-show-page-side-bar li:last-child div div p {
+    flex: 0 0 100%;
+    font-size: 16px;
+}
+
+.business-show-page-side-bar li:last-child div div a {
+    color: rgba(2, 122, 151, 1);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.business-show-page-side-bar li:last-child div div p {
+    color: #8B8D8E;
+    font-weight: 500;
+    padding: 0;
+    padding-top: 6px;
+}
