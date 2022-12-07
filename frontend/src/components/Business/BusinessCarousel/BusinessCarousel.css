@@ -1,0 +1,44 @@
+.business-carousel-image-container {
+    display: inline-block;
+}
+
+.carousel-arrows {
+    position: absolute;
+    width: 100%;
+    z-index: 3;
+}
+
+.carousel-arrows > .arrow {
+    margin-top: 0px;
+}
+
+.carousel-arrows button {
+    cursor: pointer;
+    display: block;
+    opacity: 0.8;
+    position: absolute;
+    font-size: 20px;
+    color: yellow;
+}
+
+.carousel-arrows > .arrow.right {
+    right: 0;
+}
+
+.business-carousel {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.business-carousel-slide {
+    display: inline-block;
+    /* -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s; */
+}
+
+.business-carousel-slide img{
+    width: auto;
+    height: 100%;
+}

@@ -26,7 +26,7 @@ const BusinessShowPage = () => {
                 <script defer src="../../fontawesome/js/all.min.js"></script>
             </Helmet>
             <BusinessCarousel />
-            <BusinessSideBar business={business} />
+            {/* <BusinessSideBar business={business} /> */}
         </>
     );
 }
