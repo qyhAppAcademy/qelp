@@ -7,6 +7,7 @@ import "./BusinessShowPage.css";
 import '../../fontawesome/css/all.min.css';
 import { Helmet } from "react-helmet";
 import BusinessCarousel from "./BusinessCarousel";
+import BusinessHeader from "./BusinessHeader";
 
 const BusinessShowPage = () => {
     const { businessId } = useParams();
@@ -25,8 +26,9 @@ const BusinessShowPage = () => {
             <Helmet>
                 <script defer src="../../fontawesome/js/all.min.js"></script>
             </Helmet>
+            <BusinessHeader business={business} />
             <BusinessCarousel />
-            {/* <BusinessSideBar business={business} /> */}
+            <BusinessSideBar business={business} />
         </>
     );
 }

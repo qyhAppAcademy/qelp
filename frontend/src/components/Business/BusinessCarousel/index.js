@@ -37,10 +37,10 @@ const BusinessCarousel = () => {
         <>
             <div className="carousel-arrows">
                 <button className="arrow left" onClick={slideLeft}>
-                    left
+                    <i className="fas fa-chevron-circle-left"></i>
                 </button>
                 <button className="arrow right" onClick={slideRight}>
-                    right
+                    <i className="fas fa-chevron-circle-right"></i>
                 </button>
             </div>
             <div className="business-carousel">

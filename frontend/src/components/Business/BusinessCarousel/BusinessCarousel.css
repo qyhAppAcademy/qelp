@@ -1,28 +1,30 @@
 .business-carousel-image-container {
-    display: inline-block;
+    /* display: inline-block; */
 }
 
 .carousel-arrows {
     position: absolute;
     width: 100%;
-    z-index: 3;
+    height: 426px;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: black; */
+    background: linear-gradient(0deg, black, transparent 50%, transparent);
+    z-index: 2;
 }
 
-.carousel-arrows > .arrow {
-    margin-top: 0px;
-}
-
-.carousel-arrows button {
+.carousel-arrows .arrow {
     cursor: pointer;
-    display: block;
     opacity: 0.8;
-    position: absolute;
-    font-size: 20px;
-    color: yellow;
+    font-size: 36px;
+    color: #FFFFFF;
+    opacity: 0.7;
 }
 
-.carousel-arrows > .arrow.right {
-    right: 0;
+.carousel-arrows .arrow:hover {
+    opacity: 1;
 }
 
 .business-carousel {
@@ -32,10 +34,7 @@
 
 .business-carousel-slide {
     display: inline-block;
-    /* -webkit-transition: 0.5s;
-    -moz-transition: 0.5s;
-    -o-transition: 0.5s;
-    transition: 0.5s; */
+    /* transition: .5s linear; */
 }
 
 .business-carousel-slide img{
