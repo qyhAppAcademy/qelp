@@ -1,0 +1,36 @@
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    padding: 4px 14px;
+    margin: 0;
+    height: 40px;
+
+    font-size: 16px;
+
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-bottom-style: hidden;
+    border-left-style: hidden;
+
+    outline: none;
+}
+
+.search-bar span {
+    width: 2px;
+    height: 24px;
+    padding: 12px 0;
+    background-color: #EBEBEB;
+}
+
+.search-bar button {
+    width: 56px;
+    height: 48px;
+    font-size: 24px;
+    color: #FFFFFF;
+    background-color: rgb(244, 13, 21);
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}

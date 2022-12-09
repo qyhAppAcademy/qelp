@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require "open-uri"
 
 ApplicationRecord.transaction do 
   puts "Destroying tables..."
@@ -52,5 +53,12 @@ ApplicationRecord.transaction do
     website: 'https://www.fouetnyc.com'
   )
 
+  # Business.last.photo.attach(
+  #   io: URI.open("https://qelp-dev.s3.amazonaws.com/images/carousel-1.jpeg"), 
+  #   filename: "carousel-1.jpeg", 
+  #   content_type: "image/jpeg"
+  # )
+
+  # puts Business.last
   puts "Done!"
 end

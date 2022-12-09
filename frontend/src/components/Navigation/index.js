@@ -5,6 +5,7 @@ import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import '../../fontawesome/css/all.min.css';
 import { Helmet } from "react-helmet";
+import SearchBar from './SearchBar.js';
 
 function Navigation() {
     const sessionUser = useSelector(state => state.session.user);
@@ -30,9 +31,17 @@ function Navigation() {
             </Helmet>
             <header className="site-header">
                 <div className='nav-container'>
-                    <NavLink exact to="/" className="nav-title">
-                        <h1><span>qelp</span><i className="fab fa-yelp"></i></h1>
-                    </NavLink>
+                    <div style={{"display": "flex", "alignItems": "center", "minWidth": "527px"}}>
+                        <NavLink exact to="/" className="nav-title">
+                            <div className='nav-logo'>
+                                <h1><span>qelp</span><i className="fab fa-yelp"></i></h1>
+                            </div>
+                        </NavLink>
+                        <div style={{ display: "inline-block" }}>
+                            <SearchBar />
+                        </div>
+                    </div>
+
                     <div className="session-links">
                         {sessionLinks}
                     </div>

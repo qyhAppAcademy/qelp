@@ -4,6 +4,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import Navigation from "./components/Navigation";
 import BusinessShowPage from "./components/Business/BusinessShowPage";
+import BusinessIndexPage from "./components/Business/BusinessIndexPage";
 
 const App = () => {
   return (
@@ -17,6 +18,9 @@ const App = () => {
         </Route>
         <Route exact path="/">
           <Navigation />
+        </Route>
+        <Route exact path="/businesses">
+          <BusinessIndexPage />
         </Route>
         <Route exact path="/businesses/:businessId">
           <BusinessShowPage />

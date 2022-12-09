@@ -70,8 +70,10 @@
     justify-content: space-between;
     align-items: center;
 
-    margin: 0 40px 0 40px;
-    padding: 27px 0 0 0;
+    margin: 0 40px;
+    padding: 0;
+
+    height: 48px;
 
     background-color: #D32323;
 }
@@ -82,7 +84,7 @@
     font-weight: 600;
 }
 
-.nav-title h1 {
+.nav-title .nav-logo {
     display: inline-block;
 }
 

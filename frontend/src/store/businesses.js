@@ -18,7 +18,7 @@ export const fetchBusiness = (businessId) => async (dispatch) => {
 };
 
 export const getBusinesses = () => (state) => {
-    return state.businesses ? state.businesses : null;
+    return state.businesses ? Object.values(state.businesses) : [];
 }
 
 export const getBusiness = (businessId) => (state) => {

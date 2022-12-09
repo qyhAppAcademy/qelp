@@ -40,7 +40,7 @@ const BusinessHeader = ({ business }) => {
                     <span>{business.category}</span>
                 </div>
                 <div className="business-header-item">
-                    <span>{nowHr >= openHr && nowHr < closeHr ? "Open" : "Close"}</span>
+                    <span>{nowHr >= openHr && nowHr < closeHr ? "Open" : "Closed"}</span>
                     <span>{openHrEst} - {closeHrEst}</span>
                 </div>
             </div>
