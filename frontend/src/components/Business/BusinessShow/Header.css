@@ -10,29 +10,33 @@
     top: 240px;
     margin: 0;
     padding: 0 60px;
-    color: white;
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: 700;
 }
 
 .business-header-item {
     display: flex;
     align-items: center;
+    white-space: nowrap;
+
+    color: white;
+    font-weight: 700;
+    padding: 0;
+    padding-bottom: 9px;
 }
 
-.business-header h1 {
-    display: inline;
-    font-size: 48px;
-    opacity: 1;
-}
-
-.business-header span {
-    display: inline;
+.business-header-item span {
     font-size: 16px;
-
+    padding: 0;
+    padding-right: 10px;
 }
 
-.business-header .icon-circle-container {
+.business-header-item h1 {
+    font-size: 48px;
+    margin: 0;
+    margin-top: 10px;
+    padding: 0;
+    padding-bottom: 20px;
+}
+
+.business-header-item .icon-circle-container {
     font-size: 5px;
-    padding: 0 12px;
 }

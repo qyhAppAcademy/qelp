@@ -31,7 +31,7 @@ const Header = ({ business }) => {
     return (
         <div className="business-header-layer">
             <div className="business-header">
-                <div>
+                <div className="business-header-item">
                     <h1>{business.name}</h1>
                 </div>
                 <div className="business-header-item">
