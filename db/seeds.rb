@@ -98,5 +98,21 @@ ApplicationRecord.transaction do
     website: 'https://www.yoziducksoup.com'
   )
 
+  Business.create!(
+    name: 'MUD',
+    address: '307 E 9th St',
+    city: 'New York',
+    state: 'NY',
+    zip_code: '10003',
+    lat: 40.72911834581734,
+    lng: -73.98667531451746,
+    open: '08:00AM EST',
+    close: '12:00AM EST',
+    category: 'Coffee & Tea, Breakfast & Brunch, Beer Bar',
+    price: '$$',
+    phone_number: '(212) 228-9074',
+    website: 'https://www.mudnyc.com'
+  )
+
   puts "Done!"
 end
