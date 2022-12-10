@@ -1,4 +1,4 @@
-import "./BusinessIndexItem.css";
+import "./Item.css";
 
 const convertToEst = (time) => {
     if (time < 0){
@@ -19,7 +19,7 @@ const convertToEst = (time) => {
     }
 }
 
-const BusinessIndexItem = ({ idx, business }) => {
+const Item = ({ idx, business }) => {
     const open = new Date(business.open);
     const close = new Date(business.close);
     let openHr = open.getUTCHours();
@@ -53,4 +53,4 @@ const BusinessIndexItem = ({ idx, business }) => {
     );
 }
 
-export default BusinessIndexItem;
+export default Item;
