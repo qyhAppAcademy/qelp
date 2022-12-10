@@ -1,18 +1,7 @@
 import "./Item.css";
-import { EST_OFFSET, convertToEst, IsOpen } from "../../../store/time.js";
+import { EST_OFFSET, toLocalTime, isOpen } from "../../../store/time.js";
 
 const Item = ({ idx, business }) => {
-    const open = new Date(business.open);
-    const close = new Date(business.close);
-    const now = new Date(Date().toLocaleString("en-US"));
-
-    let openHr = open.getUTCHours();
-    let closeHr = close.getUTCHours() > openHr ? close.getUTCHours() : close.getUTCHours() + 24;
-    let nowHr = now.getUTCHours();
-
-    let openHrEst = convertToEst(openHr - EST_OFFSET);
-    let closeHrEst = convertToEst(closeHr - EST_OFFSET);
-
     return (
         <div className="business-index-item">
             <div className="business-index-item-picture">
@@ -21,20 +10,20 @@ const Item = ({ idx, business }) => {
             <div>
                 <h1>{`${idx + 1}. ${business.name}`}</h1>
             </div>
-            <div style={{ display: "flex", alignItems: "center" }}>
+            <div>
                 <span>{business.category}</span>
                 <span>{business.price}</span>
                 <span className="icon-circle-container"><i className="fas fa-circle"></i></span>
             </div>
-            {IsOpen(business) ? (
+            {isOpen(business) ? (
             <div>
-                <span style={{ color: "#008055", fontWeight: "600" }}>Open</span>
-                <span>until {closeHrEst}</span>
+                <span className="business-open">Open</span>
+                <span>until {toLocalTime(business.close, EST_OFFSET)}</span>
             </div>
             ) : (
             <div>
-                <span style={{ color: "#FF8B87", fontWeight: "600" }}>Closed</span>
-                <span>until {openHrEst}</span>
+                <span className="business-closed">Closed</span>
+                <span>until {toLocalTime(business.open, EST_OFFSET)}</span>
             </div>
             )}
         </div>

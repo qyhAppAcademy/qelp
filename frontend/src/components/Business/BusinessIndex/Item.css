@@ -2,21 +2,19 @@
     /* display: block; */
     display: inline-block;
     padding: 20px 20px;
-    /* margin: 20px 20px; */
     margin: 0;
     border-radius: 5px;
 }
 
 .business-index-item:hover {
-    box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+    box-shadow: 0 0 12px rgba(33, 33, 33, 0.2);
 }
 
 .business-index-item div{
-    /* border:#2D2E2F 1px solid; */
-    /* margin: 0 auto; */
+    display: flex;
+    align-items: center;
     min-width: 404px;
-    margin-bottom: 6px;
-    /* padding: 3px 0; */
+    margin-bottom: 4px;
 }
 
 .business-index-item .business-index-item-picture {
@@ -39,6 +37,9 @@
     color: #2D2E2F;
     font-size: 20px;
     font-weight: 600;
+
+    padding: 0;
+    padding-bottom: 6px;
 }
 
 .business-index-item span {
@@ -51,4 +52,14 @@
 
 .business-index-item .icon-circle-container {
     font-size: 4px;
+}
+
+.business-index-item .business-open {
+    color: #008055;
+    font-weight: 600;
+}
+
+.business-index-item .business-closed {
+    color: #FF8B87;
+    font-weight: 600;
 }
