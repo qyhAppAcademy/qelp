@@ -8,13 +8,14 @@
 
 .business-index-item:hover {
     box-shadow: 0 0 12px rgba(33, 33, 33, 0.2);
+    cursor: pointer;
 }
 
 .business-index-item div{
     display: flex;
     align-items: center;
     min-width: 404px;
-    margin-bottom: 4px;
+    margin-bottom: 10px;
 }
 
 .business-index-item .business-index-item-picture {
@@ -23,7 +24,7 @@
     height: 160px;
     overflow: hidden;
 
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     border-radius: 5px;
 }
 
@@ -39,7 +40,7 @@
     font-weight: 600;
 
     padding: 0;
-    padding-bottom: 6px;
+    padding-bottom: 5px;
 }
 
 .business-index-item span {
@@ -60,6 +61,21 @@
 }
 
 .business-index-item .business-closed {
-    color: #FF8B87;
+    color: rgb(224, 7, 7);
     font-weight: 600;
+}
+
+.business-index-item div .category {
+    margin: 0;
+    margin-right: 8px;
+    padding: 3px 5px;
+    background-color: #ededed;
+    color: #727272;
+    font-weight: 700;
+    border-radius: 5px;
+}
+
+.business-index-item div .category:hover {
+    background-color: #dddddd;
+    transition: 0.5s;
 }
