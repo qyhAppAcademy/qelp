@@ -19,6 +19,7 @@ const BusinessCarousel = () => {
         let rest = images.slice(0, images.length - 1);
         let newImages = [last, ...rest];
         setImages(newImages);
+        console.log("not working");
     }
 
     const slideRight = (e) => {
