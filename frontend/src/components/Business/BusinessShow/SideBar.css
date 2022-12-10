@@ -49,7 +49,8 @@
     align-items: center;
 }
 
-.business-show-page-side-bar li:last-child div div a, .business-show-page-side-bar li:last-child div div p {
+.business-show-page-side-bar li:last-child div div a,
+.business-show-page-side-bar li:last-child div div p {
     flex: 0 0 100%;
     font-size: 16px;
 }

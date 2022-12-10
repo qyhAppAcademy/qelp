@@ -1,4 +1,6 @@
-const BusinessSideBar = ({ business }) => {
+import "./SideBar.css"
+
+const SideBar = ({ business }) => {
     return (
         <ul className="business-show-page-side-bar">
             <li className="business-show-page-side-bar-item">
@@ -46,4 +48,4 @@ const BusinessSideBar = ({ business }) => {
     );
 }
 
-export default BusinessSideBar;
+export default SideBar;

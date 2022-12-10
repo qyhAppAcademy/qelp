@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage"; 
 import LoginFormPage from "./components/LoginFormPage";
 import Navigation from "./components/Navigation";
-import BusinessShowPage from "./components/Business/BusinessShowPage";
+import BusinessShowPage from "./components/Business/BusinessShow/index.js";
 import BusinessIndexPage from "./components/Business/BusinessIndexPage";
 
 const App = () => {

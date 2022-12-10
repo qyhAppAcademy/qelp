@@ -1,4 +1,4 @@
-import "./BusinessHeader.css";
+import "./Header.css";
 
 const convertToEst = (time) => {
     if (time === 12) {
@@ -15,7 +15,7 @@ const convertToEst = (time) => {
     }
 }
 
-const BusinessHeader = ({ business }) => {
+const Header = ({ business }) => {
     const open = new Date(business.open);
     const close = new Date(business.close);
     const openHr = open.getUTCHours();
@@ -48,4 +48,4 @@ const BusinessHeader = ({ business }) => {
     );
 }
 
-export default BusinessHeader;
+export default Header;

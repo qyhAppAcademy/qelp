@@ -1,13 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchBusiness, getBusiness } from "../../store/businesses";
+import { fetchBusiness, getBusiness } from "../../../store/businesses";
 import { Helmet } from "react-helmet";
-import BusinessCarousel from "./BusinessCarousel";
-import Header from "./BusinessShow/Header";
-import SideBar from "./BusinessShow/SideBar";
-import '../../fontawesome/css/all.min.css';
-import "./BusinessShowPage.css";
+import BusinessCarousel from "./../BusinessCarousel";
+import Header from "./Header";
+import SideBar from "./SideBar";
+import '../../../fontawesome/css/all.min.css';
 
 const BusinessShowPage = () => {
     const { businessId } = useParams();
