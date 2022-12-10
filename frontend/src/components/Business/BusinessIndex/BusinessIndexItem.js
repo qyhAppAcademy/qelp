@@ -35,7 +35,7 @@ const BusinessIndexItem = ({ idx, business }) => {
     return (
         <div className="business-index-item">
             <div className="business-index-item-picture">
-                <img src={business.photoUrl} alt="" />
+                <img src={`https://qelp-dev.s3.amazonaws.com/seeds/businesses/${business.id}/1.jpeg`} alt="" />
             </div>
             <div>
                 <h1>{`${idx + 1}. ${business.name}`}</h1>

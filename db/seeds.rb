@@ -53,12 +53,50 @@ ApplicationRecord.transaction do
     website: 'https://www.fouetnyc.com'
   )
 
+  # (1..6).each do |i|
+  #     Business.last.photos.attach(
+  #       io: URI.open("https://qelp-dev.s3.amazonaws.com/images/businesses/1/#{i}.jpeg"),
+  #       filename: "#{i}.jpeg", 
+  #       content_type: "image/jpeg"
+  #     )
+  # end
+
   # Business.last.photo.attach(
-  #   io: URI.open("https://qelp-dev.s3.amazonaws.com/images/carousel-1.jpeg"), 
-  #   filename: "carousel-1.jpeg", 
-  #   content_type: "image/jpeg"
+  #   io: URI.open("https://imstresst-dev.s3.amazonaws.com/Blue+Destination/b6.jpg"),
+  #   filename: "1"
   # )
 
-  # puts Business.last
+  Business.create!(
+    name: 'Vinyl Steakhouse',
+    address: '35 W 19th St',
+    city: 'New York',
+    state: 'NY',
+    zip_code: '10011',
+    lat: 40.74003146596712,
+    lng: -73.99308377693622,
+    open: '04:00PM EST',
+    close: '11:00PM EST',
+    category: 'Steakhouses, Cocktail Bars',
+    price: '$$$',
+    phone_number: '(646) 461-7866',
+    website: 'https://www.vinylsteakhouse.com'
+  )
+
+  Business.create!(
+    name: 'Yozi Noodles',
+    address: '5805 8th Ave',
+    city: 'Brooklyn',
+    state: 'NY',
+    zip_code: '11220',
+    lat: 40.63635500118182,
+    lng: -74.00840193688866,
+    open: '11:00AM EST',
+    close: '10:00PM EST',
+    category: 'Chinese',
+    price: '$$',
+    phone_number: '(718) 633-8888',
+    website: 'https://www.yoziducksoup.com'
+  )
+
   puts "Done!"
 end
