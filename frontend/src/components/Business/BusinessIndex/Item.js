@@ -1,36 +1,17 @@
 import "./Item.css";
-
-const convertToEst = (time) => {
-    if (time < 0){
-        time += 24;
-    }
-
-    if (time === 12) {
-        return "12:00 PM";
-    }
-    else if (time === 24 || time === 0) {
-        return "12:00 AM";
-    }
-    else if (time < 12) {
-        return `${time}:00 AM`;
-    }
-    else {
-        return `${time % 12}:00 PM`;
-    }
-}
+import { EST_OFFSET, convertToEst, IsOpen } from "../../../store/time.js";
 
 const Item = ({ idx, business }) => {
     const open = new Date(business.open);
     const close = new Date(business.close);
+    const now = new Date(Date().toLocaleString("en-US"));
+
     let openHr = open.getUTCHours();
     let closeHr = close.getUTCHours() > openHr ? close.getUTCHours() : close.getUTCHours() + 24;
-
-    const now = new Date(Date().toLocaleString("en-US"));
     let nowHr = now.getUTCHours();
-    const offset = 5;
 
-    let openHrEst = convertToEst(openHr - offset);
-    let closeHrEst = convertToEst(closeHr - offset);
+    let openHrEst = convertToEst(openHr - EST_OFFSET);
+    let closeHrEst = convertToEst(closeHr - EST_OFFSET);
 
     return (
         <div className="business-index-item">
@@ -45,10 +26,17 @@ const Item = ({ idx, business }) => {
                 <span>{business.price}</span>
                 <span className="icon-circle-container"><i className="fas fa-circle"></i></span>
             </div>
+            {IsOpen(business) ? (
             <div>
-                <span style={{ color: "#008055", fontWeight: "600" }}>{nowHr >= openHr && nowHr < closeHr ? "Open" : "Closed"}</span>
-                <span>until {nowHr >= openHr && nowHr < closeHr ? `${closeHrEst}` : `${openHrEst}`}</span>
+                <span style={{ color: "#008055", fontWeight: "600" }}>Open</span>
+                <span>until {closeHrEst}</span>
             </div>
+            ) : (
+            <div>
+                <span style={{ color: "#FF8B87", fontWeight: "600" }}>Closed</span>
+                <span>until {openHrEst}</span>
+            </div>
+            )}
         </div>
     );
 }
