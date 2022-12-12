@@ -10,20 +10,22 @@ const SearchBar = ({ setSearchCategory }) => {
     }
 
     return (
-        <div className="search-bar">
-            <input
-                type="text"
-                placeholder="Coffee & Tea, Bars, Pizza"
-                value={category}
-                onChange={onCategoryChange}
-            />
-            <span></span>
-            <input
-                type="text"
-                placeholder="address, neighborhood, city, state or zip"
-            />
-            <button onClick={search}><i className="fas fa-search"></i></button>
-        </div>
+        <>
+            <div className="search-bar">
+                <input
+                    type="text"
+                    placeholder="Coffee & Tea, Bars, Pizza"
+                    value={category}
+                    onChange={onCategoryChange}
+                />
+                <span></span>
+                <input
+                    type="text"
+                    placeholder="address, neighborhood, city, state or zip"
+                />
+                <button onClick={search}><i className="fas fa-search"></i></button>
+            </div>
+        </>
     );
 }
 

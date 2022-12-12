@@ -35,9 +35,9 @@ const Navigation = ({ setSearchCategory }) => {
                     <NavLink exact to="/" className="nav-title">
                         <h1><span>qelp</span><i className="fab fa-yelp"></i></h1>
                     </NavLink>
-
-                    <SearchBar setSearchCategory={setSearchCategory} />
                 </div>
+                
+                <SearchBar setSearchCategory={setSearchCategory} />
 
                 <div className="session-links">
                     {sessionLinks}

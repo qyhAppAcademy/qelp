@@ -4,7 +4,7 @@ nav {
     align-items: center;
 
     padding: 0;
-    margin: 0 40px;
+    margin: 0 40px 0 20px;
 
     height: 48px;
 
@@ -14,12 +14,12 @@ nav {
 nav > div {
     display: flex;
     align-items: center;
+    padding: 0;
+    margin: 0;
+    margin-left: 20px;
 }
 
 .nav-title {
-    padding: 0;
-    padding-right: 10px;
-
     font-weight: 600;
     color: #000000;
     text-decoration: none;

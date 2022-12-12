@@ -1,9 +1,8 @@
 .search-bar {
+    flex-grow: 2;
+
     display: flex;
     align-items: center;
-    padding: 0;
-    margin: 0;
-    margin-left: 20px;
 
     overflow: hidden;
     border-radius: 5px;
@@ -12,6 +11,7 @@
 }
 
 .search-bar input {
+    width: 100%;
     height: 40px;
 
     padding: 4px 14px;
@@ -24,15 +24,17 @@
 }
 
 .search-bar span {
-    width: 2px;
+    width: 3px;
     height: 24px;
-    padding: 12px 0;
+    padding: 12px 1px;
     background-color: #EBEBEB;
 }
 
 .search-bar button {
-    width: 56px;
+    /* width: 56px; */
     height: 48px;
+
+    padding: 0 14px 0 16px;
 
     font-size: 24px;
     color: #FFFFFF;
