@@ -2,8 +2,8 @@ import "./Item.css";
 import { EST_OFFSET, toLocalTime, isOpen } from "../../../store/time.js";
 
 const Item = ({ idx, business }) => {
-    const categorySpans = business.category.split(",").map(c => (
-        <span className="category">{c.trim()}</span>
+    const categorySpans = business.category.split(",").map((c, idx) => (
+        <span className="category" key={idx}>{c.trim()}</span>
     ));
 
     return (

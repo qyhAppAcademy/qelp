@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchBusiness, getBusiness } from "../../../store/businesses";
 import { Helmet } from "react-helmet";
-import BusinessCarousel from "./../BusinessCarousel/";
+import Carousel from "./Carousel";
 import Header from "./Header";
 import SideBar from "./SideBar";
 import '../../../fontawesome/css/all.min.css';
@@ -26,7 +26,7 @@ const BusinessShowPage = () => {
                 <script defer src="../../fontawesome/js/all.min.js"></script>
             </Helmet>
             <Header business={business} />
-            <BusinessCarousel />
+            <Carousel />
             <SideBar business={business} />
         </>
     );

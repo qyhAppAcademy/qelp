@@ -1,0 +1,16 @@
+.business-carousel {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.business-carousel-slide {
+    display: inline-block;
+    /* transition: .5s linear; */
+}
+
+.business-carousel-slide img {
+    width: auto;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
