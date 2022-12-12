@@ -26,7 +26,7 @@ const Navigation = ({ setSearchCategory }) => {
     }
 
     return (
-        <header>
+        <>
             <Helmet>
                 <script defer src="../../fontawesome/js/all.min.js"></script>
             </Helmet>
@@ -43,7 +43,7 @@ const Navigation = ({ setSearchCategory }) => {
                     {sessionLinks}
                 </div>
             </nav>
-        </header>
+        </>
     );
 }
 

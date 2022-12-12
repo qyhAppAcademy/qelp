@@ -31,18 +31,39 @@
 }
 
 .search-bar button {
-    /* width: 56px; */
     height: 48px;
 
     padding: 0 14px 0 16px;
 
-    font-size: 24px;
+    font-size: 23px;
     color: #FFFFFF;
 
-    background-color: rgb(244, 13, 21);
-    
+    background-color: #e00d10;
+
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 
     cursor: pointer;
+
+    position: relative;
+}
+
+.search-bar button:hover {
+    background-color: #F40D15;
+}
+
+span.ripple {
+    position: absolute;
+    border-radius: 100%;
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    background-color: white;
+    overflow: hidden;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(6);
+        opacity: 0;
+    }
 }

@@ -44,7 +44,10 @@ const BusinessIndexPage = () => {
 
     return (
         <>
-            <Navigation setSearchCategory={setSearchCategory} />
+            <header>
+                <Navigation setSearchCategory={setSearchCategory} />   
+            </header>
+            
             <p>{searchCategory}</p>
             <div>
                 {businessItems}

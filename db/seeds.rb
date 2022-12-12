@@ -11,10 +11,11 @@ ApplicationRecord.transaction do
   puts "Destroying tables..."
   # Unnecessary if using `rails db:seed:replant`
   User.destroy_all
+  Business.destroy_all
 
   puts "Resetting primary keys..."
   # For easy testing, so that after seeding, the first `User` has `id` of 1
-  %w(users).each do |table_name|
+  %w(users businesses).each do |table_name|
     ApplicationRecord.connection.reset_pk_sequence!(table_name)
   end
 
@@ -37,7 +38,7 @@ ApplicationRecord.transaction do
 
   puts "Creating businesses..."
 
-  Business.create!(
+  bus = Business.create!(
     name: 'Patisserie Fouet', 
     address: '15 E 13th St', 
     city: 'New York',
@@ -61,202 +62,215 @@ ApplicationRecord.transaction do
   #     )
   # end
 
-  # Business.last.photo.attach(
-  #   io: URI.open("https://imstresst-dev.s3.amazonaws.com/Blue+Destination/b6.jpg"),
-  #   filename: "1"
+  # bus.photo.attach(
+  #   io: URI.open("https://qelp-dev.s3.amazonaws.com/seeds/businesses/1/1.jpeg"),
+  #   filename: "1.jpeg"
   # )
 
-  Business.create!(
-    name: 'Vinyl Steakhouse',
-    address: '35 W 19th St',
-    city: 'New York',
-    state: 'NY',
-    zip_code: '10011',
-    lat: 40.74003146596712,
-    lng: -73.99308377693622,
-    open: '04:00PM EST',
-    close: '11:00PM EST',
-    category: 'Steakhouses, Cocktail Bars',
-    price: '$$$',
-    phone_number: '(646) 461-7866',
-    website: 'https://www.vinylsteakhouse.com'
+  bus.photos.attach(
+    [io:URI.open("https://qelp-dev.s3.amazonaws.com/seeds/businesses/1/1.jpeg"), filename: "/1.jpeg"],
+    [io:URI.open("https://qelp-dev.s3.amazonaws.com/seeds/businesses/1/2.jpeg"), filename: "/2.jpeg"],
+    [io:URI.open("https://qelp-dev.s3.amazonaws.com/seeds/businesses/1/3.jpeg"), filename: "/3.jpeg"],
+    [io:URI.open("https://qelp-dev.s3.amazonaws.com/seeds/businesses/1/4.jpeg"), filename: "/4.jpeg"]
   )
+  
+  # bus.photos.attach(io:URI.open("https://qelp-dev.s3.amazonaws.com/seeds/businesses/1/1.jpeg"), filename: "1.jpeg")
+  # bus.photos.attach(io:URI.open("https://qelp-dev.s3.amazonaws.com/seeds/businesses/1/2.jpeg"), filename: "2.jpeg")
+  # bus.photos.attach(io:URI.open("https://qelp-dev.s3.amazonaws.com/seeds/businesses/1/3.jpeg"), filename: "3.jpeg")
+  # bus.photos.attach(io:URI.open("https://qelp-dev.s3.amazonaws.com/seeds/businesses/1/4.jpeg"), filename: "4.jpeg")
 
-  Business.create!(
-    name: 'Yozi Noodles',
-    address: '5805 8th Ave',
-    city: 'Brooklyn',
-    state: 'NY',
-    zip_code: '11220',
-    lat: 40.63635500118182,
-    lng: -74.00840193688866,
-    open: '11:00AM EST',
-    close: '10:00PM EST',
-    category: 'Chinese',
-    price: '$$',
-    phone_number: '(718) 633-8888',
-    website: 'https://www.yoziducksoup.com'
-  )
 
-  Business.create!(
-    name: 'MUD',
-    address: '307 E 9th St',
-    city: 'New York',
-    state: 'NY',
-    zip_code: '10003',
-    lat: 40.72911834581734,
-    lng: -73.98667531451746,
-    open: '08:00AM EST',
-    close: '12:00AM EST',
-    category: 'Coffee & Tea, Breakfast & Brunch, Beer Bar',
-    price: '$$',
-    phone_number: '(212) 228-9074',
-    website: 'https://www.mudnyc.com'
-  )
+  # Business.create!(
+  #   name: 'Vinyl Steakhouse',
+  #   address: '35 W 19th St',
+  #   city: 'New York',
+  #   state: 'NY',
+  #   zip_code: '10011',
+  #   lat: 40.74003146596712,
+  #   lng: -73.99308377693622,
+  #   open: '04:00PM EST',
+  #   close: '11:00PM EST',
+  #   category: 'Steakhouses, Cocktail Bars',
+  #   price: '$$$',
+  #   phone_number: '(646) 461-7866',
+  #   website: 'https://www.vinylsteakhouse.com'
+  # )
 
-  Business.create!(
-    name: 'Jongro BBQ',
-    address: '22 W 32nd St',
-    city: 'New York',
-    state: 'NY',
-    zip_code: '10001',
-    lat: 40.74759363534642,
-    lng: -73.98691124588643,
-    open: '11:30AM EST',
-    close: '1:00AM EST',
-    category: 'Korean, Barbeque, Bars',
-    price: '$$',
-    phone_number: '(212) 473-2233',
-    website: 'http://jongrobbqny.com'
-  )
+  # Business.create!(
+  #   name: 'Yozi Noodles',
+  #   address: '5805 8th Ave',
+  #   city: 'Brooklyn',
+  #   state: 'NY',
+  #   zip_code: '11220',
+  #   lat: 40.63635500118182,
+  #   lng: -74.00840193688866,
+  #   open: '11:00AM EST',
+  #   close: '10:00PM EST',
+  #   category: 'Chinese',
+  #   price: '$$',
+  #   phone_number: '(718) 633-8888',
+  #   website: 'https://www.yoziducksoup.com'
+  # )
 
-  Business.create!(
-    name: "Mia's Bakery",
-    address: '139 Smith St',
-    city: 'Brooklyn',
-    state: 'NY',
-    zip_code: '11201',
-    lat: 40.687064848371165,
-    lng: -73.99004773565743,
-    open: '07:00AM EST',
-    close: '12:00AM EST',
-    category: 'Bakeries, Cafes, Desserts',
-    price: '$$',
-    phone_number: '(347) 987-3194',
-    website: 'http://www.miasbrooklyn.com'
-  )
+  # Business.create!(
+  #   name: 'MUD',
+  #   address: '307 E 9th St',
+  #   city: 'New York',
+  #   state: 'NY',
+  #   zip_code: '10003',
+  #   lat: 40.72911834581734,
+  #   lng: -73.98667531451746,
+  #   open: '08:00AM EST',
+  #   close: '12:00AM EST',
+  #   category: 'Coffee & Tea, Breakfast & Brunch, Beer Bar',
+  #   price: '$$',
+  #   phone_number: '(212) 228-9074',
+  #   website: 'https://www.mudnyc.com'
+  # )
 
-  Business.create!(
-    name: "Jane Restaurant",
-    address: '100 W Houston St',
-    city: 'New York',
-    state: 'NY',
-    zip_code: '10012',
-    lat: 40.72737687572234,
-    lng: -74.00019649797562,
-    open: '09:00AM EST',
-    close: '09:00PM EST',
-    category: 'Breakfast & Brunch, American (New), Bars',
-    price: '$$',
-    phone_number: '(212) 254-7000',
-    website: 'https://www.janerestaurant.com'
-  )
+  # Business.create!(
+  #   name: 'Jongro BBQ',
+  #   address: '22 W 32nd St',
+  #   city: 'New York',
+  #   state: 'NY',
+  #   zip_code: '10001',
+  #   lat: 40.74759363534642,
+  #   lng: -73.98691124588643,
+  #   open: '11:30AM EST',
+  #   close: '1:00AM EST',
+  #   category: 'Korean, Barbeque, Bars',
+  #   price: '$$',
+  #   phone_number: '(212) 473-2233',
+  #   website: 'http://jongrobbqny.com'
+  # )
 
-  Business.create!(
-    name: "Joe's Pizza",
-    address: '7 Carmine St',
-    city: 'New York',
-    state: 'NY',
-    zip_code: '10014',
-    lat: 40.73069222060482,
-    lng: -74.00214924227208,
-    open: '10:00AM EST',
-    close: '05:00AM EST',
-    category: 'Pizza',
-    price: '$',
-    phone_number: '(212) 366-1182',
-    website: 'http://www.joespizzanyc.com'
-  )
+  # Business.create!(
+  #   name: "Mia's Bakery",
+  #   address: '139 Smith St',
+  #   city: 'Brooklyn',
+  #   state: 'NY',
+  #   zip_code: '11201',
+  #   lat: 40.687064848371165,
+  #   lng: -73.99004773565743,
+  #   open: '07:00AM EST',
+  #   close: '12:00AM EST',
+  #   category: 'Bakeries, Cafes, Desserts',
+  #   price: '$$',
+  #   phone_number: '(347) 987-3194',
+  #   website: 'http://www.miasbrooklyn.com'
+  # )
 
-  Business.create!(
-    name: "Zero Otto Nove",
-    address: '15 W 21st St',
-    city: 'New York',
-    state: 'NY',
-    zip_code: '10010',
-    lat: 40.740864509379485,
-    lng: -73.99156589160633,
-    open: '04:00PM EST',
-    close: '10:00PM EST',
-    category: 'Italian, Pizza',
-    price: '$$',
-    phone_number: '(212) 242-0899',
-    website: 'https://zeroottonove.com/nyc'
-  )
+  # Business.create!(
+  #   name: "Jane Restaurant",
+  #   address: '100 W Houston St',
+  #   city: 'New York',
+  #   state: 'NY',
+  #   zip_code: '10012',
+  #   lat: 40.72737687572234,
+  #   lng: -74.00019649797562,
+  #   open: '09:00AM EST',
+  #   close: '09:00PM EST',
+  #   category: 'Breakfast & Brunch, American (New), Bars',
+  #   price: '$$',
+  #   phone_number: '(212) 254-7000',
+  #   website: 'https://www.janerestaurant.com'
+  # )
 
-  Business.create!(
-    name: "Boucherie Union Square",
-    address: '225 Park Ave S',
-    city: 'New York',
-    state: 'NY',
-    zip_code: '10003',
-    lat: 40.737209646779675,
-    lng: -73.98789237121142,
-    open: '10:00AM EST',
-    close: '12:00AM EST',
-    category: 'Steakhouses, French, Cocktail Bars',
-    price: '$$$',
-    phone_number: '(212) 353-0200',
-    website: 'https://www.boucherie.nyc'
-  )
+  # Business.create!(
+  #   name: "Joe's Pizza",
+  #   address: '7 Carmine St',
+  #   city: 'New York',
+  #   state: 'NY',
+  #   zip_code: '10014',
+  #   lat: 40.73069222060482,
+  #   lng: -74.00214924227208,
+  #   open: '10:00AM EST',
+  #   close: '05:00AM EST',
+  #   category: 'Pizza',
+  #   price: '$',
+  #   phone_number: '(212) 366-1182',
+  #   website: 'http://www.joespizzanyc.com'
+  # )
 
-  Business.create!(
-    name: "Ootoya Chelsea",
-    address: '8 W 18th St',
-    city: 'New York',
-    state: 'NY',
-    zip_code: '10011',
-    lat: 40.73881967084371,
-    lng: -73.99279184470173,
-    open: '11:30AM EST',
-    close: '9:30PM EST',
-    category: 'Sushi Bars, Hot Pot, Japanese Curry',
-    price: '$$',
-    phone_number: '(212) 255-0018',
-    website: 'https://ootoya.us'
-  )
+  # Business.create!(
+  #   name: "Zero Otto Nove",
+  #   address: '15 W 21st St',
+  #   city: 'New York',
+  #   state: 'NY',
+  #   zip_code: '10010',
+  #   lat: 40.740864509379485,
+  #   lng: -73.99156589160633,
+  #   open: '04:00PM EST',
+  #   close: '10:00PM EST',
+  #   category: 'Italian, Pizza',
+  #   price: '$$',
+  #   phone_number: '(212) 242-0899',
+  #   website: 'https://zeroottonove.com/nyc'
+  # )
 
-  Business.create!(
-    name: "Taboonette",
-    address: '30 E 13th St',
-    city: 'New York',
-    state: 'NY',
-    zip_code: '10003',
-    lat: 40.73467813733269,
-    lng: -73.99278977804943,
-    open: '10:00AM EST',
-    close: '10:00PM EST',
-    category: 'Mediterranean, Middle Eastern, American (New)',
-    price: '$$',
-    phone_number: '(212) 510-7881',
-    website: 'https://taboonette.com'
-  )
+  # Business.create!(
+  #   name: "Boucherie Union Square",
+  #   address: '225 Park Ave S',
+  #   city: 'New York',
+  #   state: 'NY',
+  #   zip_code: '10003',
+  #   lat: 40.737209646779675,
+  #   lng: -73.98789237121142,
+  #   open: '10:00AM EST',
+  #   close: '12:00AM EST',
+  #   category: 'Steakhouses, French, Cocktail Bars',
+  #   price: '$$$',
+  #   phone_number: '(212) 353-0200',
+  #   website: 'https://www.boucherie.nyc'
+  # )
 
-  Business.create!(
-    name: "Abraco",
-    address: '81 E 7th St',
-    city: 'New York',
-    state: 'NY',
-    zip_code: '10003',
-    lat: 40.72735879102908,
-    lng: -73.98616181775907,
-    open: '09:00AM EST',
-    close: '06:00PM EST',
-    category: 'Coffee Roasteries, Bakeries',
-    price: '$$',
-    phone_number: '(212) 388-9731',
-    website: 'https://www.abraconyc.com'
-  )
+  # Business.create!(
+  #   name: "Ootoya Chelsea",
+  #   address: '8 W 18th St',
+  #   city: 'New York',
+  #   state: 'NY',
+  #   zip_code: '10011',
+  #   lat: 40.73881967084371,
+  #   lng: -73.99279184470173,
+  #   open: '11:30AM EST',
+  #   close: '9:30PM EST',
+  #   category: 'Sushi Bars, Hot Pot, Japanese Curry',
+  #   price: '$$',
+  #   phone_number: '(212) 255-0018',
+  #   website: 'https://ootoya.us'
+  # )
+
+  # Business.create!(
+  #   name: "Taboonette",
+  #   address: '30 E 13th St',
+  #   city: 'New York',
+  #   state: 'NY',
+  #   zip_code: '10003',
+  #   lat: 40.73467813733269,
+  #   lng: -73.99278977804943,
+  #   open: '10:00AM EST',
+  #   close: '10:00PM EST',
+  #   category: 'Mediterranean, Middle Eastern, American (New)',
+  #   price: '$$',
+  #   phone_number: '(212) 510-7881',
+  #   website: 'https://taboonette.com'
+  # )
+
+  # Business.create!(
+  #   name: "Abraco",
+  #   address: '81 E 7th St',
+  #   city: 'New York',
+  #   state: 'NY',
+  #   zip_code: '10003',
+  #   lat: 40.72735879102908,
+  #   lng: -73.98616181775907,
+  #   open: '09:00AM EST',
+  #   close: '06:00PM EST',
+  #   category: 'Coffee Roasteries, Bakeries',
+  #   price: '$$',
+  #   phone_number: '(212) 388-9731',
+  #   website: 'https://www.abraconyc.com'
+  # )
 
   puts "Done!"
 end
