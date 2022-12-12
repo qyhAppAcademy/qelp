@@ -9,8 +9,8 @@ const Item = ({ idx, business }) => {
     return (
         <div className="business-index-item">
             <div className="business-index-item-picture">
-                {/* <img src={`https://qelp-dev.s3.amazonaws.com/seeds/businesses/${business.id}/1.jpeg`} alt="" /> */}
-                <img src={business.photoUrl} />
+                <img src={`https://qelp-seeds.s3.amazonaws.com/businesses/${business.id}/1.jpeg`} alt="" />
+                {/* <img src={business.photoUrl} /> */}
             </div>
             <div>
                 <h1>{`${idx + 1}. ${business.name}`}</h1>

@@ -1,7 +1,7 @@
 import { useInput } from "../../hooks";
 import "./SearchBar.css";
 
-const SearchBar = ({ setSearchCategory }) => {
+const SearchBar = ({ setQuery }) => {
     const [category, onCategoryChange] = useInput("");
 
     const createRipple = (event) => {
@@ -14,8 +14,6 @@ const SearchBar = ({ setSearchCategory }) => {
         circle.style.width = circle.style.height = `${diameter}px`;
         circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
         circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
-        // circle.style.left = `0px`;
-        // circle.style.top = `0px`;
         circle.classList.add("ripple");
 
         const ripple = button.getElementsByClassName("ripple")[0];
@@ -30,14 +28,8 @@ const SearchBar = ({ setSearchCategory }) => {
     const search = (e) => {
         e.preventDefault();
         createRipple(e);
-        setSearchCategory(category);
+        setQuery(category);
     }
-
-    // const buttons = document.getElementsByTagName("button");
-    
-    // for (const button of buttons) {
-    //     button.addEventListener("click", createRipple);
-    // }
 
     return (
         <>
@@ -51,7 +43,7 @@ const SearchBar = ({ setSearchCategory }) => {
                 <span></span>
                 <input
                     type="text"
-                    placeholder="address, neighborhood, city, state or zip"
+                    placeholder="Address, Neighborhood, City, State or Zip"
                 />
                 <button onClick={search}><i className="fas fa-search"></i></button>
             </div>

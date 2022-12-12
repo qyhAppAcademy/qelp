@@ -7,7 +7,7 @@ import ProfileButton from './ProfileButton';
 import '../../fontawesome/css/all.min.css';
 import './index.css';
 
-const Navigation = ({ setSearchCategory }) => {
+const Navigation = ({ setQuery }) => {
     const sessionUser = useSelector(state => state.session.user);
 
     let sessionLinks;
@@ -37,7 +37,7 @@ const Navigation = ({ setSearchCategory }) => {
                     </NavLink>
                 </div>
                 
-                <SearchBar setSearchCategory={setSearchCategory} />
+                <SearchBar setQuery={setQuery} />
 
                 <div className="session-links">
                     {sessionLinks}

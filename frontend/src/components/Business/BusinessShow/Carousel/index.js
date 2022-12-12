@@ -1,19 +1,9 @@
 import React, { useState } from 'react';
 import Slide from "./Slide.js";
 import "./index.css";
-import { useParams } from 'react-router-dom';
 
-const IMAGES = [
-    '1.jpeg', 
-    '2.jpeg', 
-    '3.jpeg', 
-    '4.jpeg',
-    '5.jpeg',
-    '6.jpeg'];
-
-const Carousel = () => {
-    const { businessId } = useParams();
-    const [images, setImages] = useState(IMAGES);
+const Carousel = ({ business }) => {
+    const [images, setImages] = useState(business.photoUrls);
 
     const slideLeft = (e) => {
         e.preventDefault();
@@ -21,7 +11,6 @@ const Carousel = () => {
         let rest = images.slice(0, images.length - 1);
         let newImages = [last, ...rest];
         setImages(newImages);
-        console.log("not working");
     }
 
     const slideRight = (e) => {
@@ -33,7 +22,7 @@ const Carousel = () => {
     }
 
     const slides = images.map((image, index) => (
-        <Slide key={index} businessId={businessId} image={image}/>
+        <Slide key={index} image={image}/>
     ));
 
     return (

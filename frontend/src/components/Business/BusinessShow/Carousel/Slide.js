@@ -3,7 +3,6 @@ import "./Slide.css";
 
 const WIDTH = 320;
 const HEIGHT = 427;
-const AWS_URL = "https://qelp-dev.s3.amazonaws.com/seeds/businesses";
 
 const loadImage = (setImageDimensions, imageUrl) => {
     const img = new Image();
@@ -22,33 +21,15 @@ const loadImage = (setImageDimensions, imageUrl) => {
     };
 };
 
-const Slide = ({ businessId, image }) => {
-    // const imageUrl = require(`./images/${image}`);
-    // const styles = {
-    //     backgroundImage: `url(${imageUrl})`,
-    //     backgroundPosition: 'center top',
-    //     backgroundRepeat: 'no-repeat',
-    //     width: `${WIDTH}px`,
-    //     height: `${HEIGHT}px`
-    // }
-
-    // return (
-    //     <div className="business-carousel-slide" style={styles}></div>
-    // )
-    
+const Slide = ({ image }) => {
     const [imageDimensions, setImageDimensions] = useState({
         width: WIDTH,
         height: HEIGHT
     });
 
-    // const imageUrl = require(`${AWS_URL}/${businessId}/${image}`);
-
-    const imageUrl = `${AWS_URL}/${businessId}/${image}`;
-
-
     useEffect(() => {
-        loadImage(setImageDimensions, imageUrl);
-    }, [imageUrl]);
+        loadImage(setImageDimensions, image.url);
+    }, [image]);
 
     return (
         <>
@@ -63,7 +44,7 @@ const Slide = ({ businessId, image }) => {
             }}>
                 <img
                     alt=""
-                    src={imageUrl}
+                    src={image.url}
                 />
             </div>
         )}

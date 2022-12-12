@@ -1,3 +1,7 @@
+.profile-button {
+    z-index: 2;
+}
+
 .profile-icon {
     color: #CBCBCE;
     font-size: 37px;

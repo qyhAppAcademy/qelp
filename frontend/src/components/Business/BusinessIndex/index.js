@@ -3,41 +3,29 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchBusinesses, getBusinesses } from "../../../store/businesses";
 import Navigation from "../../Navigation";
 import Item from "./Item.js";
+import { searchByName, searchByCategory } from "./search";
 import "./index.css";
 import '../../../fontawesome/css/all.min.css';
 
-const containsCategory = (business, category) => {
-    const tags = business.category.split(",");
-    for (let i = 0; i < tags.length; i++) {
-        tags[i] = tags[i].trim();
-    }
-    return tags.some(tag => tag === category);
-}
-
 const BusinessIndexPage = () => {
-    const [searchCategory, setSearchCategory] = useState("");
+    const [query, setQuery] = useState("");
 
     const businesses = useSelector(getBusinesses());
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchBusinesses());
     }, [dispatch]);
-
-    // useEffect(() => {
-        
-    // }, [searchCategory]);
     
     if (businesses.length === 0) {
         return null;
     }
 
-    const businessItems = searchCategory === "" ? 
+    const businessItems = query === "" ? 
         businesses.map((business, index) => (
             <Item key={business.id} idx={index} business={business} />
         )) :
         businesses.filter(business => {
-            return containsCategory(business, searchCategory);
-            // return business.category === searchCategory;
+            return searchByName(business.name, query) || searchByCategory(business.category, query, ",");
         }).map((business, index) => (
             <Item key={business.id} idx={index} business={business} />
         ));
@@ -45,12 +33,14 @@ const BusinessIndexPage = () => {
     return (
         <>
             <header>
-                <Navigation setSearchCategory={setSearchCategory} />   
+                <Navigation setQuery={setQuery} />   
             </header>
-            
-            <p>{searchCategory}</p>
             <div>
-                {businessItems}
+                {businessItems.length > 0 ? (
+                    businessItems
+                ) : (
+                    <p className="no-results">Search Not Found</p>
+                )}
             </div>
         </>
     );

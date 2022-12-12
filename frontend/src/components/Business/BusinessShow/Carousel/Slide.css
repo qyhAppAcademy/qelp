@@ -1,11 +1,6 @@
-.business-carousel {
-    white-space: nowrap;
-    overflow: hidden;
-}
-
 .business-carousel-slide {
     display: inline-block;
-    /* transition: .5s linear; */
+    /* transition: 1s ease; */
 }
 
 .business-carousel-slide img {

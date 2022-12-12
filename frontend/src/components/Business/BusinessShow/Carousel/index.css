@@ -1,7 +1,3 @@
-.business-carousel-image-container {
-    /* display: inline-block; */
-}
-
 .carousel-arrows {
     position: absolute;
     width: 100%;
@@ -24,4 +20,13 @@
 
 .carousel-arrows .arrow:hover {
     opacity: 1;
+}
+
+.business-carousel {
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    height: 427px;
+    background-color: black;
 }

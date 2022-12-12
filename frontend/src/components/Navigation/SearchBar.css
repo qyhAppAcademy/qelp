@@ -8,6 +8,8 @@
     border-radius: 5px;
 
     box-shadow: 0 0 36px #00000026;
+
+    z-index: 2;
 }
 
 .search-bar input {
@@ -21,6 +23,8 @@
 
     border-style: hidden;
     outline: none;
+
+    z-index: 2;
 }
 
 .search-bar span {
@@ -38,7 +42,7 @@
     font-size: 23px;
     color: #FFFFFF;
 
-    background-color: #e00d10;
+    background-color: #e50d0d;
 
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -56,9 +60,10 @@ span.ripple {
     position: absolute;
     border-radius: 100%;
     transform: scale(0);
-    animation: ripple 0.6s linear;
-    background-color: white;
-    overflow: hidden;
+    animation: ripple 0.8s linear;
+    background-color: #F6F6F6;
+
+    z-index: 1;
 }
 
 @keyframes ripple {
