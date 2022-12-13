@@ -67,6 +67,27 @@ export const restoreSession = () => async dispatch => {
     return response;
 };
 
+export const updateReview = (review) => async dispatch => {
+    const response = await csrfFetch(`/api/reviews/${review.id}`, {
+        method: "PATCH",
+        body: JSON.stringify(review)
+    });
+    const data = await response.json();
+    storeCurrentUser(data.user);
+    dispatch(setCurrentUser(data.user));
+    return response;
+};
+
+export const deleteReview = (reviewId) => async dispatch => {
+    const response = await csrfFetch(`/api/reviews/${reviewId}`, {
+        method: "DELETE",
+    });
+    const data = await response.json();
+    storeCurrentUser(data.user);
+    dispatch(setCurrentUser(data.user));
+    return response;
+};
+
 const initialState = {
     user: JSON.parse(sessionStorage.getItem("currentUser"))
 };

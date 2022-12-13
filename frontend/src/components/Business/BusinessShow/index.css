@@ -3,3 +3,48 @@ header {
 
     z-index: 2;
 }
+
+section {
+    position: absolute;
+
+    margin: 300px 0 0 0;
+
+    width: 100%;
+
+    z-index: 2;
+}
+
+section > div {
+    margin: 0 auto;
+    padding: 0;
+
+    width: 1130px;
+}
+
+.business-panel-container {
+    margin: 0;
+    margin-bottom: 33px;
+}
+
+.business-reviews-container {
+    display: inline-block;
+
+    width: 730px;
+}
+
+.business-reviews-container > h1 {
+    font-size: 24px;
+    font-weight: 700;
+
+    padding: 2px 0 12px 0;
+}
+
+.side-bar-container {
+    display: block;
+
+    position: sticky;
+    float: right;
+    top: 20px;
+
+    width: 360px;
+}

@@ -1,17 +1,3 @@
-.business-panel-layer {
-    position: absolute;
-    width: 100%;
-    height: 0px;
-    z-index: 3;
-}
-
-.business-panel {
-    position: relative;
-    top: 240px;
-    margin: 0;
-    padding: 0 60px;
-}
-
 .business-panel-item {
     display: flex;
     align-items: center;
@@ -39,4 +25,14 @@
 
 .business-panel-item .icon-circle-container {
     font-size: 5px;
+}
+
+.business-panel-item .business-open {
+    color: #008055;
+    font-weight: 600;
+}
+
+.business-panel-item .business-closed {
+    color: rgb(224, 7, 7);
+    font-weight: 600;
 }

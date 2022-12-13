@@ -7,7 +7,10 @@ import Navigation from "../../Navigation";
 import Panel from "./Panel";
 import Carousel from "./Carousel";
 import SideBar from "./SideBar";
+import BusinessReviews from "./Reviews";
+import Review from "../../Review";
 import '../../../fontawesome/css/all.min.css';
+import "./index.css";
 
 const BusinessShowPage = () => {
     const [query, setQuery] = useState("");
@@ -23,14 +26,39 @@ const BusinessShowPage = () => {
         return null;
     }
 
+    const reviews = Object.values(business.reviews).map((review, index) => (
+        <>
+            <div className="review-header">
+                <h1>{`${review.user.email.split("@")[0]}...`}</h1>
+            </div>
+            <Review key={index} review={review} />
+        </>
+    ));
+
     return (
         <>
             <header>
                 <Navigation setQuery={setQuery} />
             </header>
-            <Panel business={business} setQuery={setQuery} />
+
             <Carousel business={business} />
-            <SideBar business={business} />
+
+            <section>
+                <div>
+                    <div className="business-panel-container">
+                        <Panel business={business} setQuery={setQuery} />
+                    </div>
+
+                    <div className="business-reviews-container">
+                        <BusinessReviews business={business} />
+                    </div>
+
+                    <div className="side-bar-container">
+                        <SideBar business={business} />
+                    </div>
+                </div>
+            </section>
+
             <Helmet>
                 <script defer src="../../fontawesome/js/all.min.js"></script>
             </Helmet>

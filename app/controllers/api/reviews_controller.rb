@@ -6,7 +6,19 @@ class Api::ReviewsController < ApplicationController
         @review = current_user.reviews.new(review_params)
 
         if @review.save
-            render :show
+            @business = @review.business
+            render 'api/businesses/show'
+        else
+            render json: { errors: @review.errors.full_messages }, status: :unprocessable_entity
+        end
+    end
+
+    def update
+        @review = current_user.reviews.find(params[:id])
+        
+        if @review.update(review_params)
+            @user = current_user
+            render 'api/users/show'
         else
             render json: { errors: @review.errors.full_messages }, status: :unprocessable_entity
         end
@@ -14,12 +26,15 @@ class Api::ReviewsController < ApplicationController
 
     def destroy
         @review = current_user.reviews.find(params[:id])
+
         unless @review
             render json: { message: 'Unauthorized' }, status: :unauthorized
             return
         end
+
         @review.destroy
-        render :show
+        @user = current_user
+        render 'api/users/show'
     end
 
     private

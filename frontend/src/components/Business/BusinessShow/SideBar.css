@@ -43,7 +43,7 @@
     border-bottom: 0px;
 }
 
-.business-show-page-side-bar li:last-child div {
+.business-show-page-side-bar li:last-child div div{
     display: flex;
     flex-wrap: wrap;
     align-items: center;

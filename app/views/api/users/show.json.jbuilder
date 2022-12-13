@@ -6,7 +6,8 @@ json.user do
             json.set! review.id do
                 json.partial! 'api/reviews/review', review: review
                 json.business do
-                    json.partial! 'api/businesses/business', business: review.business
+                    json.extract! review.business, :id, :name, :address, :city, :state, :zip_code, :category, :price
+                    json.photoUrl review.business.photos.first, :url
                 end
             end
         end

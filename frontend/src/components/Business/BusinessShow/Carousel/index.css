@@ -6,8 +6,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* background-color: black; */
     background: linear-gradient(0deg, black, transparent 50%, transparent);
+    z-index: 2;
 }
 
 .carousel-arrows .arrow {
@@ -23,10 +23,12 @@
 }
 
 .business-carousel {
+    position: absolute;
     white-space: nowrap;
     overflow: hidden;
     padding: 0;
     margin: 0;
     height: 427px;
     background-color: black;
+    z-index: 1;
 }
