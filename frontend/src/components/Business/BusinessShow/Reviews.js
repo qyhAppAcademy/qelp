@@ -2,13 +2,13 @@ import Review from "../../Review";
 import "./Reviews.css";
 
 const BusinessReviews = ({ business }) => {
-    const reviews = Object.values(business.reviews).map((review, index) => (
-        <>
+    const reviews = Object.values(business.reviews).map((review) => (
+        <div key={review.id}>
             <div className="review-header">
                 <h1>{`${review.user.email.split("@")[0]}...`}</h1>
             </div>
-            <Review key={index} review={review} />
-        </>
+            <Review key={review.id} review={review} />
+        </div>
     ));
 
     return (

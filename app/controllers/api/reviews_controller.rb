@@ -1,5 +1,5 @@
 class Api::ReviewsController < ApplicationController
-    before_action :require_logged_in
+    # before_action :require_logged_in
     wrap_parameters include: Review.attribute_names + [:businessId]
 
     def create
@@ -17,8 +17,8 @@ class Api::ReviewsController < ApplicationController
         @review = current_user.reviews.find(params[:id])
         
         if @review.update(review_params)
-            @user = current_user
-            render 'api/users/show'
+            @business = @review.business
+            render 'api/businesses/show'
         else
             render json: { errors: @review.errors.full_messages }, status: :unprocessable_entity
         end

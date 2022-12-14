@@ -27,6 +27,16 @@ export const createReview = (review) => async dispatch => {
     return response;
 };
 
+export const updateReview = (review) => async dispatch => {
+    const response = await csrfFetch(`/api/reviews/${review.id}`, {
+        method: "PATCH",
+        body: JSON.stringify(review)
+    });
+    const data = await response.json();
+    dispatch(receiveBusiness(data.business));
+    return response;
+};
+
 export const getBusinesses = () => (state) => {
     return state.businesses ? Object.values(state.businesses) : [];
 }

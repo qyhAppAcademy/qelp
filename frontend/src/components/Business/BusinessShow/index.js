@@ -9,14 +9,21 @@ import Carousel from "./Carousel";
 import SideBar from "./SideBar";
 import BusinessReviews from "./Reviews";
 import Review from "../../Review";
+import ReviewForm from "../../Review/Form";
+import ReviewButtons from "./ReviewButtons";
 import '../../../fontawesome/css/all.min.css';
 import "./index.css";
+import { getCurrentUser } from "../../../store/session";
 
 const BusinessShowPage = () => {
     const [query, setQuery] = useState("");
 
     const { businessId } = useParams();
     const business = useSelector(getBusiness(businessId));
+
+    const currentUser = useSelector(getCurrentUser);
+
+
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchBusiness(businessId))
@@ -26,14 +33,10 @@ const BusinessShowPage = () => {
         return null;
     }
 
-    const reviews = Object.values(business.reviews).map((review, index) => (
-        <>
-            <div className="review-header">
-                <h1>{`${review.user.email.split("@")[0]}...`}</h1>
-            </div>
-            <Review key={index} review={review} />
-        </>
-    ));
+    const review = currentUser ? Object.values(business.reviews).find(review => review.user.id === currentUser.id) : undefined;
+    const hasReviewed = review !== undefined;
+
+    console.log(review);
 
     return (
         <>
@@ -50,7 +53,12 @@ const BusinessShowPage = () => {
                     </div>
 
                     <div className="business-reviews-container">
+                        <ReviewButtons hasReviewed={hasReviewed} />
                         <BusinessReviews business={business} />
+                        <div style={{padding: "20px 0", fontSize: "24px", fontWeight: "700"}}>
+                            <h1>{hasReviewed ? "Edit your" : "Write a"} review</h1>
+                        </div>
+                        <ReviewForm businessId={business.id} review={review}/>
                     </div>
 
                     <div className="side-bar-container">

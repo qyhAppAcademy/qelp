@@ -1,0 +1,12 @@
+.business-review-buttons {
+    margin: 0 0 18px 0;
+}
+
+.business-review-buttons .submit-review-button {
+    padding: 8px 16px;
+    font-size: 16px;
+    color: white;
+    background-color: #e20d14;
+    width: 200px;
+    border-radius: 3px;
+}

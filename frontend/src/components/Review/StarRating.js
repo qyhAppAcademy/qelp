@@ -1,5 +1,5 @@
 import '../../fontawesome/css/all.min.css';
-import { Helmet } from "react-helmet";
+import { useState } from "react";
 
 const STAR_COLORS = [
         "#FFCC4B",
@@ -10,6 +10,14 @@ const STAR_COLORS = [
     ];
 
 const STARS = [1, 2, 3, 4, 5];
+
+export const CONTENTS = [
+        "Not good",
+        "Could've been better",
+        "OK",
+        "Good",
+        "Great"
+    ];
 
 export const StarRatingShow = ({ rating }) => {
     const stars = STARS.map((star) => {
@@ -39,6 +47,55 @@ export const StarRatingShow = ({ rating }) => {
     return (
         <div className="review-star-rating">
             {stars}
+        </div>
+    );
+};
+
+export const StarRatingNew = ({ rating, setRating }) => {
+    const [hover, setHover] = useState({
+        star: 0,
+        content: "Select your rating"
+    });
+
+    const stars = STARS.map((star) => {
+        return (
+            <button
+                key={star}
+                style={ hover.star > 0 ?
+                    (star <= hover.star ? { color: STAR_COLORS[hover.star - 1] } : { color: "lightgray" }) :
+                    (star <= rating.star ? { color: STAR_COLORS[rating.star - 1]} : {color: "lightgray"})
+                }
+                onClick={(e) => {
+                    e.preventDefault();
+                    setRating({
+                        star: star,
+                        content: CONTENTS[star - 1]
+                    });
+                }}
+                onMouseEnter={() => {
+                    setHover({ 
+                        star: star, 
+                        content: CONTENTS[star - 1] 
+                    });
+                }}
+                onMouseLeave={() => {
+                    setHover({
+                        star: 0,
+                        content: "Select your rating"
+                    });
+                }}
+            >
+                <i className="fas fa-star"></i>
+            </button>
+        );
+    });
+
+    return (
+        <div className='review-star-container'>
+            <div className="review-star-rating">
+                {stars}
+            </div>
+            <span className="review-star-rating-content">{hover.star > 0 ? hover.content : rating.content}</span>
         </div>
     );
 };
