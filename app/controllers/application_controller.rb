@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-  rescue_from StandardError, with: :unhandled_error
+  # rescue_from StandardError, with: :unhandled_error
   rescue_from ActionController::InvalidAuthenticityToken,
     with: :invalid_authenticity_token
 

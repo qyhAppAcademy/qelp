@@ -21,6 +21,8 @@
 
     width: 200px;
     border-radius: 3px;
+
+    cursor: pointer;
 }
 
 .review-form-buttons .submit {
@@ -29,6 +31,18 @@
 
 .review-form-buttons .cancel {
     background-color: #999B9C;
+}
+
+.review-form-buttons .delete {
+    color: #c6c6c6;
+    /* background-color: blue; */
+    padding: 9px 0 0 0;
+    margin: 0;
+
+    font-size: 16px;
+    width: 14px;
+
+    float: right;
 }
 
 .review-star-container {
@@ -42,4 +56,9 @@
 .review-star-container .review-star-rating-content {
     padding: 0;
     padding-left: 10px;
+}
+
+.review-form-errors-container {
+    margin-top: -18px;
+    color: #e20d14;
 }

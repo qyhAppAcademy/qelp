@@ -32,9 +32,20 @@ export const updateReview = (review) => async dispatch => {
         method: "PATCH",
         body: JSON.stringify(review)
     });
-    const data = await response.json();
-    dispatch(receiveBusiness(data.business));
-    return response;
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(receiveBusiness(data.business));
+    }
+};
+
+export const deleteReview = (reviewId) => async dispatch => {
+    const response = await csrfFetch(`/api/reviews/${reviewId}`, {
+        method: "DELETE",
+    });
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(receiveBusiness(data.business));
+    }
 };
 
 export const getBusinesses = () => (state) => {

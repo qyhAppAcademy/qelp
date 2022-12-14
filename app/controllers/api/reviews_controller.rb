@@ -32,9 +32,9 @@ class Api::ReviewsController < ApplicationController
             return
         end
 
+        @business = @review.business
         @review.destroy
-        @user = current_user
-        render 'api/users/show'
+        render 'api/businesses/show'
     end
 
     private

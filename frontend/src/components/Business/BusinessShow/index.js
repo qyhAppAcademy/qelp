@@ -16,13 +16,12 @@ import "./index.css";
 import { getCurrentUser } from "../../../store/session";
 
 const BusinessShowPage = () => {
-    const [query, setQuery] = useState("");
-
     const { businessId } = useParams();
     const business = useSelector(getBusiness(businessId));
-
     const currentUser = useSelector(getCurrentUser);
 
+    const [query, setQuery] = useState("");
+    const [showReviewForm, setShowReviewForm] = useState(false);
 
     const dispatch = useDispatch();
     useEffect(() => {
@@ -35,8 +34,6 @@ const BusinessShowPage = () => {
 
     const review = currentUser ? Object.values(business.reviews).find(review => review.user.id === currentUser.id) : undefined;
     const hasReviewed = review !== undefined;
-
-    console.log(review);
 
     return (
         <>
@@ -53,12 +50,9 @@ const BusinessShowPage = () => {
                     </div>
 
                     <div className="business-reviews-container">
-                        <ReviewButtons hasReviewed={hasReviewed} />
+                        <ReviewButtons hasReviewed={hasReviewed} setShowReviewForm={setShowReviewForm} />
                         <BusinessReviews business={business} />
-                        <div style={{padding: "20px 0", fontSize: "24px", fontWeight: "700"}}>
-                            <h1>{hasReviewed ? "Edit your" : "Write a"} review</h1>
-                        </div>
-                        <ReviewForm businessId={business.id} review={review}/>
+                        <ReviewForm businessId={business.id} review={review} showReviewForm={showReviewForm} setShowReviewForm={setShowReviewForm} />
                     </div>
 
                     <div className="side-bar-container">
