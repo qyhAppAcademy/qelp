@@ -35,3 +35,72 @@
 .review-star-rating .review-star {
     color: #c9c9c9;
 }
+
+
+.review-at-home-page {
+    max-width: 360px;
+
+    margin: 0 0 10px 0;
+    padding: 12px 15px;
+
+    border: 1px solid #EBEBEB;
+
+    flex: 0 0 33%;
+}
+
+.review-at-home-page > div {
+    padding: 0 0 5px 0;
+}
+
+.review-at-home-page .review-email {
+    padding: 0 0 10px 0;
+}
+
+.review-at-home-page .review-email h1 {
+    font-size: 18px;
+    font-weight: 600;
+    padding: 0 0 5px 0;
+    cursor: pointer;
+}
+
+.review-at-home-page .review-email h1:hover {
+    text-decoration: underline;
+}
+
+.review-at-home-page .review-email h2 {
+    font-weight: 500;
+}
+
+.review-at-home-page .review-business a {
+    font-weight: 600;
+    color: #027A97;
+    text-decoration: none;
+}
+
+.review-at-home-page .review-business a:hover {
+    text-decoration: underline;
+}
+
+.review-at-home-page .review-body {
+    padding: 0;
+    margin: 0;
+}
+
+.review-at-home-page .review-body p{
+    font-weight: 500;
+    padding: 0 0 2px 0;
+}
+
+.review-at-home-page .review-body a {
+    font-weight: 500;
+    color: #027A97;
+    text-decoration: none;
+}
+
+.review-at-home-page .review-body a:hover {
+    text-decoration: underline;
+}
+
+.review-at-home-page .review-rating svg {
+    font-size: 16px;
+}

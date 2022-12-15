@@ -4,11 +4,13 @@ import logger from 'redux-logger';
 import session from './session';
 import users from './users';
 import businesses from "./businesses";
+import reviews from "./reviews";
 
 const rootReducer = combineReducers({
     session,
     users,
-    businesses
+    businesses,
+    reviews
 });
 
 let enhancer;

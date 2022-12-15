@@ -1,6 +1,11 @@
 class Api::ReviewsController < ApplicationController
-    # before_action :require_logged_in
+    before_action :require_logged_in, only: [:create, :update, :destroy]
     wrap_parameters include: Review.attribute_names + [:businessId]
+
+    def index
+        @reviews = Review.all
+        render 'api/reviews/index'
+    end
 
     def create
         @review = current_user.reviews.new(review_params)

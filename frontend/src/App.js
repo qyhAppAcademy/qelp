@@ -5,8 +5,10 @@ import LoginFormPage from "./components/LoginFormPage";
 import Navigation from "./components/Navigation";
 import BusinessIndexPage from "./components/Business/BusinessIndex";
 import BusinessShowPage from "./components/Business/BusinessShow";
+import Home from "./components/Home";
 import { Helmet } from "react-helmet";
 import './fontawesome/css/all.min.css';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const App = () => {
   const [query, setQuery] = useState("");
@@ -21,7 +23,10 @@ const App = () => {
           <LoginFormPage />
         </Route>
         <Route exact path="/">
-          <Navigation setQuery={setQuery} />
+          <div className="home-page">
+            <Navigation setQuery={setQuery} />
+            <Home />
+          </div>
         </Route>
         <Route exact path="/businesses">
           <Navigation setQuery={setQuery} />

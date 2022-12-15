@@ -1,0 +1,47 @@
+.home-page .reviews-at-home-page-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    margin: 0 auto;
+    max-width: 1130px;
+    min-width: 600px;
+
+    /* background-color: aquamarine; */
+}
+
+.home-page .home > h1 {
+    display: block;
+    text-align: center;
+    font-weight: 600;
+    font-size: 24px;
+    padding: 18px 0;
+    margin: 0;
+    margin-top: 18px;
+}
+
+.home-page .carousel-root {
+    margin-top: -108px;
+    z-index: 1;
+}
+
+.home-page nav div {
+    z-index: 2;
+}
+
+.home-page nav .nav-title {
+    color: white;
+}
+
+.home-page nav .login-button {
+    color: white;
+    border-color: white;
+}
+
+.home-page .profile-button .fa-user-circle {
+    color: white;
+}
+
+.home-page nav .search-bar span{
+    background-color: white;
+}
