@@ -53,6 +53,10 @@
     font-size: 18px;
 }
 
+.review-star-container .review-star-rating button:hover {
+    cursor: pointer;
+}
+
 .review-star-container .review-star-rating-content {
     padding: 0;
     padding-left: 10px;

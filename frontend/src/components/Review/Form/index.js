@@ -48,7 +48,7 @@ const ReviewForm = ({ businessId, review, showReviewForm, setShowReviewForm }) =
         <>
             {showReviewForm && (
             <>
-            <div style={{padding: "20px 0", fontSize: "24px", fontWeight: "700"}}>
+            <div id="review-form-location" style={{padding: "20px 0", fontSize: "24px", fontWeight: "700"}}>
                 <h1>{review === undefined ? "Write a" : "Edit your"} review</h1>
             </div>
             <div className="review-form">
@@ -103,7 +103,6 @@ const ReviewForm = ({ businessId, review, showReviewForm, setShowReviewForm }) =
                     </div>
                 </form>
             </div>
-            <a id="review-form-location"></a>
             </>)}
         </>
     );

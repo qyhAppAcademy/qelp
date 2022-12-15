@@ -51,6 +51,62 @@ export const StarRatingShow = ({ rating }) => {
     );
 };
 
+export const StarRatingShowInFloat = ({ rating }) => {
+    const solidRating = Math.floor(rating);
+    const filledRating = Math.ceil(rating);
+    console.log((rating - solidRating).toFixed(2));
+    const stars = STARS.map((star) => {
+        if (solidRating >= star) {
+            return (
+                <span
+                    key={star}
+                    className="review-star"
+                    style={{ 
+                        color: STAR_COLORS[filledRating - 1] 
+                    }}
+                >
+                    <i className="fas fa-star"></i>
+                </span>
+            );
+        }
+        else if (filledRating >= star){
+            return (
+                <span
+                    key={star}
+                    className="review-star"
+                    style={{ 
+                        color: STAR_COLORS[filledRating - 1],
+                        opacity: (rating - solidRating).toFixed(2)
+                        // opacity: 1
+                    }}
+                >
+                    <i className="fas fa-star"></i>
+                </span>
+            );
+        }
+        else {
+            return (
+                <span
+                    key={star}
+                    className="review-star"
+                    style={{
+                        color: "white",
+                        opacity: 0.3
+                    }}
+                >
+                    <i className="fas fa-star"></i>
+                </span>
+            );
+        }
+    });
+
+    return (
+        <div className="review-star-rating">
+            {stars}
+        </div>
+    );
+};
+
 export const StarRatingNew = ({ rating, setRating }) => {
     const [hover, setHover] = useState({
         star: 0,

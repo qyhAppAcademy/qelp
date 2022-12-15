@@ -8,12 +8,12 @@ import Panel from "./Panel";
 import Carousel from "./Carousel";
 import SideBar from "./SideBar";
 import BusinessReviews from "./Reviews";
-import Review from "../../Review";
 import ReviewForm from "../../Review/Form";
 import ReviewButtons from "./ReviewButtons";
 import '../../../fontawesome/css/all.min.css';
 import "./index.css";
 import { getCurrentUser } from "../../../store/session";
+// import Review from "../../Review";
 
 const BusinessShowPage = () => {
     const { businessId } = useParams();
