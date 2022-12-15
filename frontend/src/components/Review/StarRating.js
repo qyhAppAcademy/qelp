@@ -1,4 +1,3 @@
-import '../../fontawesome/css/all.min.css';
 import { useState } from "react";
 
 const STAR_COLORS = [
@@ -54,7 +53,6 @@ export const StarRatingShow = ({ rating }) => {
 export const StarRatingShowInFloat = ({ rating }) => {
     const solidRating = Math.floor(rating);
     const filledRating = Math.ceil(rating);
-    console.log((rating - solidRating).toFixed(2));
     const stars = STARS.map((star) => {
         if (solidRating >= star) {
             return (
@@ -62,7 +60,7 @@ export const StarRatingShowInFloat = ({ rating }) => {
                     key={star}
                     className="review-star"
                     style={{ 
-                        color: STAR_COLORS[filledRating - 1] 
+                        color: STAR_COLORS[solidRating - 1] 
                     }}
                 >
                     <i className="fas fa-star"></i>
@@ -75,7 +73,7 @@ export const StarRatingShowInFloat = ({ rating }) => {
                     key={star}
                     className="review-star"
                     style={{ 
-                        color: STAR_COLORS[filledRating - 1],
+                        color: STAR_COLORS[solidRating - 1],
                         opacity: (rating - solidRating).toFixed(2)
                         // opacity: 1
                     }}
@@ -90,7 +88,7 @@ export const StarRatingShowInFloat = ({ rating }) => {
                     key={star}
                     className="review-star"
                     style={{
-                        color: "white",
+                        color: "#C8C9CA",
                         opacity: 0.3
                     }}
                 >

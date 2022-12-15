@@ -1,8 +1,8 @@
 import "./Panel.css";
 import { EST_OFFSET, toLocalTime, isOpen } from "../../../store/time.js";
-import { StarRatingShow, StarRatingShowInFloat } from "../../Review/StarRating";
+import { StarRatingShowInFloat } from "../../Review/StarRating";
 
-const Panel = ({ business, setQuery }) => {
+const Panel = ({ business }) => {
 
     const categoryItems = business.category.split(",").map((c, i)=> {
         return (
@@ -23,7 +23,6 @@ const Panel = ({ business, setQuery }) => {
                 <h1>{business.name}</h1>
             </div>
             <div className="business-panel-item">
-                {/* <h2>Ratings {avg.toFixed(2)}</h2> */}
                 <StarRatingShowInFloat rating={avg} />
                 <span className="review-count">{arr.length} reviews</span>
             </div>

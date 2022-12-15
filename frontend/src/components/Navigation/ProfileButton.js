@@ -41,7 +41,7 @@ const ProfileButton = ({ user }) => {
                     <li>
                         <div className="list-item">
                             <div className="icon-container"><i className="fas fa-user-astronaut"></i></div>
-                            <div className="text-container"><span>About Me</span></div>
+                            <div className="text-container"><span>User Profile</span></div>
                         </div>
                     </li>
                     <li>

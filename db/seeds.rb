@@ -125,21 +125,21 @@
     user_id: u6.id,
     business_id: b1.id)
 
-  # Business.create!(
-  #   name: 'Vinyl Steakhouse',
-  #   address: '35 W 19th St',
-  #   city: 'New York',
-  #   state: 'NY',
-  #   zip_code: '10011',
-  #   lat: 40.74003146596712,
-  #   lng: -73.99308377693622,
-  #   open: '04:00PM EST',
-  #   close: '11:00PM EST',
-  #   category: 'Steakhouses, Cocktail Bars',
-  #   price: '$$$',
-  #   phone_number: '(646) 461-7866',
-  #   website: 'https://www.vinylsteakhouse.com'
-  # )
+  Business.create!(
+    name: 'Vinyl Steakhouse',
+    address: '35 W 19th St',
+    city: 'New York',
+    state: 'NY',
+    zip_code: '10011',
+    lat: 40.74003146596712,
+    lng: -73.99308377693622,
+    open: '04:00PM EST',
+    close: '11:00PM EST',
+    category: 'Steakhouses, Cocktail Bars',
+    price: '$$$',
+    phone_number: '(646) 461-7866',
+    website: 'https://www.vinylsteakhouse.com'
+  )
 
   # Business.create!(
   #   name: 'Yozi Noodles',

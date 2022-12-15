@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, NavLink } from "react-router-dom";
 import { login } from "../../store/session";
 import { LoginForm } from "../SessionForms";
 import '../SessionForms/SessionFormPage.css';
@@ -34,7 +34,9 @@ const LoginFormPage = () => {
     ) : (
         <>
             <div className="session-page-header">
-                <h1><a href="/">qelp<i className="fab fa-yelp"></i></a></h1>
+                <NavLink exact to="/">
+                    <h1>qelp<i className="fab fa-yelp"></i></h1>
+                </NavLink>
             </div>
             <div className="session-page-body">
                 {showAlert && (
@@ -56,10 +58,10 @@ const LoginFormPage = () => {
                             <div className="session-form-header">
                                 <h2>Log in to Qelp</h2>
                                 <p className="subheading">
-                                    New to Qelp? <a href="/signup">Sign up</a>
+                                    New to Qelp? <NavLink exact to="/signup">Sign up</NavLink>
                                 </p>
                                 <p className="legal-copy">
-                                    By logging in, you agree to Qelp’s <a className="legal-link" href="https://www.yelp.com/static?p=tos">Terms of Service</a> and <a className="legal-link" href="https://www.yelp.com/tos/privacy_policy">Privacy Policy</a>.
+                                    By logging in, you agree to view Qelp creator's <a className="legal-link" href="https://github.com/qyhAppAcademy">Github</a> and <a className="legal-link" href="https://www.linkedin.com/in/qiao-yang-han-367590257/">LinkedIn</a>.
                                 </p>
                             </div>
                             <ul className="qlist">
@@ -77,7 +79,7 @@ const LoginFormPage = () => {
                             </fieldset>
                             <LoginForm setShowAlert={setShowAlert} />
                             <div className="sub-text-box">
-                                <small className="subtle-text">New to Qelp? <a href="/signup">Sign up</a></small>
+                                    <small className="subtle-text">New to Qelp? <NavLink exact to="/signup">Sign up</NavLink></small>
                             </div>
                         </div>
                     </div>

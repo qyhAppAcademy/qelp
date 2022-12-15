@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import * as sessionActions from "../../store/session";
 import { useInput, useSubmit } from "../../hooks";
 import { Input } from "../Forms";
+import { NavLink } from "react-router-dom";
 import "./SessionForm.css";
 
 function LoginForm({ onSuccess, setShowAlert }) {
@@ -38,7 +39,7 @@ function LoginForm({ onSuccess, setShowAlert }) {
                 required
             />
             <div className="forgot-password">
-                <small><a href="/login" className="forgot-link">Forgot password?</a></small>
+                <small><NavLink exact to="/signup" className="forgot-link">Forgot password?</NavLink></small>
             </div>
             <button type="submit" className="qbtn qbtn-login">Log In</button>
         </form>

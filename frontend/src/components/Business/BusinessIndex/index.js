@@ -1,15 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBusinesses, getBusinesses } from "../../../store/businesses";
-import Navigation from "../../Navigation";
 import Item from "./Item.js";
 import { searchByName, searchByCategory } from "./search";
 import "./index.css";
-import '../../../fontawesome/css/all.min.css';
 
-const BusinessIndexPage = () => {
-    const [query, setQuery] = useState("");
-
+const BusinessIndexPage = ({ query }) => {
     const businesses = useSelector(getBusinesses());
     const dispatch = useDispatch();
     useEffect(() => {
@@ -32,16 +28,18 @@ const BusinessIndexPage = () => {
 
     return (
         <>
-            <header>
-                <Navigation setQuery={setQuery} />   
-            </header>
-            <div>
+        <div className="business-search-results-container">
+            <div className="business-search-results-list">
                 {businessItems.length > 0 ? (
                     businessItems
                 ) : (
                     <p className="no-results">Search Not Found</p>
                 )}
             </div>
+            <div className="business-search-results-google-map">
+
+            </div>
+        </div>
         </>
     );
 }

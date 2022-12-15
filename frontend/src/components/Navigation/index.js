@@ -4,7 +4,6 @@ import { Helmet } from "react-helmet";
 import { NavLink } from 'react-router-dom';
 import SearchBar from './SearchBar.js';
 import ProfileButton from './ProfileButton';
-import '../../fontawesome/css/all.min.css';
 import './index.css';
 
 const Navigation = ({ setQuery }) => {
@@ -19,8 +18,8 @@ const Navigation = ({ setQuery }) => {
     } else {
         sessionLinks = (
             <>
-                <NavLink to="/login" className="button">Log In</NavLink>
-                <NavLink to="/signup" className="button">Sign Up</NavLink>
+                <NavLink to="/login" className="login-button">Log In</NavLink>
+                <NavLink to="/signup" className="signup-button">Sign Up</NavLink>
             </>
         );
     }

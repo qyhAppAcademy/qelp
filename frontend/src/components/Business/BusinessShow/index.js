@@ -2,25 +2,21 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchBusiness, getBusiness } from "../../../store/businesses";
-import { Helmet } from "react-helmet";
-import Navigation from "../../Navigation";
 import Panel from "./Panel";
 import Carousel from "./Carousel";
 import SideBar from "./SideBar";
 import BusinessReviews from "./Reviews";
 import ReviewForm from "../../Review/Form";
 import ReviewButtons from "./ReviewButtons";
-import '../../../fontawesome/css/all.min.css';
-import "./index.css";
 import { getCurrentUser } from "../../../store/session";
-// import Review from "../../Review";
+import "./index.css";
 
 const BusinessShowPage = () => {
+    // debugger
     const { businessId } = useParams();
     const business = useSelector(getBusiness(businessId));
     const currentUser = useSelector(getCurrentUser);
 
-    const [query, setQuery] = useState("");
     const [showReviewForm, setShowReviewForm] = useState(false);
 
     const dispatch = useDispatch();
@@ -28,7 +24,7 @@ const BusinessShowPage = () => {
         dispatch(fetchBusiness(businessId))
     }, [dispatch, businessId]);
 
-    if (!business) {
+    if (!business || business.reviews === undefined) {
         return null;
     }
 
@@ -37,22 +33,22 @@ const BusinessShowPage = () => {
 
     return (
         <>
-            <header>
-                <Navigation setQuery={setQuery} />
-            </header>
-
             <Carousel business={business} />
 
             <section>
                 <div>
                     <div className="business-panel-container">
-                        <Panel business={business} setQuery={setQuery} />
+                        <Panel business={business} />
                     </div>
 
                     <div className="business-reviews-container">
+                        {currentUser && (
                         <ReviewButtons hasReviewed={hasReviewed} setShowReviewForm={setShowReviewForm} />
+                        )}
                         <BusinessReviews business={business} />
-                        <ReviewForm businessId={business.id} review={review} showReviewForm={showReviewForm} setShowReviewForm={setShowReviewForm} />
+                        {currentUser && (
+                            <ReviewForm businessId={business.id} review={review} showReviewForm={showReviewForm} setShowReviewForm={setShowReviewForm} />
+                        )}
                     </div>
 
                     <div className="side-bar-container">
@@ -60,10 +56,6 @@ const BusinessShowPage = () => {
                     </div>
                 </div>
             </section>
-
-            <Helmet>
-                <script defer src="../../fontawesome/js/all.min.js"></script>
-            </Helmet>
         </>
     );
 }

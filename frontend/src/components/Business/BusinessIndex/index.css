@@ -17,3 +17,12 @@ header {
     margin: 0;
     padding: 90px 0;
 }
+
+.business-search-results-container {
+    width: 100%;
+    border: 1px solid lightblue;
+}
+
+.business-search-results-container .business-search-results-list{
+    width: 500px;
+}

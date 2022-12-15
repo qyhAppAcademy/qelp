@@ -1,8 +1,11 @@
 import { useInput } from "../../hooks";
+import { useHistory } from "react-router-dom";
 import "./SearchBar.css";
 
 const SearchBar = ({ setQuery }) => {
     const [category, onCategoryChange] = useInput("");
+
+    const history = useHistory();
 
     const createRipple = (event) => {
         const button = event.currentTarget;
@@ -29,6 +32,7 @@ const SearchBar = ({ setQuery }) => {
         e.preventDefault();
         createRipple(e);
         setQuery(category);
+        history.push("/businesses");
     }
 
     return (

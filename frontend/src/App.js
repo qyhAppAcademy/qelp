@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Switch } from "react-router-dom";
-import SignupFormPage from "./components/SignupFormPage"; 
+import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import Navigation from "./components/Navigation";
 import BusinessIndexPage from "./components/Business/BusinessIndex";
 import BusinessShowPage from "./components/Business/BusinessShow";
+import { Helmet } from "react-helmet";
+import './fontawesome/css/all.min.css';
 
 const App = () => {
+  const [query, setQuery] = useState("");
+
   return (
     <>
       <Switch>
@@ -17,15 +21,20 @@ const App = () => {
           <LoginFormPage />
         </Route>
         <Route exact path="/">
-          <Navigation />
+          <Navigation setQuery={setQuery} />
         </Route>
         <Route exact path="/businesses">
-          <BusinessIndexPage />
+          <Navigation setQuery={setQuery} />
+          <BusinessIndexPage query={query}/>
         </Route>
         <Route exact path="/businesses/:businessId">
+          <Navigation setQuery={setQuery} />
           <BusinessShowPage />
         </Route>
       </Switch>
+      <Helmet>
+        <script defer src="../../fontawesome/js/all.min.js"></script>
+      </Helmet>
     </>
   );
 }

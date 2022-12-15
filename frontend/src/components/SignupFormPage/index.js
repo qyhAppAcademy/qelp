@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, NavLink } from "react-router-dom";
 import { login } from "../../store/session";
 import { SignupForm } from "../SessionForms";
 import '../SessionForms/SessionFormPage.css';
@@ -35,7 +35,9 @@ function SignupFormPage() {
     ) : (
         <>
             <div className="session-page-header">
-                <h1><a href="/">qelp<i className="fab fa-yelp"></i></a></h1>
+                <NavLink exact to="/">
+                    <h1>qelp<i className="fab fa-yelp"></i></h1>
+                </NavLink>
             </div>
             <div className="session-page-body">
                 {showAlert && (
@@ -58,7 +60,7 @@ function SignupFormPage() {
                                     Connect with great local businesses
                                 </p>
                                 <p className="legal-copy">
-                                    By continuing, you agree to Qelp’s <a className="legal-link" href="https://www.yelp.com/static?p=tos">Terms of Service</a> and acknowledge Qelp’s <a className="legal-link" href="https://www.yelp.com/tos/privacy_policy">Privacy Policy</a>.
+                                    By continuing, you agree to view Qelp creator's <a className="legal-link" href="https://github.com/qyhAppAcademy">Github</a> and <a className="legal-link" href="https://www.linkedin.com/in/qiao-yang-han-367590257/">LinkedIn</a>.
                                 </p>
                             </div>
                             <ul className="qlist">
@@ -77,7 +79,7 @@ function SignupFormPage() {
                             </fieldset>
                                 <SignupForm setShowAlert={setShowAlert} setErrors={setErrors} />
                             <div className="sub-text-box">
-                                <small className="subtle-text">Already on Qelp? <a href="/login">Log in</a></small>
+                                <small className="subtle-text">Already on Qelp? <NavLink exact to="/login">Log in</NavLink></small>
                             </div>
                         </div>
                     </div>

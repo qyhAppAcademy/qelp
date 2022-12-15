@@ -1,5 +1,7 @@
-import "./Item.css";
+import { NavLink } from 'react-router-dom';
 import { EST_OFFSET, toLocalTime, isOpen } from "../../../store/time.js";
+import { StarRatingShowInFloat } from '../../Review/StarRating.js';
+import "./Item.css";
 
 const Item = ({ idx, business }) => {
     const categorySpans = business.category.split(",").map((c, idx) => (
@@ -7,32 +9,36 @@ const Item = ({ idx, business }) => {
     ));
 
     return (
-        <div className="business-index-item">
-            <div className="business-index-item-picture">
-                <img src={`https://qelp-seeds.s3.amazonaws.com/businesses/${business.id}/1.jpeg`} alt="" />
-                {/* <img src={business.photoUrl} /> */}
+        <NavLink exact to={`/businesses/${business.id}`} className="business-nav-link">
+            <div className="business-index-item">
+                <div className="business-index-item-picture">
+                    <img alt="business-profile" src={business.photoUrls[0].url} />
+                </div>
+                <div className="business-index-item-name">
+                    <h1 className='item-index'>{`${idx + 1}.`}</h1>
+                    <h1 className='item-name'>{`${business.name}`}</h1>
+                </div>
+                <div className="business-index-avg-rating">
+                    <StarRatingShowInFloat rating={3.3} />
+                </div>
+                <div>
+                    {categorySpans}
+                    <span style={{ color: "#727272" }}>{business.price}</span>
+                    <span className="icon-circle-container" style={{ color: "#727272" }}><i className="fas fa-circle"></i></span>
+                </div>
+                {isOpen(business) ? (
+                <div>
+                    <span className="business-open">Open</span>
+                    <span style={{fontWeight: "300"}}>until {toLocalTime(business.close, EST_OFFSET)}</span>
+                </div>
+                ) : (
+                <div>
+                    <span className="business-closed">Closed</span>
+                    <span style={{ fontWeight: "300" }}>until {toLocalTime(business.open, EST_OFFSET)}</span>
+                </div>
+                )}
             </div>
-            <div>
-                <h1>{`${idx + 1}. ${business.name}`}</h1>
-            </div>
-            <div>
-                {/* <span>{business.category}</span> */}
-                {categorySpans}
-                <span style={{ color: "#727272" }}>{business.price}</span>
-                <span className="icon-circle-container" style={{ color: "#727272" }}><i className="fas fa-circle"></i></span>
-            </div>
-            {isOpen(business) ? (
-            <div>
-                <span className="business-open">Open</span>
-                <span style={{fontWeight: "300"}}>until {toLocalTime(business.close, EST_OFFSET)}</span>
-            </div>
-            ) : (
-            <div>
-                <span className="business-closed">Closed</span>
-                <span style={{ fontWeight: "300" }}>until {toLocalTime(business.open, EST_OFFSET)}</span>
-            </div>
-            )}
-        </div>
+        </NavLink>
     );
 }
 

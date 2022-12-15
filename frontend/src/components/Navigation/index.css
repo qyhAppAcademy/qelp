@@ -3,7 +3,7 @@ nav {
     justify-content: space-between;
     align-items: center;
 
-    margin: 0;
+    margin: 30px 0;
     padding: 0 30px 0 10px;
 
     height: 48px;
@@ -36,4 +36,47 @@ nav > div {
     font-size: 30px;
 
     color: #FF1A1A;
+}
+
+nav .login-button {
+    width: 82px;
+    height: 40px;
+    color: #C8C9CA;
+    background-color: transparent;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+
+    padding-top: 10px;
+    border-radius: 6px;
+    border: 2px solid #C8C9CA;
+
+    margin: 0;
+    margin-right: 10px;
+}
+
+nav .login-button:hover {
+    color: #afafaf;
+    border: 2px solid #afafaf;
+}
+
+nav .signup-button {
+    width: 82px;
+    height: 40px;
+    color: white;
+    background-color: #e50d0d;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+
+    padding-top: 10px;
+    border-radius: 6px;
+}
+
+nav .signup-button:hover {
+    background-color: #F40D15;
 }
