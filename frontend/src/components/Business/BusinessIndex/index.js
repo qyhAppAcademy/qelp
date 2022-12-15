@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchBusinesses, getBusinesses } from "../../../store/businesses";
 import Item from "./Item.js";
 import { searchByName, searchByCategory } from "./search";
+import MapContainer from "./MapContainer";
 import "./index.css";
 
 const BusinessIndexPage = ({ query }) => {
@@ -37,7 +38,7 @@ const BusinessIndexPage = ({ query }) => {
                 )}
             </div>
             <div className="business-search-results-google-map">
-
+                <MapContainer businesses={businesses}/>
             </div>
         </div>
         </>

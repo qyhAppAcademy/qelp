@@ -19,10 +19,19 @@ header {
 }
 
 .business-search-results-container {
+    display: flex;
     width: 100%;
-    border: 1px solid lightblue;
 }
 
 .business-search-results-container .business-search-results-list{
-    width: 500px;
+    max-width: 500px;
+    min-width: 500px;
+    height: 700px;
+    overflow: scroll;
+}
+
+.business-search-results-container .business-search-results-google-map {
+    width: 100%;
+    min-width: 700px;
+    height: 700px;
 }
