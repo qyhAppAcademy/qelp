@@ -37,9 +37,9 @@ const App = () => {
           <BusinessShowPage />
         </Route>
       </Switch>
-      <Helmet>
+      {/* <Helmet>
         <script defer type="text/javascript" src='https://github.com/qyhAppAcademy/qelp/blob/main/frontend/src/fontawesome/js/all.min.js'></script>
-      </Helmet>
+      </Helmet> */}
     </>
   );
 }
