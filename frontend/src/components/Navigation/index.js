@@ -26,9 +26,6 @@ const Navigation = ({ setQuery }) => {
 
     return (
         <>
-            <Helmet>
-                <script defer src="../../fontawesome/js/all.min.js"></script>
-            </Helmet>
             <nav>
                 <div>
                     <NavLink exact to="/" className="nav-title">
