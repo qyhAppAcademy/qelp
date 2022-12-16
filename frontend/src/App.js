@@ -29,7 +29,7 @@ const App = () => {
           </div>
         </Route>
         <Route exact path="/businesses">
-          {/* <Navigation setQuery={setQuery} /> */}
+          <Navigation setQuery={setQuery} />
           <BusinessIndexPage query={query}/>
         </Route>
         <Route exact path="/businesses/:businessId">

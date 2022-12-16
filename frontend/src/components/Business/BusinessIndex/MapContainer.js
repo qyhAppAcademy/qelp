@@ -7,6 +7,7 @@ const MapContainer = ({ businesses }) => {
 
     const onSelect = item => {
         setSelected(item);
+        setDefaultCenter(item.location);
     }
 
     const locations = businesses.map((business, index) => {
@@ -17,12 +18,9 @@ const MapContainer = ({ businesses }) => {
                 lng: parseFloat(business.lng)
             },
             idx: index,
-            reviewsCount: 10,
             ...business
         }
     });
-
-    console.log(locations);
 
     const markers = locations.map(item => {
         return (
@@ -44,7 +42,13 @@ const MapContainer = ({ businesses }) => {
         <InfoWindow
             position={selected.location}
             clickable={true}
-            onCloseClick={() => setSelected({})}
+            onCloseClick={() => {
+                setSelected({});
+                // setDefaultCenter({
+                //     lat: 40.7362862, 
+                //     lng: -73.99377610676491
+                // });
+            }}
         >
             <>
                 <p></p>
@@ -58,9 +62,10 @@ const MapContainer = ({ businesses }) => {
         width: "100%"
     };
 
-    const defaultCenter = {
-        lat: 40.7362862, lng: -73.99377610676491
-    }
+    const [defaultCenter, setDefaultCenter] = useState({
+        lat: 40.7362862, 
+        lng: -73.99377610676491
+    });
 
     return (
         <LoadScript

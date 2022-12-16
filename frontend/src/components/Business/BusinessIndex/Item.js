@@ -19,7 +19,7 @@ const Item = ({ idx, business }) => {
                     <h1 className='item-name'>{`${business.name}`}</h1>
                 </div>
                 <div className="business-index-avg-rating">
-                    <StarRatingShowInFloat rating={3.3} />
+                    <StarRatingShowInFloat rating={business.avgRating === null ? 0 : business.avgRating} />
                 </div>
                 <div>
                     {categorySpans}
@@ -57,12 +57,12 @@ export const ItemOnGoogleMap = ({ business }) => {
                     <h1 className='item-name'>{`${business.name}`}</h1>
                 </div>
                 <div className="google-map-item-avg-rating">
-                    <StarRatingShowInFloat rating={3.3} />
-                    <span style={{ padding: "0 0 0 3px", fontSize: "14px", textDecoration: "none !important" }}>{business.reviewsCount}</span>
+                    <StarRatingShowInFloat rating={business.avgRating === null ? 0 : business.avgRating} />
+                    <span style={{ padding: "0 0 0 9px", fontSize: "14px", textDecoration: "none" }}>{business.reviewsCount}</span>
                 </div>
                 <div className="google-map-item-category">
-                    {/* {categorySpans} */}
                     <p>{business.category}</p>
+                    {/* {categorySpans} */}
                 </div>
             </div>
         </NavLink>
