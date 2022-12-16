@@ -28,8 +28,38 @@ export const isOpen = (business) => {
     const now = new Date(Date().toLocaleString("en-US"));
 
     let openHr = open.getUTCHours();
-    let closeHr = close.getUTCHours() > openHr ? close.getUTCHours() : close.getUTCHours() + 24;
+    let closeHr = close.getUTCHours();
     let nowHr = now.getUTCHours();
 
-    return nowHr >= openHr && nowHr < closeHr;
+    if (openHr === closeHr) {
+        return true;
+    }
+
+    if (nowHr === openHr) {
+        return true;
+    }
+
+    if (nowHr === closeHr) {
+        return false;
+    }
+
+    if (nowHr > openHr) {
+        if (closeHr > openHr){
+            return nowHr < closeHr;
+        }
+        else {
+            closeHr += 24;
+            return nowHr < closeHr;
+        }
+    }
+    else {
+        nowHr += 24
+        if (closeHr > openHr) {
+            return false;
+        }
+        else {
+            closeHr += 24;
+            return nowHr < closeHr;
+        }
+    }
 }

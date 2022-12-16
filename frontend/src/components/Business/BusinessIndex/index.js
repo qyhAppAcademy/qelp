@@ -38,7 +38,9 @@ const BusinessIndexPage = ({ query }) => {
                 )}
             </div>
             <div className="business-search-results-google-map">
-                <MapContainer businesses={businesses}/>
+                <MapContainer businesses={businesses.filter(business => {
+                    return searchByName(business.name, query) || searchByCategory(business.category, query, ",");
+                })}/>
             </div>
         </div>
         </>

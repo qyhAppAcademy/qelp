@@ -72,7 +72,7 @@ const MapContainer = ({ businesses }) => {
             googleMapsApiKey='AIzaSyAcSpPknIyFm1V1i0MaOa4Dt-qwpf23pI8'>
             <GoogleMap
                 mapContainerStyle={mapStyles}
-                zoom={13}
+                zoom={12}
                 center={defaultCenter}
             >
             {markers}

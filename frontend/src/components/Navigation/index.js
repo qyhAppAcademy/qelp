@@ -38,6 +38,15 @@ const Navigation = ({ setQuery }) => {
                 
                 <SearchBar setQuery={setQuery} />
 
+                <div>
+                    <a href="https://github.com/qyhAppAcademy/" className="github-link">
+                        <img src="https://qelp-seeds.s3.amazonaws.com/icons/1.png" alt="" style={{ width: "36px", height: "36px", margin: "3px 10px 0 0" }} />
+                    </a>
+                    <a href="https://www.linkedin.com/in/qiao-yang-han-367590257" className="linkedin-link">
+                        <img src="https://qelp-seeds.s3.amazonaws.com/icons/2.png" alt="" style={{ width: "36px", height: "36px", margin: "3px 0 0 0" }} />
+                    </a>    
+                </div>
+
                 <div className="session-links">
                     {sessionLinks}
                 </div>
