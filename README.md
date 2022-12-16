@@ -20,7 +20,7 @@
 - Input credentials are validated
 - Input errros are handled
 
-![UserAuth]
+<!-- ![UserAuth] -->
 
 ### Create, Read, Edit, and Delete Reviews
 - Users can read all reviews with or without logging in
@@ -28,7 +28,7 @@
 - Users can only edit and delete their own reviews
 - Users' ratings on a business affect its overall rating
 
-![Reviews]
+<!-- ![Reviews] -->
 
 Created a star rating bar to let users input their ratings intuitively.
 Kept track of user's mouse hovering state and mouse clicking state to enable better user experience
@@ -87,7 +87,7 @@ export const StarRatingNew = ({ rating, setRating }) => {
 - Users can search for businesses based on their name or category
 - Shows businesses that match the search query in a list, and display their locations on Google Map
 
-![BusinessIndex]
+<!-- ![BusinessIndex] -->
 
 Created 2 types of filtering functions to find businesses matching the search query
 
