@@ -27,7 +27,7 @@ export const StarRatingShow = ({ rating }) => {
                         className="review-star"
                         style={{ color: STAR_COLORS[parseInt(rating) - 1] }}
                     >
-                        <i className="fas fa-star"></i>
+                        <i style={{ fontSize: "16px" }} className="fas fa-star"></i>
                     </span>
                 );
             }
@@ -37,7 +37,7 @@ export const StarRatingShow = ({ rating }) => {
                         key={star}
                         className="review-star"
                     >
-                        <i className="fas fa-star"></i>
+                        <i style={{ fontSize: "16px" }} className="fas fa-star"></i>
                     </span>
                 );
             }
@@ -60,10 +60,11 @@ export const StarRatingShowInFloat = ({ rating }) => {
                     key={star}
                     className="review-star"
                     style={{ 
-                        color: STAR_COLORS[solidRating - 1] 
+                        color: STAR_COLORS[solidRating - 1],
+                        padding: "0 2px 0 0"
                     }}
                 >
-                    <i className="fas fa-star"></i>
+                    <i style={{ fontSize: "18px" }} className="fas fa-star"></i>
                 </span>
             );
         }
@@ -74,11 +75,12 @@ export const StarRatingShowInFloat = ({ rating }) => {
                     className="review-star"
                     style={{ 
                         color: STAR_COLORS[solidRating - 1],
-                        opacity: (rating - solidRating).toFixed(2)
+                        opacity: (rating - solidRating).toFixed(2),
+                        padding: "0 2px 0 0"
                         // opacity: 1
                     }}
                 >
-                    <i className="fas fa-star"></i>
+                    <i style={{ fontSize: "18px" }} className="fas fa-star"></i>
                 </span>
             );
         }
@@ -89,10 +91,11 @@ export const StarRatingShowInFloat = ({ rating }) => {
                     className="review-star"
                     style={{
                         color: "#C8C9CA",
-                        opacity: 0.3
+                        opacity: 0.3,
+                        padding: "0 2px 0 0"
                     }}
                 >
-                    <i className="fas fa-star"></i>
+                    <i style={{ fontSize: "18px" }} className="fas fa-star"></i>
                 </span>
             );
         }

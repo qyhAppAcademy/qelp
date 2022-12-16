@@ -35,7 +35,7 @@ const LoginFormPage = () => {
         <>
             <div className="session-page-header">
                 <NavLink exact to="/">
-                    <h1>qelp<i className="fab fa-yelp"></i></h1>
+                    <h1>qelp<i style={{ padding: "0 0 0 3px" }} className="fab fa-yelp"></i></h1>
                 </NavLink>
             </div>
             <div className="session-page-body">
@@ -68,7 +68,7 @@ const LoginFormPage = () => {
                                 <li className="demo-login">
                                     <button type="submit" className="qbtn demo-btn" onClick={demoLogin}>
                                         <span>
-                                            <i className="fas fa-user"></i>
+                                            <i style={{ fontSize: "18px" }} className="fas fa-user"></i>
                                         </span>
                                         Continue with Demo User
                                     </button>

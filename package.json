@@ -19,5 +19,10 @@
     "type": "git",
     "url": "git+https://github.com/qyhAppAcademy/qelp.git"
   },
-  "homepage": "https://github.com/qyhAppAcademy/qelp#readme"
+  "homepage": "https://github.com/qyhAppAcademy/qelp#readme",
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.2.1",
+    "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "@fortawesome/react-fontawesome": "^0.2.0"
+  }
 }

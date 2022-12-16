@@ -6,7 +6,6 @@ import Navigation from "./components/Navigation";
 import BusinessIndexPage from "./components/Business/BusinessIndex";
 import BusinessShowPage from "./components/Business/BusinessShow";
 import Home from "./components/Home";
-import { Helmet } from "react-helmet";
 import './fontawesome/css/all.min.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
@@ -37,9 +36,6 @@ const App = () => {
           <BusinessShowPage />
         </Route>
       </Switch>
-      {/* <Helmet>
-        <script defer type="text/javascript" src='https://github.com/qyhAppAcademy/qelp/blob/main/frontend/src/fontawesome/js/all.min.js'></script>
-      </Helmet> */}
     </>
   );
 }

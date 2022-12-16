@@ -29,7 +29,7 @@ const Navigation = ({ setQuery }) => {
             <nav>
                 <div>
                     <NavLink exact to="/" className="nav-title">
-                        <h1><span>qelp</span><i className="fab fa-yelp"></i></h1>
+                        <h1><span>qelp</span><i style={{ fontSize: "30px", color:"#f40d15" }} className="fab fa-yelp"></i></h1>
                     </NavLink>
                 </div>
                 
