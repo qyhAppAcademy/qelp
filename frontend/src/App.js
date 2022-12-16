@@ -38,7 +38,7 @@ const App = () => {
         </Route>
       </Switch>
       <Helmet>
-        <script defer src="../../fontawesome/js/all.min.js"></script>
+        <script defer src='./fontawesome/js/all.min.js'></script>
       </Helmet>
     </>
   );
