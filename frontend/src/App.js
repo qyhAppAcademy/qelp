@@ -38,7 +38,7 @@ const App = () => {
         </Route>
       </Switch>
       <Helmet>
-        <script defer src='./fontawesome/js/all.min.js'></script>
+        <script defer type="text/javascript" src='https://github.com/qyhAppAcademy/qelp/blob/main/frontend/src/fontawesome/js/all.min.js'></script>
       </Helmet>
     </>
   );
