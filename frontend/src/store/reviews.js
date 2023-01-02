@@ -22,10 +22,9 @@ export const receiveReviews = (reviews) => {
 
 function reviewsReducer(state = {}, action) {
     Object.freeze(state);
-    const nextState = { ...state };
     switch (action.type) {
         case RECEIVE_REVIEWS:
-            return { ...nextState, ...action.payload };
+            return { ...action.payload };
         default:
             return state;
     }

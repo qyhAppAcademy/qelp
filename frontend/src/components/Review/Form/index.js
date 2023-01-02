@@ -31,9 +31,7 @@ const ReviewForm = ({ businessId, review, showReviewForm, setShowReviewForm }) =
         
         const submitFunc = review === undefined ? createReview : updateReview;
         
-        
         dispatch(submitFunc(reviewData)).then(res => {
-            console.log("hello world");
             setErrors([]);
             setShowReviewForm(false);
         }).catch(async res => {
@@ -84,8 +82,10 @@ const ReviewForm = ({ businessId, review, showReviewForm, setShowReviewForm }) =
                             
                             setBody(review !== undefined ? review.body : '');
                         }}>Cancel</button>
-                        {review !== undefined && (
-                        <button className="delete" onClick={e => {
+                        {review !== undefined ? 
+                        (<button className="delete" onClick={e => {
+                            e.preventDefault();
+                            
                             dispatch(deleteReview(review.id));
 
                             setErrors([]);
@@ -98,8 +98,7 @@ const ReviewForm = ({ businessId, review, showReviewForm, setShowReviewForm }) =
                             });
 
                             setBody('');
-                        }}><i className="fas fa-trash"></i></button>
-                        )}
+                        }}><i className="fas fa-trash"></i></button>) : <></>}
                     </div>
                 </form>
             </div>

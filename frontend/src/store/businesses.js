@@ -75,7 +75,7 @@ function businessesReducer(state = {}, action) {
     const nextState = { ...state };
     switch (action.type) {
         case RECEIVE_BUSINESSES:
-            return { ...nextState, ...action.payload };
+            return { ...action.payload };
         case RECEIVE_BUSINESS:
             nextState[action.payload.id] = action.payload;
             return nextState;

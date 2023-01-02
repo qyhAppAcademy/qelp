@@ -23,3 +23,9 @@ export const searchByCategory = (string, query, separator) => {
         })
     });
 }
+
+export const searchByAddress = (business, addressQuery) => {
+    const businessAddressWithZipcode = `${business.address}, ${business.city}, ${business.state} ${business.zipCode}, ${business.country}`.toLowerCase();
+    const businessAddressWithoutZipcode = `${business.address}, ${business.city}, ${business.state}, ${business.country}`.toLowerCase();
+    return businessAddressWithZipcode.includes(addressQuery.toLowerCase()) || businessAddressWithoutZipcode.includes(addressQuery.toLowerCase());
+};

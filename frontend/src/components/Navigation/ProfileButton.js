@@ -43,13 +43,13 @@ const ProfileButton = ({ user }) => {
             {showMenu && (
                 <ul className="profile-dropdown">
                     <li>
-                        <div className="list-item">
+                        <div className="list-item" style={{ cursor: "not-allowed" }}>
                             <div className="icon-container"><i style={{ fontSize: "22px" }} className="fas fa-user-astronaut"></i></div>
                             <div className="text-container"><span>User Profile</span></div>
                         </div>
                     </li>
                     <li>
-                        <div className="list-item">
+                        <div className="list-item" style={{ cursor: "not-allowed" }}>
                             <div className="icon-container"><i style={{ fontSize: "22px" }} className="fas fa-cog"></i></div>
                             <div className="text-container"><span>Account Settings</span></div>
                         </div>

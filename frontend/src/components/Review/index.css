@@ -36,7 +36,6 @@
     color: #c9c9c9;
 }
 
-
 .review-at-home-page {
     max-width: 360px;
 
@@ -60,7 +59,7 @@
     font-size: 18px;
     font-weight: 600;
     padding: 0 0 5px 0;
-    cursor: pointer;
+    cursor: not-allowed;
 }
 
 .review-at-home-page .review-email h1:hover {

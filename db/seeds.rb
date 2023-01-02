@@ -79,7 +79,7 @@
 
   puts "Creating businesses..."
 
-  b1 = Business.create!(
+  Business.create!(
     name: 'Patisserie Fouet', 
     address: '15 E 13th St', 
     city: 'New York',
@@ -92,7 +92,8 @@
     category: 'Coffee & Tea, Desserts, Wine Bars',
     price: '$$',
     phone_number: '(212) 620-0622',
-    website: 'https://www.fouetnyc.com'
+    website: 'https://www.fouetnyc.com',
+    country: 'USA'
   )
 
   Business.create!(
@@ -108,7 +109,8 @@
     category: 'Steakhouses, Cocktail Bars',
     price: '$$$',
     phone_number: '(646) 461-7866',
-    website: 'https://www.vinylsteakhouse.com'
+    website: 'https://www.vinylsteakhouse.com',
+    country: 'USA'
   )
 
   Business.create!(
@@ -124,7 +126,8 @@
     category: 'Chinese',
     price: '$$',
     phone_number: '(718) 633-8888',
-    website: 'https://www.yoziducksoup.com'
+    website: 'https://www.yoziducksoup.com',
+    country: 'USA'
   )
 
   Business.create!(
@@ -140,7 +143,8 @@
     category: 'Coffee & Tea, Breakfast & Brunch, Beer Bars',
     price: '$$',
     phone_number: '(212) 228-9074',
-    website: 'https://www.mudnyc.com'
+    website: 'https://www.mudnyc.com',
+    country: 'USA'
   )
 
   Business.create!(
@@ -156,7 +160,8 @@
     category: 'Korean, Barbeque, Bars',
     price: '$$',
     phone_number: '(212) 473-2233',
-    website: 'http://jongrobbqny.com'
+    website: 'http://jongrobbqny.com',
+    country: 'USA'
   )
 
   Business.create!(
@@ -172,7 +177,8 @@
     category: 'Bakeries, Cafes, Desserts',
     price: '$$',
     phone_number: '(347) 987-3194',
-    website: 'http://www.miasbrooklyn.com'
+    website: 'http://www.miasbrooklyn.com',
+    country: 'USA'
   )
 
   Business.create!(
@@ -188,7 +194,8 @@
     category: 'Breakfast & Brunch, American (New), Bars',
     price: '$$',
     phone_number: '(212) 254-7000',
-    website: 'https://www.janerestaurant.com'
+    website: 'https://www.janerestaurant.com',
+    country: 'USA'
   )
 
   Business.create!(
@@ -204,7 +211,8 @@
     category: 'Pizza',
     price: '$',
     phone_number: '(212) 366-1182',
-    website: 'http://www.joespizzanyc.com'
+    website: 'http://www.joespizzanyc.com',
+    country: 'USA'
   )
 
   Business.create!(
@@ -220,7 +228,8 @@
     category: 'Italian, Pizza',
     price: '$$',
     phone_number: '(212) 242-0899',
-    website: 'https://zeroottonove.com/nyc'
+    website: 'https://zeroottonove.com/nyc',
+    country: 'USA'
   )
 
   Business.create!(
@@ -236,7 +245,8 @@
     category: 'Steakhouses, French, Cocktail Bars',
     price: '$$$',
     phone_number: '(212) 353-0200',
-    website: 'https://www.boucherie.nyc'
+    website: 'https://www.boucherie.nyc',
+    country: 'USA'
   )
 
   Business.create!(
@@ -252,7 +262,8 @@
     category: 'Sushi Bars, Hot Pot, Japanese Curry',
     price: '$$',
     phone_number: '(212) 255-0018',
-    website: 'https://ootoya.us'
+    website: 'https://ootoya.us',
+    country: 'USA'
   )
 
   Business.create!(
@@ -268,7 +279,8 @@
     category: 'Mediterranean, Middle Eastern, American (New)',
     price: '$$',
     phone_number: '(212) 510-7881',
-    website: 'https://taboonette.com'
+    website: 'https://taboonette.com',
+    country: 'USA'
   )
 
   Business.create!(
@@ -284,7 +296,8 @@
     category: 'Coffee Roasteries, Bakeries',
     price: '$$',
     phone_number: '(212) 388-9731',
-    website: 'https://www.abraconyc.com'
+    website: 'https://www.abraconyc.com',
+    country: 'USA'
   )
 
   puts "Attaching photos and creating reviews..."

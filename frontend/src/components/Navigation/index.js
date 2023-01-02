@@ -1,12 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Helmet } from "react-helmet";
 import { NavLink } from 'react-router-dom';
 import SearchBar from './SearchBar.js';
 import ProfileButton from './ProfileButton';
 import './index.css';
 
-const Navigation = ({ setQuery }) => {
+const Navigation = ({ setQuery, setAddressQuery }) => {
     const sessionUser = useSelector(state => state.session.user);
 
     let sessionLinks;
@@ -33,13 +32,13 @@ const Navigation = ({ setQuery }) => {
                     </NavLink>
                 </div>
                 
-                <SearchBar setQuery={setQuery} />
+                <SearchBar setQuery={setQuery} setAddressQuery={setAddressQuery} />
 
                 <div>
-                    <a href="https://github.com/qyhAppAcademy/" className="github-link">
+                    <a href="https://github.com/qyhAppAcademy/" className="github-link" target="_blank" rel="noreferrer">
                         <img src="https://qelp-seeds.s3.amazonaws.com/icons/1.png" alt="" style={{ width: "36px", height: "36px", margin: "3px 10px 0 0" }} />
                     </a>
-                    <a href="https://www.linkedin.com/in/qiao-yang-han-367590257" className="linkedin-link">
+                    <a href="https://www.linkedin.com/in/qiao-yang-han-367590257" className="linkedin-link" target="_blank" rel="noreferrer">
                         <img src="https://qelp-seeds.s3.amazonaws.com/icons/2.png" alt="" style={{ width: "36px", height: "36px", margin: "3px 0 0 0" }} />
                     </a>    
                 </div>

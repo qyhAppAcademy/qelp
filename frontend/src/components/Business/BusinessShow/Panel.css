@@ -46,6 +46,6 @@
 }
 
 .hoverable-categories:hover {
-    cursor: pointer;
+    cursor: not-allowed;
     text-decoration: underline;
 }

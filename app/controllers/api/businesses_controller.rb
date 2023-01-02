@@ -6,7 +6,6 @@ class Api::BusinessesController < ApplicationController
 
     def show
         @business = Business.find(params[:id])
-        # @reviews = @business.reviews
         if @business
             render 'api/businesses/show'
         else
