@@ -9,8 +9,11 @@ import App from "./App";
 import configureStore from "./store";
 import csrfFetch from "./store/csrf";
 import * as sessionActions from "./store/session";
+import { LoadScript } from "@react-google-maps/api";
 
 const store = configureStore();
+
+const libraries = ["places"];
 
 if (process.env.NODE_ENV !== "production") {
   window.store = store;
@@ -33,7 +36,9 @@ function Root() {
 const renderApplication = () => {
   ReactDOM.render(
     <React.StrictMode>
-      <Root />
+      <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY} libraries={libraries}>
+        <Root />
+      </LoadScript>
     </React.StrictMode>,
     document.getElementById('root')
   );
