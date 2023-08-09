@@ -24,10 +24,10 @@ const Home = () => {
     return (
         <div className="home">
             <HomeCarousel />
-            <h1>Recent Reviews</h1>
+            {/* <h1>Recent Reviews</h1>
             <div className="reviews-at-home-page-container">
                 {reviewItems}
-            </div>
+            </div> */}
         </div>
     );
 }
