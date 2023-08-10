@@ -41,8 +41,23 @@ const HomeCarousel = () => {
         return () => clearInterval(slider);
     }, [index])
 
+    const buttonStyle = {
+        color: 'black',
+        backgroundColor: 'transparent',
+        width: '18px',
+        height: '120px',
+        borderRadius: '9px',
+        position: 'relative',
+        overflow: 'hidden',
+        border: '2px solid black'
+    }
+
+    //https://github.com/paypal/glamorous/issues/223
+
     return (
-        <></>
+        <>
+            <button type="" style={buttonStyle}></button>
+        </>
         // <div><img alt="" src={`https://qelp-seeds.s3.amazonaws.com/carousel/${index + 1}.jpeg`} /></div>
     );
 };
