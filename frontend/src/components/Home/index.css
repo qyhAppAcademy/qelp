@@ -46,8 +46,7 @@
     background-color: white;
 }
 
-.animated-btn {
-    background-color: transparent;
+.btn {
     width: 18px;
     height: 120px;
     border-radius: 9px;
@@ -56,18 +55,30 @@
     border: 2px solid black;
 }
 
-.animated-btn::before {
+.past {
+    background-color: #646FD4;
+}
+
+.now {
+    margin-bottom: 3px;
+}
+
+.future {
+    background-color: transparent;
+}
+
+@keyframes fillbackgroundcolor {
+    from {height: 0%; background-color: #646FD4;}
+    to {height: 100%; background-color: #646FD4;}
+}
+
+.now::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 0%;
-    background-color: #646FD4;
-    transition: all 5s;
     z-index: -1;
-}
-
-.animated-btn:hover::before {
-    height: 100%
+    animation: fillbackgroundcolor 3s;
+    animation-timing-function: linear;
 }

@@ -24,6 +24,24 @@ const HomeCarousel = () => {
         </div>
     ));
 
+    const btns = slides.map((slide, slideIndex) => {
+        let buttonStyle = '';
+        if (slideIndex < index) {
+            buttonStyle = 'past';
+        }
+        else if (slideIndex === index) {
+            buttonStyle = 'now';
+        }
+        else {
+            buttonStyle = 'future';
+        }
+        return (
+            <div>
+                <button type="" className={`btn ${buttonStyle}`}></button>
+            </div>
+        );
+    });
+
     useEffect(() => {
         const lastIndex = slides.length - 1;
         if (index < 0) {
@@ -43,7 +61,7 @@ const HomeCarousel = () => {
 
     return (
         <>
-            <button type="" className="animated-btn"></button>
+            {btns}
         </>
         // <div><img alt="" src={`https://qelp-seeds.s3.amazonaws.com/carousel/${index + 1}.jpeg`} /></div>
     );
