@@ -60,10 +60,10 @@ const HomeCarousel = () => {
     }, [index])
 
     return (
-        <>
-            {btns}
-        </>
-        // <div><img alt="" src={`https://qelp-seeds.s3.amazonaws.com/carousel/${index + 1}.jpeg`} /></div>
+        <div className='outer'>
+            <div>{btns}</div>
+            <div className='inner'><img alt="" src={`https://qelp-seeds.s3.amazonaws.com/carousel/${index + 1}.jpeg`} /></div>
+        </div>
     );
 };
 
