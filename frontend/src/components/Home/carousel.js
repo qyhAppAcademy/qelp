@@ -14,7 +14,7 @@ const HomeCarousel = () => {
     //     </div>
     // </Carousel>
 
-    const slides = ["coffee", "fries", "pizza", "cookies"];
+    const slides = ["cafe", "bar", "bakery", "fastfoodchain"];
     const [index, setIndex] = useState(0);
 
     const btns = slides.map((slide, slideIndex) => {
@@ -53,14 +53,14 @@ const HomeCarousel = () => {
     }, [index])
 
     return (
-        <>
+        <div>
             <div className='inner'>
                 {btns}
             </div>
             <div className='inner'>
                 <img alt="" src={`https://qelp-seeds.s3.amazonaws.com/carousel/${slides[index]}.jpeg`} />
             </div>
-        </>
+        </div>
     );
 };
 
