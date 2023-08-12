@@ -53,14 +53,14 @@ const HomeCarousel = () => {
     }, [index])
 
     return (
-        <div className='outer'>
+        <>
             <div className='inner'>
                 {btns}
             </div>
             <div className='inner'>
                 <img alt="" src={`https://qelp-seeds.s3.amazonaws.com/carousel/${slides[index]}.jpeg`} />
             </div>
-        </div>
+        </>
     );
 };
 
