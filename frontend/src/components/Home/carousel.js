@@ -14,30 +14,23 @@ const HomeCarousel = () => {
     //     </div>
     // </Carousel>
 
-    const data = [1, 2, 3];
-    const [slides, setSlides] = useState(data);
+    const slides = ["coffee", "fries", "pizza", "cookies"];
     const [index, setIndex] = useState(0);
 
-    const slidesItems = slides.map((slide, slideIndex) => (
-        <div>
-            <img alt="" src={`https://qelp-seeds.s3.amazonaws.com/carousel/${slide}.jpeg`} />
-        </div>
-    ));
-
     const btns = slides.map((slide, slideIndex) => {
-        let buttonStyle = '';
+        let btnStyle;
         if (slideIndex < index) {
-            buttonStyle = 'past';
+            btnStyle = 'past';
         }
         else if (slideIndex === index) {
-            buttonStyle = 'now';
+            btnStyle = 'now';
         }
         else {
-            buttonStyle = 'future';
+            btnStyle = 'future';
         }
         return (
             <div>
-                <button type="" className={`btn ${buttonStyle}`}></button>
+                <button type="" className={`btn ${btnStyle}`}></button>
             </div>
         );
     });
@@ -55,14 +48,18 @@ const HomeCarousel = () => {
     useEffect(() => {
         let slider = setInterval(() => {
             setIndex(index + 1)
-        }, 3000);
+        }, 4000);
         return () => clearInterval(slider);
     }, [index])
 
     return (
         <div className='outer'>
-            <div>{btns}</div>
-            <div className='inner'><img alt="" src={`https://qelp-seeds.s3.amazonaws.com/carousel/${index + 1}.jpeg`} /></div>
+            <div className='inner'>
+                {btns}
+            </div>
+            <div className='inner'>
+                <img alt="" src={`https://qelp-seeds.s3.amazonaws.com/carousel/${slides[index]}.jpeg`} />
+            </div>
         </div>
     );
 };

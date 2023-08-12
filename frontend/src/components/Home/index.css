@@ -76,7 +76,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    animation: filling 3s infinite;
+    animation: filling 4s infinite;
     animation-timing-function: linear;
 }
 
