@@ -28,9 +28,7 @@ const Home = () => {
         //         {reviewItems}
         //     </div> */}
         // </div>
-        <>
-            <Carousel />
-        </>
+        <Carousel />
     );
 }
 
