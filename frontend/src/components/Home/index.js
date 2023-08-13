@@ -22,7 +22,7 @@ const Home = () => {
     ));
 
     return (
-        <div className="home">
+        <div className="home outer">
             <HomeCarousel />
             {/* <h1>Recent Reviews</h1>
             <div className="reviews-at-home-page-container">

@@ -24,7 +24,7 @@ const App = () => {
         </Route>
         <Route exact path="/">
           <div className="home-page">
-            <Navigation setQuery={setQuery} setAddressQuery={setAddressQuery} />
+            {/* <Navigation setQuery={setQuery} setAddressQuery={setAddressQuery} /> */}
             <Home />
           </div>
         </Route>

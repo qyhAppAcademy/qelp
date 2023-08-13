@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { Carousel } from 'react-responsive-carousel';
+import Navigation from "../Navigation";
 
 const HomeCarousel = () => {
     // <Carousel autoPlay={true} infiniteLoop={true} pauseOnHover={true} interval={6000} transitionTime={3000} showThumbs={false} showStatus={false}>
@@ -53,14 +54,17 @@ const HomeCarousel = () => {
     }, [index])
 
     return (
-        <div>
+        <>
+            <div className="inner">
+                <Navigation />
+            </div>
             <div className='inner'>
                 {btns}
             </div>
             <div className='inner'>
                 <img alt="" src={`https://qelp-seeds.s3.amazonaws.com/carousel/${slides[index]}.jpeg`} />
             </div>
-        </div>
+        </>
     );
 };
 
