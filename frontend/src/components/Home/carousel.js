@@ -1,54 +1,36 @@
-import React, {useEffect, useState} from 'react';
-import { Carousel } from 'react-responsive-carousel';
+import React, {useState, useEffect} from 'react';
 
-const HomeCarousel = () => {
-    // <Carousel autoPlay={true} infiniteLoop={true} pauseOnHover={true} interval={6000} transitionTime={3000} showThumbs={false} showStatus={false}>
-    //     <div>
-    //         <img alt="" src="https://qelp-seeds.s3.amazonaws.com/carousel/1.jpeg" />
-    //     </div>
-    //     <div>
-    //         <img alt="" src="https://qelp-seeds.s3.amazonaws.com/carousel/2.jpeg" />
-    //     </div>
-    //     <div>
-    //         <img alt="" src="https://qelp-seeds.s3.amazonaws.com/carousel/3.jpeg" />
-    //     </div>
-    // </Carousel>
+const AWS = "https://qelp-seeds.s3.amazonaws.com/carousel";
+const SLIDES = ["cafe", "bar", "bakery", "fastfoodchain"];
+const SUFFIX = "jpeg";
+const INTERVAL = 4000;
 
-    const slides = ["cafe", "bar", "bakery", "fastfoodchain"];
+const Carousel = () => {
     const [index, setIndex] = useState(0);
 
-    const btns = slides.map((slide, slideIndex) => {
-        let btnStyle;
-        if (slideIndex < index) {
-            btnStyle = 'past';
+    const btns = SLIDES.map((slide, idx) => {
+        let style;
+        if (idx < index) {
+            style = 'past';
         }
-        else if (slideIndex === index) {
-            btnStyle = 'now';
+        else if (idx === index) {
+            style = 'now';
         }
         else {
-            btnStyle = 'future';
+            style = 'future';
         }
         return (
             <div>
-                <button type="" className={`btn ${btnStyle}`}></button>
+                <button type="" className={`btn ${style}`}></button>
             </div>
         );
     });
 
     useEffect(() => {
-        const lastIndex = slides.length - 1;
-        if (index < 0) {
-            setIndex(lastIndex);
-        }
-        else if (index > lastIndex) {
-            setIndex(0);
-        }
-    }, [index, slides])
-
-    useEffect(() => {
+        const lastIndex = SLIDES.length - 1;
         let slider = setInterval(() => {
-            setIndex(index + 1)
-        }, 4000);
+            setIndex(index + 1 > lastIndex ? 0 : index + 1);
+        }, INTERVAL);
         return () => clearInterval(slider);
     }, [index])
 
@@ -58,10 +40,10 @@ const HomeCarousel = () => {
                 {btns}
             </div>
             <div className='inner'>
-                <img alt="" src={`https://qelp-seeds.s3.amazonaws.com/carousel/${slides[index]}.jpeg`} />
+                <img alt="" src={`${AWS}/${SLIDES[index]}.${SUFFIX}`} />
             </div>
         </>
     );
 };
 
-export default HomeCarousel;
+export default Carousel;

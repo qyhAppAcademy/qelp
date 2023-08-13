@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchReviews, getReviews } from "../../store/reviews";
 import { ReviewAtHomePage } from "../Review/index";
-import HomeCarousel from "./carousel";
+import Carousel from "./carousel";
 import "./index.css";
 
 const Home = () => {
@@ -29,7 +29,7 @@ const Home = () => {
         //     </div> */}
         // </div>
         <>
-            <HomeCarousel />
+            <Carousel />
         </>
     );
 }
