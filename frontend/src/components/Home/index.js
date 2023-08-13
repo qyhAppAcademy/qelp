@@ -22,13 +22,15 @@ const Home = () => {
     ));
 
     return (
-        <div className="home outer">
+        // <div className="home outer">
+        //     {/* <h1>Recent Reviews</h1>
+        //     <div className="reviews-at-home-page-container">
+        //         {reviewItems}
+        //     </div> */}
+        // </div>
+        <>
             <HomeCarousel />
-            {/* <h1>Recent Reviews</h1>
-            <div className="reviews-at-home-page-container">
-                {reviewItems}
-            </div> */}
-        </div>
+        </>
     );
 }
 

@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import { Carousel } from 'react-responsive-carousel';
-import Navigation from "../Navigation";
 
 const HomeCarousel = () => {
     // <Carousel autoPlay={true} infiniteLoop={true} pauseOnHover={true} interval={6000} transitionTime={3000} showThumbs={false} showStatus={false}>
@@ -55,9 +54,6 @@ const HomeCarousel = () => {
 
     return (
         <>
-            <div className="inner">
-                <Navigation />
-            </div>
             <div className='inner'>
                 {btns}
             </div>
