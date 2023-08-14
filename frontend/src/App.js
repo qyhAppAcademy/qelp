@@ -27,7 +27,7 @@ const App = () => {
             <div className="inner">
               <Navigation setQuery={setQuery} setAddressQuery={setAddressQuery} />
             </div>
-            <Home />
+            {/* <Home /> */}
           </div>
         </Route>
         <Route exact path="/businesses">
