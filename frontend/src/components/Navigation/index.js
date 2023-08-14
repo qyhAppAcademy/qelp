@@ -27,11 +27,11 @@ const Navigation = ({ setQuery, setAddressQuery }) => {
         <nav>
             <div>
                 <NavLink exact to="/" className="nav-title">
-                    <h1><span>qelp</span><i style={{ fontSize: "30px", color:"#f40d15" }} className="fab fa-yelp"></i></h1>
+                    <h1><span>qelp</span><i className="fab fa-yelp"></i></h1>
                 </NavLink>
             </div>
             
-            <SearchBar setQuery={setQuery} setAddressQuery={setAddressQuery} />
+            {/* <SearchBar setQuery={setQuery} setAddressQuery={setAddressQuery} />
 
             <div>
                 <a href="https://github.com/qyhAppAcademy/" className="github-link" target="_blank" rel="noreferrer">
@@ -44,7 +44,7 @@ const Navigation = ({ setQuery, setAddressQuery }) => {
 
             <div className="session-links">
                 {sessionLinks}
-            </div>
+            </div> */}
         </nav>
     );
 }
