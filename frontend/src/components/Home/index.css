@@ -15,10 +15,6 @@
     color: white;
 }
 
-.home-page nav .search-bar span {
-    background-color: white;
-}
-
 .home-page .reviews-at-home-page-container {
     display: flex;
     flex-wrap: wrap;
@@ -98,6 +94,11 @@
 }
 
 img {
-    width: inherit;
+    width: 100%;
     height: auto;
+}
+
+.btns-group {
+    top: 180px;
+    left: 160px;
 }

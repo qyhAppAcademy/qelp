@@ -36,7 +36,7 @@ const Carousel = () => {
 
     return (
         <>
-            <div className='inner'>
+            <div className='inner btns-group'>
                 {btns}
             </div>
             <div className='inner'>
