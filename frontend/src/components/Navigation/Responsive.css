@@ -1,155 +1,6 @@
-@media only screen and (min-width: 1201px) {
+@media only screen and (min-width: 901px) {
     .nav-title {
         font-size: 45px;
-        font-weight: 900;
-    }
-
-    .nav-title i {
-        padding-left: 9px;
-    }
-
-    .search-bar {
-        height: 50px;
-    }
-
-    .search-bar input {
-        font-size: 18px;
-        padding: 0 0 0 13px;
-    }
-
-    .search-bar > span {
-        width: 8px;
-        height: 50px;
-    }
-
-    .search-bar > span::before {
-        width: 8px;
-        height: 24px;
-        margin: 13px 0;
-    }
-
-    .search-bar button {
-        width: 50px;
-        height: 50px;
-        font-size: 25px;
-    }
-}
-
-@media only screen and (max-width: 1200px) {
-    .nav-title {
-        font-size: 40px;
-        font-weight: 800;
-    }
-
-    .nav-title i {
-        padding-left: 8px;
-    }
-
-    .search-bar {
-        height: 45px;
-    }
-
-    .search-bar input {
-        font-size: 16px;
-        padding: 0 0 0 12px;
-    }
-
-    .search-bar > span {
-        width: 7px;
-        height: 44px;
-    }
-
-    .search-bar > span::before {
-        width: 7px;
-        height: 22px;
-        margin: 11px 0;
-    }
-
-    .search-bar button {
-        width: 45px;
-        height: 45px;
-        font-size: 22px;
-    }
-}
-
-@media only screen and (max-width: 1050px) {
-    .nav-title {
-        font-size: 35px;
-        font-weight: 700;
-    }
-
-    .nav-title i {
-        padding-left: 7px;
-    }
-
-    .search-bar {
-        height: 40px;
-    }
-
-    .search-bar input {
-        font-size: 14px;
-        padding: 0 0 0 11px;
-    }
-
-    .search-bar > span {
-        width: 6px;
-        height: 40px;
-    }
-
-    .search-bar > span::before {
-        width: 6px;
-        height: 20px;
-        margin: 10px 0;
-    }
-
-    .search-bar button {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-    }
-}
-
-@media only screen and (max-width: 900px) {
-    .nav-title {
-        font-size: 30px;
-        font-weight: 600;
-    }
-
-    .nav-title i {
-        padding-left: 6px;
-    }
-
-    .search-bar {
-        height: 35px;
-    }
-
-    .search-bar input {
-        font-size: 12px;
-        padding: 0 0 0 10px;
-    }
-
-    .search-bar > span {
-        width: 5px;
-        height: 34px;
-    }
-
-    .search-bar > span::before {
-        width: 5px;
-        height: 18px;
-        margin: 8px 0;
-    }
-
-    .search-bar button {
-        width: 35px;
-        height: 35px;
-        font-size: 17px;
-    }
-}
-
-@media only screen and (max-width: 750px) {
-    .nav-title {
-        font-size: 25px;
-        font-weight: 500;
     }
 
     .nav-title i {
@@ -157,49 +8,85 @@
     }
 
     .search-bar {
-        height: 30px;
+        height: 54px;
+        border-radius: 5px;
     }
 
     .search-bar input {
-        font-size: 10px;
-        padding: 0 0 0 9px;
+        padding: 0 0 0 14px;
+        font-size: 18px;
+    }
+
+    .search-bar > span {
+        width: 5px;
+        height: 54px;
+    }
+
+    .search-bar > span::before {
+        width: 5px;
+        height: 36px;
+        margin: 9px 0;
+    }
+
+    .search-bar button {
+        padding: 0 14px;
+        font-size: 26px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .nav-title {
+        font-size: 30px;
+    }
+
+    .nav-title i {
+        padding-left: 3px;
+    }
+
+    .search-bar {
+        height: 42px;
+        border-radius: 3px;
+    }
+
+    .search-bar input {
+        padding: 0 0 0 10px;
+        font-size: 14px;
     }
 
     .search-bar > span {
         width: 4px;
-        height: 30px;
+        height: 42px;
     }
 
     .search-bar > span::before {
         width: 4px;
-        height: 16px;
+        height: 28px;
         margin: 7px 0;
     }
 
     .search-bar button {
-        width: 30px;
-        height: 30px;
-        font-size: 15px;
+        padding: 0 11px;
+        font-size: 20px;
     }
 }
 
 @media only screen and (max-width: 600px) {
     .nav-title {
-        font-size: 20px;
-        font-weight: 400;
+        font-size: 16px;
     }
 
     .nav-title i {
-        padding-left: 4px;
+        padding-left: 2px;
     }
 
     .search-bar {
-        height: 25px;
+        height: 24px;
+        border-radius: 2px;
     }
 
     .search-bar input {
+        padding: 0 0 0 6px;
         font-size: 8px;
-        padding: 0 0 0 8px;
     }
 
     .search-bar > span {
@@ -209,58 +96,19 @@
 
     .search-bar > span::before {
         width: 3px;
-        height: 14px;
-        margin: 5px 0;
-    }
-
-    .search-bar button {
-        width: 25px;
-        height: 25px;
-        font-size: 12px;
-    }
-}
-
-@media only screen and (max-width: 450px) {
-    .nav-title {
-        font-size: 15px;
-        font-weight: 300;
-    }
-
-    .nav-title i {
-        padding-left: 3px;
-    }
-
-    .search-bar {
-        height: 20px;
-    }
-
-    .search-bar input {
-        font-size: 6px;
-        padding: 0 0 0 7px;
-    }
-
-    .search-bar > span {
-        width: 2px;
-        height: 20px;
-    }
-
-    .search-bar > span::before {
-        width: 2px;
-        height: 12px;
+        height: 16px;
         margin: 4px 0;
     }
 
     .search-bar button {
-        width: 20px;
-        height: 20px;
-        font-size: 10px;
+        padding: 0 6px;
+        font-size: 12px;
     }
 }
 
 @media only screen and (max-width: 300px) {
     .nav-title {
-        font-size: 10px;
-        font-weight: 200;
+        font-size: 12px;
     }
 
     .nav-title i {
@@ -268,28 +116,28 @@
     }
 
     .search-bar {
-        height: 15px;
+        height: 18px;
+        border-radius: 2px;
     }
 
     .search-bar input {
-        font-size: 4px;
-        padding: 0 0 0 5px;
+        padding: 0 0 0 4px;
+        font-size: 6px;
     }
 
     .search-bar > span {
-        width: 1px;
-        height: 14px;
+        width: 2px;
+        height: 18px;
     }
 
     .search-bar > span::before {
-        width: 1px;
-        height: 10px;
-        margin: 2px 0;
+        width: 2px;
+        height: 12px;
+        margin: 3px 0;
     }
 
     .search-bar button {
-        width: 15px;
-        height: 15px;
-        font-size: 7px;
+        padding: 0 5px;
+        font-size: 8px;
     }
 }

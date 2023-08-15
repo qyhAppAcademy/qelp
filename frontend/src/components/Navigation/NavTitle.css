@@ -1,8 +1,10 @@
 .nav-title {
+    color: #FFFFFF;
+
     text-decoration: none;
     white-space: nowrap;
-    color: #FFFFFF;
 }
+
 .nav-title i {
     color: #e50d0d;
 }

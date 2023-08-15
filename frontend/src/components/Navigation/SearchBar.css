@@ -1,11 +1,13 @@
 .search-bar {
+    position: relative;
+
+    width: 100%;
+
+    overflow: hidden;
+
     display: flex;
     align-items: center;
     flex-grow: 2;
-    width: 100%;
-    border-radius: 6px;
-    overflow: hidden;
-    position: relative;
 }
 
 .search-bar > div {
@@ -16,10 +18,11 @@
 .search-bar input {
     width: 100%;
     height: 100%;
-    margin: 0;
+
+    vertical-align: top;
+
     border-style: hidden;
     outline: none;
-    vertical-align: top;
 }
 
 .search-bar > span {
@@ -30,8 +33,11 @@
     position: absolute;
     top: 0;
     left: 0;
+
     content: '';
+
     background-color: #EBEBEB;
+
     z-index: 2;
 }
 
@@ -39,26 +45,34 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: 66px;
-    height: 60px;
-    font-size: 30px;
+
+    width: auto;
+    height: 100%;
+
     color: #FFFFFF;
     background-color: #e50d0d;
+
     overflow: hidden;
+
     cursor: pointer;
+
     z-index: 2;
 }
 
 .search-bar button:hover {
     background-color: #ff0000;
+
     transition: all 0.5s ease-out;
 }
 
 .ripple {
     position: absolute;
-    border-radius: 100%;
+
     background-color: #F6F6F6;
     opacity: 0%;
+
+    border-radius: 100%;
+
     animation: ripple 1s linear;
 }
 
