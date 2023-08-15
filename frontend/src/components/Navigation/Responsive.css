@@ -8,29 +8,29 @@
     }
 
     .search-bar {
-        height: 54px;
+        height: 60px;
         border-radius: 5px;
     }
 
     .search-bar input {
         padding: 0 0 0 14px;
-        font-size: 18px;
+        font-size: 20px;
     }
 
     .search-bar > span {
         width: 5px;
-        height: 54px;
+        height: 60px;
     }
 
     .search-bar > span::before {
         width: 5px;
-        height: 36px;
-        margin: 9px 0;
+        height: 40px;
+        margin: 10px 0;
     }
 
     .search-bar button {
-        padding: 0 14px;
-        font-size: 26px;
+        padding: 0 15px;
+        font-size: 30px;
     }
 }
 
