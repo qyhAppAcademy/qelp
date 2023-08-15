@@ -20,7 +20,7 @@ const SearchBar = ({ setQuery, setAddressQuery }) => {
         circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
         circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
         circle.classList.add("ripple");
-
+        
         const ripple = button.getElementsByClassName("ripple")[0];
 
         if (ripple) {
@@ -82,8 +82,8 @@ const SearchBar = ({ setQuery, setAddressQuery }) => {
     }
 
     return (
-        <>
-            <div className="search-bar">
+        <div className="search-bar">
+            <div>
                 <input
                     type="text"
                     placeholder="Business Name or Category"
@@ -91,22 +91,22 @@ const SearchBar = ({ setQuery, setAddressQuery }) => {
                     onChange={(e) => setCategory(e.target.value)}
                     onKeyDown={handleKeyDown}
                 />
-                <span></span>
-                <StandaloneSearchBox
-                    onLoad={ref => inputRef.current = ref}
-                    onPlacesChanged={handlePlaceChanged}
-                >
-                    <input
-                        type="text"
-                        placeholder="Address, City, State or Zipcode"
-                        value={address}
-                        onChange={(e) => setAddress(e.target.value)}
-                        onKeyDown={handleNoAddress}
-                    />
-                </StandaloneSearchBox>
-                <button onClick={handleClick}><i className="fas fa-search"></i></button>
             </div>
-        </>
+            <span></span>
+            <StandaloneSearchBox
+                onLoad={ref => inputRef.current = ref}
+                onPlacesChanged={handlePlaceChanged}
+            >
+                <input
+                    type="text"
+                    placeholder="Address, City, State or Zipcode"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                    onKeyDown={handleNoAddress}
+                />
+            </StandaloneSearchBox>
+            <button onClick={handleClick}><i className="fas fa-search"></i></button>
+        </div>
     );
 }
 

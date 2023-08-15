@@ -27,13 +27,13 @@ const Navigation = ({ setQuery, setAddressQuery }) => {
         <nav>
             <div>
                 <NavLink exact to="/" className="nav-title">
-                    <h1><span>qelp</span><i className="fab fa-yelp"></i></h1>
+                    qelp<i className="fab fa-yelp"></i>
                 </NavLink>
             </div>
             
-            {/* <SearchBar setQuery={setQuery} setAddressQuery={setAddressQuery} />
+            <SearchBar setQuery={setQuery} setAddressQuery={setAddressQuery} />
 
-            <div>
+            {/* <div>
                 <a href="https://github.com/qyhAppAcademy/" className="github-link" target="_blank" rel="noreferrer">
                     <img src="https://qelp-seeds.s3.amazonaws.com/icons/1.png" alt="" style={{ width: "36px", height: "36px", margin: "3px 10px 0 0" }} />
                 </a>
