@@ -107,9 +107,9 @@ const SearchBar = ({ setQuery, setAddressQuery }) => {
                     onKeyDown={handleNoAddress}
                 />
             </StandaloneSearchBox>
-            <button onClick={handleClick}>
+            {/* <button onClick={handleClick}>
                 <i className="fas fa-search"></i>
-            </button>
+            </button> */}
         </div>
     );
 }

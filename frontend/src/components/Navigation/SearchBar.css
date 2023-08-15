@@ -3,7 +3,6 @@
     align-items: center;
     flex-grow: 2;
     width: 100%;
-    height: 60px;
     border-radius: 6px;
     overflow: hidden;
     position: relative;
@@ -18,25 +17,19 @@
     width: 100%;
     height: 100%;
     margin: 0;
-    padding: 0 0 0 15px;
     border-style: hidden;
     outline: none;
-    font-size: 27px;
+    vertical-align: top;
 }
 
 .search-bar > span {
     position: relative;
-    width: 10px;
-    height: 60px;
 }
 
 .search-bar > span::before {
     position: absolute;
     top: 0;
     left: 0;
-    width: 10px;
-    height: 36px;
-    margin: 12px 0;
     content: '';
     background-color: #EBEBEB;
     z-index: 2;
