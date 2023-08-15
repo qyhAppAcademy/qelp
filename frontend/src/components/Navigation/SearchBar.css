@@ -52,12 +52,13 @@
     color: #FFFFFF;
     background-color: #e50d0d;
     overflow: hidden;
+    cursor: pointer;
     z-index: 2;
 }
 
 .search-bar button:hover {
-    cursor: pointer;
     background-color: #ff0000;
+    transition: all 0.5s ease-out;
 }
 
 .ripple {

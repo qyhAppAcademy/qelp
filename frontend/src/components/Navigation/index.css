@@ -4,8 +4,6 @@ nav {
     align-items: center;
     width: 100%;
     height: 120px;
-
-    /* padding: 0 30px 0 10px; */
     background-color: black;
 }
 
@@ -15,6 +13,7 @@ nav {
 nav > div {
     display: flex;
     align-items: center;
+    margin: 0 20px;
 }
 
 .nav-title {
@@ -23,60 +22,54 @@ nav > div {
     font-size: 60px;
     font-weight: 600;
     color: #FFFFFF;
-
     background-color: green;
 }
 
 .nav-title i {
     padding: 0 0 0 10px;
-    color: #f40d15;
+    color: #e50d0d;
 }
 
-.nav-title svg {
-    font-size: 30px;
+div > a > .icon {
+    width: 60px;
+    height: 60px;
+    margin: 3px 0 0 0;
+}
 
-    color: #FF1A1A;
+div > a:first-child > .icon {
+    margin-right: 15px;
+}
+
+nav .button {
+    width: 120px;
+    height: 60px;
+    margin: 0;
+    padding: 20px 0 0 0;
+    border-radius: 6px;
+    font-size: 27px;
+    font-weight: 600;
+    color: #FFFFFF;
+    background-color: transparent;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 nav .login-button {
-    width: 82px;
-    height: 40px;
-    color: #C8C9CA;
-    background-color: transparent;
-    font-size: 16px;
-    font-weight: 600;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-
-    padding-top: 10px;
-    border-radius: 6px;
-    border: 2px solid #C8C9CA;
-
-    margin: 0;
-    margin-right: 10px;
+    border: 3px solid #FFFFFF;
+    margin-right: 15px;
 }
 
 nav .login-button:hover {
-    color: #afafaf;
-    border: 2px solid #afafaf;
+    background-color: rgb(176, 176, 176, 0.5);
+    transition: all 0.5s ease-out;
 }
 
 nav .signup-button {
-    width: 82px;
-    height: 40px;
-    color: white;
     background-color: #e50d0d;
-    font-size: 16px;
-    font-weight: 600;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-
-    padding-top: 10px;
-    border-radius: 6px;
 }
 
 nav .signup-button:hover {
-    background-color: #F40D15;
+    background-color: #ff0000;
+    transition: all 0.5s ease-out;
 }

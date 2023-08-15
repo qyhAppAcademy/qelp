@@ -5,6 +5,10 @@ import SearchBar from './SearchBar.js';
 import ProfileButton from './ProfileButton';
 import './index.css';
 
+const GITHUB = "https://github.com/qyhAppAcademy";
+const LINKEDIN = "https://www.linkedin.com/in/qiaoyanghan";
+const AWS = "https://qelp-seeds.s3.amazonaws.com/icons";
+
 const Navigation = ({ setQuery, setAddressQuery }) => {
     const sessionUser = useSelector(state => state.session.user);
 
@@ -17,8 +21,8 @@ const Navigation = ({ setQuery, setAddressQuery }) => {
     } else {
         sessionLinks = (
             <>
-                <NavLink to="/login" className="login-button">Log In</NavLink>
-                <NavLink to="/signup" className="signup-button">Sign Up</NavLink>
+                <NavLink to="/login" className="button login-button">Log In</NavLink>
+                <NavLink to="/signup" className="button signup-button">Sign Up</NavLink>
             </>
         );
     }
@@ -33,18 +37,18 @@ const Navigation = ({ setQuery, setAddressQuery }) => {
             
             <SearchBar setQuery={setQuery} setAddressQuery={setAddressQuery} />
 
-            {/* <div>
-                <a href="https://github.com/qyhAppAcademy/" className="github-link" target="_blank" rel="noreferrer">
-                    <img src="https://qelp-seeds.s3.amazonaws.com/icons/1.png" alt="" style={{ width: "36px", height: "36px", margin: "3px 10px 0 0" }} />
+            <div>
+                <a href={`${GITHUB}`} target="_blank" rel="noreferrer">
+                    <img className="icon" src={`${AWS}/github.png`} alt="" />
                 </a>
-                <a href="https://www.linkedin.com/in/qiao-yang-han-367590257" className="linkedin-link" target="_blank" rel="noreferrer">
-                    <img src="https://qelp-seeds.s3.amazonaws.com/icons/2.png" alt="" style={{ width: "36px", height: "36px", margin: "3px 0 0 0" }} />
-                </a>    
+                <a href={`${LINKEDIN}`} target="_blank" rel="noreferrer">
+                    <img className="icon" src={`${AWS}/linkedin.png`} alt="" />
+                </a>
             </div>
 
             <div className="session-links">
                 {sessionLinks}
-            </div> */}
+            </div>
         </nav>
     );
 }
