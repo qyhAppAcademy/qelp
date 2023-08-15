@@ -12,37 +12,3 @@ nav > div {
     /* margin: 0 20px; */
     background-color: green;
 }
-
-nav .button {
-    width: 120px;
-    height: 60px;
-    margin: 0;
-    padding: 20px 0 0 0;
-    border-radius: 6px;
-    font-size: 27px;
-    font-weight: 600;
-    color: #FFFFFF;
-    background-color: transparent;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-nav .login-button {
-    border: 3px solid #FFFFFF;
-    margin-right: 15px;
-}
-
-nav .login-button:hover {
-    background-color: rgb(176, 176, 176, 0.5);
-    transition: all 0.5s ease-out;
-}
-
-nav .signup-button {
-    background-color: #e50d0d;
-}
-
-nav .signup-button:hover {
-    background-color: #ff0000;
-    transition: all 0.5s ease-out;
-}

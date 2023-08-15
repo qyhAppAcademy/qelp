@@ -140,4 +140,16 @@
         padding: 0 5px;
         font-size: 8px;
     }
+
+    nav .button {
+        width: 20px;
+        padding: 0 0 0 0;
+        border-radius: 3px;
+        font-size: 4px;
+    }
+
+    nav .login-button {
+        border: 1px solid #FFFFFF;
+        margin-right: 3px;
+    }
 }

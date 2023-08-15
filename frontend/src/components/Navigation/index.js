@@ -6,6 +6,7 @@ import ProfileButton from './ProfileButton';
 import './index.css';
 import './NavTitle.css';
 import './Icon.css';
+import './AuthButton.css';
 import './Responsive.css';
 
 const GITHUB = "https://github.com/qyhAppAcademy";
@@ -47,11 +48,11 @@ const Navigation = ({ setQuery, setAddressQuery }) => {
                 <a href={`${LINKEDIN}`} target="_blank" rel="noreferrer">
                     <img className="icon" src={`${AWS}/linkedin.png`} alt="" />
                 </a>
-            </div>
+            </div> */}
 
             <div className="session-links">
                 {sessionLinks}
-            </div> */}
+            </div>
         </nav>
     );
 }

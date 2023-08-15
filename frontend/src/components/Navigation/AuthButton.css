@@ -1,0 +1,27 @@
+nav .button {
+    color: #FFFFFF;
+    background-color: transparent;
+
+    text-align: center;
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
+nav .login-button {
+    border: 3px solid #FFFFFF;
+}
+
+nav .login-button:hover {
+    background-color: rgb(176, 176, 176, 0.5);
+    transition: all 0.5s ease-out;
+}
+
+nav .signup-button {
+    background-color: #e50d0d;
+}
+
+nav .signup-button:hover {
+    background-color: #ff0000;
+    transition: all 0.5s ease-out;
+}
