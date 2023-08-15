@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import SearchBar from './SearchBar.js';
 import ProfileButton from './ProfileButton';
 import './index.css';
+import './NavTitle.css';
 
 const GITHUB = "https://github.com/qyhAppAcademy";
 const LINKEDIN = "https://www.linkedin.com/in/qiaoyanghan";
@@ -34,8 +35,7 @@ const Navigation = ({ setQuery, setAddressQuery }) => {
                     qelp<i className="fab fa-yelp"></i>
                 </NavLink>
             </div>
-            
-            <SearchBar setQuery={setQuery} setAddressQuery={setAddressQuery} />
+            {/* <SearchBar setQuery={setQuery} setAddressQuery={setAddressQuery} />
 
             <div>
                 <a href={`${GITHUB}`} target="_blank" rel="noreferrer">
@@ -48,7 +48,7 @@ const Navigation = ({ setQuery, setAddressQuery }) => {
 
             <div className="session-links">
                 {sessionLinks}
-            </div>
+            </div> */}
         </nav>
     );
 }
