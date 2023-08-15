@@ -46,30 +46,35 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: 60px;
+    width: 66px;
     height: 60px;
-    font-size: 27px;
+    font-size: 30px;
     color: #FFFFFF;
     background-color: #e50d0d;
-    z-index: 2;
     overflow: hidden;
+    z-index: 2;
 }
 
 .search-bar button:hover {
     cursor: pointer;
+    background-color: #ff0000;
 }
 
-span.ripple {
+.ripple {
     position: absolute;
     border-radius: 100%;
-    transform: scale(0);
-    animation: ripple 0.8s linear;
     background-color: #F6F6F6;
+    opacity: 0%;
+    animation: ripple 1s linear;
 }
 
 @keyframes ripple {
+    from {
+        transform: scale(0);
+        opacity: 60%;
+    }
     to {
         transform: scale(6);
-        opacity: 0;
+        opacity: 0%;
     }
 }

@@ -11,18 +11,16 @@ const SearchBar = ({ setQuery, setAddressQuery }) => {
 
     const createRipple = (event) => {
         const button = event.currentTarget;
+        const offsetTop = button.parentElement.offsetTop + button.offsetTop;
+        const offsetLeft = button.parentElement.offsetLeft + button.offsetLeft;
 
         const circle = document.createElement("span");
         const diameter = Math.max(button.clientWidth, button.clientHeight);
         const radius = diameter / 2;
         
         circle.style.width = circle.style.height = `${diameter}px`;
-        circle.style.top = `${event.clientY - button.offsetTop - 30 - radius}px`;
-        circle.style.left = `${event.clientX - button.offsetLeft - 180 - radius}px`;
-        // circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
-        // circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
-        console.log(circle.style.top);
-        console.log(circle.style.left);
+        circle.style.top = `${event.clientY - offsetTop - radius}px`;
+        circle.style.left = `${event.clientX - offsetLeft - radius}px`;
         circle.classList.add("ripple");
         
         const ripple = button.getElementsByClassName("ripple")[0];
@@ -30,7 +28,7 @@ const SearchBar = ({ setQuery, setAddressQuery }) => {
         if (ripple) {
             ripple.remove();
         }
-
+        
         button.appendChild(circle);
     }
 
@@ -109,7 +107,9 @@ const SearchBar = ({ setQuery, setAddressQuery }) => {
                     onKeyDown={handleNoAddress}
                 />
             </StandaloneSearchBox>
-            <button onClick={handleClick}><i className="fas fa-search"></i></button>
+            <button onClick={handleClick}>
+                <i className="fas fa-search"></i>
+            </button>
         </div>
     );
 }
