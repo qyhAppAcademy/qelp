@@ -2,6 +2,7 @@ nav .button {
     width: 4.5vw;
     height: 3vw;
     font-size: 1vw;
+    font-weight: 600;
     color: #FFFFFF;
     background-color: transparent;
     text-align: center;
@@ -12,8 +13,8 @@ nav .button {
 
 nav .login-button {
     margin-right: 0.6vw;
-    padding: 0.9vw 0;
-    border: 0.1vw solid #FFFFFF;
+    padding: 0.88vw 0;
+    border: 0.12vw solid #FFFFFF;
 }
 
 nav .login-button:hover {
