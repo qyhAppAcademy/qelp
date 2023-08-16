@@ -1,0 +1,8 @@
+div > .icon {
+    width: 3vw;
+    height: 3vw;
+}
+
+div > .icon:first-child {
+    margin-right: 0.6vw;
+}

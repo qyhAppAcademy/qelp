@@ -1,9 +1,0 @@
-div>a>.icon {
-    width: 60px;
-    height: 60px;
-    margin: 3px 0 0 0;
-}
-
-div>a:first-child>.icon {
-    margin-right: 15px;
-}

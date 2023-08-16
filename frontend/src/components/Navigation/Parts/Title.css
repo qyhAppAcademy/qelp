@@ -1,10 +1,11 @@
 .nav-title {
+    font-size: 2.7vw;
     color: #FFFFFF;
-
     text-decoration: none;
     white-space: nowrap;
 }
 
 .nav-title i {
+    padding-left: 0.3vw;
     color: #e50d0d;
 }

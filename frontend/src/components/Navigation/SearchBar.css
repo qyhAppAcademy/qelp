@@ -1,10 +1,9 @@
 .search-bar {
     position: relative;
-
     width: 100%;
-
+    height: 3vw;
     overflow: hidden;
-
+    border-radius: 0.5vw;
     display: flex;
     align-items: center;
     flex-grow: 2;
@@ -18,26 +17,28 @@
 .search-bar input {
     width: 100%;
     height: 100%;
-
+    padding: 0 0 0 0.75vw;
+    font-size: 1vw;
     vertical-align: top;
-
-    border-style: hidden;
     outline: none;
+    border-style: hidden;
 }
 
 .search-bar > span {
     position: relative;
+    width: 0.3vw;
+    height: 3vw;
 }
 
 .search-bar > span::before {
     position: absolute;
     top: 0;
     left: 0;
-
+    width: 0.3vw;
+    height: 2vw;
+    margin: 0.5vw 0;
     content: '';
-
     background-color: #EBEBEB;
-
     z-index: 2;
 }
 
@@ -45,34 +46,26 @@
     position: absolute;
     top: 0;
     right: 0;
-
-    width: auto;
+    width: 3vw;
     height: 100%;
-
+    font-size: 1.5vw;
     color: #FFFFFF;
     background-color: #e50d0d;
-
     overflow: hidden;
-
     cursor: pointer;
-
     z-index: 2;
 }
 
 .search-bar button:hover {
     background-color: #ff0000;
-
     transition: all 0.5s ease-out;
 }
 
 .ripple {
     position: absolute;
-
     background-color: #F6F6F6;
     opacity: 0%;
-
     border-radius: 100%;
-
     animation: ripple 1s linear;
 }
 

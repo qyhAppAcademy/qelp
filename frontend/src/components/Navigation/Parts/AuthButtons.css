@@ -1,15 +1,19 @@
 nav .button {
+    width: 4.5vw;
+    height: 3vw;
+    font-size: 1vw;
     color: #FFFFFF;
     background-color: transparent;
-
     text-align: center;
     text-decoration: none;
-
     cursor: pointer;
+    border-radius: 0.5vw;
 }
 
 nav .login-button {
-    border: 3px solid #FFFFFF;
+    margin-right: 0.6vw;
+    padding: 0.9vw 0;
+    border: 0.1vw solid #FFFFFF;
 }
 
 nav .login-button:hover {
@@ -18,6 +22,7 @@ nav .login-button:hover {
 }
 
 nav .signup-button {
+    padding: 1vw 0;
     background-color: #e50d0d;
 }
 

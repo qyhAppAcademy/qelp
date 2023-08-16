@@ -3,12 +3,19 @@ nav {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    background-color: black;
+    background-color: pink;
 }
 
 nav > div {
+    margin: 0 0 0 2vw;
     display: flex;
     align-items: center;
-    /* margin: 0 20px; */
-    background-color: green;
+}
+
+nav > div:nth-child(2) {
+    margin-right: 6vw;
+}
+
+nav > div:nth-child(4) {
+    margin-right: 2vw;
 }

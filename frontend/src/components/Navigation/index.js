@@ -4,10 +4,9 @@ import { NavLink } from 'react-router-dom';
 import SearchBar from './SearchBar.js';
 import ProfileButton from './ProfileButton';
 import './index.css';
-import './NavTitle.css';
-import './Icon.css';
-import './AuthButton.css';
-import './Responsive.css';
+import './Parts/Title.css';
+import './Parts/Icons.css';
+import './Parts/AuthButtons.css';
 
 const GITHUB = "https://github.com/qyhAppAcademy";
 const LINKEDIN = "https://www.linkedin.com/in/qiaoyanghan";
@@ -41,14 +40,14 @@ const Navigation = ({ setQuery, setAddressQuery }) => {
 
             <SearchBar setQuery={setQuery} setAddressQuery={setAddressQuery} />
 
-            {/* <div>
-                <a href={`${GITHUB}`} target="_blank" rel="noreferrer">
-                    <img className="icon" src={`${AWS}/github.png`} alt="" />
+            <div>
+                <a className="icon" href={`${GITHUB}`} target="_blank" rel="noreferrer">
+                    <img src={`${AWS}/github.png`} alt="" />
                 </a>
-                <a href={`${LINKEDIN}`} target="_blank" rel="noreferrer">
-                    <img className="icon" src={`${AWS}/linkedin.png`} alt="" />
+                <a className="icon" href={`${LINKEDIN}`} target="_blank" rel="noreferrer">
+                    <img src={`${AWS}/linkedin.png`} alt="" />
                 </a>
-            </div> */}
+            </div>
 
             <div className="session-links">
                 {sessionLinks}
