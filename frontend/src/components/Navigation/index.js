@@ -4,9 +4,6 @@ import { NavLink } from 'react-router-dom';
 import SearchBar from './SearchBar.js';
 import ProfileButton from './ProfileButton';
 import './index.css';
-import './Parts/Title.css';
-import './Parts/Icons.css';
-import './Parts/AuthButtons.css';
 
 const GITHUB = "https://github.com/qyhAppAcademy";
 const LINKEDIN = "https://www.linkedin.com/in/qiaoyanghan";

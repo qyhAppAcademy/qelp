@@ -1,21 +1,17 @@
+@import "./Parts/Title.css";
+@import "./Parts/Icons.css";
+@import "./Parts/AuthButtons.css";
+
 nav {
+    width: 100%;
+    background-color: pink;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    background-color: pink;
 }
 
 nav > div {
-    margin: 0 0 0 2vw;
+    margin: 0;
     display: flex;
     align-items: center;
-}
-
-nav > div:nth-child(2) {
-    margin-right: 6vw;
-}
-
-nav > div:nth-child(4) {
-    margin-right: 2vw;
 }
