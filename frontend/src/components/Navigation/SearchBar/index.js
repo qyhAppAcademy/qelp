@@ -6,8 +6,8 @@ import "./index.css";
 const SearchBar = ({ setQuery, setAddressQuery }) => {
     const [category, setCategory] = useState("");
     const [address, setAddress] = useState("");
-
     const history = useHistory();
+    const inputRef = useRef();
 
     const createRipple = (event) => {
         const button = event.currentTarget;
@@ -31,8 +31,6 @@ const SearchBar = ({ setQuery, setAddressQuery }) => {
         
         button.appendChild(circle);
     }
-
-    const inputRef = useRef();
 
     const handleClick = (e) => {
         e.preventDefault();
