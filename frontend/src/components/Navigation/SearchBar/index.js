@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { StandaloneSearchBox } from "@react-google-maps/api";
-import "./SearchBar.css";
+import "./index.css";
 
 const SearchBar = ({ setQuery, setAddressQuery }) => {
     const [category, setCategory] = useState("");

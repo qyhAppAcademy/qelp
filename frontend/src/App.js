@@ -23,11 +23,9 @@ const App = () => {
           <LoginFormPage />
         </Route>
         <Route exact path="/">
-          <div className="home-page outer">
-            <div className="inner">
-              <Navigation setQuery={setQuery} setAddressQuery={setAddressQuery} />
-            </div>
-            {/* <Home /> */}
+          <div className="home-page">
+            <Navigation setQuery={setQuery} setAddressQuery={setAddressQuery} />
+            <Home />
           </div>
         </Route>
         <Route exact path="/businesses">

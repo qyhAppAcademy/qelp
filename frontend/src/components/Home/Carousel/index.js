@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import "./index.css";
 
 const AWS = "https://qelp-seeds.s3.amazonaws.com/carousel";
 const SLIDES = ["cafe", "bar", "bakery", "fastfoodchain"];
@@ -35,14 +36,12 @@ const Carousel = () => {
     }, [index])
 
     return (
-        <>
-            <div className='inner btns-group'>
+        <div className='my-carousel'>
+            <img alt="" src={`${AWS}/${SLIDES[index]}.${SUFFIX}`} />
+            {/* <div className='inner btns-group'>
                 {btns}
-            </div>
-            <div className='inner'>
-                <img alt="" src={`${AWS}/${SLIDES[index]}.${SUFFIX}`} />
-            </div>
-        </>
+            </div> */}
+        </div>
     );
 };
 

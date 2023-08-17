@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchReviews, getReviews } from "../../store/reviews";
 import { ReviewAtHomePage } from "../Review/index";
-import Carousel from "./carousel";
+import Carousel from "./Carousel";
 import "./index.css";
 
 const Home = () => {
@@ -22,13 +22,15 @@ const Home = () => {
     ));
 
     return (
+        <div className="home">
+            <Carousel />
+        </div>
         // <div className="home outer">
         //     {/* <h1>Recent Reviews</h1>
         //     <div className="reviews-at-home-page-container">
         //         {reviewItems}
         //     </div> */}
         // </div>
-        <Carousel />
     );
 }
 

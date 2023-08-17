@@ -1,6 +1,6 @@
-.search-bar {
+nav .search-bar {
     position: relative;
-    height: 3vw;
+    height: 100%;
     overflow: hidden;
     border-radius: 0.5vw;
     display: flex;
@@ -8,13 +8,13 @@
     flex-grow: 2;
 }
 
-.search-bar > div {
+nav .search-bar > div {
     width: 100%;
     height: 100%;
     overflow: hidden;
 }
 
-.search-bar input {
+nav .search-bar input {
     width: 100%;
     height: 100%;
     vertical-align: top;
@@ -24,25 +24,14 @@
     border-style: hidden;
 }
 
-.search-bar > span {
-    position: relative;
-    width: 0.3vw;
-    height: 3vw;
-}
-
-.search-bar > span::before {
-    position: absolute;
-    top: 0;
-    left: 0;
+nav .search-bar > span {
     width: 0.3vw;
     height: 2vw;
     margin: 0.5vw 0;
-    content: '';
     background-color: #EBEBEB;
-    z-index: 2;
 }
 
-.search-bar button {
+nav .search-bar button {
     position: absolute;
     top: 0;
     right: 0;
@@ -52,16 +41,14 @@
     color: #FFFFFF;
     background-color: #e50d0d;
     cursor: pointer;
-    overflow: hidden;
-    z-index: 2;
 }
 
-.search-bar button:hover {
+nav .search-bar button:hover {
     background-color: #ff0000;
     transition: all 0.5s ease-out;
 }
 
-.ripple {
+nav .search-bar .ripple {
     position: absolute;
     background-color: #F6F6F6;
     opacity: 0%;

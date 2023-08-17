@@ -1,8 +1,13 @@
-div > .icon {
+nav .icon {
     width: 3vw;
-    height: 3vw;
+    line-height: 0;
 }
 
-div > .icon:first-child {
+nav .icon:first-child {
     margin-right: 0.6vw;
+}
+
+nav .icon > img {
+    width: 100%;
+    height: 100%;
 }
