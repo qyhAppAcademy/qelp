@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { StandaloneSearchBox } from "@react-google-maps/api";
-import AutoComplete from "./AutoComplete.js";
+import Autocomplete from "./Autocomplete.js";
 import "./index.css";
 
 const SearchBar = ({ setQuery, setAddressQuery }) => {
@@ -104,7 +104,7 @@ const SearchBar = ({ setQuery, setAddressQuery }) => {
                     onKeyDown={handleNoAddress}
                 />
             </StandaloneSearchBox> */}
-            <AutoComplete />
+            <Autocomplete />
             <button onClick={handleClick}>
                 <i className="fas fa-search"></i>
             </button>

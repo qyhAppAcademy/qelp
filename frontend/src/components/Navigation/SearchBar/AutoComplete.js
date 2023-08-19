@@ -6,44 +6,34 @@ const GOOGLE_API_SCRIPTS = {
     url: `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}&callback=initMap&libraries=places&v=weekly`
 };
 
-const AutoComplete = () => {
+const Autocomplete = () => {
     useExternalScripts(GOOGLE_API_SCRIPTS);
 
-    const autoCompleteRef = useRef();
-    const inputRef = useRef();
+    let autocomplete;
+    const countryRestrict = { country: "jp" };
     const options = {
-        componentRestrictions: { country: "us" },
-        fields: ["address_components", "geometry", "icon", "name"],
-        types: ["establishment"]
+        types: ["(cities)"],
+        componentRestrictions: countryRestrict,
+        fields: ["geometry"]
     };
 
     window.initMap = function () {
         // JS API is loaded and available
-        if (window.google) {
-            autoCompleteRef.current = new window.google.maps.places.Autocomplete(
-                inputRef.current,
-                options
-            );
-            console.log("loaded");
-        }
+        console.log("loaded");
+        const google = window.google;
+        autocomplete = new google.maps.places.Autocomplete(
+            document.getElementById("autocomplete"),
+            options
+        );
     };
 
-    useEffect(() => {
-        // if (window.google) {
-        //     autoCompleteRef.current = new window.google.maps.places.Autocomplete(
-        //         inputRef.current,
-        //         options
-        //     );
-        //     console.log("hello");
-        // }
-    }, []);
-
     return (
-        <input 
-            ref={inputRef}
+        <input
+            id="autocomplete"
             placeholder="Address, City, State or Zipcode"
+            type="text"
         />
     );
 };
 
-export default AutoComplete;
+export default Autocomplete;
