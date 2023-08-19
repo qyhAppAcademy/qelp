@@ -1,15 +1,8 @@
 import { useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { StandaloneSearchBox } from "@react-google-maps/api";
-import useExternalScripts from "../../../hooks/useExternalScripts.js";
 import AutoComplete from "./AutoComplete.js";
 import "./index.css";
-
-const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
-const GOOGLE_API_SCRIPTS = {
-    url: `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}&libraries=places&callback=initMap`
-};
-
 
 const SearchBar = ({ setQuery, setAddressQuery }) => {
     const [category, setCategory] = useState("");
@@ -88,8 +81,6 @@ const SearchBar = ({ setQuery, setAddressQuery }) => {
             history.push("/businesses");
         }
     }
-
-    // useExternalScripts(GOOGLE_API_SCRIPTS);
 
     return (
         <div className="search-bar">
