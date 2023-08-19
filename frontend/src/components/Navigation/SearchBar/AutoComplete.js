@@ -12,7 +12,7 @@ const FIELDS = ['geometry'];
 const Autocomplete = () => {
     let autocomplete;
     
-    const locationRestriction = {
+    const bounds = {
         east:   CENTER.lng + OFFSET,
         north:  CENTER.lat + OFFSET,
         south:  CENTER.lat - OFFSET,
@@ -20,10 +20,10 @@ const Autocomplete = () => {
     };
 
     const options = {
-        LocationRestriction: locationRestriction,
+        bounds: bounds,
+        fields: FIELDS,
         strictBounds: true,
-        types: TYPES,
-        fields: FIELDS
+        types: TYPES
     };
 
     window.initMap = function () {
