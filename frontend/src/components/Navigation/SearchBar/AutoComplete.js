@@ -10,11 +10,14 @@ const Autocomplete = () => {
     useExternalScripts(GOOGLE_API_SCRIPTS);
 
     let autocomplete;
-    const countryRestrict = { country: "jp" };
+    const countryRestrict = { 
+        country: "us" 
+    };
     const options = {
         types: ["(cities)"],
         componentRestrictions: countryRestrict,
-        fields: ["geometry"]
+        fields: ["icon"],
+        strictBounds: true
     };
 
     window.initMap = function () {
