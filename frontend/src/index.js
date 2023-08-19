@@ -36,9 +36,9 @@ function Root() {
 const renderApplication = () => {
   ReactDOM.render(
     <React.StrictMode>
-      {/* <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY} libraries={libraries}> */}
+      <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY} libraries={libraries}>
         <Root />
-      {/* </LoadScript> */}
+      </LoadScript>
     </React.StrictMode>,
     document.getElementById('root')
   );

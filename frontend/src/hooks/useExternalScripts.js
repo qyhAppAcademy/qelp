@@ -2,14 +2,16 @@ import { useEffect } from 'react';
 
 export default function useExternalScripts({ url }) {
     useEffect(() => {
-        const head = document.querySelector("head");
-        const script = document.createElement("script");
+        const body = document.querySelector("body");
 
-        script.setAttribute("src", url);
-        head.appendChild(script);
+        const script = document.createElement("script");
+        script.src = url;
+        script.defer = true;
+
+        body.appendChild(script);
 
         return () => {
-            head.removeChild(script);
+            body.removeChild(script);
         };
     }, [url]);
 };

@@ -1,7 +1,8 @@
 import { useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { StandaloneSearchBox } from "@react-google-maps/api";
-import useExternalScripts from "../../../hooks/useExternalScripts";
+import useExternalScripts from "../../../hooks/useExternalScripts.js";
+import AutoComplete from "./AutoComplete.js";
 import "./index.css";
 
 const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
@@ -11,8 +12,6 @@ const GOOGLE_API_SCRIPTS = {
 
 
 const SearchBar = ({ setQuery, setAddressQuery }) => {
-    useExternalScripts(GOOGLE_API_SCRIPTS);
-    
     const [category, setCategory] = useState("");
     const [address, setAddress] = useState("");
     const history = useHistory();
@@ -90,6 +89,8 @@ const SearchBar = ({ setQuery, setAddressQuery }) => {
         }
     }
 
+    // useExternalScripts(GOOGLE_API_SCRIPTS);
+
     return (
         <div className="search-bar">
             <div>
@@ -102,7 +103,7 @@ const SearchBar = ({ setQuery, setAddressQuery }) => {
                 />
             </div>
             <span></span>
-            {/* <StandaloneSearchBox
+            <StandaloneSearchBox
                 onLoad={ref => inputRef.current = ref}
                 onPlacesChanged={handlePlaceChanged}
             >
@@ -113,10 +114,11 @@ const SearchBar = ({ setQuery, setAddressQuery }) => {
                     onChange={(e) => setAddress(e.target.value)}
                     onKeyDown={handleNoAddress}
                 />
-            </StandaloneSearchBox> */}
+            </StandaloneSearchBox>
             <button onClick={handleClick}>
                 <i className="fas fa-search"></i>
             </button>
+            <AutoComplete />
         </div>
     );
 }
