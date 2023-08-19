@@ -4,7 +4,7 @@ const AutoComplete = () => {
     const autoCompleteRef = useRef();
     const inputRef = useRef();
     const options = {
-        componentRestrictions: { country: "ng" },
+        componentRestrictions: { country: "us" },
         fields: ["address_components", "geometry", "icon", "name"],
         types: ["establishment"]
     };
@@ -15,10 +15,10 @@ const AutoComplete = () => {
         );
     }, []);
     return (
-        <div>
-            <label>enter address :</label>
-            <input ref={inputRef} />
-        </div>
+        <input 
+            ref={inputRef}
+            placeholder="Address, City, State or Zipcode"
+        />
     );
 };
 

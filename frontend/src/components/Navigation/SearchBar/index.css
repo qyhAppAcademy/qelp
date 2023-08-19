@@ -8,16 +8,16 @@ nav .search-bar {
     flex-grow: 2;
 }
 
-nav .search-bar > div {
+/* nav .search-bar > div {
     width: 100%;
     height: 100%;
     overflow: hidden;
-}
+} */
 
 nav .search-bar input {
     width: 100%;
     height: 100%;
-    vertical-align: top;
+    /* vertical-align: top; */
     padding: 0 0 0 0.75vw;
     font-size: 1vw;
     outline: none;

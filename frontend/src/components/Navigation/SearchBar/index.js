@@ -93,17 +93,15 @@ const SearchBar = ({ setQuery, setAddressQuery }) => {
 
     return (
         <div className="search-bar">
-            <div>
-                <input
-                    type="text"
-                    placeholder="Business Name or Category"
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
-                    onKeyDown={handleKeyDown}
-                />
-            </div>
+            <input
+                type="text"
+                placeholder="Business Name or Category"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                onKeyDown={handleKeyDown}
+            />
             <span></span>
-            <StandaloneSearchBox
+            {/* <StandaloneSearchBox
                 onLoad={ref => inputRef.current = ref}
                 onPlacesChanged={handlePlaceChanged}
             >
@@ -114,11 +112,11 @@ const SearchBar = ({ setQuery, setAddressQuery }) => {
                     onChange={(e) => setAddress(e.target.value)}
                     onKeyDown={handleNoAddress}
                 />
-            </StandaloneSearchBox>
+            </StandaloneSearchBox> */}
+            <AutoComplete />
             <button onClick={handleClick}>
                 <i className="fas fa-search"></i>
             </button>
-            <AutoComplete />
         </div>
     );
 }
