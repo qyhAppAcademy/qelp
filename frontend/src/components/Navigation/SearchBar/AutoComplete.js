@@ -1,30 +1,26 @@
 import { useRef, useEffect } from "react";
-import useExternalScripts from "../../../hooks/useExternalScripts";
 
-const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
-const GOOGLE_API_SCRIPTS = {
-    url: `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}&callback=initMap&libraries=places&v=weekly`
-};
+const WASHINGTON_SQUARE_PARK = {
+    lat: 40.730824,
+    lng: -73.997330
+}
+const BOUNDS_OFFSET = 0.2;
 
 const Autocomplete = () => {
-    useExternalScripts(GOOGLE_API_SCRIPTS);
     let autocomplete;
-    const center = { lat: 40.689362, lng: -73.986638 };
-    const defaultBounds = {
-        north: center.lat + 0.2,
-        south: center.lat - 0.2,
-        east: center.lng + 0.2,
-        west: center.lng - 0.2,
+    
+    const bounds = {
+        north:  WASHINGTON_SQUARE_PARK.lat + BOUNDS_OFFSET,
+        south:  WASHINGTON_SQUARE_PARK.lat - BOUNDS_OFFSET,
+        east:   WASHINGTON_SQUARE_PARK.lng + BOUNDS_OFFSET,
+        west:   WASHINGTON_SQUARE_PARK.lng - BOUNDS_OFFSET,
     };
-    const countryRestrict = { 
-        country: "us" 
-    };
+
     const options = {
-        bounds: defaultBounds,
+        bounds: bounds,
+        strictBounds: true,
         // types: ["(cities)"],
-        componentRestrictions: countryRestrict,
-        fields: ["address_components", "geometry", "icon", "name"],
-        strictBounds: true
+        fields: ["address_components", "geometry", "icon", "name"]
     };
 
     window.initMap = function () {
