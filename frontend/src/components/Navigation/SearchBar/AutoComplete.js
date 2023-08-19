@@ -1,26 +1,29 @@
 import { useRef, useEffect } from "react";
 
-const WASHINGTON_SQUARE_PARK = {
-    lat: 40.730824,
-    lng: -73.997330
+const CENTER = {
+    lat: 40.689354,
+    lng: -73.986571
 }
-const BOUNDS_OFFSET = 0.2;
+const OFFSET = 0.01;
+const TYPES = ['bakery'];
+// const TYPES = ['cafe', 'bar', 'bakery', 'restaurant'];
+const FIELDS = ['geometry'];
 
 const Autocomplete = () => {
     let autocomplete;
     
-    const bounds = {
-        north:  WASHINGTON_SQUARE_PARK.lat + BOUNDS_OFFSET,
-        south:  WASHINGTON_SQUARE_PARK.lat - BOUNDS_OFFSET,
-        east:   WASHINGTON_SQUARE_PARK.lng + BOUNDS_OFFSET,
-        west:   WASHINGTON_SQUARE_PARK.lng - BOUNDS_OFFSET,
+    const locationRestriction = {
+        east:   CENTER.lng + OFFSET,
+        north:  CENTER.lat + OFFSET,
+        south:  CENTER.lat - OFFSET,
+        west:   CENTER.lng - OFFSET,
     };
 
     const options = {
-        bounds: bounds,
+        LocationRestriction: locationRestriction,
         strictBounds: true,
-        // types: ["(cities)"],
-        fields: ["address_components", "geometry", "icon", "name"]
+        types: TYPES,
+        fields: FIELDS
     };
 
     window.initMap = function () {
