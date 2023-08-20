@@ -1,12 +1,12 @@
 import { useRef, useEffect } from "react";
 
 const CENTER = {
-    lat: 40.689354,
-    lng: -73.986571
+    lat: 40.662,
+    lng: -73.969
 }
-const OFFSET = 0.016;
+const OFFSET = 0.048;
 const TYPES = ['address'];
-const FIELDS = ['formatted_address'];
+const FIELDS = ['formatted_address', 'geometry'];
 
 const Autocomplete = () => {
     let autocomplete;
