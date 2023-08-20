@@ -26,25 +26,24 @@ const Autocomplete = () => {
         types: TYPES
     };
 
-    const enableAutocomplete = (google) => {
-        autocompleteRef.current = new google.maps.places.Autocomplete(
-            inputRef.current,
-            options
-        );
+    const enableAutocomplete = () => {
+        if (window.google) {
+            autocompleteRef.current = new window.google.maps.places.Autocomplete(
+                inputRef.current,
+                options
+            );
+        }
     }
 
     window.initMap = function () {
-        // JS API is loaded and available
         console.log("loaded");
-        enableAutocomplete(window.google);
+        enableAutocomplete();
     };
 
     useEffect(() => {
         console.log("rendered");
-        if(window.google) {
-            enableAutocomplete(window.google);
-        }
-    })
+        enableAutocomplete();
+    }, []);
 
     return (
         <input
