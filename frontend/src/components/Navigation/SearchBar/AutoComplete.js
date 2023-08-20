@@ -9,7 +9,8 @@ const TYPES = ['address'];
 const FIELDS = ['formatted_address', 'geometry'];
 
 const Autocomplete = () => {
-    let autocomplete;
+    const autocompleteRef = useRef();
+    const inputRef = useRef();
     
     const bounds = {
         east:   CENTER.lng + OFFSET,
@@ -25,19 +26,29 @@ const Autocomplete = () => {
         types: TYPES
     };
 
+    const enableAutocomplete = (google) => {
+        autocompleteRef.current = new google.maps.places.Autocomplete(
+            inputRef.current,
+            options
+        );
+    }
+
     window.initMap = function () {
         // JS API is loaded and available
         console.log("loaded");
-        const google = window.google;
-        autocomplete = new google.maps.places.Autocomplete(
-            document.getElementById("autocomplete"),
-            options
-        );
+        enableAutocomplete(window.google);
     };
+
+    useEffect(() => {
+        console.log("rendered");
+        if(window.google) {
+            enableAutocomplete(window.google);
+        }
+    })
 
     return (
         <input
-            id="autocomplete"
+            ref={inputRef}
             placeholder="Street or Address within Downtown Brooklyn, Brooklyn, NY"
             type="text"
         />
