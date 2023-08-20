@@ -4,10 +4,9 @@ const CENTER = {
     lat: 40.689354,
     lng: -73.986571
 }
-const OFFSET = 0.01;
-const TYPES = ['bakery'];
-// const TYPES = ['cafe', 'bar', 'bakery', 'restaurant'];
-const FIELDS = ['geometry'];
+const OFFSET = 0.016;
+const TYPES = ['address'];
+const FIELDS = ['formatted_address'];
 
 const Autocomplete = () => {
     let autocomplete;
@@ -39,7 +38,7 @@ const Autocomplete = () => {
     return (
         <input
             id="autocomplete"
-            placeholder="Address, City, State or Zipcode"
+            placeholder="Street or Address within Downtown Brooklyn, Brooklyn, NY"
             type="text"
         />
     );
