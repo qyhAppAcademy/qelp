@@ -32,6 +32,10 @@ const Autocomplete = () => {
                 inputRef.current,
                 options
             );
+            autocompleteRef.current.addListener("place_changed", async function() {
+                const place = await autocompleteRef.current.getPlace();
+                console.log(place);
+            });
         }
     }
 
@@ -48,7 +52,7 @@ const Autocomplete = () => {
     return (
         <input
             ref={inputRef}
-            placeholder="Street or Address within Downtown Brooklyn, Brooklyn, NY"
+            placeholder="Autocomplete"
             type="text"
         />
     );
