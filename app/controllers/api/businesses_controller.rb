@@ -5,8 +5,10 @@ class Api::BusinessesController < ApplicationController
     end
 
     def find_by_geocode
-        @businesses = Business.find(params[:lat], params[:lng])
-        render 'api/businesses/find_by_geocode'
+        # @businesses = Business.find(params[:lat], params[:lng])
+        # render 'api/businesses/find_by_geocode'
+        render plain: "lat: #{params[:lat]} lng: #{params[:lng]}"
+        # puts "Hello World"
     end
 
     def show

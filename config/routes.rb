@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create, :update, :destroy, :index]
   end
 
+  get '/api/businesses/find_by_geocode/:lat/:lng', to: 'api/businesses#find_by_geocode'
   get '*path', to: "static_pages#frontend_index"
   
 end
