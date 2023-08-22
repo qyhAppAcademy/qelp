@@ -4,14 +4,14 @@ class Api::BusinessesController < ApplicationController
         render 'api/businesses/index'
     end
 
-    def find_by_geocode
+    def geocode
         # @businesses = Business.find(params[:lat], params[:lng])
-        # render 'api/businesses/find_by_geocode'
-        @businesses = Business
-            .where(lat: [params[:lat] - 0.016, params[:lat] + 0.016])
-            .where(lng: [params[:lng] - 0.016, params[:lng] + 0.016])
-            .limit(3)
-        render 'api/businesses/index'
+        # @businesses = Business
+        #     .where(lat: [40 - 0.016, 40 + 0.016])
+        #     .where(lng: [70 - 0.016, 70 + 0.016])
+        #     .limit(3)
+        @businesses = Business.all
+        render 'api/businesses/geocode'
     end
 
     def show
