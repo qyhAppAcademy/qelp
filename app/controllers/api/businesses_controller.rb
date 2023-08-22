@@ -4,6 +4,11 @@ class Api::BusinessesController < ApplicationController
         render 'api/businesses/index'
     end
 
+    def find_by_geocode
+        @businesses = Business.find(params[:lat], params[:lng])
+        render 'api/businesses/find_by_geocode'
+    end
+
     def show
         @business = Business.find(params[:id])
         if @business

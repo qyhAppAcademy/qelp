@@ -13,7 +13,7 @@ export const fetchBusinesses = () => async (dispatch) => {
 export const fetchBusinessesByGeocode = (geocode) => async (dispatch) => {
     const response = await csrfFetch(`/api/businesses/${geocode}`);
     const data = await response.json();
-    dispatch(receiveBusiness(data.business));
+    dispatch(receiveBusinesses(data.businesses));
     return response;
 }
 
