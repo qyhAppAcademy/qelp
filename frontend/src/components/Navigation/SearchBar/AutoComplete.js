@@ -8,10 +8,7 @@ const OFFSET = 0.048;
 const TYPES = ['address'];
 const FIELDS = ['formatted_address', 'geometry'];
 
-const Autocomplete = () => {
-    const autocompleteRef = useRef();
-    const inputRef = useRef();
-    
+const Autocomplete = ({autocompleteRef, inputRef, address, setAddress, geocode, setGeocode}) => {
     const bounds = {
         east:   CENTER.lng + OFFSET,
         north:  CENTER.lat + OFFSET,
@@ -32,9 +29,13 @@ const Autocomplete = () => {
                 inputRef.current,
                 options
             );
-            autocompleteRef.current.addListener("place_changed", async function() {
+            autocompleteRef.current.addListener("place_changed", async () => {
                 const place = await autocompleteRef.current.getPlace();
                 console.log(place);
+                if (place) {
+                    setAddress(place.formatted_address);
+                    setGeocode(place.geometry.location);
+                } 
             });
         }
     }
@@ -52,8 +53,13 @@ const Autocomplete = () => {
     return (
         <input
             ref={inputRef}
-            placeholder="Autocomplete"
             type="text"
+            placeholder="Autocomplete"
+            value={address}
+            onChange={(e) => {
+                setAddress(e.target.value);
+                setGeocode(null);
+            }}
         />
     );
 };

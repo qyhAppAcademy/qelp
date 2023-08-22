@@ -7,6 +7,7 @@ import "./index.css";
 const SearchBar = ({ setQuery, setAddressQuery }) => {
     const [category, setCategory] = useState("");
     const [address, setAddress] = useState("");
+    const [geocode, setGeocode] = useState(null);
     const history = useHistory();
     const inputRef = useRef();
 
@@ -33,14 +34,20 @@ const SearchBar = ({ setQuery, setAddressQuery }) => {
         button.appendChild(circle);
     }
 
-    const handleClick = (e) => {
-        e.preventDefault();
-        createRipple(e);
+    const search = (category, address) => {
         setQuery(category);
         setAddressQuery(address);
         setCategory("");
         setAddress("");
         history.push("/businesses");
+    }
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        createRipple(e);
+        // search(category, address);
+        console.log(address);
+        console.log(geocode);
     }
 
     const handleKeyDown = (e) => {
@@ -82,6 +89,9 @@ const SearchBar = ({ setQuery, setAddressQuery }) => {
         }
     }
 
+    const autocompleteRef = useRef();
+    const addressRef = useRef();
+
     return (
         <div className="search-bar">
             <input
@@ -104,7 +114,14 @@ const SearchBar = ({ setQuery, setAddressQuery }) => {
                     onKeyDown={handleNoAddress}
                 />
             </StandaloneSearchBox> */}
-            <Autocomplete />
+            <Autocomplete
+                autocompleteRef={autocompleteRef}
+                inputRef={addressRef}
+                address={address}
+                setAddress={setAddress}
+                geocode={geocode}
+                setGeocode={setGeocode}
+            />
             <button onClick={handleClick}>
                 <i className="fas fa-search"></i>
             </button>

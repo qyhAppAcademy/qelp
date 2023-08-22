@@ -10,6 +10,13 @@ export const fetchBusinesses = () => async (dispatch) => {
     return response;
 };
 
+export const fetchBusinessesByGeocode = (geocode) => async (dispatch) => {
+    const response = await csrfFetch(`/api/businesses/${geocode}`);
+    const data = await response.json();
+    dispatch(receiveBusiness(data.business));
+    return response;
+}
+
 export const fetchBusiness = (businessId) => async (dispatch) => {
     const response = await csrfFetch(`/api/businesses/${businessId}`);
     const data = await response.json();
