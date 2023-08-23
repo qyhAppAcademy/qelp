@@ -4,7 +4,7 @@ import { StandaloneSearchBox } from "@react-google-maps/api";
 import Autocomplete from "./Autocomplete.js";
 import "./index.css";
 
-const SearchBar = ({ setQuery, setAddressQuery }) => {
+const SearchBar = ({ setQuery, setAddressQuery, setGeocodeQuery }) => {
     const [category, setCategory] = useState("");
     const [address, setAddress] = useState("");
     const [geocode, setGeocode] = useState(null);
@@ -34,9 +34,14 @@ const SearchBar = ({ setQuery, setAddressQuery }) => {
         button.appendChild(circle);
     }
 
-    const search = (category, address) => {
+    const search = (category, address, geocode) => {
         setQuery(category);
-        setAddressQuery(address);
+        if(geocode) {
+
+        }
+        else {
+            setAddressQuery(address);
+        }
         setCategory("");
         setAddress("");
         history.push("/businesses");
@@ -45,9 +50,9 @@ const SearchBar = ({ setQuery, setAddressQuery }) => {
     const handleClick = (e) => {
         e.preventDefault();
         createRipple(e);
-        // search(category, address);
-        console.log(address);
-        console.log(geocode);
+        search(category, address, geocode);
+        // console.log(address);
+        // console.log(geocode);
     }
 
     const handleKeyDown = (e) => {

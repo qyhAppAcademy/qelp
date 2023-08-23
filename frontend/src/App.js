@@ -20,6 +20,7 @@ const App = () => {
 
   const [query, setQuery] = useState("");
   const [addressQuery, setAddressQuery] = useState("");
+  const [geocodeQuery, setGeocodeQuery] = useState(null);
 
   return (
     <>
@@ -32,13 +33,13 @@ const App = () => {
         </Route>
         <Route exact path="/">
           <div className="home-page">
-            <Navigation setQuery={setQuery} setAddressQuery={setAddressQuery} />
+            <Navigation setQuery={setQuery} setAddressQuery={setAddressQuery} setGeocodeQuery={setGeocodeQuery} />
             {/* <Home /> */}
           </div>
         </Route>
         <Route exact path="/businesses">
-          <Navigation setQuery={setQuery} setAddressQuery={setAddressQuery} />
-          <BusinessIndexPage query={query} addressQuery={addressQuery} />
+          <Navigation setQuery={setQuery} setAddressQuery={setAddressQuery} setGeocodeQuery={setGeocodeQuery} />
+          <BusinessIndexPage query={query} addressQuery={addressQuery} setGeocodeQuery={setGeocodeQuery} />
         </Route>
         <Route exact path="/businesses/:businessId">
           <Navigation setQuery={setQuery} setAddressQuery={setAddressQuery} />

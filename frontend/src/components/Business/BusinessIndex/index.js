@@ -1,17 +1,17 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchBusinesses, getBusinesses } from "../../../store/businesses";
+import { fetchBusinesses, fetchBusinessesByGeocode, getBusinesses } from "../../../store/businesses";
 import Item from "./Item.js";
 import { searchByName, searchByCategory, searchByAddress } from "./search";
 import MapContainer from "./MapContainer";
 import "./index.css";
 
-const BusinessIndexPage = ({ query, addressQuery }) => {
+const BusinessIndexPage = ({ query, addressQuery, geocodeQuery }) => {
     const businesses = useSelector(getBusinesses());
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(fetchBusinesses());
-    }, [dispatch]);
+        dispatch(fetchBusinessesByGeocode(geocodeQuery));
+    }, [dispatch, geocodeQuery]);
     
     if (businesses.length === 0) {
         return null;
