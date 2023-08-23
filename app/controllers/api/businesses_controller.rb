@@ -1,4 +1,6 @@
 class Api::BusinessesController < ApplicationController
+    skip_before_action :verify_authenticity_token, only: :geocode
+
     def index 
         @businesses = Business.all
         render 'api/businesses/index'
@@ -7,11 +9,11 @@ class Api::BusinessesController < ApplicationController
     def geocode
         # @businesses = Business.find(params[:lat], params[:lng])
         # @businesses = Business
-        #     .where(lat: [40 - 0.016, 40 + 0.016])
-        #     .where(lng: [70 - 0.016, 70 + 0.016])
+        #     .where(lat: [params[:lat] - 0.016, params[:lat] + 0.016])
+        #     .where(lng: [params[:lng] - 0.016, params[:lng] + 0.016])
         #     .limit(3)
         @businesses = Business.all
-        render 'api/businesses/geocode'
+        render 'api/businesses/index'
     end
 
     def show

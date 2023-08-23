@@ -6,11 +6,10 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resource :session, only: [:show, :create, :destroy]
     resources :users, only: [:create]
-    resources :businesses, only: [:index, :find_by_geocode, :show]
+    resources :businesses, only: [:index, :show]
+    post '/businesses/geocode', to: 'businesses#geocode'
     resources :reviews, only: [:create, :update, :destroy, :index]
   end
-
-  get '/api/businesses/geocode/:lat/:lng', to: 'api/businesses#geocode'
 
   get '*path', to: "static_pages#frontend_index"
 end
