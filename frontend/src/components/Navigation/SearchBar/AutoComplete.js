@@ -34,7 +34,10 @@ const Autocomplete = ({autocompleteRef, inputRef, address, setAddress, geocode, 
                 console.log(place);
                 if (place) {
                     setAddress(place.formatted_address);
-                    setGeocode(place.geometry.location);
+                    setGeocode({
+                        lat: place.geometry.location.lat(),
+                        lng: place.geometry.location.lng()
+                    });
                 } 
             });
         }
