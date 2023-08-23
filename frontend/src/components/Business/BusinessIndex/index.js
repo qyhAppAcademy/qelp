@@ -6,9 +6,11 @@ import { searchByName, searchByCategory, searchByAddress } from "./search";
 import MapContainer from "./MapContainer";
 import "./index.css";
 
-const BusinessIndexPage = ({ query, addressQuery }) => {
+const BusinessIndexPage = ({ keywordQuery, addressQuery }) => {
     const businesses = useSelector(getBusinesses());
+
     const dispatch = useDispatch();
+    
     useEffect(() => {
         dispatch(fetchBusinesses());
     }, [dispatch]);
@@ -17,14 +19,14 @@ const BusinessIndexPage = ({ query, addressQuery }) => {
         return null;
     }
 
-    const businessItems = (query === "" && addressQuery === "") ? 
+    const businessItems = (keywordQuery === "" && addressQuery === "") ? 
         businesses.map((business, index) => (
             <Item key={business.id} idx={index} business={business} />
         )) :
         businesses.filter(business => {
             return (
-                (searchByName(business.name, query) || 
-                    searchByCategory(business.category, query, ",")) &&
+                (searchByName(business.name, keywordQuery) || 
+                    searchByCategory(business.category, keywordQuery, ",")) &&
                 searchByAddress(business, addressQuery)
             );
         }).map((business, index) => (
@@ -44,8 +46,8 @@ const BusinessIndexPage = ({ query, addressQuery }) => {
             <div className="business-search-results-google-map">
                 <MapContainer businesses={businesses.filter(business => {
                     return (
-                        (searchByName(business.name, query) || 
-                            searchByCategory(business.category, query, ",")) &&
+                        (searchByName(business.name, keywordQuery) || 
+                            searchByCategory(business.category, keywordQuery, ",")) &&
                         searchByAddress(business, addressQuery)
                     );
                 })}/>

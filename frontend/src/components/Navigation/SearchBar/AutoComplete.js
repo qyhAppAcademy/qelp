@@ -32,13 +32,11 @@ const Autocomplete = ({addressRef, autocompleteRef, address, setAddress}) => {
             autocompleteRef.current.addListener("place_changed", async () => {
                 const place = await autocompleteRef.current.getPlace();
                 console.log(place);
-                if (place) {
-                    setAddress({
-                        val: place.formatted_address,
-                        lat: place.geometry.location.lat(),
-                        lng: place.geometry.location.lng()
-                    });
-                } 
+                setAddress({
+                    val: place.formatted_address,
+                    lat: place.geometry.location.lat(),
+                    lng: place.geometry.location.lng()
+                });
             });
         }
     }
@@ -58,9 +56,13 @@ const Autocomplete = ({addressRef, autocompleteRef, address, setAddress}) => {
             ref={addressRef}
             type="text"
             placeholder="Address"
-            value={address}
+            value={address.val}
             onChange={(e) => {
-                setAddress(e.target.value);
+                setAddress({
+                    val: e.target.value,
+                    lat: null,
+                    lng: null
+                });
             }}
         />
     );
