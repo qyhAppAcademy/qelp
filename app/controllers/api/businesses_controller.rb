@@ -7,16 +7,12 @@ class Api::BusinessesController < ApplicationController
     end
 
     def geocode
-        # @businesses = Business.find(params[:lat], params[:lng])
-        # @latFloor = params[:lat] - 0.016
-        # @latCeiling = params[:lat] + 0.016
+        @offset = 0.016
         @businesses = Business
-            .where(lat: params[:lat].to_d)
-            # .where(lng: [params[:lng].to_d - 0.016, params[:lng].to_d + 0.016])
-            # .limit(3)
-        # @businesses = Business.all
+            .where(lat: (params[:lat].to_d - @offset)..(params[:lat].to_d + @offset))
+            .where(lng: (params[:lng].to_d - @offset)..(params[:lng].to_d + @offset))
+            .limit(3)
         render 'api/businesses/index'
-        # render plain: params[:lat].to_d
     end
 
     def show
