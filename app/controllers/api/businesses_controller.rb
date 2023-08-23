@@ -1,17 +1,22 @@
 class Api::BusinessesController < ApplicationController
-    skip_before_action :verify_authenticity_token, only: :geocode
+    skip_before_action :verify_authenticity_token, only: :index_by_address
 
-    def index 
+    def index
         @businesses = Business.all
         render 'api/businesses/index'
     end
 
-    def geocode
-        @offset = 0.016
-        @businesses = Business
-            .where(lat: (params[:lat].to_d - @offset)..(params[:lat].to_d + @offset))
-            .where(lng: (params[:lng].to_d - @offset)..(params[:lng].to_d + @offset))
-            .limit(3)
+    def index_by_address
+        if params.include?(:lat) and params.include?(:lng)
+            offset = 0.016
+            limit = 10
+            @businesses = Business
+                .where(lat: (params[:lat].to_d - offset)..(params[:lat].to_d + offset))
+                .where(lng: (params[:lng].to_d - offset)..(params[:lng].to_d + offset))
+                .limit(limit)
+        else
+            @businesses = Business.all
+        end
         render 'api/businesses/index'
     end
 

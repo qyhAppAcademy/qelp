@@ -10,8 +10,15 @@ export const fetchBusinesses = () => async (dispatch) => {
     return response;
 };
 
-export const fetchBusinessesByGeocode = (geocode) => async (dispatch) => {
-    const response = await csrfFetch(`/api/businesses/geocode?lat=${geocode.lat}&lng=${geocode.lng}`);
+export const fetchBusinessesByAddress = (address) => async (dispatch) => {
+    let params = "";
+    if (address.val !== null) {
+        params += `val=${address.val}`;
+    }
+    if (address.lat !== null && address.lng !== null) {
+        params += `&lat=${address.lat}&lng=${address.lng}`;
+    }
+    const response = await csrfFetch(`/api/businesses/address?${params}`);
     const data = await response.json();
     dispatch(receiveBusinesses(data.businesses));
     return response;
