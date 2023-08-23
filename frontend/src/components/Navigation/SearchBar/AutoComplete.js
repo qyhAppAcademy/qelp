@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useEffect } from "react";
 
 const CENTER = {
     lat: 40.662,
@@ -8,7 +8,7 @@ const OFFSET = 0.048;
 const TYPES = ['address'];
 const FIELDS = ['formatted_address', 'geometry'];
 
-const Autocomplete = ({autocompleteRef, inputRef, address, setAddress, geocode, setGeocode}) => {
+const Autocomplete = ({addressRef, autocompleteRef, address, setAddress}) => {
     const bounds = {
         east:   CENTER.lng + OFFSET,
         north:  CENTER.lat + OFFSET,
@@ -26,15 +26,15 @@ const Autocomplete = ({autocompleteRef, inputRef, address, setAddress, geocode, 
     const enableAutocomplete = () => {
         if (window.google) {
             autocompleteRef.current = new window.google.maps.places.Autocomplete(
-                inputRef.current,
+                addressRef.current,
                 options
             );
             autocompleteRef.current.addListener("place_changed", async () => {
                 const place = await autocompleteRef.current.getPlace();
                 console.log(place);
                 if (place) {
-                    setAddress(place.formatted_address);
-                    setGeocode({
+                    setAddress({
+                        val: place.formatted_address,
                         lat: place.geometry.location.lat(),
                         lng: place.geometry.location.lng()
                     });
@@ -55,13 +55,12 @@ const Autocomplete = ({autocompleteRef, inputRef, address, setAddress, geocode, 
 
     return (
         <input
-            ref={inputRef}
+            ref={addressRef}
             type="text"
-            placeholder="Autocomplete"
+            placeholder="Address"
             value={address}
             onChange={(e) => {
                 setAddress(e.target.value);
-                setGeocode(null);
             }}
         />
     );

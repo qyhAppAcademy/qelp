@@ -1,15 +1,26 @@
 import { useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
-import { StandaloneSearchBox } from "@react-google-maps/api";
-import Autocomplete from "./Autocomplete.js";
+import useExternalScripts from "../../../hooks/useExternalScripts";
+import Autocomplete from "./Autocomplete";
 import "./index.css";
+import { StandaloneSearchBox } from "@react-google-maps/api";
 
-const SearchBar = ({ setQuery, setAddressQuery, setGeocodeQuery }) => {
-    const [category, setCategory] = useState("");
+const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
+const GOOGLE_API_SCRIPTS = {
+    url: `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}&callback=initMap&libraries=places&v=weekly`
+};
+
+const SearchBar = ({ setKeywordQuery, setAddressQuery }) => {
+    useExternalScripts(GOOGLE_API_SCRIPTS);
+
+    const [keyword, setKeyword] = useState("");
     const [address, setAddress] = useState("");
-    const [geocode, setGeocode] = useState(null);
+    
     const history = useHistory();
-    const inputRef = useRef();
+    
+    const keywordRef = useRef();
+    const addressRef = useRef();
+    const autocompleteRef = useRef();
 
     const createRipple = (event) => {
         const button = event.currentTarget;
@@ -34,15 +45,15 @@ const SearchBar = ({ setQuery, setAddressQuery, setGeocodeQuery }) => {
         button.appendChild(circle);
     }
 
-    const search = (category, address, geocode) => {
-        setQuery(category);
-        if(geocode) {
+    const search = (keyword, address) => {
+        setKeywordQuery(keyword);
+        if (address.lat !== null && address.lng !== null) {
 
         }
         else {
-            setAddressQuery(address);
+            setAddressQuery(address.val);
         }
-        setCategory("");
+        setKeyword("");
         setAddress("");
         history.push("/businesses");
     }
@@ -50,61 +61,57 @@ const SearchBar = ({ setQuery, setAddressQuery, setGeocodeQuery }) => {
     const handleClick = (e) => {
         e.preventDefault();
         createRipple(e);
-        search(category, address, geocode);
-        // console.log(address);
-        // console.log(geocode);
+        search(keyword, address);
     }
 
-    const handleKeyDown = (e) => {
-        if(e.key === 'Enter') {
-            setQuery(category);
-            setAddressQuery(address);
-            setCategory("");
-            setAddress("");
-            history.push("/businesses");
-        }
-    }
+    // const handleKeyDown = (e) => {
+    //     if(e.key === 'Enter') {
+    //         setQuery(category);
+    //         setAddressQuery(address);
+    //         setCategory("");
+    //         setAddress("");
+    //         history.push("/businesses");
+    //     }
+    // }
 
-    const handlePlaceChanged = () => {
-        const [place] = inputRef.current.getPlaces();
-        if (place) {
-            setQuery(category);
-            setAddressQuery(place.formatted_address);
-            setCategory("");
-            setAddress("");
-            // console.log(place.formatted_address);
-            // console.log(place.geometry.location.lat());
-            // console.log(place.geometry.location.lng());
-        }
-        else {
-            setQuery(category);
-            setAddressQuery("");
-            setCategory("");
-            setAddress("");
-        }
-        history.push("/businesses");
-    }
+    // const handlePlaceChanged = () => {
+    //     const [place] = inputRef.current.getPlaces();
+    //     if (place) {
+    //         setQuery(category);
+    //         setAddressQuery(place.formatted_address);
+    //         setCategory("");
+    //         setAddress("");
+    //         // console.log(place.formatted_address);
+    //         // console.log(place.geometry.location.lat());
+    //         // console.log(place.geometry.location.lng());
+    //     }
+    //     else {
+    //         setQuery(category);
+    //         setAddressQuery("");
+    //         setCategory("");
+    //         setAddress("");
+    //     }
+    //     history.push("/businesses");
+    // }
 
-    const handleNoAddress = (e) => {
-        if (e.key === 'Enter' && address === "") {
-            setQuery(category);
-            setAddressQuery("");
-            setCategory("");
-            history.push("/businesses");
-        }
-    }
-
-    const autocompleteRef = useRef();
-    const addressRef = useRef();
+    // const handleNoAddress = (e) => {
+    //     if (e.key === 'Enter' && address === "") {
+    //         setQuery(category);
+    //         setAddressQuery("");
+    //         setCategory("");
+    //         history.push("/businesses");
+    //     }
+    // }
 
     return (
         <div className="search-bar">
             <input
+                ref={keywordRef}
                 type="text"
-                placeholder="Business Name or Category"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                onKeyDown={handleKeyDown}
+                placeholder="Keyword"
+                value={keyword}
+                onChange={(e) => setKeyword(e.target.value)}
+                // onKeyDown={handleKeyDown}
             />
             <span></span>
             {/* <StandaloneSearchBox
@@ -120,12 +127,10 @@ const SearchBar = ({ setQuery, setAddressQuery, setGeocodeQuery }) => {
                 />
             </StandaloneSearchBox> */}
             <Autocomplete
+                addressRef={addressRef}
                 autocompleteRef={autocompleteRef}
-                inputRef={addressRef}
                 address={address}
                 setAddress={setAddress}
-                geocode={geocode}
-                setGeocode={setGeocode}
             />
             <button onClick={handleClick}>
                 <i className="fas fa-search"></i>

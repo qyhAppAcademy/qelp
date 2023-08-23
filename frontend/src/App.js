@@ -8,19 +8,17 @@ import BusinessShowPage from "./components/Business/BusinessShow";
 import Home from "./components/Home";
 import './fontawesome/css/all.min.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import useExternalScripts from "./hooks/useExternalScripts";
+// import useExternalScripts from "./hooks/useExternalScripts";
 
-const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
-const GOOGLE_API_SCRIPTS = {
-  url: `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}&callback=initMap&libraries=places&v=weekly`
-};
+// const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
+// const GOOGLE_API_SCRIPTS = {
+//   url: `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}&callback=initMap&libraries=places&v=weekly`
+// };
 
 const App = () => {
-  useExternalScripts(GOOGLE_API_SCRIPTS);
-
-  const [query, setQuery] = useState("");
+  // useExternalScripts(GOOGLE_API_SCRIPTS);
+  const [keywordQuery, setKeywordQuery] = useState("");
   const [addressQuery, setAddressQuery] = useState("");
-  const [geocodeQuery, setGeocodeQuery] = useState(null);
 
   return (
     <>
@@ -33,16 +31,16 @@ const App = () => {
         </Route>
         <Route exact path="/">
           <div className="home-page">
-            <Navigation setQuery={setQuery} setAddressQuery={setAddressQuery} setGeocodeQuery={setGeocodeQuery} />
+            <Navigation setKeywordQuery={setKeywordQuery} setAddressQuery={setAddressQuery} />
             {/* <Home /> */}
           </div>
         </Route>
         <Route exact path="/businesses">
-          <Navigation setQuery={setQuery} setAddressQuery={setAddressQuery} setGeocodeQuery={setGeocodeQuery} />
-          <BusinessIndexPage query={query} addressQuery={addressQuery} setGeocodeQuery={setGeocodeQuery} />
+          <Navigation setKeywordQuery={setKeywordQuery} setAddressQuery={setAddressQuery} />
+          <BusinessIndexPage keywordQuery={keywordQuery} addressQuery={addressQuery} />
         </Route>
         <Route exact path="/businesses/:businessId">
-          <Navigation setQuery={setQuery} setAddressQuery={setAddressQuery} />
+          <Navigation setKeywordQuery={setKeywordQuery} setAddressQuery={setAddressQuery} />
           <BusinessShowPage />
         </Route>
       </Switch>

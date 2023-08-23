@@ -9,7 +9,7 @@ const GITHUB = "https://github.com/qyhAppAcademy";
 const LINKEDIN = "https://www.linkedin.com/in/qiaoyanghan";
 const AWS = "https://qelp-seeds.s3.amazonaws.com/icons";
 
-const Navigation = ({ setQuery, setAddressQuery }) => {
+const Navigation = ({ setKeywordQuery, setAddressQuery }) => {
     const sessionUser = useSelector(state => state.session.user);
 
     let sessionLinks;
@@ -35,7 +35,7 @@ const Navigation = ({ setQuery, setAddressQuery }) => {
                 </NavLink>
             </div>
 
-            <SearchBar setQuery={setQuery} setAddressQuery={setAddressQuery} />
+            <SearchBar setKeywordQuery={setKeywordQuery} setAddressQuery={setAddressQuery} />
 
             <div>
                 <a className="icon" href={`${GITHUB}`} target="_blank" rel="noreferrer">
