@@ -11,9 +11,13 @@ export const fetchBusinesses = () => async (dispatch) => {
 };
 
 export const fetchBusinessesByAddress = (address) => async (dispatch) => {
-    let params = `val=${address.val}`;
+    let params;
     if (address.lat !== null && address.lng !== null) {
-        params += `&lat=${address.lat}&lng=${address.lng}`;
+        params = `lat=${address.lat}&lng=${address.lng}`;
+    }
+    else {
+        const addressInArray = address.val.split(",").map(part => part.trim());
+        params = `address=${addressInArray[0]}&city=${addressInArray[1]}`;
     }
     const response = await csrfFetch(`/api/businesses/address?${params}`, {
         method: "POST"

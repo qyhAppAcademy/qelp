@@ -7,8 +7,7 @@ class Api::BusinessesController < ApplicationController
     end
 
     def index_by_address
-        if params.include?(:lat) and !params[:lat].nil? and params[:lat] != 0 and
-            params.include?(:lng) and !params[:lng].nil? and params[:lng] != 0
+        if params.has_key?(:lat) && params.has_key?(:lng)
             offset = 0.016
             limit = 10
             @businesses = Business
