@@ -8,7 +8,7 @@ const OFFSET = 0.048;
 const TYPES = ['address'];
 const FIELDS = ['formatted_address', 'geometry'];
 
-const Autocomplete = ({addressRef, autocompleteRef, address, setAddress, setAutocompleted}) => {
+const Autocomplete = ({addressRef, autocompleteRef, address, setAddress, setReadyToSearch}) => {
     const bounds = {
         east:   CENTER.lng + OFFSET,
         north:  CENTER.lat + OFFSET,
@@ -37,7 +37,7 @@ const Autocomplete = ({addressRef, autocompleteRef, address, setAddress, setAuto
                     lat: place.geometry.location.lat(),
                     lng: place.geometry.location.lng()
                 });
-                setAutocompleted(true);
+                setReadyToSearch(true);
             });
         }
     }
@@ -54,6 +54,7 @@ const Autocomplete = ({addressRef, autocompleteRef, address, setAddress, setAuto
 
     return (
         <input
+            id="address-input"
             ref={addressRef}
             type="text"
             placeholder="Address"
@@ -64,7 +65,7 @@ const Autocomplete = ({addressRef, autocompleteRef, address, setAddress, setAuto
                     lat: null,
                     lng: null
                 });
-                setAutocompleted(false);
+                setReadyToSearch(false);
             }}
         />
     );
