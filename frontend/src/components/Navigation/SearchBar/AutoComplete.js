@@ -37,6 +37,11 @@ const Autocomplete = ({addressRef, autocompleteRef, address, setAddress}) => {
                     lat: place.geometry.location.lat(),
                     lng: place.geometry.location.lng()
                 });
+                const searchBtn = document.getElementsByClassName("search-bar")[0].lastChild;
+                searchBtn.removeAttribute('disabled');
+                searchBtn.addEventListener('onClick', () => {
+                    console.log("hello");
+                })
             });
         }
     }

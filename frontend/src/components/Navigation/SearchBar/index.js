@@ -127,7 +127,7 @@ const SearchBar = ({ setKeywordQuery, setAddressQuery }) => {
                 address={address}
                 setAddress={setAddress}
             />
-            <button onClick={handleClick}>
+            <button onClick={handleClick} disabled>
                 <i className="fas fa-search"></i>
             </button>
         </div>
