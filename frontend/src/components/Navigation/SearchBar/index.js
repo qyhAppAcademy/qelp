@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Autocomplete from "./Autocomplete";
 import "./index.css";
@@ -18,6 +18,10 @@ const SearchBar = ({ setKeywordQuery, setAddressQuery }) => {
     const keywordRef = useRef();
     const addressRef = useRef();
     const autocompleteRef = useRef();
+
+    useEffect(() => {
+        console.log(address);
+    }, [address]);
 
     const createRipple = (event) => {
         const button = event.currentTarget;
