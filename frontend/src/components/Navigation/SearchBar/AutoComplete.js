@@ -8,7 +8,7 @@ const OFFSET = 0.048;
 const TYPES = ['address'];
 const FIELDS = ['formatted_address', 'geometry'];
 
-const Autocomplete = ({addressRef, autocompleteRef, address, setAddress}) => {
+const Autocomplete = ({addressRef, autocompleteRef, address, setAddress, setAutocompleted}) => {
     const bounds = {
         east:   CENTER.lng + OFFSET,
         north:  CENTER.lat + OFFSET,
@@ -37,11 +37,7 @@ const Autocomplete = ({addressRef, autocompleteRef, address, setAddress}) => {
                     lat: place.geometry.location.lat(),
                     lng: place.geometry.location.lng()
                 });
-                const searchBtn = document.getElementsByClassName("search-bar")[0].lastChild;
-                searchBtn.removeAttribute('disabled');
-                searchBtn.addEventListener('onClick', () => {
-                    console.log("hello");
-                })
+                setAutocompleted(true);
             });
         }
     }
@@ -68,6 +64,7 @@ const Autocomplete = ({addressRef, autocompleteRef, address, setAddress}) => {
                     lat: null,
                     lng: null
                 });
+                setAutocompleted(false);
             }}
         />
     );

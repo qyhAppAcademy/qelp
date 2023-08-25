@@ -11,6 +11,7 @@ const SearchBar = ({ setKeywordQuery, setAddressQuery }) => {
         lat: null,
         lng: null
     });
+    const [autocompleted, setAutocompleted] = useState(false);
     
     const history = useHistory();
     
@@ -50,13 +51,16 @@ const SearchBar = ({ setKeywordQuery, setAddressQuery }) => {
             lat: null,
             lng: null
         });
+        setAutocompleted(false);
         history.push("/businesses");
     }
 
     const handleClick = (e) => {
         e.preventDefault();
-        createRipple(e);
-        search(keyword, address);
+        if(autocompleted) {
+            createRipple(e);
+            search(keyword, address);
+        }
     }
 
     // const handleKeyDown = (e) => {
@@ -126,8 +130,11 @@ const SearchBar = ({ setKeywordQuery, setAddressQuery }) => {
                 autocompleteRef={autocompleteRef}
                 address={address}
                 setAddress={setAddress}
+                setAutocompleted={setAutocompleted}
             />
-            <button onClick={handleClick} disabled>
+            <button
+                onClick={handleClick}
+            >
                 <i className="fas fa-search"></i>
             </button>
         </div>
