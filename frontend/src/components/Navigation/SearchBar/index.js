@@ -11,7 +11,7 @@ const SearchBar = ({ setKeywordQuery, setAddressQuery }) => {
         lat: null,
         lng: null
     });
-    const [readyToSearch, setReadyToSearch] = useState(true);
+    const [validToSearch, setValidToSearch] = useState(true);
     
     const history = useHistory();
     
@@ -51,13 +51,13 @@ const SearchBar = ({ setKeywordQuery, setAddressQuery }) => {
             lat: null,
             lng: null
         });
-        setReadyToSearch(false);
+        setValidToSearch(true);
         history.push("/businesses");
     }
 
     const handleClick = (e) => {
         e.preventDefault();
-        if(readyToSearch) {
+        if(validToSearch) {
             createRipple(e);
             search(keyword, address);
         }
@@ -131,9 +131,12 @@ const SearchBar = ({ setKeywordQuery, setAddressQuery }) => {
                 autocompleteRef={autocompleteRef}
                 address={address}
                 setAddress={setAddress}
-                setReadyToSearch={setReadyToSearch}
+                setValidToSearch={setValidToSearch}
             />
-            <button onClick={handleClick}>
+            <button
+                className={validToSearch ? "valid-to-search" : "invalid-to-search"}
+                onClick={handleClick}
+            >
                 <i className="fas fa-search"></i>
             </button>
         </div>
