@@ -49,8 +49,8 @@ const Autocomplete = ({addressRef, autocompleteRef, address, setAddress, setVali
 
     useEffect(() => {
         console.log("rendered");
-        console.log(address);
         enableAutocomplete();
+        console.log(address);
     }, []);
 
     return (
