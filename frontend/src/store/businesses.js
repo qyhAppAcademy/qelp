@@ -23,12 +23,13 @@ export const fetchBusinessesByQuery = (keywordQuery, addressQuery) => async (dis
         keyword: keywordQuery,
         address: addressQuery
     }
+    console.log(query);
     const response = await csrfFetch(`/api/businesses/query`, {
         method: "POST",
         body: JSON.stringify(query)
     });
     const data = await response.json();
-    dispatch(receiveBusinesses(data.businesses));
+    dispatch(receiveBusinesses(data.businesses ? data.businesses : {}));
     return response;
 }
 

@@ -9,8 +9,8 @@ class Api::BusinessesController < ApplicationController
     def query
         address = params[:address]
         if !address[:geo].nil?
-            lat = address[:geo][:lat].to_d
-            lng = address[:geo][:lng].to_d
+            lat = address[:geo][:lat]
+            lng = address[:geo][:lng]
             offset = 0.016
             limit = 10
             @businesses = Business
@@ -20,7 +20,6 @@ class Api::BusinessesController < ApplicationController
         else
             @businesses = Business.all
         end
-        puts params
         render 'api/businesses/index'
     end
 
