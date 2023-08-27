@@ -6,7 +6,7 @@ const CENTER = {
 }
 const OFFSET = 0.048;
 
-const AddressInput = ({ address, setAddress }) => {
+const AddressInput = ({ address, setAddress, search }) => {
     const addressRef = useRef();
     const autocompleteRef = useRef();
 
@@ -71,8 +71,8 @@ const AddressInput = ({ address, setAddress }) => {
                     val: e.target.value,
                     geo: null
                 });
-                console.log("AddressInput changed");
             }}
+            onKeyDown={search}
         />
     );
 };
