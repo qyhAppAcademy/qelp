@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { createElement, useRef } from "react";
 import { useHistory } from "react-router-dom";
 
 const SearchButton = ({ keyword, setKeyword,
@@ -9,32 +9,34 @@ const SearchButton = ({ keyword, setKeyword,
 
     const history = useHistory();
 
-    const createRipple = (event) => {
-        console.log(buttonRef.current);
-        const button = event.currentTarget;
+    const ripple = (event) => {
+        const button = buttonRef.current;
+
+        const ripples = button.getElementsByClassName("ripple");
+        for (const r of ripples) {
+            r.remove();
+        }
+
         const offsetTop = button.parentElement.offsetTop + button.offsetTop;
         const offsetLeft = button.parentElement.offsetLeft + button.offsetLeft;
 
-        const circle = document.createElement("span");
         const diameter = Math.max(button.clientWidth, button.clientHeight);
-        const radius = diameter / 2;
 
-        circle.style.width = circle.style.height = `${diameter}px`;
-        circle.style.top = `${event.clientY - offsetTop - radius}px`;
-        circle.style.left = `${event.clientX - offsetLeft - radius}px`;
+        const top = event.clientY - offsetTop - diameter / 2.0;
+        const left = event.clientX - offsetLeft - diameter / 2.0;
+
+        const circle = document.createElement("span");
         circle.classList.add("ripple");
-
-        const ripple = button.getElementsByClassName("ripple")[0];
-
-        if (ripple) {
-            ripple.remove();
-        }
+        circle.style.top = `${top}px`;
+        circle.style.left = `${left}px`;
+        circle.style.width = `${diameter}px`;
+        circle.style.height = `${diameter}px`;
 
         button.appendChild(circle);
     }
 
     const search = (keyword, address) => {
-        if (address.val == "" || address.geo) {
+        if (address.val === "" || address.geo) {
             setKeywordQuery(keyword);
             setAddressQuery(address);
             setKeyword("");
@@ -48,14 +50,14 @@ const SearchButton = ({ keyword, setKeyword,
 
     const handleClick = (e) => {
         e.preventDefault();
-        createRipple(e);
+        ripple(e);
         search(keyword, address);
     }
 
     const handleKeyDown = (e) => {
         if (e.key === "Enter") {
             e.preventDefault();
-            createRipple(e);
+            ripple(e);
             search(keyword, address);
         }
     }
@@ -63,13 +65,12 @@ const SearchButton = ({ keyword, setKeyword,
     return (
         <button
             ref={buttonRef}
-            className={address.val == "" || address.geo ?
+            className={address.val === "" || address.geo ?
                 "valid-to-search" : "invalid-to-search"}
             onClick={handleClick}
             onKeyDown={handleKeyDown}
         >
             <i className="fas fa-search"></i>
-            <span id="circle"></span>
         </button>
     );
 }

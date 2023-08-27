@@ -53,8 +53,8 @@ const AddressInput = ({ address, setAddress }) => {
     useEffect(() => {
         enableAutocomplete();
         console.log("AddressInput useEffect called");
-        console.log(address);
-    }, [address]);
+        // console.log(address);
+    }, []);
 
     return (
         <input
