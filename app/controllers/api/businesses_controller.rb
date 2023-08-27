@@ -1,5 +1,5 @@
 class Api::BusinessesController < ApplicationController
-    skip_before_action :verify_authenticity_token, only: :index_by_address
+    skip_before_action :verify_authenticity_token, only: :query
 
     def index
         @businesses = Business.all
@@ -8,16 +8,19 @@ class Api::BusinessesController < ApplicationController
 
     def query
         address = params[:address]
-        if address.has_key?(:geo)
+        if !address[:geo].nil?
+            lat = address[:geo][:lat].to_d
+            lng = address[:geo][:lng].to_d
             offset = 0.016
             limit = 10
             @businesses = Business
-                .where(lat: (params[:lat].to_d - offset)..(params[:lat].to_d + offset))
-                .where(lng: (params[:lng].to_d - offset)..(params[:lng].to_d + offset))
+                .where(lat: (lat - offset)..(lat + offset))
+                .where(lng: (lng - offset)..(lng + offset))
                 .limit(limit)
         else
             @businesses = Business.all
         end
+        puts params
         render 'api/businesses/index'
     end
 

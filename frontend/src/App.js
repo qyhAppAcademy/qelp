@@ -21,9 +21,13 @@ const App = () => {
   const [keywordQuery, setKeywordQuery] = useState("");
   const [addressQuery, setAddressQuery] = useState({
     val: "",
-    lat: null,
-    lng: null
+    geo: null
   });
+
+  const Nav = <Navigation 
+    setKeywordQuery={setKeywordQuery}
+    setAddressQuery={setAddressQuery}
+  />;
 
   return (
     <>
@@ -36,16 +40,19 @@ const App = () => {
         </Route>
         <Route exact path="/">
           <div className="home-page">
-            <Navigation setKeywordQuery={setKeywordQuery} setAddressQuery={setAddressQuery} />
+            {Nav}
             {/* <Home /> */}
           </div>
         </Route>
         <Route exact path="/businesses">
-          <Navigation setKeywordQuery={setKeywordQuery} setAddressQuery={setAddressQuery} />
-          <BusinessIndexPage keywordQuery={keywordQuery} addressQuery={addressQuery} />
+          {Nav}
+          <BusinessIndexPage 
+            keywordQuery={keywordQuery}
+            addressQuery={addressQuery}
+          />
         </Route>
         <Route exact path="/businesses/:businessId">
-          <Navigation setKeywordQuery={setKeywordQuery} setAddressQuery={setAddressQuery} />
+          {Nav}
           <BusinessShowPage />
         </Route>
       </Switch>

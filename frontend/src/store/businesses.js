@@ -10,7 +10,7 @@ export const fetchBusinesses = () => async (dispatch) => {
     return response;
 };
 
-export const fetchBusinessesByQueries = (keywordQuery, addressQuery) => async (dispatch) => {
+export const fetchBusinessesByQuery = (keywordQuery, addressQuery) => async (dispatch) => {
     // let params;
     // if (addressQuery.geo !== null) {
     //     params = `lat=${addressQuery.geo.lat}&lng=${addressQuery.geo.lng}`;

@@ -32,16 +32,20 @@ const AddressInput = ({ address, setAddress }) => {
             );
             autocompleteRef.current.addListener("place_changed", async () => {
                 const place = await autocompleteRef.current.getPlace();
-                const val = place.formatted_address;
-                const geo = {
+                const val = place.formatted_address ? 
+                    place.formatted_address : place.name;
+                const geo = place.geometry ? {
                     lat: place.geometry.location.lat(),
                     lng: place.geometry.location.lng()
-                }
+                } : null;
                 setAddress({
                     val: val,
                     geo: geo
                 });
-                console.log(place);
+                console.log({
+                    val: val,
+                    geo: geo
+                });
             });
         }
     }
@@ -53,7 +57,6 @@ const AddressInput = ({ address, setAddress }) => {
     useEffect(() => {
         enableAutocomplete();
         console.log("AddressInput useEffect called");
-        // console.log(address);
     }, []);
 
     return (
@@ -68,6 +71,7 @@ const AddressInput = ({ address, setAddress }) => {
                     val: e.target.value,
                     geo: null
                 });
+                console.log("AddressInput changed");
             }}
         />
     );
