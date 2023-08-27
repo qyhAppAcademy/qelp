@@ -13,7 +13,7 @@ const BusinessIndexPage = ({ keywordQuery, addressQuery }) => {
     
     useEffect(() => {
         dispatch(fetchBusinessesByQuery(keywordQuery, addressQuery));
-    }, [dispatch]);
+    }, [keywordQuery, addressQuery]);
     
     if (businesses.length === 0) {
         return null;
