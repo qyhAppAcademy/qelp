@@ -6,7 +6,11 @@ const KeywordInput = ({ keyword, setKeyword, search }) => {
             placeholder="Keyword"
             value={keyword}
             onChange={(e) => setKeyword(e.target.value)}
-            onKeyDown={search}
+            onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                    search(e);
+                }
+            }}
         />
     );
 }

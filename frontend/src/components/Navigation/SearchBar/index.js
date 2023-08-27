@@ -15,7 +15,6 @@ const SearchBar = ({ setKeywordQuery, setAddressQuery }) => {
     const history = useHistory();
 
     const ripple = (e) => {
-        console.log(e);
         const button = document.getElementById("search-bar").lastChild;
 
         const ripples = button.getElementsByClassName("ripple");
@@ -28,8 +27,8 @@ const SearchBar = ({ setKeywordQuery, setAddressQuery }) => {
 
         const d = Math.max(button.clientWidth, button.clientHeight);
 
-        const top = e.clientY ? e.clientY - offsetTop : 0 - d / 2.0;
-        const left = e.clientX ? e.clientX - offsetLeft : 0 - d / 2.0;
+        const top = (e.clientY ? e.clientY - offsetTop : 0) - d / 2.0;
+        const left = (e.clientX ? e.clientX - offsetLeft : 0) - d / 2.0;
 
         const circle = document.createElement("span");
         circle.classList.add("ripple");

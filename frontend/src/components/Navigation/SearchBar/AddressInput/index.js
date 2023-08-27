@@ -68,7 +68,11 @@ const AddressInput = ({ address, setAddress, search }) => {
                     geo: null
                 });
             }}
-            onKeyDown={search}
+            onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                    search(e);
+                }
+            }}
         />
     );
 };
