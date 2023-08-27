@@ -1,7 +1,6 @@
 import { useState } from "react";
 import KeywordInput from "./KeywordInput";
 import AddressInput from "./AddressInput";
-
 import SearchButton from "./SearchButton";
 
 import "./index.css";
@@ -55,26 +54,20 @@ const SearchBar = ({ setKeywordQuery, setAddressQuery }) => {
     return (
         <div className="search-bar">
             <KeywordInput
-                keyword={keyword}
-                setKeyword={setKeyword}
+                keyword={keyword} setKeyword={setKeyword}
                 handleKeydown={handleKeyDown}
             />
             <span></span>
             <AddressInput
-                address={address}
-                setAddress={setAddress}
+                address={address} setAddress={setAddress}
                 handleKeydown={handleKeyDown}
             />
             <SearchButton
-                keyword={keyword}
-                address={address}
+                keyword={keyword} setKeyword={setKeyword}
+                address={address} setAddress={setAddress}
+                setKeywordQuery={setKeywordQuery}
+                setAddressQuery={setAddressQuery}
             />
-            <button
-                className={validToSearch ? "valid-to-search" : "invalid-to-search"}
-                onClick={handleClick}
-            >
-                <i className="fas fa-search"></i>
-            </button>
         </div>
     );
 }
