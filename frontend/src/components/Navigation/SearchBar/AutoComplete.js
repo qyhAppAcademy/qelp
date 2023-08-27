@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useRef, useEffect } from "react";
 
 const CENTER = {
     lat: 40.662,
@@ -8,7 +8,9 @@ const OFFSET = 0.048;
 const TYPES = ['address'];
 const FIELDS = ['formatted_address', 'geometry'];
 
-const Autocomplete = ({addressRef, autocompleteRef, address, setAddress, setValidToSearch}) => {
+const Autocomplete = ({addressRef, address, setAddress, setValidToSearch}) => {
+    const autocompleteRef = useRef();
+
     const bounds = {
         east:   CENTER.lng + OFFSET,
         north:  CENTER.lat + OFFSET,
@@ -51,7 +53,7 @@ const Autocomplete = ({addressRef, autocompleteRef, address, setAddress, setVali
         console.log("rendered");
         enableAutocomplete();
         console.log(address);
-    }, []);
+    }, [address]);
 
     return (
         <input

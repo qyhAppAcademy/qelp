@@ -1,70 +1,19 @@
-import { useState, useRef, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useState, useRef } from "react";
 import Autocomplete from "./Autocomplete";
 import "./index.css";
+import SearchButton from "./SearchButton";
 
 const SearchBar = ({ setKeywordQuery, setAddressQuery }) => {
     const [keyword, setKeyword] = useState("");
     const [address, setAddress] = useState({
         val: "",
-        lat: null,
-        lng: null
+        geo: null
     });
-    const [validToSearch, setValidToSearch] = useState(true);
-    
-    const history = useHistory();
     
     const keywordRef = useRef();
     const addressRef = useRef();
-    const autocompleteRef = useRef();
 
-    useEffect(() => {
-        console.log(address);
-    }, [address]);
-
-    const createRipple = (event) => {
-        const button = event.currentTarget;
-        const offsetTop = button.parentElement.offsetTop + button.offsetTop;
-        const offsetLeft = button.parentElement.offsetLeft + button.offsetLeft;
-
-        const circle = document.createElement("span");
-        const diameter = Math.max(button.clientWidth, button.clientHeight);
-        const radius = diameter / 2;
-        
-        circle.style.width = circle.style.height = `${diameter}px`;
-        circle.style.top = `${event.clientY - offsetTop - radius}px`;
-        circle.style.left = `${event.clientX - offsetLeft - radius}px`;
-        circle.classList.add("ripple");
-        
-        const ripple = button.getElementsByClassName("ripple")[0];
-
-        if (ripple) {
-            ripple.remove();
-        }
-        
-        button.appendChild(circle);
-    }
-
-    const search = (keyword, address) => {
-        setKeywordQuery(keyword);
-        setAddressQuery(address);
-        setKeyword("");
-        setAddress({
-            val: "",
-            lat: null,
-            lng: null
-        });
-        setValidToSearch(true);
-        history.push("/businesses");
-    }
-
-    const handleClick = (e) => {
-        e.preventDefault();
-        if(validToSearch) {
-            createRipple(e);
-            search(keyword, address);
-        }
-    }
+    const history = useHistory();
 
     // const handleKeyDown = (e) => {
     //     if(e.key === 'Enter') {
@@ -123,6 +72,10 @@ const SearchBar = ({ setKeywordQuery, setAddressQuery }) => {
                 address={address}
                 setAddress={setAddress}
                 setValidToSearch={setValidToSearch}
+            />
+            <SearchButton
+                keyword={keyword}
+                address={address}
             />
             <button
                 className={validToSearch ? "valid-to-search" : "invalid-to-search"}
