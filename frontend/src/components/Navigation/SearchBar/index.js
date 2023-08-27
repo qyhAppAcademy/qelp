@@ -12,16 +12,6 @@ const SearchBar = ({ setKeywordQuery, setAddressQuery }) => {
         geo: null
     });
 
-    const handleKeyDown = (e) => {
-        if(e.key === "Enter") {
-            // setQuery(category);
-            // setAddressQuery(address);
-            // setCategory("");
-            // setAddress("");
-            // history.push("/businesses");
-        }
-    }
-
     // const handlePlaceChanged = () => {
     //     const [place] = inputRef.current.getPlaces();
     //     if (place) {
@@ -55,12 +45,10 @@ const SearchBar = ({ setKeywordQuery, setAddressQuery }) => {
         <div className="search-bar">
             <KeywordInput
                 keyword={keyword} setKeyword={setKeyword}
-                handleKeydown={handleKeyDown}
             />
             <span></span>
             <AddressInput
                 address={address} setAddress={setAddress}
-                handleKeydown={handleKeyDown}
             />
             <SearchButton
                 keyword={keyword} setKeyword={setKeyword}

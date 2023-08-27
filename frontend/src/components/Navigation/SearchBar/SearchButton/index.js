@@ -10,6 +10,7 @@ const SearchButton = ({ keyword, setKeyword,
     const history = useHistory();
 
     const createRipple = (event) => {
+        console.log(buttonRef.current);
         const button = event.currentTarget;
         const offsetTop = button.parentElement.offsetTop + button.offsetTop;
         const offsetLeft = button.parentElement.offsetLeft + button.offsetLeft;
@@ -33,19 +34,27 @@ const SearchButton = ({ keyword, setKeyword,
     }
 
     const search = (keyword, address) => {
-        setKeywordQuery(keyword);
-        setAddressQuery(address);
-        setKeyword("");
-        setAddress({
-            val: "",
-            geo: null
-        });
-        history.push("/businesses");
+        if (address.val == "" || address.geo) {
+            setKeywordQuery(keyword);
+            setAddressQuery(address);
+            setKeyword("");
+            setAddress({
+                val: "",
+                geo: null
+            });
+            history.push("/businesses");
+        }
     }
 
     const handleClick = (e) => {
         e.preventDefault();
-        if (address.geo) {
+        createRipple(e);
+        search(keyword, address);
+    }
+
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
             createRipple(e);
             search(keyword, address);
         }
@@ -53,10 +62,14 @@ const SearchButton = ({ keyword, setKeyword,
 
     return (
         <button
-            className={address.geo ? "valid-to-search" : "invalid-to-search"}
+            ref={buttonRef}
+            className={address.val == "" || address.geo ?
+                "valid-to-search" : "invalid-to-search"}
             onClick={handleClick}
+            onKeyDown={handleKeyDown}
         >
             <i className="fas fa-search"></i>
+            <span id="circle"></span>
         </button>
     );
 }

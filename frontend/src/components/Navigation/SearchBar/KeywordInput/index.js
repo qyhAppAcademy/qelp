@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-const KeywordInput = ({ keyword, setKeyword, handleKeydown}) => {
+const KeywordInput = ({ keyword, setKeyword }) => {
     const keywordRef = useRef();
 
     return (
@@ -11,7 +11,6 @@ const KeywordInput = ({ keyword, setKeyword, handleKeydown}) => {
             placeholder="Keyword"
             value={keyword}
             onChange={(e) => setKeyword(e.target.value)}
-            onKeyDown={handleKeydown}
         />
     );
 }

@@ -6,7 +6,7 @@ const CENTER = {
 }
 const OFFSET = 0.048;
 
-const AddressInput = ({ address, setAddress, handleKeydown }) => {
+const AddressInput = ({ address, setAddress }) => {
     const addressRef = useRef();
     const autocompleteRef = useRef();
 
@@ -69,7 +69,6 @@ const AddressInput = ({ address, setAddress, handleKeydown }) => {
                     geo: null
                 });
             }}
-            onKeyDown={handleKeydown}
         />
     );
 };
