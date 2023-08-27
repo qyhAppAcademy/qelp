@@ -1,0 +1,45 @@
+#search-bar > button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 3vw;
+    height: 100%;
+    font-size: 1.5vw;
+    overflow: hidden;
+}
+
+.clickable {
+    color: #FFFFFF;
+    background-color: #e50d0d;
+    cursor: pointer;
+}
+
+.clickable:hover {
+    background-color: #ff0000;
+    transition: all 0.5s ease-out;
+}
+
+.unclickable {
+    color: #EBEBEB;
+    background-color: transparent;
+    cursor: not-allowed;
+}
+
+.ripple {
+    position: absolute;
+    background-color: #F6F6F6;
+    opacity: 0%;
+    border-radius: 100%;
+    animation: ripple 1s linear;
+}
+
+@keyframes ripple {
+    from {
+        transform: scale(0);
+        opacity: 60%;
+    }
+    to {
+        transform: scale(6);
+        opacity: 0%;
+    }
+}

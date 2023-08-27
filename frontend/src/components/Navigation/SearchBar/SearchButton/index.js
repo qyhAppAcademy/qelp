@@ -1,20 +1,10 @@
+import "./index.css";
 
-
-const SearchButton = ({ keyword, setKeywordQuery,
-                        address, setAddressQuery }) => {
-
-
-
-
-
+const SearchButton = ({ clickable, search }) => {
     return (
         <button
-            ref={buttonRef}
-            className={address.val === "" || address.geo ?
-                "valid-to-search" : "invalid-to-search"}
-            onClick={(e) => {
-                search(e);
-            }}
+            className={clickable ? "clickable" : "unclickable"}
+            onClick={search}
         >
             <i className="fas fa-search"></i>
         </button>
