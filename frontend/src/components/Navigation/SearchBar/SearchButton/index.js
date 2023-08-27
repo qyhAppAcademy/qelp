@@ -1,15 +1,13 @@
-import { createElement, useRef } from "react";
+import { useRef } from "react";
 import { useHistory } from "react-router-dom";
 
-const SearchButton = ({ keyword, setKeyword,
-                        address, setAddress,
-                        setKeywordQuery,
-                        setAddressQuery }) => {
+const SearchButton = ({ keyword, setKeywordQuery,
+                        address, setAddressQuery }) => {
     const buttonRef = useRef();
 
     const history = useHistory();
 
-    const ripple = (event) => {
+    const ripple = (e) => {
         const button = buttonRef.current;
 
         const ripples = button.getElementsByClassName("ripple");
@@ -22,8 +20,8 @@ const SearchButton = ({ keyword, setKeyword,
 
         const diameter = Math.max(button.clientWidth, button.clientHeight);
 
-        const top = event.clientY - offsetTop - diameter / 2.0;
-        const left = event.clientX - offsetLeft - diameter / 2.0;
+        const top = e.clientY - offsetTop - diameter / 2.0;
+        const left = e.clientX - offsetLeft - diameter / 2.0;
 
         const circle = document.createElement("span");
         circle.classList.add("ripple");
@@ -35,30 +33,13 @@ const SearchButton = ({ keyword, setKeyword,
         button.appendChild(circle);
     }
 
-    const search = (keyword, address) => {
+    const search = (e) => {
+        e.preventDefault();
         if (address.val === "" || address.geo) {
+            ripple(e);
             setKeywordQuery(keyword);
             setAddressQuery(address);
-            setKeyword("");
-            setAddress({
-                val: "",
-                geo: null
-            });
             history.push("/businesses");
-        }
-    }
-
-    const handleClick = (e) => {
-        e.preventDefault();
-        ripple(e);
-        search(keyword, address);
-    }
-
-    const handleKeyDown = (e) => {
-        if (e.key === "Enter") {
-            e.preventDefault();
-            ripple(e);
-            search(keyword, address);
         }
     }
 
@@ -67,8 +48,12 @@ const SearchButton = ({ keyword, setKeyword,
             ref={buttonRef}
             className={address.val === "" || address.geo ?
                 "valid-to-search" : "invalid-to-search"}
-            onClick={handleClick}
-            onKeyDown={handleKeyDown}
+            onClick={search}
+            onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                    search(e);
+                }
+            }}
         >
             <i className="fas fa-search"></i>
         </button>

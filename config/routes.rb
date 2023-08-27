@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resource :session, only: [:show, :create, :destroy]
     resources :users, only: [:create]
     resources :businesses, only: [:index, :show]
-    post '/businesses/address', to: 'businesses#index_by_address'
+    post '/businesses/query', to: 'businesses#query'
     resources :reviews, only: [:create, :update, :destroy, :index]
   end
 

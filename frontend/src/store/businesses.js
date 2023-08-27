@@ -10,17 +10,22 @@ export const fetchBusinesses = () => async (dispatch) => {
     return response;
 };
 
-export const fetchBusinessesByAddress = (address) => async (dispatch) => {
-    let params;
-    if (address.lat !== null && address.lng !== null) {
-        params = `lat=${address.lat}&lng=${address.lng}`;
+export const fetchBusinessesByQueries = (keywordQuery, addressQuery) => async (dispatch) => {
+    // let params;
+    // if (addressQuery.geo !== null) {
+    //     params = `lat=${addressQuery.geo.lat}&lng=${addressQuery.geo.lng}`;
+    // }
+    // else {
+    //     const addressInArray = addressQuery.val.split(",").map(part => part.trim());
+    //     params = `address=${addressInArray[0]}&city=${addressInArray[1]}`;
+    // }
+    const query = {
+        keyword: keywordQuery,
+        address: addressQuery
     }
-    else {
-        const addressInArray = address.val.split(",").map(part => part.trim());
-        params = `address=${addressInArray[0]}&city=${addressInArray[1]}`;
-    }
-    const response = await csrfFetch(`/api/businesses/address?${params}`, {
-        method: "POST"
+    const response = await csrfFetch(`/api/businesses/query`, {
+        method: "POST",
+        body: JSON.stringify(query)
     });
     const data = await response.json();
     dispatch(receiveBusinesses(data.businesses));

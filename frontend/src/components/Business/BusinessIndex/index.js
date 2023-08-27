@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchBusinesses, fetchBusinessesByAddress, getBusinesses } from "../../../store/businesses";
+import { fetchBusinesses, fetchBusinessesByQueries, getBusinesses } from "../../../store/businesses";
 import Item from "./Item.js";
 import { searchByName, searchByCategory, searchByAddress } from "./search";
 import MapContainer from "./MapContainer";
@@ -13,7 +13,7 @@ const BusinessIndexPage = ({ keywordQuery, addressQuery }) => {
     
     useEffect(() => {
         // dispatch(fetchBusinesses());
-        dispatch(fetchBusinessesByAddress(addressQuery));
+        dispatch(fetchBusinessesByQueries(keywordQuery, addressQuery));
     }, [dispatch]);
     
     if (businesses.length === 0) {

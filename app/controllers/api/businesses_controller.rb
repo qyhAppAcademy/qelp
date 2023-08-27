@@ -6,8 +6,9 @@ class Api::BusinessesController < ApplicationController
         render 'api/businesses/index'
     end
 
-    def index_by_address
-        if params.has_key?(:lat) && params.has_key?(:lng)
+    def query
+        address = params[:address]
+        if address.has_key?(:geo)
             offset = 0.016
             limit = 10
             @businesses = Business
