@@ -1,7 +1,10 @@
-import { useState, useRef } from "react";
-import Autocomplete from "./Autocomplete";
-import "./index.css";
+import { useState } from "react";
+import KeywordInput from "./KeywordInput";
+import AddressInput from "./AddressInput";
+
 import SearchButton from "./SearchButton";
+
+import "./index.css";
 
 const SearchBar = ({ setKeywordQuery, setAddressQuery }) => {
     const [keyword, setKeyword] = useState("");
@@ -9,21 +12,16 @@ const SearchBar = ({ setKeywordQuery, setAddressQuery }) => {
         val: "",
         geo: null
     });
-    
-    const keywordRef = useRef();
-    const addressRef = useRef();
 
-    const history = useHistory();
-
-    // const handleKeyDown = (e) => {
-    //     if(e.key === 'Enter') {
-    //         setQuery(category);
-    //         setAddressQuery(address);
-    //         setCategory("");
-    //         setAddress("");
-    //         history.push("/businesses");
-    //     }
-    // }
+    const handleKeyDown = (e) => {
+        if(e.key === "Enter") {
+            // setQuery(category);
+            // setAddressQuery(address);
+            // setCategory("");
+            // setAddress("");
+            // history.push("/businesses");
+        }
+    }
 
     // const handlePlaceChanged = () => {
     //     const [place] = inputRef.current.getPlaces();
@@ -56,22 +54,16 @@ const SearchBar = ({ setKeywordQuery, setAddressQuery }) => {
 
     return (
         <div className="search-bar">
-            <input
-                id="keyword-input"
-                ref={keywordRef}
-                type="text"
-                placeholder="Keyword"
-                value={keyword}
-                onChange={(e) => setKeyword(e.target.value)}
-                // onKeyDown={handleKeyDown}
+            <KeywordInput
+                keyword={keyword}
+                setKeyword={setKeyword}
+                handleKeydown={handleKeyDown}
             />
             <span></span>
-            <Autocomplete
-                addressRef={addressRef}
-                autocompleteRef={autocompleteRef}
+            <AddressInput
                 address={address}
                 setAddress={setAddress}
-                setValidToSearch={setValidToSearch}
+                handleKeydown={handleKeyDown}
             />
             <SearchButton
                 keyword={keyword}

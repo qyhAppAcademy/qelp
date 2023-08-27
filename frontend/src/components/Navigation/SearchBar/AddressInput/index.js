@@ -5,24 +5,23 @@ const CENTER = {
     lng: -73.969
 }
 const OFFSET = 0.048;
-const TYPES = ['address'];
-const FIELDS = ['formatted_address', 'geometry'];
 
-const Autocomplete = ({addressRef, address, setAddress, setValidToSearch}) => {
+const AddressInput = ({ address, setAddress, handleKeydown }) => {
+    const addressRef = useRef();
     const autocompleteRef = useRef();
 
     const bounds = {
-        east:   CENTER.lng + OFFSET,
         north:  CENTER.lat + OFFSET,
-        south:  CENTER.lat - OFFSET,
         west:   CENTER.lng - OFFSET,
+        south:  CENTER.lat - OFFSET,
+        east:   CENTER.lng + OFFSET,
     };
 
     const options = {
         bounds: bounds,
-        fields: FIELDS,
         strictBounds: true,
-        types: TYPES
+        types: ['address'],
+        fields: ['formatted_address', 'geometry']
     };
 
     const enableAutocomplete = () => {
@@ -33,45 +32,46 @@ const Autocomplete = ({addressRef, address, setAddress, setValidToSearch}) => {
             );
             autocompleteRef.current.addListener("place_changed", async () => {
                 const place = await autocompleteRef.current.getPlace();
-                console.log(place);
-                setAddress({
-                    val: place.formatted_address,
+                const val = place.formatted_address;
+                const geo = {
                     lat: place.geometry.location.lat(),
                     lng: place.geometry.location.lng()
+                }
+                setAddress({
+                    val: val,
+                    geo: geo
                 });
-                setValidToSearch(true);
+                console.log(place);
             });
         }
     }
 
-    window.initMap = function () {
-        console.log("loaded");
+    window.initMap = () => {
         enableAutocomplete();
     };
 
     useEffect(() => {
-        console.log("rendered");
         enableAutocomplete();
+        console.log("AddressInput useEffect called");
         console.log(address);
     }, [address]);
 
     return (
         <input
-            id="address-input"
             ref={addressRef}
+            id="address-input"
             type="text"
             placeholder="Address"
             value={address.val}
             onChange={(e) => {
                 setAddress({
                     val: e.target.value,
-                    lat: null,
-                    lng: null
+                    geo: null
                 });
-                setValidToSearch(e.target.value == "" ? true : false);
             }}
+            onKeyDown={handleKeydown}
         />
     );
 };
 
-export default Autocomplete;
+export default AddressInput;

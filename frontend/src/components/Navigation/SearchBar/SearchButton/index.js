@@ -1,17 +1,13 @@
 import { useRef } from "react";
 import { useHistory } from "react-router-dom";
 
-const SearchButton = ({ keyword, setKeyword, address, setAddress, setKeywordQuery, setAddressQuery }) => {
-    const search = (keyword, address) => {
-        setKeywordQuery(keyword);
-        setAddressQuery(address);
-        setKeyword("");
-        setAddress({
-            val: "",
-            geo: null
-        });
-        history.push("/businesses");
-    }
+const SearchButton = ({ keyword, setKeyword,
+                        address, setAddress,
+                        setKeywordQuery,
+                        setAddressQuery }) => {
+    const buttonRef = useRef();
+
+    const history = useHistory();
 
     const createRipple = (event) => {
         const button = event.currentTarget;
@@ -36,9 +32,20 @@ const SearchButton = ({ keyword, setKeyword, address, setAddress, setKeywordQuer
         button.appendChild(circle);
     }
 
+    const search = (keyword, address) => {
+        setKeywordQuery(keyword);
+        setAddressQuery(address);
+        setKeyword("");
+        setAddress({
+            val: "",
+            geo: null
+        });
+        history.push("/businesses");
+    }
+
     const handleClick = (e) => {
         e.preventDefault();
-        if (validToSearch) {
+        if (address.geo) {
             createRipple(e);
             search(keyword, address);
         }
