@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Autocomplete from "./Autocomplete";
 import "./index.css";
-import { StandaloneSearchBox } from "@react-google-maps/api";
 
 const SearchBar = ({ setKeywordQuery, setAddressQuery }) => {
     const [keyword, setKeyword] = useState("");
@@ -118,18 +117,6 @@ const SearchBar = ({ setKeywordQuery, setAddressQuery }) => {
                 // onKeyDown={handleKeyDown}
             />
             <span></span>
-            {/* <StandaloneSearchBox
-                onLoad={ref => inputRef.current = ref}
-                onPlacesChanged={handlePlaceChanged}
-            >
-                <input
-                    type="text"
-                    placeholder="Address, City, State or Zipcode"
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                    onKeyDown={handleNoAddress}
-                />
-            </StandaloneSearchBox> */}
             <Autocomplete
                 addressRef={addressRef}
                 autocompleteRef={autocompleteRef}
