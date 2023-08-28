@@ -15,11 +15,11 @@ const BusinessIndexPage = ({ keywordQuery, addressQuery }) => {
         dispatch(fetchBusinessesByQuery(keywordQuery, addressQuery));
     }, [keywordQuery, addressQuery]);
     
-    if (businesses.length === 0) {
-        return null;
-    }
+    // if (businesses.length === 0) {
+    //     return null;
+    // }
 
-    const businessItems = (keywordQuery === "" && addressQuery === "") ? 
+    const businessItems = (keywordQuery === "" && addressQuery === "") ?
         businesses.map((business, index) => (
             <Item key={business.id} idx={index} business={business} />
         )) :
@@ -34,16 +34,15 @@ const BusinessIndexPage = ({ keywordQuery, addressQuery }) => {
         ));
 
     return (
-        <>
-        <div className="business-search-results-container">
-            <div className="business-search-results-list">
+        <div id="business-index">
+            <div>
                 {businessItems.length > 0 ? (
                     businessItems
                 ) : (
                     <p className="no-results">Search Not Found</p>
                 )}
             </div>
-            <div className="business-search-results-google-map">
+            <div>
                 <MapContainer businesses={businesses.filter(business => {
                     return (
                         (searchByName(business.name, keywordQuery) || 
@@ -53,7 +52,6 @@ const BusinessIndexPage = ({ keywordQuery, addressQuery }) => {
                 })}/>
             </div>
         </div>
-        </>
     );
 }
 
