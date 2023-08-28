@@ -34,7 +34,7 @@
     object-fit: cover;
 }
 
-.business-index-item-name h1 {
+.name h1 {
     color: #2D2E2F;
     font-size: 20px;
     font-weight: 600;
@@ -43,16 +43,16 @@
     margin: 0;
 }
 
-.business-index-item-name .item-index {
+.name .item-index {
     margin: 0;
     margin-right: 6px;
 }
 
-.business-index-item-name .item-name:hover {
+.name .item-name:hover {
     text-decoration: underline;
 }
 
-.business-index-item span {
+.card span {
     color: #2D2E2F;
     font-size: 14px;
 

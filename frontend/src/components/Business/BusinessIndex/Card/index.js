@@ -17,14 +17,16 @@ const Card = ({ idx, business }) => {
         >
             <div className="card">
                 <div className="thumbnail">
-                    <img alt="business-profile" src={business.photoUrls[0].url} />
+                    <img src={business.photoUrls[0].url} />
                 </div>
-                <div className="business-index-item-name">
-                    <h1 className='item-index'>{`${idx + 1}.`}</h1>
-                    <h1 className='item-name'>{`${business.name}`}</h1>
+                <div className="name">
+                    <h1>{`${idx + 1}. ${business.name}`}</h1>
                 </div>
-                <div className="business-index-avg-rating">
-                    <StarRatingShowInFloat rating={business.avgRating === null ? 0 : business.avgRating} />
+                <div className="avg-rating">
+                    <StarRatingShowInFloat
+                        rating={business.avgRating === null ?
+                            0 : business.avgRating} 
+                    />
                 </div>
                 <div>
                     {categories}
