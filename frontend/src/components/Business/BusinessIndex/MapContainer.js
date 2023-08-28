@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { GoogleMap, Marker, InfoWindow } from '@react-google-maps/api';
-import { ItemOnGoogleMap } from "./Item.js";
+import { ItemOnGoogleMap } from "./Card/index.js";
 
 const MapContainer = ({ businesses }) => {
     const [selected, setSelected] = useState({});

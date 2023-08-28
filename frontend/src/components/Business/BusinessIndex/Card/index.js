@@ -1,17 +1,22 @@
 import { NavLink } from 'react-router-dom';
-import { EST_OFFSET, toLocalTime, isOpen } from "../../../store/time.js";
-import { StarRatingShowInFloat } from '../../Review/StarRating.js';
-import "./Item.css";
 
-const Item = ({ idx, business }) => {
-    const categorySpans = business.category.split(",").map((c, idx) => (
-        <span className="category" key={idx}>{c.trim()}</span>
+import { EST_OFFSET, toLocalTime, isOpen } from "../../../../store/time.js";
+import { StarRatingShowInFloat } from '../../../Review/StarRating.js';
+
+import "./index.css";
+
+const Card = ({ idx, business }) => {
+    const categories = business.category.split(",").map((category, idx) => (
+        <span key={idx} className="category">{category.trim()}</span>
     ));
 
     return (
-        <NavLink exact to={`/businesses/${business.id}`} className="business-nav-link">
-            <div className="business-index-item">
-                <div className="business-index-item-picture">
+        <NavLink 
+            exact to={`/businesses/${business.id}`}
+            className="business-nav-link"
+        >
+            <div className="card">
+                <div className="thumbnail">
                     <img alt="business-profile" src={business.photoUrls[0].url} />
                 </div>
                 <div className="business-index-item-name">
@@ -22,7 +27,7 @@ const Item = ({ idx, business }) => {
                     <StarRatingShowInFloat rating={business.avgRating === null ? 0 : business.avgRating} />
                 </div>
                 <div>
-                    {categorySpans}
+                    {categories}
                     <span style={{ color: "#727272" }}>{business.price}</span>
                     <span className="icon-circle-container" style={{ color: "#727272" }}><i className="fas fa-circle"></i></span>
                 </div>
@@ -43,7 +48,7 @@ const Item = ({ idx, business }) => {
 }
 
 export const ItemOnGoogleMap = ({ business }) => {
-    // const categorySpans = business.category.split(",").map((c, idx) => (
+    // const categories = business.category.split(",").map((c, idx) => (
     //     <span className="category" key={idx}>{c.trim()}</span>
     // ));
 
@@ -62,11 +67,11 @@ export const ItemOnGoogleMap = ({ business }) => {
                 </div>
                 <div className="google-map-item-category">
                     <p>{business.category}</p>
-                    {/* {categorySpans} */}
+                    {/* {categories} */}
                 </div>
             </div>
         </NavLink>
     );
 }
 
-export default Item;
+export default Card;

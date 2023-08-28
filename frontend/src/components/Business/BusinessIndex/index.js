@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBusinessesByQuery, getBusinesses } from "../../../store/businesses";
-import Item from "./Item.js";
+import Item from "./Card/index.js";
 import { searchByName, searchByCategory, searchByAddress } from "./search";
 import MapContainer from "./MapContainer";
 import "./index.css";

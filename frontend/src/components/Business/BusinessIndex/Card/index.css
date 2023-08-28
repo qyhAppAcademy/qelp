@@ -1,4 +1,4 @@
-.business-index-item {
+.card {
     /* display: block; */
     display: inline-block;
     padding: 20px 20px;
@@ -6,19 +6,19 @@
     border-radius: 5px;
 }
 
-.business-index-item:hover {
+.card:hover {
     box-shadow: 0 0 12px rgba(33, 33, 33, 0.2);
     cursor: pointer;
 }
 
-.business-index-item div{
+.card div {
     display: flex;
     align-items: center;
     min-width: 404px;
     margin-bottom: 9px;
 }
 
-.business-index-item .business-index-item-picture {
+.card .thumbnail {
     display: block;
     width: 404px;
     height: 160px;
@@ -28,7 +28,7 @@
     border-radius: 5px;
 }
 
-.business-index-item .business-index-item-picture img{
+.card .thumbnail img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -60,7 +60,7 @@
     padding-right: 8px;
 }
 
-.business-index-item .icon-circle-container {
+.card .icon-circle-container {
     font-size: 4px;
 }
 
@@ -84,7 +84,7 @@
     border-radius: 5px;
 }
 
-.business-index-item div .category:hover {
+.card div .category:hover {
     background-color: #dddddd;
     transition: 0.5s;
 }
@@ -94,7 +94,7 @@
     margin: 0;
 } */
 
-.business-index-item .business-index-avg-rating .review-star-rating {
+.card .business-index-avg-rating .review-star-rating {
     padding: 0;
     margin: 0;
 }
