@@ -37,10 +37,11 @@ const Card = ({ idx, business }) => {
                 />
             </div>
             <div>
-                <span className="price">{business.price}</span>
-                <span className="dot"><i className="fas fa-circle"></i></span>
                 {categories}
+                <span className="dot"><i className="fas fa-circle"></i></span>
+                <span className="price">{business.price}</span>
             </div>
+            {/* refactor */}
             {isOpen(business) ? (
                 <div>
                     <span className="hours open">Open</span>
