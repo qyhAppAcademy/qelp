@@ -1,21 +1,22 @@
 .card {
     /* display: block; */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-radius: 0.5vw;
     display: inline-block;
-    padding: 20px 20px;
-    margin: 0 28px 0;
-    border-radius: 5px;
 }
 
 .card:hover {
-    box-shadow: 0 0 12px rgba(33, 33, 33, 0.2);
+    box-shadow: 0 0 1.2vw rgba(33, 33, 33, 0.2);
     cursor: pointer;
 }
 
-.card div {
-    display: flex;
+.card > div {
+    width: 100%;
+    margin: 0 0 1vw 0;
     align-items: center;
-    min-width: 404px;
-    margin-bottom: 9px;
+    display: flex;
 }
 
 .card .thumbnail {
