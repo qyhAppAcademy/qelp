@@ -28,33 +28,34 @@ const Card = ({ idx, business }) => {
                 <img src={business.photoUrls[0].url} />
             </div>
             <div className="name">
-                <h1>{`${idx + 1}. ${business.name}`}</h1>
+                {`${idx + 1}. ${business.name}`}
             </div>
             <div className="avg-rating">
                 <StarRatingShowInFloat
                     rating={business.avgRating === null ?
-                        0 : business.avgRating} 
+                        0 : business.avgRating}
                 />
             </div>
             <div>
+                <span className="price">{business.price}</span>
+                <span className="dot"><i className="fas fa-circle"></i></span>
                 {categories}
-                <span style={{ color: "#727272" }}>{business.price}</span>
-                <span className="icon-circle-container" style={{ color: "#727272" }}><i className="fas fa-circle"></i></span>
             </div>
             {isOpen(business) ? (
-            <div>
-                <span className="business-open">Open</span>
-                <span style={{fontWeight: "300"}}>until {toLocalTime(business.close, EST_OFFSET)}</span>
-            </div>
+                <div>
+                    <span className="hours open">Open</span>
+                    <span style={{fontWeight: "300"}}>until {toLocalTime(business.close, EST_OFFSET)}</span>
+                </div>
             ) : (
-            <div>
-                <span className="business-closed">Closed</span>
-                <span style={{ fontWeight: "300" }}>until {toLocalTime(business.open, EST_OFFSET)}</span>
-            </div>
+                <div>
+                    <span className="hours closed">Closed</span>
+                    <span style={{ fontWeight: "300" }}>until {toLocalTime(business.open, EST_OFFSET)}</span>
+                </div>
             )}
         </div>
     );
 }
+
 
 export const ItemOnGoogleMap = ({ business }) => {
     // const categories = business.category.split(",").map((c, idx) => (

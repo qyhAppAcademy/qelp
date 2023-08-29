@@ -1,13 +1,10 @@
 .card {
-    /* width: 100%; */
-    height: 19.6vw;
-    margin: 1.2vw;
+    height: 20vw;
+    margin: 1vw;
     padding: 1vw;
-    background-color: bisque;
     border-radius: 0.5vw;
-    /* display: block; */
-    /* display: inline-block; */
-    text-decoration: none !important;
+
+    background-color: bisque;
 }
 
 .card:hover {
@@ -16,82 +13,73 @@
 }
 
 .card > div {
-    /* width: 100%; */
-    margin: 0;
-    /* align-items: center; */
-    background-color: #008055;
+    align-items: center;
     display: flex;
-    text-decoration: none !important;
+
+    background-color:cadetblue;
 }
 
 .card .thumbnail {
-    height: 9.8vw;
+    height: 10vw;
     overflow: hidden;
     border-radius: 0.5vw;
 }
 
-.card .thumbnail img {
+.card .thumbnail > img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.card .name h1 {
-    font-size: 1.8vw;
+.card .name {
+    font-size: 2vw;
     font-weight: 600;
     color: #2D2E2F;
 }
 
-/* .card .name:hover {
+.card .name:hover {
     text-decoration: underline;
-} */
+}
 
 .card span {
     color: #2D2E2F;
-    font-size: 14px;
+    /* font-size: 14px;
 
     padding: 0;
-    padding-right: 8px;
+    padding-right: 8px; */
 }
 
-.card .icon-circle-container {
-    font-size: 4px;
-}
-
-.business-index-item .business-open {
-    color: #008055;
-    font-weight: 600;
-}
-
-.business-index-item .business-closed {
-    color: rgb(224, 7, 7);
-    font-weight: 600;
-}
-
-.business-index-item div .category {
-    margin: 0;
-    margin-right: 8px;
-    padding: 3px 5px;
-    background-color: #ededed;
+.card .dot {
+    font-size: 0.3vw;
     color: #727272;
-    font-weight: 700;
-    border-radius: 5px;
 }
 
-.card div .category:hover {
+.card .hours {
+    font-weight: 600;
+}
+
+.card .open {
+    color: rgb(0, 128, 85);
+}
+
+.card .closed {
+    color: rgb(224, 7, 7);
+}
+
+.card .category {
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+    color: rgb(114, 114, 114);
+    background-color: rgb(237, 237, 237);
+    border-radius: 0.3vw;
+}
+
+.card .category:hover {
     background-color: #dddddd;
     transition: 0.5s;
 }
 
-/* .business-index-item .business-index-avg-rating {
-    padding: 0;
-    margin: 0;
-} */
-
-.card .business-index-avg-rating .review-star-rating {
-    padding: 0;
-    margin: 0;
-}
 
 .google-map-item-nav-link .google-map-item {
     padding: 5px 0 0 6px;
