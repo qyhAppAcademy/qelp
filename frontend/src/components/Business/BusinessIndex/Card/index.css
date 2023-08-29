@@ -1,32 +1,33 @@
 .card {
-    /* display: block; */
-    width: 100%;
-    margin: 0;
-    padding: 0;
+    /* width: 100%; */
+    height: 19.6vw;
+    margin: 1.2vw;
+    padding: 1vw;
+    background-color: bisque;
     border-radius: 0.5vw;
-    display: inline-block;
+    /* display: block; */
+    /* display: inline-block; */
+    text-decoration: none !important;
 }
 
 .card:hover {
-    box-shadow: 0 0 1.2vw rgba(33, 33, 33, 0.2);
+    box-shadow: 0 0 1.2vw rgba(33, 33, 33, 0.25);
     cursor: pointer;
 }
 
 .card > div {
-    width: 100%;
-    margin: 0 0 1vw 0;
-    align-items: center;
+    /* width: 100%; */
+    margin: 0;
+    /* align-items: center; */
+    background-color: #008055;
     display: flex;
+    text-decoration: none !important;
 }
 
 .card .thumbnail {
-    display: block;
-    width: 404px;
-    height: 160px;
+    height: 9.8vw;
     overflow: hidden;
-
-    margin-bottom: 18px;
-    border-radius: 5px;
+    border-radius: 0.5vw;
 }
 
 .card .thumbnail img {
@@ -35,23 +36,15 @@
     object-fit: cover;
 }
 
-.name h1 {
-    color: #2D2E2F;
-    font-size: 20px;
+.card .name h1 {
+    font-size: 1.8vw;
     font-weight: 600;
-
-    padding: 0;
-    margin: 0;
+    color: #2D2E2F;
 }
 
-.name .item-index {
-    margin: 0;
-    margin-right: 6px;
-}
-
-.name .item-name:hover {
+/* .card .name:hover {
     text-decoration: underline;
-}
+} */
 
 .card span {
     color: #2D2E2F;

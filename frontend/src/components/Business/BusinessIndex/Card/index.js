@@ -11,6 +11,7 @@ const Card = ({ idx, business }) => {
     ));
 
     return (
+        <><h1>Hello</h1>
         <NavLink 
             exact to={`/businesses/${business.id}`}
             className="business-nav-link"
@@ -46,6 +47,7 @@ const Card = ({ idx, business }) => {
                 )}
             </div>
         </NavLink>
+        </>
     );
 }
 

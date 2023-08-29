@@ -20,15 +20,15 @@ header {
 
 #business-index {
     width: 100%;
-    height: 60vw;
+    height: 64vw;
     display: flex;
 }
 
 #business-index > div:first-child {
-    width: 40%;
+    width: 36%;
     overflow: scroll;
 }
 
 #business-index > div:last-child {
-    width: 60%;
+    width: 64%;
 }
