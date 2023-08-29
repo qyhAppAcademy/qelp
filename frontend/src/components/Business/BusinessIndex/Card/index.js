@@ -1,53 +1,58 @@
-import { NavLink } from 'react-router-dom';
-
+import { NavLink, useHistory } from 'react-router-dom';
 import { EST_OFFSET, toLocalTime, isOpen } from "../../../../store/time.js";
 import { StarRatingShowInFloat } from '../../../Review/StarRating.js';
 
 import "./index.css";
 
 const Card = ({ idx, business }) => {
+    const history = useHistory();
+
     const categories = business.category.split(",").map((category, idx) => (
         <span key={idx} className="category">{category.trim()}</span>
     ));
 
     return (
-        <><h1>Hello</h1>
-        <NavLink 
-            exact to={`/businesses/${business.id}`}
-            className="business-nav-link"
+        // <NavLink 
+        //     exact to={`/businesses/${business.id}`}
+        //     className="business-nav-link"
+        // >
+        // </NavLink>
+        <div
+            className="card"
+            onClick={(e) => {
+                e.preventDefault();
+                history.push(`/businesses/${business.id}`);
+            }}
         >
-            <div className="card">
-                <div className="thumbnail">
-                    <img src={business.photoUrls[0].url} />
-                </div>
-                <div className="name">
-                    <h1>{`${idx + 1}. ${business.name}`}</h1>
-                </div>
-                <div className="avg-rating">
-                    <StarRatingShowInFloat
-                        rating={business.avgRating === null ?
-                            0 : business.avgRating} 
-                    />
-                </div>
-                <div>
-                    {categories}
-                    <span style={{ color: "#727272" }}>{business.price}</span>
-                    <span className="icon-circle-container" style={{ color: "#727272" }}><i className="fas fa-circle"></i></span>
-                </div>
-                {isOpen(business) ? (
-                <div>
-                    <span className="business-open">Open</span>
-                    <span style={{fontWeight: "300"}}>until {toLocalTime(business.close, EST_OFFSET)}</span>
-                </div>
-                ) : (
-                <div>
-                    <span className="business-closed">Closed</span>
-                    <span style={{ fontWeight: "300" }}>until {toLocalTime(business.open, EST_OFFSET)}</span>
-                </div>
-                )}
+            <div className="thumbnail">
+                <img src={business.photoUrls[0].url} />
             </div>
-        </NavLink>
-        </>
+            <div className="name">
+                <h1>{`${idx + 1}. ${business.name}`}</h1>
+            </div>
+            <div className="avg-rating">
+                <StarRatingShowInFloat
+                    rating={business.avgRating === null ?
+                        0 : business.avgRating} 
+                />
+            </div>
+            <div>
+                {categories}
+                <span style={{ color: "#727272" }}>{business.price}</span>
+                <span className="icon-circle-container" style={{ color: "#727272" }}><i className="fas fa-circle"></i></span>
+            </div>
+            {isOpen(business) ? (
+            <div>
+                <span className="business-open">Open</span>
+                <span style={{fontWeight: "300"}}>until {toLocalTime(business.close, EST_OFFSET)}</span>
+            </div>
+            ) : (
+            <div>
+                <span className="business-closed">Closed</span>
+                <span style={{ fontWeight: "300" }}>until {toLocalTime(business.open, EST_OFFSET)}</span>
+            </div>
+            )}
+        </div>
     );
 }
 
