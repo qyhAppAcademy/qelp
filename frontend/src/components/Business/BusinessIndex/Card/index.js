@@ -1,8 +1,28 @@
 import { NavLink, useHistory } from 'react-router-dom';
 import { StarRatingShowInFloat } from '../../../Review/StarRating.js';
-import Hours from './Hours';
-
 import "./index.css";
+
+const isBusinessOpen = (business) => {
+    let open = new Date(business.open).getUTCHours();
+    let closed = new Date(business.close).getUTCHours();
+    let now = new Date(Date().toLocaleString("en-US")).getUTCHours();
+    if (open >= closed) {
+        closed += 24;
+    }
+    if (open > now) {
+        now += 24;
+    }
+    return open <= now && now < closed;
+}
+
+const twelveHourFormat = (dateString) => {
+    const date = new Date(dateString);
+    const hour = date.getHours();
+    const minute = date.getMinutes();
+    const period = hour >= 0 && hour < 12 ? "AM" : "PM";
+    return `${hour % 12 === 0 ? 12 : hour % 12}:${minute < 10 ?
+        "0" + minute : minute} ${period}`;
+}
 
 const Card = ({ idx, business }) => {
     const history = useHistory();
@@ -11,12 +31,21 @@ const Card = ({ idx, business }) => {
         <span key={idx} className="category">{category.trim()}</span>
     ));
 
+    const open = isBusinessOpen(business);
+    const hours = (
+        <>
+            <span className={`hours ${open ? "open" : "closed"}`}>
+                {open ? "Open" : "Closed"}
+            </span>
+            <span style={{ fontWeight: "300" }}>
+                until {open ?
+                    twelveHourFormat(business.close) :
+                    twelveHourFormat(business.open)}
+            </span>
+        </>
+    );
+
     return (
-        // <NavLink 
-        //     exact to={`/businesses/${business.id}`}
-        //     className="business-nav-link"
-        // >
-        // </NavLink>
         <div
             className="card"
             onClick={(e) => {
@@ -41,19 +70,9 @@ const Card = ({ idx, business }) => {
                 <span className="dot"><i className="fas fa-circle"></i></span>
                 <span className="price">{business.price}</span>
             </div>
-            {/* refactor */}
-            {/* {isOpen(business) ? (
-                <div>
-                    <span className="hours open">Open</span>
-                    <span style={{fontWeight: "300"}}>until {toLocalTime(business.close, EST_OFFSET)}</span>
-                </div>
-            ) : (
-                <div>
-                    <span className="hours closed">Closed</span>
-                    <span style={{ fontWeight: "300" }}>until {toLocalTime(business.open, EST_OFFSET)}</span>
-                </div>
-            )} */}
-            <Hours business={business} />
+            <div>
+                {hours}
+            </div>
         </div>
     );
 }
