@@ -1,6 +1,6 @@
 import { NavLink, useHistory } from 'react-router-dom';
-import { EST_OFFSET, toLocalTime, isOpen } from "../../../../store/time.js";
 import { StarRatingShowInFloat } from '../../../Review/StarRating.js';
+import Hours from './Hours';
 
 import "./index.css";
 
@@ -42,7 +42,7 @@ const Card = ({ idx, business }) => {
                 <span className="price">{business.price}</span>
             </div>
             {/* refactor */}
-            {isOpen(business) ? (
+            {/* {isOpen(business) ? (
                 <div>
                     <span className="hours open">Open</span>
                     <span style={{fontWeight: "300"}}>until {toLocalTime(business.close, EST_OFFSET)}</span>
@@ -52,7 +52,8 @@ const Card = ({ idx, business }) => {
                     <span className="hours closed">Closed</span>
                     <span style={{ fontWeight: "300" }}>until {toLocalTime(business.open, EST_OFFSET)}</span>
                 </div>
-            )}
+            )} */}
+            <Hours business={business} />
         </div>
     );
 }
