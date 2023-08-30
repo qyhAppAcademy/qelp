@@ -22,59 +22,30 @@ const toLocalTime = (timeString, offset) => {
     }
 }
 
-const isOpen = (business) => {
-    const open = new Date(business.open).getUTCHours();
-    const close = new Date(business.close).getUTCHours();
-    const now = new Date(Date().toLocaleString("en-US")).getUTCHours();
-    console.log(`open: ${open}`);
-    console.log(`close: ${close}`);
-    console.log(`now: ${open}`);
+const hoursStatus = (business) => {
+    let open    = new Date(business.open).getUTCHours();
+    let closed  = new Date(business.close).getUTCHours();
+    let now     = new Date(Date().toLocaleString("en-US")).getUTCHours();
 
-    if (open === close) {
-        return true;
+    if (open >= closed) {
+        closed += 24;
     }
 
-    if (now === open) {
-        return true;
-    }
-
-    if (now === close) {
-        return false;
-    }
-
-    if (now > open) {
-        if (close > open) {
-            return now < close;
-        }
-        else {
-            close += 24;
-            return now < close;
-        }
-    }
-    else {
-        now += 24
-        if (close > open) {
-            return false;
-        }
-        else {
-            close += 24;
-            return now < close;
-        }
-    }
+    return open <= now && now < closed ? "open" : "closed";
 }
 
 const Hours = ({ business }) => {
-    const status = isOpen(business) ? "open" : "closed";
+    const status = hoursStatus(business);
 
     return (
         <div>
             <span className={`hours ${status}`}>
                 {status.charAt(0).toUpperCase() + status.slice(1)}
             </span>
-            <span style={{ fontWeight: "300" }}>
-                until {toLocalTime(status === "open" ?
+            {/* <span style={{ fontWeight: "300" }}>
+                until {toLocalTime(hoursStatus === "open" ?
                 business.close : business.open, OFFSET)}
-            </span>
+            </span> */}
         </div>
     );
 }
