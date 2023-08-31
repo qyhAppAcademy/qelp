@@ -30,6 +30,8 @@ const Card = ({ idx, business }) => {
     const categories = business.category.split(",").map((category, idx) => (
         <span key={idx} className="category">{category.trim()}</span>
     ));
+    
+    console.log(categories);
 
     const open = isBusinessOpen(business);
     const hours = (
