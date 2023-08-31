@@ -1,22 +1,22 @@
 import { useState } from "react";
 
 const STAR_COLORS = [
-        "#FFCC4B",
-        "#FFAD48",
-        "#FF8742",
-        "#FF643D",
-        "#FB503B"
-    ];
+    "#FFCC4B",
+    "#FFAD48",
+    "#FF8742",
+    "#FF643D",
+    "#FB503B"
+];
 
 const STARS = [1, 2, 3, 4, 5];
 
 export const CONTENTS = [
-        "Not good",
-        "Could've been better",
-        "OK",
-        "Good",
-        "Great"
-    ];
+    "Not good",
+    "Could've been better",
+    "OK",
+    "Good",
+    "Great"
+];
 
 export const StarRatingShow = ({ rating }) => {
     const stars = STARS.map((star) => {

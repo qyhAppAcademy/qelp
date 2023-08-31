@@ -30,8 +30,6 @@ const Card = ({ idx, business }) => {
     const categories = business.category.split(",").map((category, idx) => (
         <span key={idx} className="category">{category.trim()}</span>
     ));
-    
-    console.log(categories);
 
     const open = isBusinessOpen(business);
     const hours = (
@@ -54,11 +52,11 @@ const Card = ({ idx, business }) => {
                 history.push(`/businesses/${business.id}`);
             }}
         >
-            <div className="thumbnail">
-                <img src={business.photoUrls[0].url} />
+            <div>
+                <img className="thumbnail" src={business.photoUrls[0].url} />
             </div>
-            <div className="name">
-                {`${idx + 1}. ${business.name}`}
+            <div>
+                <h1 className="name">{`${idx + 1}. ${business.name}`}</h1>
             </div>
             <div className="avg-rating">
                 <StarRatingShowInFloat
