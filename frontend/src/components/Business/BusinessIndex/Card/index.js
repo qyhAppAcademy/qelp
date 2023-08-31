@@ -38,8 +38,7 @@ const Card = ({ idx, business }) => {
                 {open ? "Open" : "Closed"}
             </span>
             <span style={{ fontWeight: "300" }}>
-                until {open ?
-                    twelveHourFormat(business.close) :
+                until {open ? twelveHourFormat(business.close) :
                     twelveHourFormat(business.open)}
             </span>
         </>
