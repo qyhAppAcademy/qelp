@@ -1,5 +1,4 @@
 .card {
-    /* height: 20vw; */
     margin: 0 1vw;
     padding: 1vw;
     border-radius: 0.5vw;
@@ -13,7 +12,7 @@
 }
 
 .card > div {
-    margin: 0.3vw 0 0 0;
+    padding: 0.33vw 0 0 0;
     display: flex;
     align-items: center;
 
@@ -21,7 +20,7 @@
 }
 
 .card > div:first-child {
-    margin: 0;
+    padding: 0 0 0.33vw 0;
 }
 
 .card .thumbnail {
