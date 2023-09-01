@@ -1,6 +1,94 @@
 import { useHistory } from 'react-router-dom';
-import { StarRatingShowInFloat } from '../../../Review/StarRating.js';
 import "./index.css";
+
+const STAR_COLORS = [
+    "#FFCC4B",
+    "#FFAD48",
+    "#FF8742",
+    "#FF643D",
+    "#FB503B"
+];
+
+const STARS = [1, 2, 3, 4, 5];
+
+const StarRatingShowInFloat = ({ rating }) => {
+    const solid   = Math.floor(rating);
+    const filled  = Math.ceil(rating);
+    const opacity = rating - solid;
+    const stars = [];
+    const star = (idx, rating, opacity) => {
+        return (
+            <span
+                key={idx}
+                className="review-star"
+                style={{
+                    padding: "0 2px 0 0",
+                    color: STAR_COLORS[rating - 1],
+                    opacity: `${opacity * 100}%`
+                }}
+            >
+                <i style={{ fontSize: "18px" }} className="fas fa-star"></i>
+            </span>
+        );
+    }
+    
+    for (let i = 0; i < solid; i++) {
+        stars.push(star(i, i + 1, 1));
+    }
+    // const stars = STARS.map((star) => {
+    //     if (solidRating >= star) {
+    //         return (
+    //             <span
+    //                 key={star}
+    //                 className="review-star"
+    //                 style={{
+    //                     color: STAR_COLORS[solidRating - 1],
+    //                     padding: "0 2px 0 0"
+    //                 }}
+    //             >
+    //                 <i style={{ fontSize: "18px" }} className="fas fa-star"></i>
+    //             </span>
+    //         );
+    //     }
+    //     else if (filledRating >= star) {
+    //         return (
+    //             <span
+    //                 key={star}
+    //                 className="review-star"
+    //                 style={{
+    //                     color: STAR_COLORS[solidRating - 1],
+    //                     opacity: (rating - solidRating).toFixed(2),
+    //                     padding: "0 2px 0 0"
+    //                     // opacity: 1
+    //                 }}
+    //             >
+    //                 <i style={{ fontSize: "18px" }} className="fas fa-star"></i>
+    //             </span>
+    //         );
+    //     }
+    //     else {
+    //         return (
+    //             <span
+    //                 key={star}
+    //                 className="review-star"
+    //                 style={{
+    //                     color: "#C8C9CA",
+    //                     opacity: 0.3,
+    //                     padding: "0 2px 0 0"
+    //                 }}
+    //             >
+    //                 <i style={{ fontSize: "18px" }} className="fas fa-star"></i>
+    //             </span>
+    //         );
+    //     }
+    // });
+
+    return (
+        <div className="review-star-rating">
+            {stars}
+        </div>
+    );
+}
 
 const isBusinessOpen = (business) => {
     let open = new Date(business.open).getUTCHours();
