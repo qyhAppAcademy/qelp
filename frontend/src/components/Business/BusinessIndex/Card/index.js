@@ -116,6 +116,9 @@ const twelveHourFormat = (dateString) => {
 const Card = ({ business, idx }) => {
     const history = useHistory();
 
+    const rating = StarRatingShowInFloat(business.avgRating === null ?
+        0 : business.avgRating);
+
     const categories = business.category.split(",").map((category, idx) => (
         <span key={idx} className="category">{category.trim()}</span>
     ));
@@ -148,10 +151,7 @@ const Card = ({ business, idx }) => {
                 <h1 className="name">{`${idx + 1}. ${business.name}`}</h1>
             </div>
             <div>
-                <StarRatingShowInFloat
-                    rating={business.avgRating === null ?
-                        0 : business.avgRating}
-                />
+                {rating}
             </div>
             <div>
                 <span className="price">{business.price}</span>
