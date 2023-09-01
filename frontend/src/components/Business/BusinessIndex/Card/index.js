@@ -33,8 +33,9 @@ const StarRatingShowInFloat = ({ rating }) => {
     }
     
     for (let i = 0; i < solid; i++) {
-        stars.push(star(i, i + 1, 1));
+        stars.push(star(i, solid, 1));
     }
+    stars.push(star(filled - 1, filled, opacity));
     // const stars = STARS.map((star) => {
     //     if (solidRating >= star) {
     //         return (
