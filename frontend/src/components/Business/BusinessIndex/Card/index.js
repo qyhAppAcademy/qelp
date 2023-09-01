@@ -11,7 +11,7 @@ const STAR_COLORS = [
 
 const STARS = [1, 2, 3, 4, 5];
 
-const StarRatingShowInFloat = ({ rating }) => {
+const StarRatingShowInFloat = (rating) => {
     const solid   = Math.floor(rating);
     const filled  = Math.ceil(rating);
     const opacity = rating - solid;
@@ -115,6 +115,8 @@ const twelveHourFormat = (dateString) => {
 
 const Card = ({ business, idx }) => {
     const history = useHistory();
+
+    console.log(business);
 
     const rating = StarRatingShowInFloat(business.avgRating === null ?
         0 : business.avgRating);
