@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBusinessesByQuery, getBusinesses } from "../../../store/businesses";
-import Item from "./Card/index.js";
+import Card from "./Card";
 import { searchByName, searchByCategory, searchByAddress } from "./search";
 import MapContainer from "./MapContainer";
 import "./index.css";
@@ -15,13 +15,13 @@ const BusinessIndexPage = ({ keywordQuery, addressQuery }) => {
         dispatch(fetchBusinessesByQuery(keywordQuery, addressQuery));
     }, [keywordQuery, addressQuery]);
     
-    // if (businesses.length === 0) {
-    //     return null;
-    // }
+    if (businesses.length === 0) {
+        return null;
+    }
 
     const businessItems = (keywordQuery === "" && addressQuery === "") ?
-        businesses.map((business, index) => (
-            <Item key={business.id} idx={index} business={business} />
+        businesses.map((business, idx) => (
+            <Card key={business.id} business={business} idx={idx} />
         )) :
         businesses.filter(business => {
             return (
@@ -30,7 +30,7 @@ const BusinessIndexPage = ({ keywordQuery, addressQuery }) => {
                 searchByAddress(business, addressQuery)
             );
         }).map((business, index) => (
-            <Item key={business.id} idx={index} business={business} />
+            <Card key={business.id} idx={index} business={business} />
         ));
 
     return (

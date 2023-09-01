@@ -24,7 +24,7 @@ const twelveHourFormat = (dateString) => {
         "0" + minute : minute} ${period}`;
 }
 
-const Card = ({ idx, business }) => {
+const Card = ({ business, idx }) => {
     const history = useHistory();
 
     const categories = business.category.split(",").map((category, idx) => (
@@ -34,10 +34,10 @@ const Card = ({ idx, business }) => {
     const open = isBusinessOpen(business);
     const hours = (
         <>
-            <span className={`hours ${open ? "open" : "closed"}`}>
+            <span className={`${open ? "open" : "closed"}`}>
                 {open ? "Open" : "Closed"}
             </span>
-            <span style={{ fontWeight: "300" }}>
+            <span className='hours'>
                 until {open ? twelveHourFormat(business.close) :
                     twelveHourFormat(business.open)}
             </span>
@@ -65,9 +65,9 @@ const Card = ({ idx, business }) => {
                 />
             </div>
             <div>
-                {categories}
-                <span className="dot"><i className="fas fa-circle"></i></span>
                 <span className="price">{business.price}</span>
+                <span className="dot"><i className="fas fa-circle"></i></span>
+                {categories}
             </div>
             <div>
                 {hours}
