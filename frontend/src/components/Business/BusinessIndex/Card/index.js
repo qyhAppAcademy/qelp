@@ -1,41 +1,51 @@
 import { useHistory } from 'react-router-dom';
 import "./index.css";
 
-const STAR_COLORS = [
-    "#FFCC4B",
-    "#FFAD48",
-    "#FF8742",
-    "#FF643D",
-    "#FB503B"
-];
-
 const STARS = [1, 2, 3, 4, 5];
 
-const StarRatingShowInFloat = (rating) => {
-    const solid   = Math.floor(rating);
-    const filled  = Math.ceil(rating);
-    const opacity = rating - solid;
-    const stars = [];
-    const star = (idx, rating, opacity) => {
+const ratingAsStars = (rating) => {
+    const COLORS = [
+        "#FFCC4B",
+        "#FFAD48",
+        "#FF8742",
+        "#FF643D",
+        "#FB503B"
+    ];
+
+    const star = (idx, opacity) => {
         return (
             <span
-                key={idx}
                 className="review-star"
                 style={{
                     padding: "0 2px 0 0",
-                    color: STAR_COLORS[rating - 1],
-                    opacity: `${opacity * 100}%`
+                    color: COLORS[idx],
+                    opacity: opacity
                 }}
             >
                 <i style={{ fontSize: "18px" }} className="fas fa-star"></i>
             </span>
         );
     }
+
+    const solid = Math.floor(rating);
+    const filled = Math.ceil(rating);
+
+    console.log("solid: " + solid);
+    console.log("filled: " + filled);
+
+    const stars = [];
     
-    for (let i = 0; i < solid; i++) {
-        stars.push(star(i, solid, 1));
+    for (let i = 0; i < COLORS.length; i++) {
+        if (i < solid) {
+            stars.push(star(solid - 1, 1));
+        }
+        else if (i < filled) {
+            stars.push(star(filled - 1, (rating - solid).toFixed(2)));
+        }
+        else {
+            stars.push(star(5, 0.1));
+        }
     }
-    stars.push(star(filled - 1, filled, opacity));
     // const stars = STARS.map((star) => {
     //     if (solidRating >= star) {
     //         return (
@@ -85,9 +95,12 @@ const StarRatingShowInFloat = (rating) => {
     // });
 
     return (
-        <div className="review-star-rating">
+        <>
             {stars}
-        </div>
+        </>
+        // <div className="review-star-rating">
+            
+        // </div>
     );
 }
 
@@ -118,7 +131,7 @@ const Card = ({ business, idx }) => {
 
     console.log(business);
 
-    const rating = StarRatingShowInFloat(business.avgRating === null ?
+    const rating = ratingAsStars(business.avgRating === null ?
         0 : business.avgRating);
 
     const categories = business.category.split(",").map((category, idx) => (
