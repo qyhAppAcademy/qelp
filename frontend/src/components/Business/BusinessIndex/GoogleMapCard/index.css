@@ -1,0 +1,25 @@
+.google-map-item-nav-link .google-map-item {
+    padding: 5px 0 0 6px;
+    margin: 0;
+    display: block;
+    width: 200px;
+}
+
+.google-map-item-nav-link .google-map-item div {
+    padding: 0 0 3px 0;
+    font-size: 18px;
+}
+
+.google-map-item-nav-link .google-map-item .google-map-item-picture img {
+    object-fit: COVER;
+    object-position: 0% 0;
+    width: 200px;
+}
+
+.google-map-item-nav-link .google-map-item .google-map-item-name {
+    font-size: 18px;
+}
+
+.google-map-item-nav-link .google-map-item .google-map-item-category {
+    font-size: 14px;
+}

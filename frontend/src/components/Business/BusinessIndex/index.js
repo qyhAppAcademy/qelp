@@ -19,7 +19,7 @@ const BusinessIndexPage = ({ keywordQuery, addressQuery }) => {
         return null;
     }
 
-    const businessItems = (keywordQuery === "" && addressQuery === "") ?
+    const cards = (keywordQuery === "" && addressQuery === "") ?
         businesses.map((business, idx) => (
             <Card key={business.id} business={business} idx={idx} />
         )) :
@@ -29,15 +29,15 @@ const BusinessIndexPage = ({ keywordQuery, addressQuery }) => {
                     searchByCategory(business.category, keywordQuery, ",")) &&
                 searchByAddress(business, addressQuery)
             );
-        }).map((business, index) => (
-            <Card key={business.id} idx={index} business={business} />
+        }).map((business, idx) => (
+            <Card key={business.id} business={business} idx={idx} />
         ));
 
     return (
         <div id="business-index">
             <div>
-                {businessItems.length > 0 ? (
-                    businessItems
+                {cards.length > 0 ? (
+                    cards
                 ) : (
                     <p className="no-results">Search Not Found</p>
                 )}

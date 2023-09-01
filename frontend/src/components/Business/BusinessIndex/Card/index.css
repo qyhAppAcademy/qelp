@@ -1,10 +1,10 @@
 .card {
-    height: 20vw;
-    margin: 1vw;
+    /* height: 20vw; */
+    margin: 0 1vw;
     padding: 1vw;
     border-radius: 0.5vw;
 
-    background-color: bisque;
+    /* background-color: bisque; */
 }
 
 .card:hover {
@@ -13,10 +13,15 @@
 }
 
 .card > div {
+    margin: 0.3vw 0 0 0;
     display: flex;
     align-items: center;
 
-    background-color:cadetblue;
+    /* background-color:cadetblue; */
+}
+
+.card > div:first-child {
+    margin: 0;
 }
 
 .card .thumbnail {
@@ -63,7 +68,12 @@
     transition: 0.5s all ease-out;
 }
 
+.card > div:last-child > span {
+    font-size: 1.2vw;
+}
+
 .card > div:last-child > span:first-child {
+    margin: 0 0.25vw 0 0;
     font-weight: 600;
 }
 
@@ -77,32 +87,4 @@
 
 .card .hours {
     font-weight: 300;
-    margin: 0 0 0 0.25vw;
-}
-
-
-.google-map-item-nav-link .google-map-item {
-    padding: 5px 0 0 6px;
-    margin: 0;
-    display: block;
-    width: 200px;
-}
-
-.google-map-item-nav-link .google-map-item div {
-    padding: 0 0 3px 0;
-    font-size: 18px;
-}
-
-.google-map-item-nav-link .google-map-item .google-map-item-picture img {
-    object-fit: COVER;
-    object-position: 0% 0;
-    width: 200px;
-}
-
-.google-map-item-nav-link .google-map-item .google-map-item-name {
-    font-size: 18px;
-}
-
-.google-map-item-nav-link .google-map-item .google-map-item-category {
-    font-size: 14px;
 }
