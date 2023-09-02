@@ -24,68 +24,21 @@ const ratingInStars = (rating) => {
         }
         else {
             idx = 0;
-            opacity = 0.1;
+            opacity = 0.2;
         }
         stars.push(
             <span
-                className="review-star"
+                className="avg-rating-star"
                 style={{
                     color: COLORS[idx],
                     opacity: opacity
                 }}
             >
-                <i style={{ fontSize: "2vw" }} className="fas fa-star"></i>
+                <i className="fas fa-star"></i>
             </span>
         );
     }
     return stars;
-    // const stars = STARS.map((star) => {
-    //     if (solidRating >= star) {
-    //         return (
-    //             <span
-    //                 key={star}
-    //                 className="review-star"
-    //                 style={{
-    //                     color: STAR_COLORS[solidRating - 1],
-    //                     padding: "0 2px 0 0"
-    //                 }}
-    //             >
-    //                 <i style={{ fontSize: "18px" }} className="fas fa-star"></i>
-    //             </span>
-    //         );
-    //     }
-    //     else if (filledRating >= star) {
-    //         return (
-    //             <span
-    //                 key={star}
-    //                 className="review-star"
-    //                 style={{
-    //                     color: STAR_COLORS[solidRating - 1],
-    //                     opacity: (rating - solidRating).toFixed(2),
-    //                     padding: "0 2px 0 0"
-    //                     // opacity: 1
-    //                 }}
-    //             >
-    //                 <i style={{ fontSize: "18px" }} className="fas fa-star"></i>
-    //             </span>
-    //         );
-    //     }
-    //     else {
-    //         return (
-    //             <span
-    //                 key={star}
-    //                 className="review-star"
-    //                 style={{
-    //                     color: "#C8C9CA",
-    //                     opacity: 0.3,
-    //                     padding: "0 2px 0 0"
-    //                 }}
-    //             >
-    //                 <i style={{ fontSize: "18px" }} className="fas fa-star"></i>
-    //             </span>
-    //         );
-    //     }
-    // });
 }
 
 const isBusinessOpen = (business) => {
