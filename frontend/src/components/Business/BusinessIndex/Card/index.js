@@ -1,4 +1,4 @@
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import "./index.css";
 
 const ratingInStars = (rating) => {
@@ -28,7 +28,7 @@ const ratingInStars = (rating) => {
         }
         stars.push(
             <span
-                className="avg-rating-star"
+                className="rating-star"
                 style={{
                     color: COLORS[idx],
                     opacity: opacity
@@ -79,7 +79,7 @@ const Card = ({ business, idx }) => {
             <span className={`${open ? "open" : "closed"}`}>
                 {open ? "Open" : "Closed"}
             </span>
-            <span className='hours'>
+            <span className="hours">
                 until {open ? twelveHourFormat(business.close) :
                     twelveHourFormat(business.open)}
             </span>
