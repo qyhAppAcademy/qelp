@@ -11,6 +11,7 @@
 
 .card > div {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
 }
 
@@ -33,12 +34,12 @@
 }
 
 .card .rating-star {
-    padding: 0.33vw 0.3vw 0.63vw 0; /* 0.3vw margin-top by default */
-    font-size: 1.5vw;
+    padding: 0.4vw 0.3vw 0.3vw 0; /* 0.3vw margin-top by default */
+    font-size: 1.6vw;
 }
 
 .card > div:nth-child(4) > span {
-    margin: 0 0.4vw 0 0; /* 0.4vw is 1/1 of 0.4vw */
+    margin: 0.4vw 0.4vw 0 0; /* 0.4vw is 1/1 of 0.4vw */
     color: rgb(114, 114, 114);
 }
 
