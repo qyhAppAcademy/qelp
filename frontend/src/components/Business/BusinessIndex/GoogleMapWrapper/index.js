@@ -1,36 +1,46 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { GoogleMap, Marker, InfoWindow } from '@react-google-maps/api';
 import Info from './Info';
 
+const DEFAULT_CENTER = {
+    lat: 40.7362862,
+    lng: -73.99377610676491
+};
+
 const GoogleMapWrapper = ({ businesses }) => {
-    const [selected, setSelected] = useState({});
+    // const locations = businesses.map((business, idx) => {
+    //     return {
+    //         geocode: {
+    //             lat: parseFloat(business.lat),
+    //             lng: parseFloat(business.lng)
+    //         },
+    //         idx: idx,
+    //         ...business
+    //     }
+    // });
+
+    const [selected, setSelected] = useState(null);
+    const [defaultCenter, setDefaultCenter] = useState(DEFAULT_CENTER);
 
     const onSelect = (business) => {
         setSelected(business);
-        setDefaultCenter(business.location);
+        setDefaultCenter({
+            lat: parseFloat(business.lat),
+            lng: parseFloat(business.lng)
+        });
     }
 
-    const locations = businesses.map((business, idx) => {
-        return {
-            name: business.name,
-            location: {
-                lat: parseFloat(business.lat),
-                lng: parseFloat(business.lng)
-            },
-            idx: idx,
-            ...business
-        }
-    });
-
-    const markers = locations.map(location => {
-        console.log(location);
+    const markers = businesses.map((business, idx) => {
         return (
             <Marker
-                key={location.idx}
-                position={location.location} 
-                onClick={() => onSelect(location)}
+                key={idx}
+                position={{
+                    lat: parseFloat(business.lat),
+                    lng: parseFloat(business.lng)
+                }}
+                onClick={() => onSelect(business)}
                 label={{
-                    text: `${location.idx+1}`, 
+                    text: `${idx+1}`, 
                     color: "white",
                     fontSize: "14px",
                     fontWeight: "600"
@@ -41,10 +51,13 @@ const GoogleMapWrapper = ({ businesses }) => {
 
     const infoWindow = (
         <InfoWindow
-            position={selected.location}
+            position={selected ? {
+                lat: parseFloat(selected.lat),
+                lng: parseFloat(selected.lng)
+            } : {}}
             clickable={true}
             onCloseClick={() => {
-                setSelected({});
+                setSelected(null);
                 // setDefaultCenter({
                 //     lat: 40.7362862, 
                 //     lng: -73.99377610676491
@@ -60,20 +73,30 @@ const GoogleMapWrapper = ({ businesses }) => {
         width: "100%"
     };
 
-    const [defaultCenter, setDefaultCenter] = useState({
-        lat: 40.7362862, 
-        lng: -73.99377610676491
-    });
+    // let map;
+    // const initMap2 = async () => {
+    //     const { Map } = await window.google.maps.importLibrary("maps");
+    //     map = new Map(document.getElementById("map"), {
+    //         center: DEFAULT_CENTER,
+    //         zoom: 8,
+    //     });
+    //     console.log("hello");
+    // }
+
+    // useEffect(() => {
+    //     initMap2();
+    // }, []);
 
     return (
-        <GoogleMap
-            mapContainerStyle={mapStyles}
-            zoom={12}
-            center={defaultCenter}
-        >
-            {markers}
-            {selected.location && infoWindow}
-        </GoogleMap>
+        <div id="map"></div>
+        // <GoogleMap
+        //     mapContainerStyle={mapStyles}
+        //     zoom={12}
+        //     center={defaultCenter}
+        // >
+        //     {markers}
+        //     {selected && infoWindow}
+        // </GoogleMap>
     )
 }
 

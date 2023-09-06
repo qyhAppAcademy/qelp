@@ -46,12 +46,21 @@ const AddressInput = ({ address, setAddress, search }) => {
         }
     }
 
-    window.initMap = () => {
+    let map;
+    window.initMap = async () => {
         enableAutocomplete();
+
+        const { Map } = await window.google.maps.importLibrary("maps");
+        map = new Map(document.getElementById("map"), {
+            center: { lat: -34.397, lng: 150.644 },
+            zoom: 8,
+        });
+        console.log(map);
     };
 
     useEffect(() => {
-        enableAutocomplete();
+        // enableAutocomplete();
+        window.initMap();
         console.log("AddressInput useEffect called");
     }, []);
 

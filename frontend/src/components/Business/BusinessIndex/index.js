@@ -21,7 +21,7 @@ const BusinessIndexPage = ({ keywordQuery, addressQuery }) => {
 
     const cards = (keywordQuery === "" && addressQuery === "") ?
         businesses.map((business, idx) => (
-            <Card key={business.id} business={business} idx={idx} />
+            <Card key={idx} business={business} idx={idx} />
         )) :
         businesses.filter(business => {
             return (
@@ -30,7 +30,7 @@ const BusinessIndexPage = ({ keywordQuery, addressQuery }) => {
                 searchByAddress(business, addressQuery)
             );
         }).map((business, idx) => (
-            <Card key={business.id} business={business} idx={idx} />
+            <Card key={idx} business={business} idx={idx} />
         ));
 
     return (
