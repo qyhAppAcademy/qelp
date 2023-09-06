@@ -73,22 +73,25 @@ const GoogleMapWrapper = ({ businesses }) => {
         width: "100%"
     };
 
-    // let map;
-    // const initMap2 = async () => {
-    //     const { Map } = await window.google.maps.importLibrary("maps");
-    //     map = new Map(document.getElementById("map"), {
-    //         center: DEFAULT_CENTER,
-    //         zoom: 8,
-    //     });
-    //     console.log("hello");
-    // }
+    let map;
 
-    // useEffect(() => {
-    //     initMap2();
-    // }, []);
+    async function initMap() {
+        const { Map } = await window.google.maps.importLibrary("maps");
+
+        map = new Map(document.getElementById("map"), {
+            center: { lat: -34.397, lng: 150.644 },
+            zoom: 8,
+        });
+
+        console.log(map);
+    }
+
+    useEffect(() => {
+        initMap();
+    }, []);
 
     return (
-        <div id="map"></div>
+        <div id="map" style={mapStyles}></div>
         // <GoogleMap
         //     mapContainerStyle={mapStyles}
         //     zoom={12}
