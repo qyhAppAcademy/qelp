@@ -23,6 +23,7 @@ const GoogleMapWrapper = ({ businesses }) => {
     });
 
     const markers = locations.map(location => {
+        console.log(location);
         return (
             <Marker
                 key={location.idx}

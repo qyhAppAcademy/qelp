@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchBusinessesByQuery, getBusinesses } from "../../../store/businesses";
 import Card from "./Card";
 import { searchByName, searchByCategory, searchByAddress } from "./search";
-import MapContainer from "./GoogleMapWrapper";
+import GoogleMapWrapper from "./GoogleMapWrapper";
 import "./index.css";
 
 const BusinessIndexPage = ({ keywordQuery, addressQuery }) => {
@@ -43,7 +43,7 @@ const BusinessIndexPage = ({ keywordQuery, addressQuery }) => {
                 )}
             </div>
             <div>
-                <MapContainer businesses={businesses.filter(business => {
+                <GoogleMapWrapper businesses={businesses.filter(business => {
                     return (
                         (searchByName(business.name, keywordQuery) || 
                             searchByCategory(business.category, keywordQuery, ",")) &&
