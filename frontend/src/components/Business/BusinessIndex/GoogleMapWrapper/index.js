@@ -1,41 +1,41 @@
 import React, { useState } from 'react';
 import { GoogleMap, Marker, InfoWindow } from '@react-google-maps/api';
-import ItemOnGoogleMap from './GoogleMapCard'
+import Info from './Info';
 
-const MapContainer = ({ businesses }) => {
+const GoogleMapWrapper = ({ businesses }) => {
     const [selected, setSelected] = useState({});
 
-    const onSelect = item => {
-        setSelected(item);
-        setDefaultCenter(item.location);
+    const onSelect = (business) => {
+        setSelected(business);
+        setDefaultCenter(business.location);
     }
 
-    const locations = businesses.map((business, index) => {
+    const locations = businesses.map((business, idx) => {
         return {
             name: business.name,
             location: {
                 lat: parseFloat(business.lat),
                 lng: parseFloat(business.lng)
             },
-            idx: index,
+            idx: idx,
             ...business
         }
     });
 
-    const markers = locations.map(item => {
+    const markers = locations.map(location => {
         return (
-            <Marker 
-                key={item.name} 
-                position={item.location} 
-                onClick={() => onSelect(item)}
+            <Marker
+                key={location.idx}
+                position={location.location} 
+                onClick={() => onSelect(location)}
                 label={{
-                    text: `${item.idx+1}`, 
-                    color: "white", 
+                    text: `${location.idx+1}`, 
+                    color: "white",
                     fontSize: "14px",
                     fontWeight: "600"
                 }}
             />
-        )
+        );
     });
 
     const infoWindow = (
@@ -50,10 +50,7 @@ const MapContainer = ({ businesses }) => {
                 // });
             }}
         >
-            <>
-                <p></p>
-                <ItemOnGoogleMap business={selected}/>
-            </>
+            <Info business={selected}/>
         </InfoWindow>
     );
 
@@ -79,4 +76,4 @@ const MapContainer = ({ businesses }) => {
     )
 }
 
-export default MapContainer;
+export default GoogleMapWrapper;

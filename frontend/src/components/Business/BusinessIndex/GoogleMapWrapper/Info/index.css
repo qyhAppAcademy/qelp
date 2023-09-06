@@ -1,0 +1,27 @@
+.info {
+    /* padding: 5px 0 0 6px; */
+    margin: 0;
+    /* display: block; */
+    /* width: 200px; */
+
+    width: 16vw;
+}
+
+.info div {
+    /* padding: 0 0 3px 0;
+    font-size: 18px; */
+}
+
+.info .thumbnail {
+    /* object-fit: COVER;
+    object-position: 0% 0;
+    width: 100%; */
+}
+
+.info .google-map-item-name {
+    font-size: 18px;
+}
+
+.info .google-map-item-category {
+    font-size: 14px;
+}

@@ -88,6 +88,7 @@ const Card = ({ business, idx }) => {
 
     return (
         <div
+            key={idx - 1}
             className="card"
             onClick={(e) => {
                 e.preventDefault();
@@ -95,7 +96,11 @@ const Card = ({ business, idx }) => {
             }}
         >
             <div>
-                <img className="thumbnail" src={business.photoUrls[0].url} />
+                <img 
+                    className="thumbnail" 
+                    src={business.photoUrls[0].url}
+                    alt={`${business.name} thumbnail`}
+                />
             </div>
             <div>
                 <h1 className="name">{`${idx + 1}. ${business.name}`}</h1>

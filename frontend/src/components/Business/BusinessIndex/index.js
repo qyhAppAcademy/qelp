@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchBusinessesByQuery, getBusinesses } from "../../../store/businesses";
 import Card from "./Card";
 import { searchByName, searchByCategory, searchByAddress } from "./search";
-import MapContainer from "./MapContainer";
+import MapContainer from "./GoogleMapWrapper";
 import "./index.css";
 
 const BusinessIndexPage = ({ keywordQuery, addressQuery }) => {
