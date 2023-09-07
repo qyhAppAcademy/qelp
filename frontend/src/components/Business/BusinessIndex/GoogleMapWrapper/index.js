@@ -157,6 +157,7 @@ const GoogleMapWrapper = ({ businesses }) => {
             const pinGlyph = new PinElement({
                 glyph: `${idx + 1}`,
                 glyphColor: "white",
+                scale: 0.75
             });
             const marker = new AdvancedMarkerElement({
                 map: map,
