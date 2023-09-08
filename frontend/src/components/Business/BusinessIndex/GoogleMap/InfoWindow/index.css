@@ -1,17 +1,16 @@
 .info-window {
-    margin: 0;
-    /* padding: 5px 0 0 6px; */
-    /* display: block; */
-    width: 16vw;
+    padding: 1vw;
 }
 
 .info-window > div {
 }
 
 .info-window .thumbnail {
-    object-fit: COVER;
-    object-position: 0% 0;
-    width: 100%;
+    width: 24vw;
+    height: 16vw;
+    object-fit: cover;
+    object-position: 0% 50%;
+    border-radius: 1vw;
 }
 
 .info .google-map-item-name {

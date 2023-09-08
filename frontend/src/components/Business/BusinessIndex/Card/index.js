@@ -1,7 +1,7 @@
 import { useHistory } from "react-router-dom";
 import "./index.css";
 
-const ratingInStars = (business) => {
+const ratingStars = (business) => {
     const COLORS = [
         "#C8C9CA",
         "#FFCC4B",
@@ -66,8 +66,6 @@ const twelveHourFormat = (dateString) => {
 const Card = ({ business, idx }) => {
     const history = useHistory();
 
-    const avgRatingInStars = ratingInStars(business);
-
     const categories = business.category.split(",").map((category, idx) => (
         <span key={idx} className="category">{category.trim()}</span>
     ));
@@ -105,7 +103,7 @@ const Card = ({ business, idx }) => {
                 <h1 className="name">{`${idx + 1}. ${business.name}`}</h1>
             </div>
             <div>
-                {avgRatingInStars}
+                {ratingStars(business)}
             </div>
             <div>
                 <span className="price">{business.price}</span>

@@ -9,25 +9,25 @@
 }
 
 .clickable {
-    color: #FFFFFF;
-    background-color: #e50d0d;
+    color: rgb(255, 255, 255);
+    background-color: rgb(229, 13, 13);
     cursor: pointer;
 }
 
 .clickable:hover {
-    background-color: #ff0000;
+    background-color: rgb(255, 0, 0);
     transition: all 0.5s ease-out;
 }
 
 .unclickable {
-    color: #EBEBEB;
+    color: rgb(235, 235, 235);
     background-color: transparent;
     cursor: not-allowed;
 }
 
 .ripple {
     position: absolute;
-    background-color: #F6F6F6;
+    background-color: rgb(246, 246, 246);
     opacity: 0%;
     border-radius: 100%;
     animation: ripple 1s linear;

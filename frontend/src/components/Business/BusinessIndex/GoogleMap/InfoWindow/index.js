@@ -1,6 +1,6 @@
 import "./index.css";
 
-const ratingInStars = (business) => {
+const ratingStars = (business) => {
     const COLORS = [
         "#C8C9CA",
         "#FFCC4B",
@@ -45,8 +45,6 @@ const InfoWindow = ({ business }) => {
         <span className="category" key={idx}>{category.trim()}</span>
     ));
 
-    const stars = ratingInStars(business);
-
     return (
         <div className="info-window">
             <div>
@@ -59,9 +57,9 @@ const InfoWindow = ({ business }) => {
             <div>
                 <h1 className="name">{business.name}</h1>
             </div>
-            <div>
+            {/* <div>
                 <div className="rating-stars">
-                    {stars}
+                    {ratingStars(business)}
                 </div>
                 <span className="avg-rating">
                     {business.avgRating.toFixed(1)}
@@ -72,7 +70,7 @@ const InfoWindow = ({ business }) => {
             </div>
             <div>
                 {categories}
-            </div>
+            </div> */}
         </div>
     );
 }

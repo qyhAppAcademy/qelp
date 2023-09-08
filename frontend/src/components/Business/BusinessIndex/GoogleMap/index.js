@@ -53,16 +53,18 @@ const GoogleMap = ({ businesses }) => {
                 content: pinGlyph.element
             });
 
-            // pinGlyph.element.addEventListener("mouseover", () => {
-            //     infoWindow.setContent(renderToStaticMarkup(
-            //         <InfoWindow business={business} />));
-            //     infoWindow.open(map, marker);
-            // });
+            pinGlyph.element.addEventListener("mouseover", () => {
+                // infoWindow.setContent(renderToStaticMarkup(
+                //     <InfoWindow business={business} />));
+                // infoWindow.open(map, marker);
+                pinGlyph.background = "rgb(255, 0, 0)";
+            });
 
-            // pinGlyph.element.addEventListener("mouseleave", () => {
-            //     infoWindow.setContent("");
-            //     infoWindow.close();
-            // });
+            pinGlyph.element.addEventListener("mouseleave", () => {
+                // infoWindow.setContent("");
+                // infoWindow.close();
+                pinGlyph.background = "rgb(229, 13, 13)";
+            });
 
             marker.addListener("click", () => {
                 // history.push(`/businesses/${business.id}`);
