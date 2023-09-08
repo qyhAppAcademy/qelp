@@ -2,3 +2,15 @@
     width: 100%;
     height: 100%;
 }
+
+#map .gm-style-iw-t>div:first-child {
+    padding: 0 !important;
+}
+
+#map .gm-style-iw-d {
+    overflow: hidden !important;
+}
+
+#map button.gm-ui-hover-effect {
+    display: none !important;
+}
