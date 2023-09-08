@@ -47,30 +47,25 @@ const InfoWindow = ({ business }) => {
 
     return (
         <div className="info-window">
-            {/* <div>
+            <div>
                 <img
                     className="thumbnail"
                     src={business.photoUrls[0].url}
                     alt={`${business.name} thumbnail`}
                 />
-            </div> */}
+            </div>
             <div>
                 <h1 className="name">{business.name}</h1>
             </div>
-            {/* <div>
-                <div className="rating-stars">
-                    {ratingStars(business)}
-                </div>
+            <div>
+                {ratingStars(business)}
                 <span className="avg-rating">
                     {business.avgRating.toFixed(1)}
                 </span>
                 <span className="reviews-count">
-                    {business.reviewsCount} reviews
+                    ({business.reviewsCount} reviews)
                 </span>
             </div>
-            <div>
-                {categories}
-            </div> */}
         </div>
     );
 }

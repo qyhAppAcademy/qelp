@@ -1,10 +1,11 @@
 #map .gm-style-iw-t > div:first-child {
-    width: 26vw;
     margin: 0 !important;
     padding: 0 !important;
 }
 
 #map .gm-style-iw-d {
+    width: 21vw;
+    margin: 1.5vw;
     overflow:unset !important;
 }
 
@@ -12,25 +13,33 @@
     display: none !important;
 }
 
-#map .info-window {
-    padding: 0vw;
-}
-
-.info-window > div {
+.info-window > div:not(:first-child) {
+    margin: 0;
 }
 
 .info-window .thumbnail {
-    width: 24vw;
-    height: 16vw;
+    width: 100%;
+    height: 13vw;
+    margin: 0 0 1.1vw 0;
     object-fit: cover;
     object-position: 0% 50%;
     border-radius: 1vw;
 }
 
-.info .google-map-item-name {
-    font-size: 18px;
+.info-window .name {
+    font-size: 1.6vw;
+    font-weight: 600;
 }
 
-.info .google-map-item-category {
-    font-size: 14px;
+.info-window > div:nth-child(3) {
+    font-size: 1.3vw;
+}
+
+.info-window .rating-star {
+    margin: 0 0.2vw 0 0;
+    vertical-align: 0vw;
+}
+
+.info-window .avg-rating {
+    margin: 0 0.2vw 0 0.6vw;
 }
