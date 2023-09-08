@@ -1,21 +1,17 @@
-.info {
-    /* padding: 5px 0 0 6px; */
+.info-window {
     margin: 0;
+    /* padding: 5px 0 0 6px; */
     /* display: block; */
-    /* width: 200px; */
-
     width: 16vw;
 }
 
-.info div {
-    /* padding: 0 0 3px 0;
-    font-size: 18px; */
+.info-window > div {
 }
 
-.info .thumbnail {
-    /* object-fit: COVER;
+.info-window .thumbnail {
+    object-fit: COVER;
     object-position: 0% 0;
-    width: 100%; */
+    width: 100%;
 }
 
 .info .google-map-item-name {
