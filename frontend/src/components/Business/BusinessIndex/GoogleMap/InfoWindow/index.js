@@ -1,6 +1,6 @@
 import "./index.css";
 
-const ratingInStars = (rating) => {
+const ratingInStars = (business) => {
     const COLORS = [
         "#C8C9CA",
         "#FFCC4B",
@@ -9,7 +9,7 @@ const ratingInStars = (rating) => {
         "#FF643D",
         "#FB503B"
     ];
-    const floor = Math.floor(rating);
+    const floor = Math.floor(business.avgRating);
     const stars = [];
     for (let i = 1; i < COLORS.length; i++) {
         let idx, opacity;
@@ -19,7 +19,7 @@ const ratingInStars = (rating) => {
         }
         else if (i === floor + 1) {
             idx = floor + 1;
-            opacity = (rating - floor).toFixed(2);
+            opacity = (business.avgRating - floor).toFixed(2);
         }
         else {
             idx = 0;
@@ -27,6 +27,7 @@ const ratingInStars = (rating) => {
         }
         stars.push(
             <span
+                key={`${business.id} rating-star ${idx}`}
                 className="rating-star"
                 style={{
                     color: COLORS[idx],
@@ -45,7 +46,7 @@ const InfoWindow = ({ business }) => {
         <span className="category" key={idx}>{category.trim()}</span>
     ));
 
-    const stars = ratingInStars(business.avgRating);
+    const stars = ratingInStars(business);
 
     return (
         <div className="info-window">
