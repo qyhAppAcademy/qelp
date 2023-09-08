@@ -47,13 +47,13 @@ const InfoWindow = ({ business }) => {
 
     return (
         <div className="info-window">
-            <div>
+            {/* <div>
                 <img
                     className="thumbnail"
                     src={business.photoUrls[0].url}
                     alt={`${business.name} thumbnail`}
                 />
-            </div>
+            </div> */}
             <div>
                 <h1 className="name">{business.name}</h1>
             </div>

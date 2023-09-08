@@ -1,5 +1,19 @@
-.info-window {
-    padding: 1vw;
+#map .gm-style-iw-t > div:first-child {
+    width: 26vw;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#map .gm-style-iw-d {
+    overflow:unset !important;
+}
+
+#map button.gm-ui-hover-effect {
+    display: none !important;
+}
+
+#map .info-window {
+    padding: 0vw;
 }
 
 .info-window > div {
