@@ -1,7 +1,7 @@
 import { useHistory } from "react-router-dom";
 import "./index.css";
 
-const ratingInStars = (rating) => {
+const ratingInStars = (business) => {
     const COLORS = [
         "#C8C9CA",
         "#FFCC4B",
@@ -10,7 +10,7 @@ const ratingInStars = (rating) => {
         "#FF643D",
         "#FB503B"
     ];
-    const floor = Math.floor(rating);
+    const floor = Math.floor(business.avgRating);
     const stars = [];
     for (let i = 1; i < COLORS.length; i++) {
         let idx, opacity;
@@ -20,7 +20,7 @@ const ratingInStars = (rating) => {
         }
         else if (i === floor + 1) {
             idx = floor + 1;
-            opacity = (rating - floor).toFixed(2);
+            opacity = (business.avgRating - floor).toFixed(2);
         }
         else {
             idx = 0;
@@ -66,8 +66,7 @@ const twelveHourFormat = (dateString) => {
 const Card = ({ business, idx }) => {
     const history = useHistory();
 
-    const avgRatingInStars = ratingInStars(business.avgRating === null ?
-        0 : business.avgRating);
+    const avgRatingInStars = ratingInStars(business);
 
     const categories = business.category.split(",").map((category, idx) => (
         <span key={idx} className="category">{category.trim()}</span>

@@ -27,7 +27,6 @@ const ratingInStars = (business) => {
         }
         stars.push(
             <span
-                key={`${business.id} rating-star ${idx}`}
                 className="rating-star"
                 style={{
                     color: COLORS[idx],
