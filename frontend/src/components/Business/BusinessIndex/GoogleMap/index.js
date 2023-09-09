@@ -54,23 +54,30 @@ const GoogleMap = ({ businesses }) => {
             });
 
             pinGlyph.element.addEventListener("mouseover", () => {
-                infoWindow.setContent(renderToStaticMarkup(
-                    <InfoWindow business={business} />));
-                infoWindow.open(map, marker);
+                // infoWindow.setContent(renderToStaticMarkup(
+                //     <InfoWindow business={business} />));
+                // infoWindow.open(map, marker);
                 pinGlyph.background = "rgb(255, 0, 0)";
             });
 
             pinGlyph.element.addEventListener("mouseleave", () => {
-                infoWindow.setContent("");
-                infoWindow.close();
+                // infoWindow.setContent("");
+                // infoWindow.close();
                 pinGlyph.background = "rgb(229, 13, 13)";
             });
 
             marker.addListener("click", () => {
-                history.push(`/businesses/${business.id}`);
-                // infoWindow.setContent(renderToStaticMarkup(
-                //     <InfoWindow business={business} />));
-                // infoWindow.open(map, marker);
+                // history.push(`/businesses/${business.id}`);
+                infoWindow.setContent(renderToStaticMarkup(
+                    <InfoWindow business={business} />));
+                infoWindow.open(map, marker);
+                infoWindow.addListener("domready", () => {
+                    const categories = 
+                        document.getElementsByClassName("map-category");
+                    categories[0].addEventListener("click", () => {
+                        console.log("Hello World");
+                    });
+                });
             });
 
             return marker;

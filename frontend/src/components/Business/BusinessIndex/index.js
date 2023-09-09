@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchBusinessesByQuery, getBusinesses } from "../../../store/businesses";
 import Card from "./Card";
 import { searchByName, searchByCategory, searchByAddress } from "./search";
+import Map from "./Map";
 import GoogleMap from "./GoogleMap";
 import "./index.css";
 

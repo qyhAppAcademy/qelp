@@ -42,7 +42,7 @@ const ratingStars = (business) => {
 
 const InfoWindow = ({ business }) => {
     const categories = business.category.split(",").map((category, idx) => (
-        <span className="category" key={idx}>{category.trim()}</span>
+        <span className="map-category" key={idx}>{category.trim()}</span>
     ));
 
     return (
@@ -65,6 +65,9 @@ const InfoWindow = ({ business }) => {
                 <span className="reviews-count">
                     ({business.reviewsCount} reviews)
                 </span>
+            </div>
+            <div>
+                {categories}
             </div>
         </div>
     );
