@@ -32,6 +32,7 @@ const ratingStars = (business) => {
                     color: COLORS[idx],
                     opacity: opacity
                 }}
+                key={`info-window-business-id-${business.id}-rating-star-${i}`}
             >
                 <i className="fas fa-star"></i>
             </span>
@@ -40,35 +41,48 @@ const ratingStars = (business) => {
     return stars;
 }
 
-const InfoWindow = ({ business }) => {
-    const categories = business.category.split(",").map((category, idx) => (
-        <span className="map-category" key={idx}>{category.trim()}</span>
-    ));
+const InfoWindow = ({ infoWindowRef, business }) => {
+    const categories = business ?
+        business.category.split(",").map((category, idx) => (
+            <span 
+                className="category"
+                onClick={() => {
+                    console.log(category);
+                }}
+                key={idx}
+            >
+                {category.trim()}
+            </span>
+        )) : null;
 
     return (
-        <div className="info-window">
-            <div>
-                <img
-                    className="thumbnail"
-                    src={business.photoUrls[0].url}
-                    alt={`${business.name} thumbnail`}
-                />
-            </div>
-            <div>
-                <h1 className="name">{business.name}</h1>
-            </div>
-            <div>
-                {ratingStars(business)}
-                <span className="avg-rating">
-                    {business.avgRating.toFixed(1)}
-                </span>
-                <span className="reviews-count">
-                    ({business.reviewsCount} reviews)
-                </span>
-            </div>
-            <div>
-                {categories}
-            </div>
+        <div ref={infoWindowRef} id="info-window">
+            {business &&
+                <>
+                    <div>
+                        <img
+                            className="thumbnail"
+                            src={business.photoUrls[0].url}
+                            alt={`${business.name} thumbnail`}
+                        />
+                    </div>
+                    <div>
+                        <h1 className="name">{business.name}</h1>
+                    </div>
+                    <div>
+                        {ratingStars(business)}
+                        <span className="avg-rating">
+                            {business.avgRating.toFixed(1)}
+                        </span>
+                        <span className="reviews-count">
+                            ({business.reviewsCount} reviews)
+                        </span>
+                    </div>
+                    <div>
+                        {categories}
+                    </div>
+                </>
+            }
         </div>
     );
 }

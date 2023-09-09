@@ -13,11 +13,11 @@
     display: none !important;
 }
 
-.info-window > div:not(:first-child) {
+#info-window > div:not(:first-child) {
     margin: 0;
 }
 
-.info-window .thumbnail {
+#info-window .thumbnail {
     width: 100%;
     height: 13vw;
     margin: 0 0 1.1vw 0;
@@ -26,20 +26,20 @@
     border-radius: 1vw;
 }
 
-.info-window .name {
+#info-window .name {
     font-size: 1.6vw;
     font-weight: 600;
 }
 
-.info-window > div:nth-child(3) {
+#info-window > div:nth-child(3) {
     font-size: 1.3vw;
 }
 
-.info-window .rating-star {
+#info-window .rating-star {
     margin: 0 0.2vw 0 0;
     vertical-align: 0vw;
 }
 
-.info-window .avg-rating {
+#info-window .avg-rating {
     margin: 0 0.2vw 0 0.6vw;
 }

@@ -1,6 +1,5 @@
-import { useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useHistory } from "react-router-dom";
-import { renderToStaticMarkup } from "react-dom/server";
 import InfoWindow from './InfoWindow';
 import "./index.css";
 
@@ -10,89 +9,104 @@ const CENTER = {
 };
 const ZOOM = 12;
 const MAP_ID = "QELP_MAP";
+const RED = "rgb(255, 0, 0)";
+const WHITE = "rgb(255, 255, 255)";
 
 const GoogleMap = ({ businesses }) => {
+    const map    = useRef();
+    const mapRef = useRef();
+
+    const infoWindow    = useRef();
+    const infoWindowRef = useRef();
+
+    useEffect(() => {
+        const initMap = async () => {
+            const { Map, InfoWindow } =
+                await window.google.maps.importLibrary("maps");
+
+            map.current = new Map(mapRef.current, {
+                center: CENTER,
+                zoom: ZOOM,
+                mapId: MAP_ID
+            });
+            
+            infoWindow.current = new InfoWindow({
+                content: infoWindowRef.current,
+                disableAutoPan: true,
+            });
+        }
+
+        initMap();
+    }, []);
+
+    const markers = useRef();
+
+    const [selected, setSelected] = useState(null);
+
     const history = useHistory();
 
-    let map;
-    let infoWindow;
-    let markers;
-
-    const initMap = async () => {
-        const { Map, InfoWindow } =
-            await window.google.maps.importLibrary("maps");
-        map = new Map(document.getElementById("map"), {
-            center: CENTER,
-            zoom: ZOOM,
-            mapId: MAP_ID
-        });
-        infoWindow = new InfoWindow({
-            content: "",
-            disableAutoPan: true,
-        });
-    }
-
-    const renderMarkers = async () => {
-        const { AdvancedMarkerElement, PinElement } =
-            await window.google.maps.importLibrary("marker");
-
-        markers = businesses.map((business, idx) => {
-            const pinGlyph = new PinElement({
-                glyph: `${idx + 1}`,
-                glyphColor: "rgb(255, 255, 255)",
-                background: "rgb(229, 13, 13)",
-                borderColor: "rgb(255, 255, 255)"
-            });
-
-            const marker = new AdvancedMarkerElement({
-                map,
-                position: {
-                    lat: parseFloat(business.lat),
-                    lng: parseFloat(business.lng)
-                },
-                content: pinGlyph.element
-            });
-
-            pinGlyph.element.addEventListener("mouseover", () => {
-                // infoWindow.setContent(renderToStaticMarkup(
-                //     <InfoWindow business={business} />));
-                // infoWindow.open(map, marker);
-                pinGlyph.background = "rgb(255, 0, 0)";
-            });
-
-            pinGlyph.element.addEventListener("mouseleave", () => {
-                // infoWindow.setContent("");
-                // infoWindow.close();
-                pinGlyph.background = "rgb(229, 13, 13)";
-            });
-
-            marker.addListener("click", () => {
-                // history.push(`/businesses/${business.id}`);
-                infoWindow.setContent(renderToStaticMarkup(
-                    <InfoWindow business={business} />));
-                infoWindow.open(map, marker);
-                infoWindow.addListener("domready", () => {
-                    const categories = 
-                        document.getElementsByClassName("map-category");
-                    categories[0].addEventListener("click", () => {
-                        console.log("Hello World");
-                    });
-                });
-            });
-
-            return marker;
-        });
-    }
-
-    initMap();
-    
     useEffect(() => {
+        const renderMarkers = async () => {
+            const { AdvancedMarkerElement, PinElement } =
+                await window.google.maps.importLibrary("marker");
+            
+            markers.current = businesses.map((business, idx) => {
+                const pinGlyph = new PinElement({
+                    glyph: `${idx + 1}`,
+                    glyphColor: WHITE,
+                    background: RED,
+                    borderColor: WHITE
+                });
+
+                const marker = new AdvancedMarkerElement({
+                    map: map.current,
+                    position: {
+                        lat: parseFloat(business.lat),
+                        lng: parseFloat(business.lng)
+                    },
+                    content: pinGlyph.element
+                });
+
+                marker.addListener("click", () => {
+                    // infoWindow.addListener("domready", () => {
+                    //     const categories =
+                    //         document.getElementsByClassName("map-category");
+                    //     categories[0].addEventListener("click", () => {
+                    //         console.log("Hello World");
+                    //     });
+                    // });
+                    history.push(`/businesses/${business.id}`);
+                });
+
+                pinGlyph.element.addEventListener("mouseover", () => {
+                    setSelected(business);
+                    infoWindow.current.open(map, marker);
+                    pinGlyph.glyphColor = RED;
+                    pinGlyph.background = WHITE;
+                    pinGlyph.borderColor = RED;
+                });
+
+                pinGlyph.element.addEventListener("mouseleave", () => {
+                    setSelected(null);
+                    infoWindow.current.close();
+                    pinGlyph.glyphColor = WHITE;
+                    pinGlyph.background = RED;
+                    pinGlyph.borderColor = WHITE;
+                });
+
+                return marker;
+            });
+        }
+
         renderMarkers();
         console.log("render markers");
-    }, [businesses]);
+    }, [businesses, history]);
 
     return (
-        <div id="map"></div>
+        <>
+            <div ref={mapRef} id="map"></div>
+            <InfoWindow infoWindowRef={infoWindowRef} business={selected}/>
+        </>
     );
 }
 
