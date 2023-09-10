@@ -37,7 +37,7 @@
 
 #info-window .rating-star {
     margin: 0 0.2vw 0 0;
-    vertical-align: 0vw;
+    vertical-align: 0.1vw;
 }
 
 #info-window .avg-rating {

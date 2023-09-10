@@ -29,7 +29,7 @@ const GoogleMap = ({ businesses }) => {
                 zoom: ZOOM,
                 mapId: MAP_ID
             });
-            
+
             infoWindow.current = new InfoWindow({
                 content: infoWindowRef.current,
                 disableAutoPan: true,
@@ -49,7 +49,38 @@ const GoogleMap = ({ businesses }) => {
         const renderMarkers = async () => {
             const { AdvancedMarkerElement, PinElement } =
                 await window.google.maps.importLibrary("marker");
-            
+
+            const openInfoWindow = (business, marker) => {
+                setSelected(business);
+                infoWindow.current.open(map, marker);
+            }
+
+            const closeInfoWindow = () => {
+                setSelected(null);
+                infoWindow.current.close();
+            }
+
+            infoWindowRef.current.addEventListener('mouseenter', () => {
+                mouseOverInfoWindow = true;
+            });
+
+            infoWindowRef.current.addEventListener('mouseleave', () => {
+                closeInfoWindow();
+                mouseOverInfoWindow = false;
+            });
+
+            const toggleStyle = (pinGlyph) => {
+                pinGlyph.glyphColor =
+                    pinGlyph.glyphColor === RED ? WHITE : RED;
+                pinGlyph.background =
+                    pinGlyph.background === WHITE ? RED : WHITE;
+                pinGlyph.borderColor =
+                    pinGlyph.borderColor === RED ? WHITE : RED;
+            }
+
+            let timeoutID = null;
+            let mouseOverInfoWindow = false;
+
             markers.current = businesses.map((business, idx) => {
                 const pinGlyph = new PinElement({
                     glyph: `${idx + 1}`,
@@ -68,30 +99,24 @@ const GoogleMap = ({ businesses }) => {
                 });
 
                 marker.addListener("click", () => {
-                    // infoWindow.addListener("domready", () => {
-                    //     const categories =
-                    //         document.getElementsByClassName("map-category");
-                    //     categories[0].addEventListener("click", () => {
-                    //         console.log("Hello World");
-                    //     });
-                    // });
                     history.push(`/businesses/${business.id}`);
                 });
 
-                pinGlyph.element.addEventListener("mouseover", () => {
-                    setSelected(business);
-                    infoWindow.current.open(map, marker);
-                    pinGlyph.glyphColor = RED;
-                    pinGlyph.background = WHITE;
-                    pinGlyph.borderColor = RED;
+                marker.content.addEventListener("mouseover", () => {
+                    if (timeoutID) {
+                        clearTimeout(timeoutID);
+                    }
+                    openInfoWindow(business, marker);
+                    toggleStyle(pinGlyph);
                 });
 
-                pinGlyph.element.addEventListener("mouseleave", () => {
-                    setSelected(null);
-                    infoWindow.current.close();
-                    pinGlyph.glyphColor = WHITE;
-                    pinGlyph.background = RED;
-                    pinGlyph.borderColor = WHITE;
+                marker.content.addEventListener("mouseout", () => {
+                    timeoutID = setTimeout(() => {
+                        if (!mouseOverInfoWindow) {
+                            closeInfoWindow();
+                        }
+                    }, 300);
+                    toggleStyle(pinGlyph);
                 });
 
                 return marker;
@@ -99,13 +124,14 @@ const GoogleMap = ({ businesses }) => {
         }
 
         renderMarkers();
+
         console.log("render markers");
     }, [businesses, history]);
 
     return (
         <>
             <div ref={mapRef} id="map"></div>
-            <InfoWindow infoWindowRef={infoWindowRef} business={selected}/>
+            <InfoWindow infoWindowRef={infoWindowRef} business={selected} />
         </>
     );
 }

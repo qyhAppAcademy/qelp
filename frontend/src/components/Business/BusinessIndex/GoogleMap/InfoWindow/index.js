@@ -47,7 +47,7 @@ const InfoWindow = ({ infoWindowRef, business }) => {
             <span 
                 className="category"
                 onClick={() => {
-                    console.log(category);
+                    console.log(category.trim());
                 }}
                 key={idx}
             >
