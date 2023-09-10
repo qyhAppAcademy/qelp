@@ -47,18 +47,19 @@ const GoogleMap = ({ businesses }) => {
         const renderMarkers = async () => {
             let mouseEnterInfoWindow = false;
             let timeoutID;
+            let infoWindowListener; 
 
             const meiw = () => {
-                mouseEnterInfoWindow = true;
                 console.log("meiw");
+                mouseEnterInfoWindow = true;
                 if (timeoutID) {
                     clearTimeout(timeoutID);
                 }
             }
 
             const mliw = () => {
-                mouseEnterInfoWindow = false;
                 console.log("mliw");
+                mouseEnterInfoWindow = false;
                 timeoutID = setTimeout(() => {
                     closeInfoWindow();
                 }, 1000);
@@ -67,13 +68,15 @@ const GoogleMap = ({ businesses }) => {
             const openInfoWindow = (business, marker) => {
                 infoWindowRef.current.addEventListener("mouseenter", meiw);
                 infoWindowRef.current.addEventListener("mouseleave", mliw);
-                // infoWindow.current.addListener("domready", () => {
-                //     const iwtc = document
-                //         .getElementsByClassName("gm-style-iw-tc")[0];
-                //     console.log(iwtc);
-                //     iwtc.addEventListener("mouseover", moiw);
-                //     iwtc.addEventListener("mouseleave", mliw);
-                // });
+
+                infoWindowListener =
+                    infoWindow.current.addListener("domready", () => {
+                        const iwtc = document
+                            .getElementsByClassName("gm-style-iw-tc")[0];
+                        iwtc.addEventListener("mouseover", meiw);
+                        iwtc.addEventListener("mouseleave", mliw);
+                        console.log(iwtc);
+                    });
 
                 setSelected(business);
                 infoWindow.current.open(map, marker);
@@ -82,11 +85,13 @@ const GoogleMap = ({ businesses }) => {
             const closeInfoWindow = () => {
                 infoWindowRef.current.removeEventListener("mouseenter", meiw);
                 infoWindowRef.current.removeEventListener("mouseleave", mliw);
-                // const iwtc = document
-                //     .getElementsByClassName("gm-style-iw-tc")[0];
-                // console.log(iwtc);
-                // iwtc.removeEventListener("mouseover", moiw);
-                // iwtc.removeEventListener("mouseleave", mliw);
+
+                window.google.maps.event.removeListener(infoWindowListener);
+                const iwtc = document
+                    .getElementsByClassName("gm-style-iw-tc")[0];
+                iwtc.removeEventListener("mouseover", meiw);
+                iwtc.removeEventListener("mouseleave", mliw);
+                console.log(iwtc);
 
                 setSelected(null);
                 infoWindow.current.close();
