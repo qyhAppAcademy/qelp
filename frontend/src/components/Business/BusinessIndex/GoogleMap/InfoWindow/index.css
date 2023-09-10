@@ -4,13 +4,17 @@
 }
 
 #map .gm-style-iw-d {
-    width: 21vw;
-    margin: 1.5vw;
+    width: 24vw;
     overflow:unset !important;
 }
 
 #map button.gm-ui-hover-effect {
     display: none !important;
+}
+
+#info-window {
+    padding: 1.5vw;
+    background-color: green;
 }
 
 #info-window > div:not(:first-child) {

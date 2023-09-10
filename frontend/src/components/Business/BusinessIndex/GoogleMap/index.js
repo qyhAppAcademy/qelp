@@ -1,6 +1,6 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import InfoWindow from './InfoWindow';
+import InfoWindow from "./InfoWindow";
 import "./index.css";
 
 const CENTER = {
@@ -40,34 +40,57 @@ const GoogleMap = ({ businesses }) => {
     }, []);
 
     const markers = useRef();
-
     const [selected, setSelected] = useState(null);
-
     const history = useHistory();
-
+    
     useEffect(() => {
         const renderMarkers = async () => {
-            const { AdvancedMarkerElement, PinElement } =
-                await window.google.maps.importLibrary("marker");
+            let mouseEnterInfoWindow = false;
+            let timeoutID;
+
+            const meiw = () => {
+                mouseEnterInfoWindow = true;
+                console.log("meiw");
+                if (timeoutID) {
+                    clearTimeout(timeoutID);
+                }
+            }
+
+            const mliw = () => {
+                mouseEnterInfoWindow = false;
+                console.log("mliw");
+                timeoutID = setTimeout(() => {
+                    closeInfoWindow();
+                }, 1000);
+            }
 
             const openInfoWindow = (business, marker) => {
+                infoWindowRef.current.addEventListener("mouseenter", meiw);
+                infoWindowRef.current.addEventListener("mouseleave", mliw);
+                // infoWindow.current.addListener("domready", () => {
+                //     const iwtc = document
+                //         .getElementsByClassName("gm-style-iw-tc")[0];
+                //     console.log(iwtc);
+                //     iwtc.addEventListener("mouseover", moiw);
+                //     iwtc.addEventListener("mouseleave", mliw);
+                // });
+
                 setSelected(business);
                 infoWindow.current.open(map, marker);
             }
 
             const closeInfoWindow = () => {
+                infoWindowRef.current.removeEventListener("mouseenter", meiw);
+                infoWindowRef.current.removeEventListener("mouseleave", mliw);
+                // const iwtc = document
+                //     .getElementsByClassName("gm-style-iw-tc")[0];
+                // console.log(iwtc);
+                // iwtc.removeEventListener("mouseover", moiw);
+                // iwtc.removeEventListener("mouseleave", mliw);
+
                 setSelected(null);
                 infoWindow.current.close();
             }
-
-            infoWindowRef.current.addEventListener('mouseenter', () => {
-                mouseOverInfoWindow = true;
-            });
-
-            infoWindowRef.current.addEventListener('mouseleave', () => {
-                closeInfoWindow();
-                mouseOverInfoWindow = false;
-            });
 
             const toggleStyle = (pinGlyph) => {
                 pinGlyph.glyphColor =
@@ -78,8 +101,8 @@ const GoogleMap = ({ businesses }) => {
                     pinGlyph.borderColor === RED ? WHITE : RED;
             }
 
-            let timeoutID = null;
-            let mouseOverInfoWindow = false;
+            const { AdvancedMarkerElement, PinElement } =
+                await window.google.maps.importLibrary("marker");
 
             markers.current = businesses.map((business, idx) => {
                 const pinGlyph = new PinElement({
@@ -99,25 +122,26 @@ const GoogleMap = ({ businesses }) => {
                 });
 
                 marker.addListener("click", () => {
-                    history.push(`/businesses/${business.id}`);
-                });
-
-                marker.content.addEventListener("mouseover", () => {
-                    if (timeoutID) {
-                        clearTimeout(timeoutID);
-                    }
                     openInfoWindow(business, marker);
-                    toggleStyle(pinGlyph);
+                    // history.push(`/businesses/${business.id}`);
                 });
 
-                marker.content.addEventListener("mouseout", () => {
-                    timeoutID = setTimeout(() => {
-                        if (!mouseOverInfoWindow) {
-                            closeInfoWindow();
-                        }
-                    }, 300);
-                    toggleStyle(pinGlyph);
-                });
+                // marker.content.addEventListener("mouseover", () => {
+                //     if (timeoutID) {
+                //         clearTimeout(timeoutID);
+                //     }
+                //     openInfoWindow(business, marker);
+                //     toggleStyle(pinGlyph);
+                // });
+
+                // marker.content.addEventListener("mouseout", () => {
+                //     timeoutID = setTimeout(() => {
+                //         if (!mouseOverInfoWindow) {
+                //             closeInfoWindow();
+                //         }
+                //     }, 2000);
+                //     toggleStyle(pinGlyph);
+                // });
 
                 return marker;
             });
@@ -126,7 +150,7 @@ const GoogleMap = ({ businesses }) => {
         renderMarkers();
 
         console.log("render markers");
-    }, [businesses, history]);
+    }, [businesses]);
 
     return (
         <>
