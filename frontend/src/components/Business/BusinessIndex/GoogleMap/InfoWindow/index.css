@@ -12,6 +12,10 @@
     display: none !important;
 }
 
+#map .gm-style-iw-tc, #info-window {
+    cursor: pointer;
+}
+
 #info-window {
     padding: 1.5vw;
 }
@@ -40,9 +44,17 @@
 
 #info-window .rating-star {
     margin: 0 0.2vw 0 0;
-    vertical-align: 0.1vw;
+    vertical-align: 0.05vw;
 }
 
 #info-window .avg-rating {
     margin: 0 0.2vw 0 0.6vw;
+}
+
+#info-window .category, #info-window .separator {
+    color: rgb(114, 114, 114);
+}
+
+#info-window .category:hover {
+    text-decoration:underline;
 }

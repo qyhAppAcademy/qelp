@@ -81,18 +81,18 @@ const GoogleMap = ({ businesses }) => {
             window.google.maps.event
                 .clearListeners(infoWindow.current, "domready");
 
-            infoWindow.current.addListener("domready", () => {
-                const iwtc = document
-                    .getElementsByClassName("gm-style-iw-tc")[0];
+            // infoWindow.current.addListener("domready", () => {
+            //     const iwtc = document
+            //         .getElementsByClassName("gm-style-iw-tc")[0];
 
-                iwtc.removeEventListener("mouseenter", enter);
-                iwtc.removeEventListener("mouseleave", leave);
+            //     iwtc.removeEventListener("mouseenter", enter);
+            //     iwtc.removeEventListener("mouseleave", leave);
 
-                iwtc.addEventListener("mouseenter", enter);
-                iwtc.addEventListener("mouseleave", leave);
+            //     iwtc.addEventListener("mouseenter", enter);
+            //     iwtc.addEventListener("mouseleave", leave);
 
-                console.log(iwtc);
-            });
+            //     console.log(iwtc);
+            // });
 
             markers.current = businesses.map((business, idx) => {
                 const pinGlyph = new PinElement({
@@ -112,24 +112,26 @@ const GoogleMap = ({ businesses }) => {
                 });
 
                 marker.addListener("click", () => {
-                    history.push(`/businesses/${business.id}`);
-                });
-
-                marker.content.addEventListener("mouseenter", () => {
-                    enter();
-                    toggleStyle(pinGlyph);
-
                     setSelected(business);
                     infoWindow.current.open(map, marker);
-
-                    infoWindowRef.current.addEventListener("mouseenter", enter);
-                    infoWindowRef.current.addEventListener("mouseleave", leave);
+                    // history.push(`/businesses/${business.id}`);
                 });
 
-                marker.content.addEventListener("mouseleave", () => {
-                    leave();
-                    toggleStyle(pinGlyph);
-                });
+                // marker.content.addEventListener("mouseenter", () => {
+                //     enter();
+                //     toggleStyle(pinGlyph);
+
+                //     setSelected(business);
+                //     infoWindow.current.open(map, marker);
+
+                //     infoWindowRef.current.addEventListener("mouseenter", enter);
+                //     infoWindowRef.current.addEventListener("mouseleave", leave);
+                // });
+
+                // marker.content.addEventListener("mouseleave", () => {
+                //     leave();
+                //     toggleStyle(pinGlyph);
+                // });
 
                 return marker;
             });

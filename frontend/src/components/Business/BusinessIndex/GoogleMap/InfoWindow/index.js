@@ -42,18 +42,21 @@ const ratingStars = (business) => {
 }
 
 const InfoWindow = ({ infoWindowRef, business }) => {
-    const categories = business ?
-        business.category.split(",").map((category, idx) => (
-            <span 
+    const ctgs = business ? business.category.split(",") : [];
+    const categories = ctgs.map((ctg, idx) => (
+        <>
+            <span
                 className="category"
                 onClick={() => {
-                    console.log(category.trim());
+                    console.log(ctg.trim());
                 }}
                 key={idx}
             >
-                {category.trim()}
+                {ctg.trim()}
             </span>
-        )) : null;
+            {idx < ctgs.length - 1 && <span className="separator">, </span>}
+        </>
+    ));
 
     return (
         <div ref={infoWindowRef} id="info-window">
