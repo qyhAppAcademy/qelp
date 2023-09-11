@@ -9,6 +9,7 @@ const CENTER = {
 };
 const ZOOM = 12;
 const MAP_ID = "QELP_MAP";
+
 const RED = "rgb(255, 0, 0)";
 const WHITE = "rgb(255, 255, 255)";
 
@@ -58,16 +59,14 @@ const GoogleMap = ({ businesses }) => {
             timeoutID = setTimeout(() => {
                 setSelected(null);
                 infoWindow.current.close();
-            }, 1000);
+
+                window.google.maps.event
+                    .clearListeners(infoWindow.current, "domready");
+
+                infoWindowRef.current.removeEventListener("mouseenter", enter);
+                infoWindowRef.current.removeEventListener("mouseleave", leave);
+            }, 300);
         }
-
-        infoWindowRef.current.removeEventListener("mouseenter", enter);
-        infoWindowRef.current.removeEventListener("mouseleave", leave);
-        console.log("removed listeners");
-
-        infoWindowRef.current.addEventListener("mouseenter", enter);
-        infoWindowRef.current.addEventListener("mouseleave", leave);
-        console.log("added listeners");
 
         const toggleStyle = (pinGlyph) => {
             pinGlyph.glyphColor =
@@ -110,19 +109,20 @@ const GoogleMap = ({ businesses }) => {
                     setSelected(business);
                     infoWindow.current.open(map, marker);
 
-                    window.google.maps.event
-                        .clearInstanceListeners(infoWindow.current);
                     infoWindow.current.addListener("domready", () => {
                         const iwtc = document
                             .getElementsByClassName("gm-style-iw-tc")[0];
 
-                        iwtc.removeEventListener("mouseenter", enter);
-                        iwtc.removeEventListener("mouseleave", leave);
+                        // iwtc.removeEventListener("mouseenter", enter);
+                        // iwtc.removeEventListener("mouseleave", leave);
 
                         iwtc.addEventListener("mouseenter", enter);
                         iwtc.addEventListener("mouseleave", leave);
                         console.log(iwtc);
                     });
+
+                    infoWindowRef.current.addEventListener("mouseenter", enter);
+                    infoWindowRef.current.addEventListener("mouseleave", leave);
                 });
 
                 marker.content.addEventListener("mouseleave", () => {
