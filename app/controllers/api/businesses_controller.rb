@@ -7,18 +7,27 @@ class Api::BusinessesController < ApplicationController
     end
 
     def query
+        keyword = params[:keyword]
         address = params[:address]
+        limit = 10
         if !address[:geo].nil?
             lat = address[:geo][:lat]
             lng = address[:geo][:lng]
             offset = 0.016
-            limit = 10
-            @businesses = Business
-                .where(lat: (lat - offset)..(lat + offset))
-                .where(lng: (lng - offset)..(lng + offset))
-                .limit(limit)
+            @businesses = 
+            Business.where(lat: (lat - offset)..(lat + offset))
+                    .where(lng: (lng - offset)..(lng + offset))
+                    .and(
+            Business.where("name LIKE ?", "%" + keyword + "%")
+                    .or(
+            Business.where("category LIKE ?", "%" + keyword + "%")))
+                    .limit(limit)
         else
-            @businesses = Business.all
+            @businesses = 
+            Business.where("name LIKE ?", "%" + keyword + "%")
+                    .or(
+            Business.where("category LIKE ?", "%" + keyword + "%"))
+                    .limit(limit)
         end
         render 'api/businesses/index'
     end
