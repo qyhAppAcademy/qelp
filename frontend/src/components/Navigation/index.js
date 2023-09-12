@@ -35,13 +35,26 @@ const Navigation = ({ setKeywordQuery, setAddressQuery }) => {
                 </NavLink>
             </div>
 
-            <SearchBar setKeywordQuery={setKeywordQuery} setAddressQuery={setAddressQuery} />
+            <SearchBar
+                setKeywordQuery={setKeywordQuery}
+                setAddressQuery={setAddressQuery}
+            />
 
             <div>
-                <a className="icon" href={`${GITHUB}`} target="_blank" rel="noreferrer">
+                <a 
+                    className="icon"
+                    href={`${GITHUB}`}
+                    target="_blank"
+                    rel="noreferrer"
+                >
                     <img src={`${AWS}/github.png`} alt="" />
                 </a>
-                <a className="icon" href={`${LINKEDIN}`} target="_blank" rel="noreferrer">
+                <a 
+                    className="icon" 
+                    href={`${LINKEDIN}`}
+                    target="_blank"
+                    rel="noreferrer"
+                >
                     <img src={`${AWS}/linkedin.png`} alt="" />
                 </a>
             </div>

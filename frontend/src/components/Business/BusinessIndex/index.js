@@ -1,9 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchBusinessesByQuery, getBusinesses } from "../../../store/businesses";
+import { getBusinesses, fetchBusinessesByQuery } from "../../../store/businesses";
 import Card from "./Card";
-import { searchByName, searchByCategory, searchByAddress } from "./search";
-import Map from "./Map";
 import GoogleMap from "./GoogleMap";
 import "./index.css";
 
@@ -15,24 +13,10 @@ const BusinessIndexPage = ({ keywordQuery, addressQuery }) => {
     useEffect(() => {
         dispatch(fetchBusinessesByQuery(keywordQuery, addressQuery));
     }, [keywordQuery, addressQuery]);
-    
-    if (businesses.length === 0) {
-        return null;
-    }
 
-    const cards = (keywordQuery === "" && addressQuery === "") ?
-        businesses.map((business, idx) => (
-            <Card key={idx} business={business} idx={idx} />
-        )) :
-        businesses.filter(business => {
-            return (
-                (searchByName(business.name, keywordQuery) || 
-                    searchByCategory(business.category, keywordQuery, ",")) &&
-                searchByAddress(business, addressQuery)
-            );
-        }).map((business, idx) => (
-            <Card key={idx} business={business} idx={idx} />
-        ));
+    const cards = businesses.map((business, idx) => (
+        <Card business={business} idx={idx} />
+    ));
 
     return (
         <div id="business-index">
@@ -44,13 +28,7 @@ const BusinessIndexPage = ({ keywordQuery, addressQuery }) => {
                 )}
             </div>
             <div>
-                <GoogleMap businesses={businesses.filter(business => {
-                    return (
-                        (searchByName(business.name, keywordQuery) || 
-                            searchByCategory(business.category, keywordQuery, ",")) &&
-                        searchByAddress(business, addressQuery)
-                    );
-                })}/>
+                <GoogleMap businesses={businesses} />
             </div>
         </div>
     );
