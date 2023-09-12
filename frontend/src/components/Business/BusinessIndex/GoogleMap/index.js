@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import { useHistory } from "react-router-dom";
 import InfoWindow from "./InfoWindow";
 import "./index.css";
@@ -14,77 +14,105 @@ const RED = "rgb(255, 0, 0)";
 const WHITE = "rgb(255, 255, 255)";
 
 const GoogleMap = ({ businesses }) => {
+    const map = useRef();
     const mapRef = useRef();
+
+    const infoWindow = useRef();
     const infoWindowRef = useRef();
 
-    let map;
-    let infoWindow;
-
-    let PinElement;
-    let AdvancedMarkerElement;
-
-    const markers = [];
-    const [selected, setSelected] = useState(null);
+    const PinElement = useRef();
+    const AdvancedMarkerElement = useRef();
 
     useEffect(() => {
         window.google.maps.importLibrary("maps").then((res) => {
             const { Map, InfoWindow } = res;
 
-            map = new Map(mapRef.current, {
+            map.current = new Map(mapRef.current, {
                 center: CENTER,
                 zoom: ZOOM,
                 mapId: MAP_ID
             });
 
-            infoWindow = new InfoWindow({
+            infoWindow.current = new InfoWindow({
                 content: infoWindowRef.current,
                 disableAutoPan: true,
             });
         });
 
         window.google.maps.importLibrary("marker").then((res) => {
-            PinElement = res.PinElement;
-            AdvancedMarkerElement = res.AdvancedMarkerElement;
+            PinElement.current = res.PinElement;
+            AdvancedMarkerElement.current = res.AdvancedMarkerElement;
         });
-
-        console.log("Initial Render");
     }, []);
 
-    const renderMarkers = () => {
-        // window.google.maps.event
-        //     .clearListeners(infoWindow.current, "domready");
+    const markers = useRef([]);
+    const [selected, setSelected] = useState(null);
+    const history = useHistory();
 
-        // infoWindow.current.addListener("domready", () => {
-        //     const iwtc = document
-        //         .getElementsByClassName("gm-style-iw-tc")[0];
+    const renderMarkers = useCallback(() => {
+        if (!PinElement.current || !AdvancedMarkerElement.current) return;
 
-        //     iwtc.removeEventListener("mouseenter", enter);
-        //     iwtc.removeEventListener("mouseleave", leave);
-
-        //     iwtc.addEventListener("mouseenter", enter);
-        //     iwtc.addEventListener("mouseleave", leave);
-
-        //     console.log(iwtc);
-        // });
-
-        if (!PinElement || !AdvancedMarkerElement) return;
-
-        while (markers.length > 0) {
-            markers.pop().map = null;
+        while (markers.current.length > 0) {
+            markers.current.pop().map = null;
         }
         
+        let timeoutID;
+
+        const enter = () => {
+            console.log("enter");
+            if (timeoutID) {
+                clearTimeout(timeoutID);
+            }
+        }
+
+        const leave = () => {
+            console.log("leave");
+            timeoutID = setTimeout(() => {
+                setSelected(null);
+                infoWindow.current.close();
+
+                infoWindowRef.current.removeEventListener("mouseenter", enter);
+                infoWindowRef.current.removeEventListener("mouseleave", leave);
+            }, 200);
+        }
+
+        const toggleStyle = (pinGlyph) => {
+            pinGlyph.glyphColor =
+                pinGlyph.glyphColor === RED ? WHITE : RED;
+            pinGlyph.background =
+                pinGlyph.background === WHITE ? RED : WHITE;
+            pinGlyph.borderColor =
+                pinGlyph.borderColor === RED ? WHITE : RED;
+        }
+
+        window.google.maps.event
+            .clearListeners(infoWindow.current, "domready");
+
+        infoWindow.current.addListener("domready", () => {
+            const iwtc = document
+                .getElementsByClassName("gm-style-iw-tc")[0];
+
+            iwtc.removeEventListener("mouseenter", enter);
+            iwtc.removeEventListener("mouseleave", leave);
+
+            iwtc.addEventListener("mouseenter", enter);
+            iwtc.addEventListener("mouseleave", leave);
+
+            console.log(iwtc);
+        });
+
         for (let i = 0; i < businesses.length; i++) {
             const business = businesses[i];
 
-            const pinGlyph = new PinElement({
+            const pinGlyph = new PinElement.current({
                 glyph: `${i + 1}`,
                 glyphColor: WHITE,
                 background: RED,
                 borderColor: WHITE
             });
 
-            const marker = new AdvancedMarkerElement({
-                map,
+            const marker = new AdvancedMarkerElement.current({
+                map: map.current,
                 position: {
                     lat: parseFloat(business.lat),
                     lng: parseFloat(business.lng)
@@ -93,140 +121,32 @@ const GoogleMap = ({ businesses }) => {
             });
 
             marker.addListener("click", () => {
-                setSelected(business);
-                infoWindow.current.open(map, marker);
-                // history.push(`/businesses/${business.id}`);
+                history.push(`/businesses/${business.id}`);
             });
 
-            // marker.content.addEventListener("mouseenter", () => {
-            //     enter();
-            //     toggleStyle(pinGlyph);
+            marker.content.addEventListener("mouseenter", () => {
+                enter();
+                toggleStyle(pinGlyph);
 
-            //     setSelected(business);
-            //     infoWindow.current.open(map, marker);
+                setSelected(business);
+                infoWindow.current.open(map.current, marker);
 
-            //     infoWindowRef.current.addEventListener("mouseenter", enter);
-            //     infoWindowRef.current.addEventListener("mouseleave", leave);
-            // });
+                infoWindowRef.current.addEventListener("mouseenter", enter);
+                infoWindowRef.current.addEventListener("mouseleave", leave);
+            });
 
-            // marker.content.addEventListener("mouseleave", () => {
-            //     leave();
-            //     toggleStyle(pinGlyph);
-            // });
+            marker.content.addEventListener("mouseleave", () => {
+                leave();
+                toggleStyle(pinGlyph);
+            });
 
-            markers.push(marker);
+            markers.current.push(marker);
         }
-        console.log("Render New Markers");
-        console.log(markers);
-    }
-
-    // const history = useHistory();
+    }, [businesses, history]);
     
     useEffect(() => {
-        // let timeoutID;
-
-        // const enter = () => {
-        //     console.log("enter");
-        //     if (timeoutID) {
-        //         clearTimeout(timeoutID);
-        //     }
-        // }
-
-        // const leave = () => {
-        //     console.log("leave");
-        //     timeoutID = setTimeout(() => {
-        //         setSelected(null);
-        //         infoWindow.current.close();
-
-        //         infoWindowRef.current.removeEventListener("mouseenter", enter);
-        //         infoWindowRef.current.removeEventListener("mouseleave", leave);
-        //     }, 200);
-        // }
-
-        // const toggleStyle = (pinGlyph) => {
-        //     pinGlyph.glyphColor =
-        //         pinGlyph.glyphColor === RED ? WHITE : RED;
-        //     pinGlyph.background =
-        //         pinGlyph.background === WHITE ? RED : WHITE;
-        //     pinGlyph.borderColor =
-        //         pinGlyph.borderColor === RED ? WHITE : RED;
-        // }
-
-        // const renderMarkers = async () => {
-        //     const { AdvancedMarkerElement, PinElement } =
-        //         await window.google.maps.importLibrary("marker");
-            
-        //     window.google.maps.event
-        //         .clearListeners(infoWindow.current, "domready");
-
-        //     // infoWindow.current.addListener("domready", () => {
-        //     //     const iwtc = document
-        //     //         .getElementsByClassName("gm-style-iw-tc")[0];
-
-        //     //     iwtc.removeEventListener("mouseenter", enter);
-        //     //     iwtc.removeEventListener("mouseleave", leave);
-
-        //     //     iwtc.addEventListener("mouseenter", enter);
-        //     //     iwtc.addEventListener("mouseleave", leave);
-
-        //     //     console.log(iwtc);
-        //     // });
-
-        //     markers.current = businesses.map((business, idx) => {
-        //         const pinGlyph = new PinElement({
-        //             glyph: `${idx + 1}`,
-        //             glyphColor: WHITE,
-        //             background: RED,
-        //             borderColor: WHITE
-        //         });
-
-        //         const marker = new AdvancedMarkerElement({
-        //             map: map.current,
-        //             position: {
-        //                 lat: parseFloat(business.lat),
-        //                 lng: parseFloat(business.lng)
-        //             },
-        //             content: pinGlyph.element
-        //         });
-
-        //         marker.addListener("click", () => {
-        //             setSelected(business);
-        //             infoWindow.current.open(map, marker);
-        //             // history.push(`/businesses/${business.id}`);
-        //         });
-
-        //         // marker.content.addEventListener("mouseenter", () => {
-        //         //     enter();
-        //         //     toggleStyle(pinGlyph);
-
-        //         //     setSelected(business);
-        //         //     infoWindow.current.open(map, marker);
-
-        //         //     infoWindowRef.current.addEventListener("mouseenter", enter);
-        //         //     infoWindowRef.current.addEventListener("mouseleave", leave);
-        //         // });
-
-        //         // marker.content.addEventListener("mouseleave", () => {
-        //         //     leave();
-        //         //     toggleStyle(pinGlyph);
-        //         // });
-
-        //         return marker;
-        //     });
-        // }
-
-        // window.google.maps.importLibrary("marker").then((res) => {
-        //     markerLibrary.current.PinElement = res.PinElement;
-        //     markerLibrary.current.AdvancedMarkerElement =
-        //         res.AdvancedMarkerElement;
-
-        //     console.log(businesses);
-        //     renderMarkers();
-        // });
-
         renderMarkers();
-        console.log("render markers");
-    }, [businesses]);
+    }, [renderMarkers]);
 
     return (
         <>
