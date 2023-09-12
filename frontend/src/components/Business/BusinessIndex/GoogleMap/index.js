@@ -223,9 +223,9 @@ const GoogleMap = ({ businesses }) => {
         //     console.log(businesses);
         //     renderMarkers();
         // });
-        // console.log("render markers");
 
-        // renderMarkers();
+        renderMarkers();
+        console.log("render markers");
     }, [businesses]);
 
     return (
