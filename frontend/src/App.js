@@ -24,7 +24,7 @@ const App = () => {
     geo: null
   });
 
-  const Nav = <Navigation 
+  const Nav = <Navigation
     setKeywordQuery={setKeywordQuery}
     setAddressQuery={setAddressQuery}
   />;
