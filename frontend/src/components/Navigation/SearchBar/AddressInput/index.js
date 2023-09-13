@@ -46,14 +46,10 @@ const AddressInput = ({ address, setAddress, search }) => {
         }
     }
 
-    window.initMap = async () => {
-        enableAutocomplete();
-    };
-
     useEffect(() => {
         enableAutocomplete();
         console.log("AddressInput useEffect called");
-    }, []);
+    }, [window.google]);
 
     return (
         <input

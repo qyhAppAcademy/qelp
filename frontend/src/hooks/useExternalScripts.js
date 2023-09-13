@@ -9,9 +9,11 @@ export default function useExternalScripts({ url }) {
         script.defer = true;
 
         document.head.appendChild(script);
+        
+        window.initMap = () => {};
 
         return () => {
             document.head.removeChild(script);
         };
-    }, []);
+    }, [url]);
 };

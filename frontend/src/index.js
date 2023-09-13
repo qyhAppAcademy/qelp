@@ -1,15 +1,19 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
-import { ModalProvider } from "./context/Modal";
-import './reset.css';
-import "./index.css";
-import App from "./App";
+
 import configureStore from "./store";
 import csrfFetch from "./store/csrf";
 import * as sessionActions from "./store/session";
-// import { LoadScript } from "@react-google-maps/api";
+
+import './reset.css';
+import "./index.css";
+
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import { KeywordProvider } from "./context/Keyword";
+import App from "./App";
+
+import ReactDOM from "react-dom";
+import { Helmet } from "react-helmet";
 
 const store = configureStore();
 
@@ -21,28 +25,38 @@ if (process.env.NODE_ENV !== "production") {
 
 function Root() {
   return (
-    <ModalProvider>
+    <BrowserRouter>
       <Provider store={store}>
-        <BrowserRouter>
+        <KeywordProvider>
           <App />
-        </BrowserRouter>
+        </KeywordProvider>
       </Provider>
-    </ModalProvider>
+    </BrowserRouter>
   );
 }
 
-// const libraries = ["places"];
+const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
+const GOOGLE_API_URL =
+  `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}&callback=initMap&libraries=places&v=weekly`;
 
 const renderApplication = () => {
-  ReactDOM.render(
-    <React.StrictMode>
-      {/* <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY} libraries={libraries}> */}
+  ReactDOM.render((
+    <>
+      <Helmet>
+        <script src={GOOGLE_API_URL} async defer></script>
+      </Helmet>
+      <React.StrictMode>
         <Root />
-      {/* </LoadScript> */}
-    </React.StrictMode>,
-    document.getElementById('root')
-  );
+        {/* import { LoadScript } from "@react-google-maps/api";
+        <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY} libraries={libraries}>
+        </LoadScript> */}
+      </React.StrictMode>
+    </>
+  ), document.getElementById('root'));
 }
+
+window.initMap = async () => {
+};
 
 if (
   sessionStorage.getItem("currentUser") === null ||

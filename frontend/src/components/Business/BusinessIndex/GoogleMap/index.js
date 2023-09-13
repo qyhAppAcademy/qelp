@@ -24,26 +24,29 @@ const GoogleMap = ({ businesses, keywordQuery, setKeywordQuery }) => {
     const AdvancedMarkerElement = useRef();
 
     useEffect(() => {
-        window.google.maps.importLibrary("maps").then((res) => {
-            const { Map, InfoWindow } = res;
+        if(window.google) {
+            console.log(window.google);
+            window.google.maps.importLibrary("maps").then((res) => {
+                const { Map, InfoWindow } = res;
 
-            map.current = new Map(mapRef.current, {
-                center: CENTER,
-                zoom: ZOOM,
-                mapId: MAP_ID
+                map.current = new Map(mapRef.current, {
+                    center: CENTER,
+                    zoom: ZOOM,
+                    mapId: MAP_ID
+                });
+
+                infoWindow.current = new InfoWindow({
+                    content: infoWindowRef.current,
+                    disableAutoPan: true,
+                });
             });
 
-            infoWindow.current = new InfoWindow({
-                content: infoWindowRef.current,
-                disableAutoPan: true,
+            window.google.maps.importLibrary("marker").then((res) => {
+                PinElement.current = res.PinElement;
+                AdvancedMarkerElement.current = res.AdvancedMarkerElement;
             });
-        });
-
-        window.google.maps.importLibrary("marker").then((res) => {
-            PinElement.current = res.PinElement;
-            AdvancedMarkerElement.current = res.AdvancedMarkerElement;
-        });
-    }, []);
+        }
+    }, [window.google]);
 
     const markers = useRef([]);
     const [selected, setSelected] = useState(null);
