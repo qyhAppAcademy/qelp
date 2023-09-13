@@ -3,24 +3,9 @@ import csrfFetch from "./csrf.js";
 const RECEIVE_BUSINESSES = 'businesses/receiveBusinesses';
 const RECEIVE_BUSINESS = 'businesses/receiveBusiness';
 
-export const fetchBusinesses = () => async (dispatch) => {
-    const response = await csrfFetch(`/api/businesses`);
-    const data = await response.json();
-    dispatch(receiveBusinesses(data.businesses));
-    return response;
-};
-
-export const fetchBusinessesByQuery = (keywordQuery, addressQuery) => async (dispatch) => {
-    // let params;
-    // if (addressQuery.geo !== null) {
-    //     params = `lat=${addressQuery.geo.lat}&lng=${addressQuery.geo.lng}`;
-    // }
-    // else {
-    //     const addressInArray = addressQuery.val.split(",").map(part => part.trim());
-    //     params = `address=${addressInArray[0]}&city=${addressInArray[1]}`;
-    // }
+export const fetchBusinesses = (keywordQuery, addressQuery) => async (dispatch) => {
     const query = {
-        keyword: keywordQuery,
+        keyword: keywordQuery.toLowerCase(),
         address: addressQuery
     }
     console.log(query);

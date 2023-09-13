@@ -1,37 +1,41 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getBusinesses, fetchBusinessesByQuery } from "../../../store/businesses";
+import { getBusinesses, fetchBusinesses } from "../../../store/businesses";
 import Card from "./Card";
 import GoogleMap from "./GoogleMap";
 import "./index.css";
 
-const BusinessIndexPage = ({ keywordQuery, addressQuery }) => {
+const BusinessIndex = ({ keywordQuery, addressQuery, setKeywordQuery }) => {
     const businesses = useSelector(getBusinesses());
 
     const dispatch = useDispatch();
     
     useEffect(() => {
-        dispatch(fetchBusinessesByQuery(keywordQuery, addressQuery));
-    }, [keywordQuery, addressQuery]);
+        dispatch(fetchBusinesses(keywordQuery, addressQuery));
+    }, [dispatch, keywordQuery, addressQuery]);
 
-    const cards = businesses.map((business, idx) => (
-        <Card business={business} idx={idx} />
-    ));
+    const cards = businesses.length > 0 ? businesses.map((business, idx) => (
+            <Card
+                business={business}
+                idx={idx}
+                keywordQuery={keywordQuery}
+                setKeywordQuery={setKeywordQuery}
+                key={idx - 1}
+            />
+        )) : <h1 className="no-results">Search Not Found</h1>
 
     return (
         <div id="business-index">
+            <div>{cards}</div>
             <div>
-                {cards.length > 0 ? (
-                    cards
-                ) : (
-                    <p className="no-results">Search Not Found</p>
-                )}
-            </div>
-            <div>
-                <GoogleMap businesses={businesses} />
+                <GoogleMap
+                    businesses={businesses}
+                    keywordQuery={keywordQuery}
+                    setKeywordQuery={setKeywordQuery}
+                />
             </div>
         </div>
     );
 }
 
-export default BusinessIndexPage;
+export default BusinessIndex;

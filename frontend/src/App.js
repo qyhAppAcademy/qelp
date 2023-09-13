@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import Navigation from "./components/Navigation";
-import BusinessIndexPage from "./components/Business/BusinessIndex";
+import BusinessIndex from "./components/Business/BusinessIndex";
 import BusinessShowPage from "./components/Business/BusinessShow";
 import Home from "./components/Home";
 import './fontawesome/css/all.min.css';
@@ -46,9 +46,10 @@ const App = () => {
         </Route>
         <Route exact path="/businesses">
           {Nav}
-          <BusinessIndexPage 
+          <BusinessIndex
             keywordQuery={keywordQuery}
             addressQuery={addressQuery}
+            setKeywordQuery={setKeywordQuery}
           />
         </Route>
         <Route exact path="/businesses/:businessId">

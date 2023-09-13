@@ -13,7 +13,7 @@ const MAP_ID = "QELP_MAP";
 const RED = "rgb(255, 0, 0)";
 const WHITE = "rgb(255, 255, 255)";
 
-const GoogleMap = ({ businesses }) => {
+const GoogleMap = ({ businesses, keywordQuery, setKeywordQuery }) => {
     const map = useRef();
     const mapRef = useRef();
 
@@ -122,6 +122,8 @@ const GoogleMap = ({ businesses }) => {
 
             marker.addListener("click", () => {
                 history.push(`/businesses/${business.id}`);
+                // setSelected(business);
+                // infoWindow.current.open(map.current, marker);
             });
 
             marker.content.addEventListener("mouseenter", () => {
@@ -151,7 +153,12 @@ const GoogleMap = ({ businesses }) => {
     return (
         <>
             <div ref={mapRef} id="map"></div>
-            <InfoWindow infoWindowRef={infoWindowRef} business={selected} />
+            <InfoWindow
+                infoWindowRef={infoWindowRef}
+                business={selected}
+                keywordQuery={keywordQuery}
+                setKeywordQuery={setKeywordQuery}
+            />
         </>
     );
 }

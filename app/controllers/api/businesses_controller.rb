@@ -1,11 +1,6 @@
 class Api::BusinessesController < ApplicationController
     skip_before_action :verify_authenticity_token, only: :query
 
-    def index
-        @businesses = Business.all
-        render 'api/businesses/index'
-    end
-
     def query
         keyword = params[:keyword]
         address = params[:address]
@@ -13,20 +8,20 @@ class Api::BusinessesController < ApplicationController
         if !address[:geo].nil?
             lat = address[:geo][:lat]
             lng = address[:geo][:lng]
-            offset = 0.016
-            @businesses = 
+            offset = 0.032
+            @businesses =
             Business.where(lat: (lat - offset)..(lat + offset))
                     .where(lng: (lng - offset)..(lng + offset))
                     .and(
-            Business.where("name LIKE ?", "%" + keyword + "%")
+            Business.where("LOWER(name) LIKE ?", "%" + keyword + "%")
                     .or(
-            Business.where("category LIKE ?", "%" + keyword + "%")))
+            Business.where("LOWER(category) LIKE ?", "%" + keyword + "%")))
                     .limit(limit)
         else
             @businesses = 
-            Business.where("name LIKE ?", "%" + keyword + "%")
+            Business.where("LOWER(name) LIKE ?", "%" + keyword + "%")
                     .or(
-            Business.where("category LIKE ?", "%" + keyword + "%"))
+            Business.where("LOWER(category) LIKE ?", "%" + keyword + "%"))
                     .limit(limit)
         end
         render 'api/businesses/index'

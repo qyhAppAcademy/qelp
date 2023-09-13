@@ -1,79 +1,39 @@
+import { useHistory } from "react-router-dom";
+import RatingStars from "../../../RatingStars";
+import Categories from "../../../Categories";
 import "./index.css";
 
-const ratingStars = (business) => {
-    const COLORS = [
-        "#C8C9CA",
-        "#FFCC4B",
-        "#FFAD48",
-        "#FF8742",
-        "#FF643D",
-        "#FB503B"
-    ];
-    const floor = Math.floor(business.avgRating);
-    const stars = [];
-    for (let i = 1; i < COLORS.length; i++) {
-        let idx, opacity;
-        if (i <= floor) {
-            idx = floor;
-            opacity = 1;
-        }
-        else if (i === floor + 1) {
-            idx = floor + 1;
-            opacity = (business.avgRating - floor).toFixed(2);
-        }
-        else {
-            idx = 0;
-            opacity = 0.2;
-        }
-        stars.push(
-            <span
-                className="rating-star"
-                style={{
-                    color: COLORS[idx],
-                    opacity: opacity
-                }}
-                key={`info-window-business-id-${business.id}-rating-star-${i}`}
-            >
-                <i className="fas fa-star"></i>
-            </span>
-        );
-    }
-    return stars;
-}
+const InfoWindow = ({
+        infoWindowRef,
+        business,
+        keywordQuery,
+        setKeywordQuery
+    }) => {
+    const history = useHistory();
 
-const InfoWindow = ({ infoWindowRef, business }) => {
-    const ctgs = business ? business.category.split(",") : [];
-    const categories = ctgs.map((ctg, idx) => (
-        <>
-            <span
-                className="category"
-                onClick={() => {
-                    console.log(ctg.trim());
-                }}
-                key={idx}
-            >
-                {ctg.trim()}
-            </span>
-            {idx < ctgs.length - 1 && <span className="separator">, </span>}
-        </>
-    ));
+    const toBusinessShow = () => {
+        history.push(`/businesses/${business.id}`);
+    };
 
     return (
         <div ref={infoWindowRef} id="info-window">
             {business &&
                 <>
-                    <div>
+                    <div onClick={toBusinessShow}>
                         <img
                             className="thumbnail"
                             src={business.photoUrls[0].url}
                             alt={`${business.name} thumbnail`}
                         />
                     </div>
-                    <div>
+                    <div onClick={toBusinessShow}>
                         <h1 className="name">{business.name}</h1>
                     </div>
                     <div>
-                        {ratingStars(business)}
+                        <RatingStars
+                            business={business}
+                            component={"info-window"}
+                        />
                         <span className="avg-rating">
                             {business.avgRating.toFixed(1)}
                         </span>
@@ -82,7 +42,13 @@ const InfoWindow = ({ infoWindowRef, business }) => {
                         </span>
                     </div>
                     <div>
-                        {categories}
+                        <Categories
+                            business={business}
+                            component={"info-window"}
+                            separator={<>, </>}
+                            keywordQuery={keywordQuery}
+                            setKeywordQuery={setKeywordQuery}
+                        />
                     </div>
                 </>
             }

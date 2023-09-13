@@ -17,17 +17,13 @@
 }
 
 #info-window {
-    padding: 1.5vw;
-}
-
-#info-window > div:not(:first-child) {
-    margin: 0;
+    padding: 1.2vw;
 }
 
 #info-window .thumbnail {
     width: 100%;
-    height: 13vw;
-    margin: 0 0 1.1vw 0;
+    height: 12.96vw;
+    margin: 0 0 0.82vw 0;
     object-fit: cover;
     object-position: 0% 50%;
     border-radius: 1vw;
@@ -38,20 +34,26 @@
     font-weight: 600;
 }
 
+#info-window .name:hover {
+    text-decoration: underline;
+}
+
 #info-window > div:nth-child(3) {
+    margin: 0.1vw 0 0.22vw 0;
     font-size: 1.3vw;
 }
 
 #info-window .rating-star {
     margin: 0 0.2vw 0 0;
-    vertical-align: 0.05vw;
+    vertical-align: 0.1vw;
 }
 
 #info-window .avg-rating {
-    margin: 0 0.2vw 0 0.6vw;
+    margin: 0 0.2vw 0 0.8vw;
 }
 
-#info-window .category, #info-window .separator {
+#info-window > div:nth-child(4) {
+    font-size: 1.1vw;
     color: rgb(114, 114, 114);
 }
 
