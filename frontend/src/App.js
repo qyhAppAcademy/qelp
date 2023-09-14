@@ -13,17 +13,6 @@ import './fontawesome/css/all.min.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const App = () => {
-  const [keywordQuery, setKeywordQuery] = useState("");
-  const [addressQuery, setAddressQuery] = useState({
-    val: "",
-    geo: null
-  });
-
-  const Nav = <Navigation
-    setKeywordQuery={setKeywordQuery}
-    setAddressQuery={setAddressQuery}
-  />;
-
   return (
     <Switch>
       <Route path="/signup">
@@ -34,23 +23,16 @@ const App = () => {
       </Route>
       <Route exact path="/">
         <div className="home-page">
-          <Navigation
-            setKeywordQuery={setKeywordQuery}
-            setAddressQuery={setAddressQuery}
-          />
+          <Navigation />;
           {/* <Home /> */}
         </div>
       </Route>
       <Route exact path="/businesses">
-        {Nav}
-        <BusinessIndex
-          keywordQuery={keywordQuery}
-          addressQuery={addressQuery}
-          setKeywordQuery={setKeywordQuery}
-        />
+        <Navigation />;
+        <BusinessIndex />
       </Route>
       <Route exact path="/businesses/:businessId">
-        {/* {Nav} */}
+        <Navigation />;
         <BusinessShowPage />
       </Route>
     </Switch>

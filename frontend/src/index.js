@@ -9,7 +9,8 @@ import "./index.css";
 
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import { KeywordProvider } from "./context/Keyword";
+import { KeywordProvider, KeywordQueryProvider } from "./context/Query";
+import { AddressProvider, AddressQueryProvider } from "./context/Address";
 import App from "./App";
 
 import ReactDOM from "react-dom";
@@ -27,9 +28,15 @@ function Root() {
   return (
     <BrowserRouter>
       <Provider store={store}>
-        <KeywordProvider>
-          <App />
-        </KeywordProvider>
+        <KeywordQueryProvider>
+          <AddressQueryProvider>
+            <KeywordProvider>
+              <AddressProvider>
+                <App />
+              </AddressProvider>
+            </KeywordProvider>
+          </AddressQueryProvider>
+        </KeywordQueryProvider>
       </Provider>
     </BrowserRouter>
   );

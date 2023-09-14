@@ -3,6 +3,7 @@ nav .nav-title {
     color: #000000;
     text-decoration: none;
     white-space: nowrap;
+    cursor: pointer;
 }
 
 nav .nav-title i {

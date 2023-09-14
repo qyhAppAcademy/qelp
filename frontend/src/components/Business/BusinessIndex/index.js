@@ -1,11 +1,17 @@
 import { useEffect } from "react";
+import { useKeywordQueryContext } from "../../../context/Query";
+import { useAddressQueryContext } from "../../../context/Address";
 import { useDispatch, useSelector } from "react-redux";
 import { getBusinesses, fetchBusinesses } from "../../../store/businesses";
 import Card from "./Card";
 import GoogleMap from "./GoogleMap";
 import "./index.css";
 
-const BusinessIndex = ({ keywordQuery, addressQuery, setKeywordQuery }) => {
+const BusinessIndex = () => {
+    // { keywordQuery, addressQuery, setKeywordQuery }
+    const { keywordQuery, setKeywordQuery } = useKeywordQueryContext();
+    const addressQuery = useAddressQueryContext().addressQuery;
+
     const businesses = useSelector(getBusinesses());
 
     const dispatch = useDispatch();

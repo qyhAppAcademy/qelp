@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import SearchBar from "./SearchBar";
@@ -11,12 +11,12 @@ const GITHUB = "https://github.com/qyhAppAcademy";
 const LINKEDIN = "https://www.linkedin.com/in/qiaoyanghan";
 const AWS = "https://qelp-seeds.s3.amazonaws.com/icons";
 
-const Navigation = ({ setKeywordQuery, setAddressQuery }) => {
+const Navigation = () => {
     const sessionUser = useSelector(state => state.session.user);
 
     const history = useHistory();
 
-    const sessionLinks = sessionUser ? (
+    const sessions = sessionUser ? (
         <ProfileButton user={sessionUser} />
     ) : (
         <>  
@@ -42,14 +42,11 @@ const Navigation = ({ setKeywordQuery, setAddressQuery }) => {
                     className="nav-title"
                     onClick={() => history.push("/")}
                 >
-                    qelp<span><i className="fab fa-yelp"></i></span>
+                    qelp<i className="fab fa-yelp"></i>
                 </button>
             </div>
 
-            <SearchBar
-                setKeywordQuery={setKeywordQuery}
-                setAddressQuery={setAddressQuery}
-            />
+            <SearchBar />
 
             <div>
                 <a 
@@ -71,7 +68,7 @@ const Navigation = ({ setKeywordQuery, setAddressQuery }) => {
             </div>
 
             <div className="session-links">
-                {sessionLinks}
+                {sessions}
             </div>
         </nav>
     );
