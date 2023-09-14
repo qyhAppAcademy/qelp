@@ -5,7 +5,7 @@ import Contacts from "./Contacts";
 import Session from "./Session";
 import "./index.css";
 
-import ProfileButton from "./Session/ProfileButton";
+import ProfileButton from "./Session/User/ProfileButton";
 
 const Navigation = () => {
 
@@ -33,9 +33,7 @@ const Navigation = () => {
             <Title />
             <SearchBar />
             <Contacts />
-            <div className="session-links">
-                <Session />
-            </div>
+            <Session />
         </nav>
     );
 }
