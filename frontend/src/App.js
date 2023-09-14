@@ -34,7 +34,10 @@ const App = () => {
       </Route>
       <Route exact path="/">
         <div className="home-page">
-          {Nav}
+          <Navigation
+            setKeywordQuery={setKeywordQuery}
+            setAddressQuery={setAddressQuery}
+          />
           {/* <Home /> */}
         </div>
       </Route>

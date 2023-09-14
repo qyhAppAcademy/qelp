@@ -55,8 +55,7 @@ const renderApplication = () => {
   ), document.getElementById('root'));
 }
 
-window.initMap = async () => {
-};
+window.initMap = async () => {};
 
 if (
   sessionStorage.getItem("currentUser") === null ||

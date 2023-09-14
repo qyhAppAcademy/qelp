@@ -1,9 +1,11 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import SearchBar from './SearchBar';
-import ProfileButton from './ProfileButton';
-import './index.css';
+import React from "react";
+import { NavLink, useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+import SearchBar from "./SearchBar";
+import ProfileButton from "./ProfileButton";
+
+import "./index.css";
 
 const GITHUB = "https://github.com/qyhAppAcademy";
 const LINKEDIN = "https://www.linkedin.com/in/qiaoyanghan";
@@ -12,20 +14,29 @@ const AWS = "https://qelp-seeds.s3.amazonaws.com/icons";
 const Navigation = ({ setKeywordQuery, setAddressQuery }) => {
     const sessionUser = useSelector(state => state.session.user);
 
-    let sessionLinks;
+    const history = useHistory();
 
-    if (sessionUser) {
-        sessionLinks = (
-            <ProfileButton user={sessionUser} />
-        );
-    } else {
-        sessionLinks = (
-            <>
-                <NavLink to="/login" className="button login-button">Log In</NavLink>
-                <NavLink to="/signup" className="button signup-button">Sign Up</NavLink>
-            </>
-        );
-    }
+    const labels = ["Log In", "Sign Up"];
+    const ls = labels.map((label) => (
+        <button
+            className={`button ${label.split(" ").map(w => w.toLowerCase()).join("")}-button`}
+            onClick={() => {
+                history.push(`/${label.split(" ").map(w => w.toLowerCase()).join("")}`);
+            }}
+        >
+            {label.split(" ").map(w => w.toLowerCase()).join("")}
+        </button>
+    ));
+
+    const sessionLinks = sessionUser ? (
+        <ProfileButton user={sessionUser} />
+    ) : (
+        <>  
+            {ls}
+            {/* <NavLink to="/login" className="button login-button">Log In</NavLink>
+            <NavLink to="/signup" className="button signup-button">Sign Up</NavLink> */}
+        </>
+    );
 
     return (
         <nav>
