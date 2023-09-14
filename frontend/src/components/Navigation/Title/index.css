@@ -1,4 +1,4 @@
-nav .nav-title {
+#title {
     font-size: 2.7vw;
     color: #000000;
     text-decoration: none;
@@ -6,7 +6,7 @@ nav .nav-title {
     cursor: pointer;
 }
 
-nav .nav-title i {
-    padding-left: 0.3vw;
+#title i {
+    margin-left: 0.3vw;
     color: #e50d0d;
 }

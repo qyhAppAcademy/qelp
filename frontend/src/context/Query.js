@@ -2,8 +2,6 @@ import React, { createContext, useContext, useState } from "react";
 
 const QueryContext = createContext();
 
-export const useQueryContext = () => useContext(QueryContext);
-
 export const QueryProvider = ({ children }) => {
     const [keyword, setKeyword] = useState("");
     const [keywordQuery, setKeywordQuery] = useState("");
@@ -27,3 +25,5 @@ export const QueryProvider = ({ children }) => {
         </QueryContext.Provider>
     );
 }
+
+export const useQueryContext = () => useContext(QueryContext);

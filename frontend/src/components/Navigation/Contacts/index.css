@@ -1,13 +1,12 @@
-nav .icon {
+nav .contact {
     width: 3vw;
-    line-height: 0;
 }
 
-nav .icon:first-child {
+nav .contact:first-child {
     margin-right: 0.6vw;
 }
 
-nav .icon > img {
+nav .contact > img {
     width: 100%;
     height: 100%;
 }

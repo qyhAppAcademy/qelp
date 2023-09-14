@@ -1,6 +1,4 @@
-import { useState } from "react";
-import { useKeywordContext, useKeywordQueryContext } from "../../../context/Query";
-import { useAddressContext, useAddressQueryContext } from "../../../context/Address";
+import { useQueryContext } from "../../../context/Query";
 import { useHistory } from "react-router-dom";
 import KeywordInput from "./KeywordInput";
 import AddressInput from "./AddressInput";
@@ -8,11 +6,12 @@ import SearchButton from "./SearchButton";
 import "./index.css";
 
 const SearchBar = () => {
-    const setKeywordQuery = useKeywordQueryContext().setKeywordQuery;
-    const setAddressQuery = useAddressQueryContext().setAddressQuery;
-
-    const { keyword, setKeyword } = useKeywordContext();
-    const { address, setAddress } = useAddressContext();
+    const {
+        keyword, setKeyword,
+        setKeywordQuery,
+        address, setAddress,
+        setAddressQuery
+    } = useQueryContext();
 
     const history = useHistory();
 

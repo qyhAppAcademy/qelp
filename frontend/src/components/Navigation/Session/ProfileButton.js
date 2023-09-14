@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
+
+import { useSelector, useDispatch } from 'react-redux';
+
 import { useHistory } from "react-router-dom";
-import * as sessionActions from '../../store/session';
+import * as sessionActions from '../../../store/session';
 import "./ProfileButton.css";
 
-const ProfileButton = ({ user }) => {
+const ProfileButton = () => {
     const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
 

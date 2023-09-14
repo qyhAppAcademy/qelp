@@ -9,8 +9,7 @@ import "./index.css";
 
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import { KeywordProvider, KeywordQueryProvider } from "./context/Query";
-import { AddressProvider, AddressQueryProvider } from "./context/Address";
+import { QueryProvider} from "./context/Query";
 import App from "./App";
 
 import ReactDOM from "react-dom";
@@ -28,15 +27,9 @@ function Root() {
   return (
     <BrowserRouter>
       <Provider store={store}>
-        <KeywordQueryProvider>
-          <AddressQueryProvider>
-            <KeywordProvider>
-              <AddressProvider>
-                <App />
-              </AddressProvider>
-            </KeywordProvider>
-          </AddressQueryProvider>
-        </KeywordQueryProvider>
+        <QueryProvider>
+          <App />
+        </QueryProvider>
       </Provider>
     </BrowserRouter>
   );
@@ -49,9 +42,11 @@ const GOOGLE_API_URL =
 const renderApplication = () => {
   ReactDOM.render((
     <>
-      <Helmet>
-        <script src={GOOGLE_API_URL} async defer></script>
-      </Helmet>
+      {!window.google &&
+        <Helmet>
+          <script src={GOOGLE_API_URL} async defer></script>
+        </Helmet>
+      }
       <React.StrictMode>
         <Root />
         {/* import { LoadScript } from "@react-google-maps/api";
