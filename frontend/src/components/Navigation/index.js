@@ -16,23 +16,20 @@ const Navigation = ({ setKeywordQuery, setAddressQuery }) => {
 
     const history = useHistory();
 
-    const labels = ["Log In", "Sign Up"];
-    const ls = labels.map((label) => (
-        <button
-            className={`button ${label.split(" ").map(w => w.toLowerCase()).join("")}-button`}
-            onClick={() => {
-                history.push(`/${label.split(" ").map(w => w.toLowerCase()).join("")}`);
-            }}
-        >
-            {label.split(" ").map(w => w.toLowerCase()).join("")}
-        </button>
-    ));
-
     const sessionLinks = sessionUser ? (
         <ProfileButton user={sessionUser} />
     ) : (
         <>  
-            {ls}
+            {["Log In", "Sign Up"].map((l) => {
+                const label = l.split(" ").map(w => w.toLowerCase()).join("");
+                return (
+                    <button
+                        className={`button ${label}-button`}
+                        onClick={() => history.push(`/${label}`)}
+                        key={label}
+                    >{label}</button>
+                );
+            })}
             {/* <NavLink to="/login" className="button login-button">Log In</NavLink>
             <NavLink to="/signup" className="button signup-button">Sign Up</NavLink> */}
         </>
@@ -41,9 +38,12 @@ const Navigation = ({ setKeywordQuery, setAddressQuery }) => {
     return (
         <nav>
             <div>
-                <NavLink exact to="/" className="nav-title">
-                    qelp<i className="fab fa-yelp"></i>
-                </NavLink>
+                <button 
+                    className="nav-title"
+                    onClick={() => history.push("/")}
+                >
+                    qelp<span><i className="fab fa-yelp"></i></span>
+                </button>
             </div>
 
             <SearchBar
