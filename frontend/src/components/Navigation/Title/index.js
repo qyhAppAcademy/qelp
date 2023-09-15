@@ -5,15 +5,12 @@ const Title = () => {
     const history = useHistory();
 
     return (
-        <div>
-            <button
-                id="title"
-                onClick={() => history.push("/")}
-            >
+        <div className="title">
+            <button onClick={() => history.push("/")}>
                 qelp<i className="fab fa-yelp"></i>
             </button>
         </div>
     );
-}
+};
 
 export default Title;
