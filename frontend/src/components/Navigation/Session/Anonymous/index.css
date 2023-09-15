@@ -1,5 +1,6 @@
-nav .button {
+#anon .button {
     width: 4.5vw;
+    height: 3vw;
     font-size: 1vw;
     font-weight: 600;
     color: #FFFFFF;
@@ -9,24 +10,24 @@ nav .button {
     border-radius: 0.5vw;
 }
 
-nav .login-button {
+#anon .login-button {
     margin-right: 0.6vw;
     padding: 0.88vw 0;
     background-color: transparent;
     border: 0.12vw solid #FFFFFF;
 }
 
-nav .login-button:hover {
+#anon .login-button:hover {
     background-color: rgb(176, 176, 176, 0.5);
     transition: all 0.5s ease-out;
 }
 
-nav .signup-button {
+#anon .signup-button {
     padding: 1vw 0;
     background-color: #e50d0d;
 }
 
-nav .signup-button:hover {
+#anon .signup-button:hover {
     background-color: #ff0000;
     transition: all 0.5s ease-out;
 }

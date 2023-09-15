@@ -21,7 +21,7 @@ const Anonymous = () => {
         );
     });
 
-    return <>{actions}</>
+    return <div id="anon">{actions}</div>
 }
 
 export default Anonymous;

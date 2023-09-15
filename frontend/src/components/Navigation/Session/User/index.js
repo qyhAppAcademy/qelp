@@ -1,14 +1,34 @@
-import { useState, useEffect } from "react";
+import "./index.css";
+import { useRef, useState, useEffect } from "react";
 import Profile from "./Profile";
 import Menu from "./Menu";
-import "./index.css";
 
 const User = () => {
+    const ref = useRef();
+
     const [showMenu, setShowMenu] = useState(false);
 
+    const toggleMenu = () => {
+        setShowMenu(!showMenu);
+    };
+
+    useEffect(() => {
+        if (!showMenu) return;
+
+        const closeMenu = (e) => {
+            if (showMenu && !ref.current.contains(e.target)) {
+                setShowMenu(false);
+            }
+        };
+
+        document.addEventListener('click', closeMenu);
+
+        return () => document.removeEventListener("click", closeMenu);
+    }, [showMenu]);
+
     return (
-        <div className='profile-button'>
-            <Profile showMenu={showMenu} setShowMenu={setShowMenu} />
+        <div ref={ref} id="user">
+            <Profile toggleMenu={toggleMenu} />
             {showMenu && <Menu />}
         </div>
     );

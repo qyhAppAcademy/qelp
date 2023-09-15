@@ -1,9 +1,8 @@
-import React from "react";
+import "./index.css";
 import Title from "./Title";
 import SearchBar from "./SearchBar";
 import Contacts from "./Contacts";
 import Session from "./Session";
-import "./index.css";
 
 const Navigation = () => {
     return (

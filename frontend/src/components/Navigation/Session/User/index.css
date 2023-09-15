@@ -1,9 +1,3 @@
-.profile-button {
-    z-index: 3;
-    cursor: pointer;
-}
-
-.profile-icon {
-    color: #CBCBCE;
-    font-size: 37px;
+#user {
+    position: relative;
 }

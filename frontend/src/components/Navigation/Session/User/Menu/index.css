@@ -1,5 +1,6 @@
 #menu {
     position: absolute;
+    top: 3vw;
     right: 0;
     padding: 1vw;
     border-radius: 0.5vw;
@@ -7,27 +8,26 @@
 }
 
 #menu .option {
-    padding: 0.6vw 0.9vw;
+    width: 14.5vw;
+    padding: 1vw;
     font-size: 1.2vw;
-}
-
-#menu .option:hover {
-    background-color: #ebebeb;
-    border-radius: 0.5vw;
+    text-align: left;
 }
 
 #menu .option i {
     font-size: 1.8vw;
 }
 
+#menu .option:not(:last-child) {
+    cursor: not-allowed;
+}
+
 #menu .option:last-child {
+    cursor: pointer;
     border-top: 0.12vw solid #ebebeb;
 }
 
-#menu .option:last-child > button {
-    cursor: pointer;
-}
-
-#menu .option:not(:last-child), #menu .option:not(:last-child) > button {
-    cursor: not-allowed;
+#menu .option:hover {
+    background-color: #ebebeb;
+    border-radius: 0.5vw;
 }

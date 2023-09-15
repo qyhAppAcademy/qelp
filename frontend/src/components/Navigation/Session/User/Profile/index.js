@@ -1,28 +1,9 @@
-import { useEffect } from "react";
+import "./index.css";
 
-const Profile = ({ showMenu, setShowMenu }) => {
-    const openMenu = () => {
-        if (showMenu) return;
-        setShowMenu(true);
-    };
-
-    const closeMenu = () => {
-        setShowMenu(false);
-    };
-
-    useEffect(() => {
-        if (!showMenu) return;
-
-        document.addEventListener('click', closeMenu);
-
-        return () => document.removeEventListener("click", closeMenu);
-    }, [showMenu]);
-
+const Profile = ({ toggleMenu }) => {
     return (
-        <button onClick={openMenu} className='profile-icon'>
-            <span>
-                <i style={{ fontSize: "36px" }} className="fas fa-user-circle"></i>
-            </span>
+        <button onClick={toggleMenu} className="profile">
+            <i className="fas fa-user-circle"></i>
         </button>
     );
 }

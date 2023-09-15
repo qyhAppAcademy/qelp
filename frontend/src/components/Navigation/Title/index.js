@@ -1,5 +1,5 @@
-import { useHistory } from "react-router-dom";
 import "./index.css";
+import { useHistory } from "react-router-dom";
 
 const Title = () => {
     const history = useHistory();

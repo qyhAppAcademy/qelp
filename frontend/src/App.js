@@ -1,17 +1,18 @@
-import React from "react";
+import "./fontawesome/css/all.min.css";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Route, Switch } from "react-router-dom";
 
 import SignupFormPage from "./components/SignupFormPage";
+
 import LoginFormPage from "./components/LoginFormPage";
 
 import Navigation from "./components/Navigation";
+
 import Home from "./components/Home";
 
 import BusinessIndex from "./components/Business/BusinessIndex";
-import BusinessShowPage from "./components/Business/BusinessShow";
 
-import './fontawesome/css/all.min.css';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import BusinessShowPage from "./components/Business/BusinessShow";
 
 const App = () => {
   return (
@@ -24,16 +25,16 @@ const App = () => {
       </Route>
       <Route exact path="/">
         <div className="home-page">
-          <Navigation />;
+          <Navigation />
           {/* <Home /> */}
         </div>
       </Route>
       <Route exact path="/businesses">
-        <Navigation />;
+        <Navigation />
         {/* <BusinessIndex /> */}
       </Route>
       <Route exact path="/businesses/:businessId">
-        <Navigation />;
+        <Navigation />
         <BusinessShowPage />
       </Route>
     </Switch>

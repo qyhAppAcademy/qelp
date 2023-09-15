@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
-import { useHistory } from "react-router-dom";
-import * as session from '../../../../../store/session';
 import "./index.css";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import * as session from "../../../../../store/session";
 
 const OPTIONS = [
     {
@@ -20,25 +19,6 @@ const OPTIONS = [
 ];
 
 const Menu = () => {
-    const [showMenu, setShowMenu] = useState(false);
-
-    const openMenu = () => {
-        if (showMenu) return;
-        setShowMenu(true);
-    };
-
-    const closeMenu = () => {
-        setShowMenu(false);
-    };
-
-    useEffect(() => {
-        if (!showMenu) return;
-
-        document.addEventListener('click', closeMenu);
-
-        return () => document.removeEventListener("click", closeMenu);
-    }, [showMenu]);
-
     const dispatch = useDispatch();
 
     const history = useHistory();
@@ -49,17 +29,15 @@ const Menu = () => {
     };
 
     const options = OPTIONS.map((OPTION, idx) => (
-        <div
+        <button
             className="option"
-            key={idx}
             onClick={idx < OPTIONS.length - 1 ? null : logout}
+            key={idx}
         >
-            <button>
-                <i className={`fas fa-${OPTION.icon}`}></i>
-                &nbsp;&nbsp;&nbsp;
-                {OPTION.name}
-            </button>
-        </div>
+            <i className={`fas fa-${OPTION.icon}`}></i>
+            &nbsp;&nbsp;&nbsp;
+            {OPTION.name}
+        </button>
     ));
 
     return <div id="menu">{options}</div>;

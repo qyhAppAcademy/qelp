@@ -5,7 +5,7 @@ import Anonymous from "./Anonymous";
 const Session = () => {
     const user = useSelector(state => state.session.user);
 
-    return <div>{user ? <User /> : <Anonymous />}</div>;
+    return <>{user ? <User /> : <Anonymous />}</>;
 }
 
 export default Session;
