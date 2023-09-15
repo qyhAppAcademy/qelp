@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState, useContext } from "react";
 
 const QueryContext = createContext();
 
@@ -15,7 +15,7 @@ export const QueryProvider = ({ children }) => {
     });
 
     return (
-        <QueryContext.Provider value={{ 
+        <QueryContext.Provider value={{
             keyword, setKeyword,
             keywordQuery, setKeywordQuery,
             address, setAddress,
@@ -24,6 +24,6 @@ export const QueryProvider = ({ children }) => {
             {children}
         </QueryContext.Provider>
     );
-}
+};
 
 export const useQueryContext = () => useContext(QueryContext);
