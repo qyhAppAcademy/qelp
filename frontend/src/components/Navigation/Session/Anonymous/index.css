@@ -1,4 +1,4 @@
-.session > button {
+.session > .login, .session > .signup {
     width: 4.5vw;
     height: 3vw;
     font-size: 1vw;
@@ -8,24 +8,24 @@
     border-radius: 0.5vw;
 }
 
-.session > .login-button {
+.session > .login {
     margin-right: 0.6vw;
     padding: 0.88vw 0;
     background-color: transparent;
     border: 0.12vw solid #ffffff;
 }
 
-.session > .login-button:hover {
+.session > .login:hover {
     background-color: rgb(176, 176, 176, 0.5);
     transition: all 0.5s ease-out;
 }
 
-.session > .signup-button {
+.session > .signup {
     padding: 1vw 0;
     background-color: #e50d0d;
 }
 
-.session > .signup-button:hover {
+.session > .signup:hover {
     background-color: #ff0000;
     transition: all 0.5s ease-out;
 }

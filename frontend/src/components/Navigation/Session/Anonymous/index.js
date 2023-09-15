@@ -12,7 +12,7 @@ const Anonymous = () => {
 
         return (
             <button
-                className={`${action}-button`}
+                className={`${action}`}
                 onClick={() => history.push(`/${action}`)}
                 key={idx}
             >
