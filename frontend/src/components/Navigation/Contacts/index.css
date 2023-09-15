@@ -1,5 +1,6 @@
 nav .contact {
     width: 3vw;
+    cursor: pointer;
 }
 
 nav .contact:first-child {

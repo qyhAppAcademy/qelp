@@ -1,3 +1,9 @@
+import React, { useState, useEffect } from "react";
+import { useDispatch } from 'react-redux';
+import { useHistory } from "react-router-dom";
+import * as session from '../../../../../store/session';
+import "./index.css";
+
 const OPTIONS = [
     {
         name: "User Profile",
@@ -14,24 +20,49 @@ const OPTIONS = [
 ];
 
 const Menu = () => {
+    const [showMenu, setShowMenu] = useState(false);
+
+    const openMenu = () => {
+        if (showMenu) return;
+        setShowMenu(true);
+    };
+
+    const closeMenu = () => {
+        setShowMenu(false);
+    };
+
+    useEffect(() => {
+        if (!showMenu) return;
+
+        document.addEventListener('click', closeMenu);
+
+        return () => document.removeEventListener("click", closeMenu);
+    }, [showMenu]);
+
+    const dispatch = useDispatch();
+
+    const history = useHistory();
+
+    const logout = () => {
+        dispatch(session.logout());
+        history.push("/");
+    };
+
     const options = OPTIONS.map((OPTION, idx) => (
-        <li key={idx}>
-            <div className="list-item" style={{ cursor: "not-allowed" }}>
-                <div className="icon-container">
-                    <i style={{ fontSize: "22px" }} className={`fas fa-${OPTION.icon}`}></i>
-                </div>
-                <div className="text-container">
-                    <span>{OPTION.name}</span>
-                </div>
-            </div>
-        </li>
+        <div
+            className="option"
+            key={idx}
+            onClick={idx < OPTIONS.length - 1 ? null : logout}
+        >
+            <button>
+                <i className={`fas fa-${OPTION.icon}`}></i>
+                &nbsp;&nbsp;&nbsp;
+                {OPTION.name}
+            </button>
+        </div>
     ));
 
-    return (
-        <ul className="profile-dropdown">
-            {options}
-        </ul>
-    );
+    return <div id="menu">{options}</div>;
 }
 
 export default Menu;

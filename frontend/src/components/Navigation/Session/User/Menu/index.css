@@ -1,0 +1,33 @@
+#menu {
+    position: absolute;
+    right: 0;
+    padding: 1vw;
+    border-radius: 0.5vw;
+    box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5);
+}
+
+#menu .option {
+    padding: 0.6vw 0.9vw;
+    font-size: 1.2vw;
+}
+
+#menu .option:hover {
+    background-color: #ebebeb;
+    border-radius: 0.5vw;
+}
+
+#menu .option i {
+    font-size: 1.8vw;
+}
+
+#menu .option:last-child {
+    border-top: 0.12vw solid #ebebeb;
+}
+
+#menu .option:last-child > button {
+    cursor: pointer;
+}
+
+#menu .option:not(:last-child), #menu .option:not(:last-child) > button {
+    cursor: not-allowed;
+}

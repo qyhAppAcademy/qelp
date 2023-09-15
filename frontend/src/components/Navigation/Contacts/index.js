@@ -27,7 +27,7 @@ const Contacts = () => {
         </button>
     ));
 
-    return <div>{contacts}</div>
+    return <div>{contacts}</div>;
 }
 
 export default Contacts;
