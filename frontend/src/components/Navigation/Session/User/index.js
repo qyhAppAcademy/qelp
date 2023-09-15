@@ -27,7 +27,7 @@ const User = () => {
     }, [showMenu]);
 
     return (
-        <div ref={ref} id="user">
+        <div ref={ref} className="session">
             <Profile toggleMenu={toggleMenu} />
             {showMenu && <Menu />}
         </div>

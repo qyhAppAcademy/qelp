@@ -2,7 +2,7 @@ import "./index.css";
 
 const Profile = ({ toggleMenu }) => {
     return (
-        <button onClick={toggleMenu} className="profile">
+        <button className="profile" onClick={toggleMenu}>
             <i className="fas fa-user-circle"></i>
         </button>
     );

@@ -12,7 +12,7 @@ const Anonymous = () => {
 
         return (
             <button
-                className={`button ${action}-button`}
+                className={`${action}-button`}
                 onClick={() => history.push(`/${action}`)}
                 key={idx}
             >
@@ -21,7 +21,7 @@ const Anonymous = () => {
         );
     });
 
-    return <div id="anon">{actions}</div>
+    return <div className="session">{actions}</div>;
 }
 
 export default Anonymous;

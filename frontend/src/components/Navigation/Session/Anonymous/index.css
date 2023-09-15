@@ -1,33 +1,31 @@
-#anon .button {
+.session > button {
     width: 4.5vw;
     height: 3vw;
     font-size: 1vw;
     font-weight: 600;
-    color: #FFFFFF;
-    text-align: center;
-    text-decoration: none;
+    color: #ffffff;
     cursor: pointer;
     border-radius: 0.5vw;
 }
 
-#anon .login-button {
+.session > .login-button {
     margin-right: 0.6vw;
     padding: 0.88vw 0;
     background-color: transparent;
-    border: 0.12vw solid #FFFFFF;
+    border: 0.12vw solid #ffffff;
 }
 
-#anon .login-button:hover {
+.session > .login-button:hover {
     background-color: rgb(176, 176, 176, 0.5);
     transition: all 0.5s ease-out;
 }
 
-#anon .signup-button {
+.session > .signup-button {
     padding: 1vw 0;
     background-color: #e50d0d;
 }
 
-#anon .signup-button:hover {
+.session > .signup-button:hover {
     background-color: #ff0000;
     transition: all 0.5s ease-out;
 }
