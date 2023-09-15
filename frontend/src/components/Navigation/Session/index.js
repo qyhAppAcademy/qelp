@@ -6,6 +6,6 @@ const Session = () => {
     const user = useSelector(state => state.session.user);
 
     return <>{user ? <User /> : <Anonymous />}</>;
-}
+};
 
 export default Session;

@@ -32,6 +32,6 @@ const User = () => {
             {showMenu && <Menu />}
         </div>
     );
-}
+};
 
 export default User;

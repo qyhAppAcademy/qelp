@@ -22,12 +22,12 @@ const Contacts = () => {
         >
             <img
                 src={`${AWS}/${CONTACT.name}.png`}
-                alt={`contact-${CONTACT.name}`}
+                alt={`${CONTACT.name}`}
             />
         </button>
     ));
 
-    return <div>{contacts}</div>;
-}
+    return <div className="contacts">{contacts}</div>;
+};
 
 export default Contacts;

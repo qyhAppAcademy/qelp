@@ -22,6 +22,6 @@ const Anonymous = () => {
     });
 
     return <div className="session">{actions}</div>;
-}
+};
 
 export default Anonymous;
