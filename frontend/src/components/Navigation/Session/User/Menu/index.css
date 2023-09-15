@@ -3,31 +3,33 @@
     top: 3vw;
     right: 0;
     padding: 1vw;
+    cursor: pointer;
     border-radius: 0.5vw;
     box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5);
 }
 
-#menu .option {
+#menu > .option {
     width: 14.5vw;
     padding: 1vw;
     font-size: 1.2vw;
     text-align: left;
-}
-
-#menu .option i {
-    font-size: 1.8vw;
-}
-
-#menu .option:not(:last-child) {
-    cursor: not-allowed;
-}
-
-#menu .option:last-child {
     cursor: pointer;
+}
+
+#menu > .option:last-child {
     border-top: 0.12vw solid #ebebeb;
 }
 
-#menu .option:hover {
+#menu > .option > i {
+    font-size: 1.8vw;
+    margin: 0 1vw 0 0;
+}
+
+#menu > .option:hover {
     background-color: #ebebeb;
     border-radius: 0.5vw;
+}
+
+#menu > .option:not(:last-child) {
+    cursor: not-allowed;
 }

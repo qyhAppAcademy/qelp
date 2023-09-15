@@ -34,13 +34,11 @@ const Menu = () => {
             onClick={idx < OPTIONS.length - 1 ? null : logout}
             key={idx}
         >
-            <i className={`fas fa-${OPTION.icon}`}></i>
-            &nbsp;&nbsp;&nbsp;
-            {OPTION.name}
+            <i className={`fas fa-${OPTION.icon}`}></i>{OPTION.name}
         </button>
     ));
 
     return <div id="menu">{options}</div>;
-}
+};
 
 export default Menu;
