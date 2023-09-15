@@ -6,6 +6,6 @@ const Profile = ({ toggleMenu }) => {
             <i className="fas fa-user-circle"></i>
         </button>
     );
-}
+};
 
 export default Profile;
