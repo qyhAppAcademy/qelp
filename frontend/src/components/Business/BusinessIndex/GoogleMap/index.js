@@ -79,21 +79,23 @@ const GoogleMap = ({ businesses, keywordQuery, setKeywordQuery }) => {
                     infoWindowRef.current.removeEventListener("mouseleave", leave);
                 }, 200);
             }
-            
-            window.google.maps.event.clearListeners(infoWindow.current, "domready");
 
-            infoWindow.current.addListener("domready", () => {
-                const iwtc = document
-                    .getElementsByClassName("gm-style-iw-tc")[0];
+            if (infoWindow.current) {
+                window.google.maps.event.clearListeners(infoWindow.current, "domready");
 
-                iwtc.removeEventListener("mouseenter", enter);
-                iwtc.removeEventListener("mouseleave", leave);
+                infoWindow.current.addListener("domready", () => {
+                    const iwtc = document
+                        .getElementsByClassName("gm-style-iw-tc")[0];
 
-                iwtc.addEventListener("mouseenter", enter);
-                iwtc.addEventListener("mouseleave", leave);
+                    iwtc.removeEventListener("mouseenter", enter);
+                    iwtc.removeEventListener("mouseleave", leave);
 
-                console.log(iwtc);
-            });
+                    iwtc.addEventListener("mouseenter", enter);
+                    iwtc.addEventListener("mouseleave", leave);
+
+                    console.log(iwtc);
+                });
+            }
 
             businesses.forEach((business, idx) => {
                 const marker =
@@ -131,12 +133,12 @@ const GoogleMap = ({ businesses, keywordQuery, setKeywordQuery }) => {
     return (
         <>
             <div ref={mapRef} id="map"></div>
-            {/* <InfoWindow
+            <InfoWindow
                 infoWindowRef={infoWindowRef}
                 business={selected}
                 keywordQuery={keywordQuery}
                 setKeywordQuery={setKeywordQuery}
-            /> */}
+            />
         </>
     );
 }
