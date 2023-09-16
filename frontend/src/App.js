@@ -39,6 +39,6 @@ const App = () => {
       </Route>
     </Switch>
   );
-}
+};
 
 export default App;

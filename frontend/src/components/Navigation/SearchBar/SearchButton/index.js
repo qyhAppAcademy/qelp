@@ -9,6 +9,6 @@ const SearchButton = ({ clickable, search }) => {
             <i className="fas fa-search"></i>
         </button>
     );
-}
+};
 
 export default SearchButton;
