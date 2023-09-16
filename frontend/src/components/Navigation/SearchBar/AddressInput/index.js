@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const CENTER = {
     lat: 40.748439,
@@ -28,32 +28,38 @@ const AddressInput = ({ address, setAddress, search }) => {
     const addressRef = useRef();
     const autocompleteRef = useRef();
 
+    const enableAutocomplete = () => {
+        const Autocomplete = window.google.maps.places.Autocomplete;
+
+        autocompleteRef.current =
+            new Autocomplete(addressRef.current, options);
+
+        autocompleteRef.current.addListener("place_changed", async () => {
+            const place = await autocompleteRef.current.getPlace();
+
+            const val = place.formatted_address ?
+                place.formatted_address : place.name;
+
+            const geo = place.geometry ? {
+                lat: place.geometry.location.lat(),
+                lng: place.geometry.location.lng()
+            } : null;
+
+            setAddress({ val, geo });
+        });
+
+        console.log("Google Autocomplete enabled");
+    };
+
     window.initMap = async () => {
-        const enableAutocomplete = () => {
-            const Autocomplete = window.google.maps.places.Autocomplete;
-
-            autocompleteRef.current =
-                new Autocomplete(addressRef.current, options);
-
-            autocompleteRef.current.addListener("place_changed", async () => {
-                const place = await autocompleteRef.current.getPlace();
-                
-                const val = place.formatted_address ?
-                    place.formatted_address : place.name;
-                
-                const geo = place.geometry ? {
-                    lat: place.geometry.location.lat(),
-                    lng: place.geometry.location.lng()
-                } : null;
-
-                setAddress({ val, geo });
-            });
-
-            console.log("Google Autocomplete enabled");
-        };
-
         enableAutocomplete();
     };
+
+    useEffect(() => {
+        if (!window.google || autocompleteRef.current) return;
+
+        enableAutocomplete();
+    }, [window.google]);
 
     return (
         <input
