@@ -31,7 +31,7 @@ const App = () => {
       </Route>
       <Route exact path="/businesses">
         <Navigation />
-        {/* <BusinessIndex /> */}
+        <BusinessIndex />
       </Route>
       <Route exact path="/businesses/:businessId">
         <Navigation />

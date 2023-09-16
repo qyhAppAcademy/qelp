@@ -1,5 +1,6 @@
 import "./index.css";
 import { useQueryContext } from "../../../context/Query";
+import { useRef } from "react";
 import { useHistory } from "react-router-dom";
 import KeywordInput from "./KeywordInput";
 import AddressInput from "./AddressInput";
@@ -9,10 +10,12 @@ const SearchBar = () => {
     const { keyword, setKeyword, setKeywordQuery,
             address, setAddress, setAddressQuery } = useQueryContext();
 
+    const ref = useRef();
+
     const history = useHistory();
 
     const ripple = (e) => {
-        const button = document.getElementById("search-bar").lastChild;
+        const button = ref.current.lastChild;
 
         const ripples = button.getElementsByClassName("ripple");
         for (const r of ripples) {
@@ -35,7 +38,7 @@ const SearchBar = () => {
         circle.style.height = `${d}px`;
 
         button.appendChild(circle);
-    }
+    };
 
     const search = (e) => {
         e.preventDefault();
@@ -45,10 +48,10 @@ const SearchBar = () => {
             history.push("/businesses");
             ripple(e);
         }
-    }
+    };
 
     return (
-        <div id="search-bar">
+        <div ref={ref} id="search-bar">
             <KeywordInput
                 keyword={keyword} setKeyword={setKeyword} search={search}
             />

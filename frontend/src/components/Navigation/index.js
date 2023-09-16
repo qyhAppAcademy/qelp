@@ -13,6 +13,6 @@ const Navigation = () => {
             <Session />
         </nav>
     );
-}
+};
 
 export default Navigation;

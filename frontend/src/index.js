@@ -48,13 +48,13 @@ if (!sessionStorage.getItem("currentUser") ||
   store.dispatch(session.restoreSession()).then(renderApp);
 } else {
   renderApp();
-};
+}
 
 if (process.env.NODE_ENV !== "production") {
   window.store = store;
   window.session = session;
   window.csrfFetch = csrfFetch;
-};
+}
 
 // import { LoadScript } from "@react-google-maps/api";
 // <LoadScript
