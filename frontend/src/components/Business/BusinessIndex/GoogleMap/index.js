@@ -1,12 +1,12 @@
-import { useRef, useEffect, useState, useCallback } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { initMarker, toggleColor } from "./marker";
+import { initMarkers } from "./marker";
 import InfoWindow from "./InfoWindow";
 import "./index.css";
 
 const CENTER = {
-    lat: 40.7362862,
-    lng: -73.99377610676491
+    lat: 40.748439,
+    lng: -73.985664
 };
 const ZOOM = 12;
 const MAP_ID = "QELP_MAP";
@@ -19,6 +19,11 @@ const GoogleMap = ({ businesses, keywordQuery, setKeywordQuery }) => {
     const infoWindowRef = useRef();
 
     const Marker = useRef();
+    const markers = useRef([]);
+
+    const [selected, setSelected] = useState(null);
+
+    const history = useHistory();
 
     useEffect(() => {
         if (!window.google) return;
@@ -26,9 +31,6 @@ const GoogleMap = ({ businesses, keywordQuery, setKeywordQuery }) => {
         const initMap = async () => {
             const { Map, InfoWindow } =
                 await window.google.maps.importLibrary("maps");
-            
-            const { PinElement, AdvancedMarkerElement } =
-                await window.google.maps.importLibrary("marker");
             
             map.current = new Map(mapRef.current, {
                 center: CENTER,
@@ -41,94 +43,40 @@ const GoogleMap = ({ businesses, keywordQuery, setKeywordQuery }) => {
                 disableAutoPan: true,
             });
 
+            const { PinElement, AdvancedMarkerElement } =
+                await window.google.maps.importLibrary("marker");
+
             Marker.current = { PinElement, AdvancedMarkerElement };
-        }
+
+            initMarkers(
+                markers.current,
+                setSelected,
+                infoWindow.current, infoWindowRef.current,
+                businesses,
+                PinElement, AdvancedMarkerElement,
+                map.current,
+                history
+            );
+        };
 
         initMap();
     }, [window.google]);
 
-
-    const markers = useRef([]);
-    const [selected, setSelected] = useState(null);
-    const history = useHistory();
-    
     useEffect(() => {
-        if (!window.google || !window.google.maps || !window.google.maps.event) return;
+        if (!Marker.current) return;
+
+        const { PinElement, AdvancedMarkerElement } = Marker.current;
         
-        const renderMarkers = async () => {
-            const { PinElement, AdvancedMarkerElement } = await window.google.maps.importLibrary("marker");
-
-            while (markers.current.length > 0) markers.current.pop().map = null;
-
-            let timeoutID;
-
-            const enter = () => {
-                console.log("enter");
-                if (timeoutID) {
-                    clearTimeout(timeoutID);
-                }
-            }
-
-            const leave = () => {
-                console.log("leave");
-                timeoutID = setTimeout(() => {
-                    setSelected(null);
-                    infoWindow.current.close();
-
-                    infoWindowRef.current.removeEventListener("mouseenter", enter);
-                    infoWindowRef.current.removeEventListener("mouseleave", leave);
-                }, 200);
-            }
-
-            if (infoWindow.current) {
-                window.google.maps.event.clearListeners(infoWindow.current, "domready");
-
-                infoWindow.current.addListener("domready", () => {
-                    const iwtc = document
-                        .getElementsByClassName("gm-style-iw-tc")[0];
-
-                    iwtc.removeEventListener("mouseenter", enter);
-                    iwtc.removeEventListener("mouseleave", leave);
-
-                    iwtc.addEventListener("mouseenter", enter);
-                    iwtc.addEventListener("mouseleave", leave);
-
-                    console.log(iwtc);
-                });
-            }
-
-            businesses.forEach((business, idx) => {
-                const marker =
-                    initMarker(PinElement, AdvancedMarkerElement, map.current, business, idx);
-
-                marker.addListener("click", () => {
-                    history.push(`/businesses/${business.id}`);
-                    // setSelected(business);
-                    // infoWindow.current.open(map.current, marker);
-                });
-
-                marker.content.addEventListener("mouseenter", () => {
-                    enter();
-                    // toggleColor(marker.content);
-
-                    setSelected(business);
-                    infoWindow.current.open(map.current, marker);
-
-                    infoWindowRef.current.addEventListener("mouseenter", enter);
-                    infoWindowRef.current.addEventListener("mouseleave", leave);
-                });
-
-                marker.content.addEventListener("mouseleave", () => {
-                    leave();
-                    // toggleColor(marker.content);
-                });
-
-                markers.current.push(marker);
-            });
-        };
-
-        renderMarkers();
-    }, [window.google, businesses]);
+        initMarkers(
+            markers.current,
+            setSelected,
+            infoWindow.current, infoWindowRef.current,
+            businesses,
+            PinElement, AdvancedMarkerElement,
+            map.current,
+            history
+        );
+    }, [businesses]);
 
     return (
         <>
@@ -141,6 +89,6 @@ const GoogleMap = ({ businesses, keywordQuery, setKeywordQuery }) => {
             />
         </>
     );
-}
+};
 
 export default GoogleMap;
