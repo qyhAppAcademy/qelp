@@ -29,6 +29,8 @@ const Root = () => {
 };
 
 const renderApp = () => {
+  window.initMap = async () => {};
+
   const root = createRoot(document.getElementById('root'));
 
   root.render((
@@ -44,11 +46,10 @@ const renderApp = () => {
 };
 
 if (!sessionStorage.getItem("currentUser") ||
-    !sessionStorage.getItem("X-CSRF-Token")) {
+    !sessionStorage.getItem("X-CSRF-Token"))
   store.dispatch(session.restoreSession()).then(renderApp);
-} else {
+else
   renderApp();
-}
 
 if (process.env.NODE_ENV !== "production") {
   window.store = store;

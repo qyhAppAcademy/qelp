@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
 
+const TIMEOUT = 3000;
+
 const CENTER = {
     lat: 40.748439,
     lng: -73.985664
@@ -28,8 +30,26 @@ const AddressInput = ({ address, setAddress, search }) => {
     const addressRef = useRef();
     const autocompleteRef = useRef();
 
-    const enableAutocomplete = () => {
-        const Autocomplete = window.google.maps.places.Autocomplete;
+    const loadAutocomplete = () => {
+        const start = Date.now();
+
+        const waitForAutocomplete = (resolve, reject) => {
+            if (window.google &&
+                window.google.maps &&
+                window.google.maps.places &&
+                window.google.maps.places.Autocomplete)
+                resolve(window.google.maps.places.Autocomplete);
+            else if (Date.now() - start >= TIMEOUT)
+                reject(new Error("loadAutocomplete timeout error"));
+            else
+                setTimeout(waitForAutocomplete.bind(this, resolve, reject), 30);
+        };
+
+        return new Promise(waitForAutocomplete);
+    };
+
+    const enableAutocomplete = (Autocomplete) => {
+        if (autocompleteRef.current) return;
 
         autocompleteRef.current =
             new Autocomplete(addressRef.current, options);
@@ -51,15 +71,13 @@ const AddressInput = ({ address, setAddress, search }) => {
         console.log("Google Autocomplete enabled");
     };
 
-    window.initMap = async () => {
-        enableAutocomplete();
-    };
-
     useEffect(() => {
-        if (!window.google || autocompleteRef.current) return;
+        console.log("AddressInput useEffect, []");
 
-        enableAutocomplete();
-    }, [window.google]);
+        loadAutocomplete().then((Autocomplete) => {
+            enableAutocomplete(Autocomplete);
+        });
+    }, []);
 
     return (
         <input
