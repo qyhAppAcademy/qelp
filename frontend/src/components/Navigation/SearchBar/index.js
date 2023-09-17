@@ -1,14 +1,19 @@
 import "./index.css";
 import { useQueryContext } from "../../../context/Query";
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import KeywordInput from "./KeywordInput";
 import AddressInput from "./AddressInput";
 import SearchButton from "./SearchButton";
 
 const SearchBar = () => {
-    const { keyword, setKeyword, setKeywordQuery,
-            address, setAddress, setAddressQuery } = useQueryContext();
+    const { setKeywordQuery, setAddressQuery } = useQueryContext();
+    
+    const [keyword, setKeyword] = useState("");
+    const [address, setAddress] = useState({
+        val: "",
+        geo: null
+    });
 
     const ref = useRef();
 
