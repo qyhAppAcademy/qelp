@@ -7,7 +7,7 @@ import GoogleMap from "./GoogleMap";
 import "./index.css";
 
 const BusinessIndex = () => {
-    const { keyword, keywordQuery, setKeywordQuery, addressQuery } = useQueryContext();
+    const { keywordQuery, setKeywordQuery, addressQuery } = useQueryContext();
 
     const businesses = useSelector(getBusinesses());
 
@@ -31,12 +31,7 @@ const BusinessIndex = () => {
         <div id="business-index">
             <div>{cards}</div>
             <div>
-                <GoogleMap
-                    businesses={businesses}
-                    keyword={keyword}
-                    keywordQuery={keywordQuery}
-                    setKeywordQuery={setKeywordQuery}
-                />
+                <GoogleMap businesses={businesses} />
             </div>
         </div>
     );

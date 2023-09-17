@@ -1,12 +1,9 @@
+import { useQueryContext } from "../../../context/Query";
 import { useHistory } from "react-router-dom";
 
-const Categories = ({
-        business,
-        component,
-        separator,
-        keywordQuery,
-        setKeywordQuery
-    }) => {
+const Categories = ({ business, component, separator }) => {
+    const { keywordQuery, setKeywordQuery } = useQueryContext();
+
     const history = useHistory();
 
     const ctgs = [];
@@ -44,6 +41,6 @@ const Categories = ({
     });
 
     return (<>{ctgs}</>);
-}
+};
 
 export default Categories;

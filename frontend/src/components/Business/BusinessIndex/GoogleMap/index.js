@@ -12,7 +12,7 @@ const CENTER = {
 const ZOOM = 12;
 const MAP_ID = "QELP_MAP";
 
-const GoogleMap = ({ businesses, keyword, keywordQuery, setKeywordQuery }) => {
+const GoogleMap = ({ businesses }) => {
     const map = useRef();
     const mapRef = useRef();
 
@@ -86,12 +86,7 @@ const GoogleMap = ({ businesses, keyword, keywordQuery, setKeywordQuery }) => {
     };
 
     useEffect(() => {
-
-    }, [keyword]);
-
-    useEffect(() => {
         console.log("GoogleMap useEffect, [businesses]");
-        console.log(businesses);
         loadMaps().then((maps) => {
             initMap(maps);
         });
@@ -103,8 +98,6 @@ const GoogleMap = ({ businesses, keyword, keywordQuery, setKeywordQuery }) => {
             <InfoWindow
                 infoWindowRef={infoWindowRef}
                 business={selected}
-                keywordQuery={keywordQuery}
-                setKeywordQuery={setKeywordQuery}
             />
         </>
     );

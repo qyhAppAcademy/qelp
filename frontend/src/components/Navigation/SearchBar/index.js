@@ -1,6 +1,6 @@
 import "./index.css";
 import { useQueryContext } from "../../../context/Query";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import KeywordInput from "./KeywordInput";
 import AddressInput from "./AddressInput";
@@ -52,6 +52,10 @@ const SearchBar = () => {
             ripple(e);
         }
     };
+
+    useEffect(()=>{
+        setKeyword(keywordQuery);
+    }, [keywordQuery]);
 
     return (
         <div ref={ref} id="search-bar">
