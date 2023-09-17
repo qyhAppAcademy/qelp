@@ -31,7 +31,10 @@ const BusinessIndex = () => {
         <div id="business-index">
             <div>{cards}</div>
             <div>
-                <GoogleMap businesses={businesses} />
+                <GoogleMap
+                    businesses={businesses}
+                    addressQuery={addressQuery}
+                />
             </div>
         </div>
     );

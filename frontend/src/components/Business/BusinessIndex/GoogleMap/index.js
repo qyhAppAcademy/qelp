@@ -12,7 +12,7 @@ const CENTER = {
 const ZOOM = 12;
 const MAP_ID = "QELP_MAP";
 
-const GoogleMap = ({ businesses }) => {
+const GoogleMap = ({ businesses, addressQuery }) => {
     const map = useRef();
     const mapRef = useRef();
 
@@ -81,7 +81,8 @@ const GoogleMap = ({ businesses }) => {
             businesses,
             PinElement, AdvancedMarkerElement,
             map.current,
-            history
+            history,
+            addressQuery
         );
     };
 

@@ -17,7 +17,8 @@ export const initMarkers = (
     businesses,
     PinElement, AdvancedMarkerElement,
     map,
-    history
+    history,
+    addressQuery
 ) => {
     while (markers.length > 0) markers.pop().map = null;
 
@@ -101,6 +102,26 @@ export const initMarkers = (
 
         markers.push(marker);
     });
+
+    if (addressQuery.geo) {
+        const pinGlyph = new PinElement({
+            glyph: "",
+            glyphColor: WHITE,
+            background: RED,
+            borderColor: WHITE
+        });
+
+        const marker = new AdvancedMarkerElement({
+            map,
+            position: {
+                lat: parseFloat(addressQuery.geo.lat),
+                lng: parseFloat(addressQuery.geo.lng)
+            },
+            content: pinGlyph.element
+        });
+
+        markers.push(marker);
+    }
 
     console.log("Google markers initialized");
 };
