@@ -101,4 +101,6 @@ export const initMarkers = (
 
         markers.push(marker);
     });
+
+    console.log("Google markers initialized");
 };

@@ -4,6 +4,7 @@ import { initMarkers } from "./marker";
 import InfoWindow from "./InfoWindow";
 import "./index.css";
 
+const TIMEOUT = 3000;
 const CENTER = {
     lat: 40.748439,
     lng: -73.985664
@@ -25,48 +26,54 @@ const GoogleMap = ({ businesses, keywordQuery, setKeywordQuery }) => {
 
     const history = useHistory();
 
-    useEffect(() => {
-        if (!window.google) return;
-        
-        const initMap = async () => {
-            const { Map, InfoWindow } =
-                await window.google.maps.importLibrary("maps");
-            
-            map.current = new Map(mapRef.current, {
-                center: CENTER,
-                zoom: ZOOM,
-                mapId: MAP_ID
-            });
+    const loadMaps = () => {
+        const start = Date.now();
 
-            infoWindow.current = new InfoWindow({
-                content: infoWindowRef.current,
-                disableAutoPan: true,
-            });
-
-            const { PinElement, AdvancedMarkerElement } =
-                await window.google.maps.importLibrary("marker");
-
-            Marker.current = { PinElement, AdvancedMarkerElement };
-
-            initMarkers(
-                markers.current,
-                setSelected,
-                infoWindow.current, infoWindowRef.current,
-                businesses,
-                PinElement, AdvancedMarkerElement,
-                map.current,
-                history
-            );
+        const waitForMaps = (resolve, reject) => {
+            if (window.google && window.google.maps)
+                resolve(window.google.maps);
+            else if (Date.now() - start >= TIMEOUT)
+                reject(new Error("loadMaps timeout error"));
+            else
+                setTimeout(waitForMaps.bind(this, resolve, reject), 30);
         };
 
-        initMap();
-    }, [window.google]);
+        return new Promise(waitForMaps);
+    };
 
-    useEffect(() => {
-        if (!Marker.current) return;
+    const initMap = async (maps) => {
+        if (!map.current || !infoWindow.current) {
+            const { Map, InfoWindow } = await maps.importLibrary("maps");
 
-        const { PinElement, AdvancedMarkerElement } = Marker.current;
-        
+            if (!map.current) {
+                map.current = new Map(mapRef.current, {
+                    center: CENTER,
+                    zoom: ZOOM,
+                    mapId: MAP_ID
+                });
+                console.log("Google map initialized");
+            }
+
+            if (!infoWindow.current) {
+                infoWindow.current = new InfoWindow({
+                    content: infoWindowRef.current,
+                    disableAutoPan: true,
+                });
+                console.log("Google infoWindow initialized");
+            }
+        }
+
+        const { PinElement, AdvancedMarkerElement } = Marker.current ?
+            Marker.current : await maps.importLibrary("marker");
+
+        if (!Marker.current) {
+            Marker.current = { PinElement, AdvancedMarkerElement };
+            console.log("Google marker loaded");
+        }
+        else {
+            console.log("Google marker has loaded");
+        }
+
         initMarkers(
             markers.current,
             setSelected,
@@ -76,6 +83,14 @@ const GoogleMap = ({ businesses, keywordQuery, setKeywordQuery }) => {
             map.current,
             history
         );
+    };
+
+    useEffect(() => {
+        console.log("GoogleMap useEffect, [businesses]");
+
+        loadMaps().then((maps) => {
+            initMap(maps);
+        });
     }, [businesses]);
 
     return (
