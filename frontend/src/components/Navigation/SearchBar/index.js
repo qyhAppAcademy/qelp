@@ -7,13 +7,11 @@ import AddressInput from "./AddressInput";
 import SearchButton from "./SearchButton";
 
 const SearchBar = () => {
-    const { setKeywordQuery, setAddressQuery } = useQueryContext();
+    const { keywordQuery, setKeywordQuery,
+            addressQuery, setAddressQuery } = useQueryContext();
     
-    const [keyword, setKeyword] = useState("");
-    const [address, setAddress] = useState({
-        val: "",
-        geo: null
-    });
+    const [keyword, setKeyword] = useState(keywordQuery);
+    const [address, setAddress] = useState(addressQuery);
 
     const ref = useRef();
 
