@@ -15,9 +15,8 @@ const Categories = ({ business, component, separator }) => {
             <span
                 className="category"
                 onClick={() => {
-                    const keyword = category.trim();
-                    if (keyword !== keywordQuery) {
-                        setKeywordQuery(keyword);
+                    if (category.trim() !== keywordQuery) {
+                        setKeywordQuery(category.trim());
                         history.push("/businesses");
                     }
                 }}
@@ -34,13 +33,15 @@ const Categories = ({ business, component, separator }) => {
                 <span
                     className="separator"
                     key={`${component}-${business.id}-spt-${idx}`}
-                >{separator}</span>
+                >
+                    {separator}
+                </span>
             );
             ctgs.push(spt);
         }
     });
 
-    return (<>{ctgs}</>);
+    return <>{ctgs}</>;
 };
 
 export default Categories;

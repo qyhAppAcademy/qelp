@@ -1,5 +1,6 @@
-const WHITE = "rgb(255, 255, 255)";
-const RED = "rgb(255, 0, 0)";
+const WHITE = "#ffffff";
+const RED = "#ff0000";
+const GRAY = "#ebebeb";
 
 const toggleColor = (pinGlyph) => {
     pinGlyph.glyphColor =
@@ -15,11 +16,15 @@ export const initMarkers = (
     setSelected,
     infoWindow, infoWindowRef,
     businesses,
-    PinElement, AdvancedMarkerElement,
+    Marker,
     map,
     history,
     addressQuery
 ) => {
+    if (!Marker) return;
+
+    const { PinElement, AdvancedMarkerElement } = Marker;
+
     while (markers.length > 0) markers.pop().map = null;
 
     let timeoutID;
@@ -105,9 +110,9 @@ export const initMarkers = (
 
     if (addressQuery.geo) {
         const pinGlyph = new PinElement({
-            glyph: "",
+            glyph: "0",
             glyphColor: WHITE,
-            background: RED,
+            background: GRAY,
             borderColor: WHITE
         });
 

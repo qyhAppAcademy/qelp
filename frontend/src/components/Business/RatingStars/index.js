@@ -1,10 +1,10 @@
 const COLORS = [
-    "#C8C9CA",
-    "#FFCC4B",
-    "#FFAD48",
-    "#FF8742",
-    "#FF643D",
-    "#FB503B"
+    "#c8c9ca",
+    "#ffcc4b",
+    "#ffad48",
+    "#ff8742",
+    "#ff643d",
+    "#fb503b"
 ];
 
 const RatingStars = ({ business, component }) => {
@@ -40,7 +40,7 @@ const RatingStars = ({ business, component }) => {
         );
     }
     
-    return (<>{ratingStars}</>);
-}
+    return <>{ratingStars}</>;
+};
 
 export default RatingStars;

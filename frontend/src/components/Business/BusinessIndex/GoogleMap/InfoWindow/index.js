@@ -1,7 +1,7 @@
+import "./index.css";
 import { useHistory } from "react-router-dom";
 import RatingStars from "../../../RatingStars";
 import Categories from "../../../Categories";
-import "./index.css";
 
 const InfoWindow = ({ infoWindowRef, business }) => {
     const history = useHistory();
@@ -47,6 +47,6 @@ const InfoWindow = ({ infoWindowRef, business }) => {
             }
         </div>
     );
-}
+};
 
 export default InfoWindow;
