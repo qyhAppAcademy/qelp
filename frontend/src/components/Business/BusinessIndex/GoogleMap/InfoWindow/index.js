@@ -29,10 +29,10 @@ const InfoWindow = ({ infoWindowRef, business }) => {
                             business={business}
                             component={"info-window"}
                         />
-                        <span className="avg-rating">
+                        <span className="avg-rating" onClick={toBusinessShow}>
                             {business.avgRating.toFixed(1)}
                         </span>
-                        <span className="reviews-count">
+                        <span className="reviews-count" onClick={toBusinessShow}>
                             ({business.reviewsCount} reviews)
                         </span>
                     </div>

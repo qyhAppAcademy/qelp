@@ -8,7 +8,7 @@ class Api::BusinessesController < ApplicationController
         if !address[:geo].nil?
             lat = address[:geo][:lat]
             lng = address[:geo][:lng]
-            offset = 0.032
+            offset = 0.008
             @businesses =
             Business.where(lat: (lat - offset)..(lat + offset))
                     .where(lng: (lng - offset)..(lng + offset))
