@@ -1,25 +1,29 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import "./index.css";
 import { useParams } from "react-router-dom";
-import { fetchBusiness, getBusiness } from "../../../store/businesses";
-import Panel from "./Panel";
+import { useSelector, useDispatch } from "react-redux";
+import { getBusiness, fetchBusiness } from "../../../store/businesses";
+import { getCurrentUser } from "../../../store/session";
+import { useState, useEffect } from "react";
+
 import Carousel from "./Carousel";
+
+import Panel from "./Panel";
 import SideBar from "./SideBar";
 import BusinessReviews from "./Reviews";
 import ReviewForm from "../../Review/Form";
 import ReviewButtons from "./ReviewButtons";
-import { getCurrentUser } from "../../../store/session";
-import "./index.css";
 
 const BusinessShowPage = () => {
-    // debugger
     const { businessId } = useParams();
+
     const business = useSelector(getBusiness(businessId));
+
     const currentUser = useSelector(getCurrentUser);
 
     const [showReviewForm, setShowReviewForm] = useState(false);
 
     const dispatch = useDispatch();
+
     useEffect(() => {
         dispatch(fetchBusiness(businessId))
     }, [dispatch, businessId]);
@@ -28,14 +32,17 @@ const BusinessShowPage = () => {
         return null;
     }
 
-    const review = currentUser ? Object.values(business.reviews).find(review => review.user.id === currentUser.id) : undefined;
+    const review = currentUser ?
+        Object.values(business.reviews)
+            .find(review => review.user.id === currentUser.id) : undefined;
+    
     const hasReviewed = review !== undefined;
 
     return (
         <>
             <Carousel business={business} />
 
-            <section>
+            {/* <section>
                 <div>
                     <div className="business-panel-container">
                         <Panel business={business} />
@@ -55,9 +62,9 @@ const BusinessShowPage = () => {
                         <SideBar business={business} />
                     </div>
                 </div>
-            </section>
+            </section> */}
         </>
     );
-}
+};
 
 export default BusinessShowPage;

@@ -1,46 +1,49 @@
-import React, { useState } from 'react';
-import Slide from "./Slide.js";
 import "./index.css";
+import { useState } from "react";
+import Arrow from "./Arrow";
+import Slide from "./Slide.js";
+
+const DIRECTIONS = ["left", "right"];
 
 const Carousel = ({ business }) => {
     const [images, setImages] = useState(business.photoUrls);
 
-    const slideLeft = (e) => {
-        e.preventDefault();
+    const slides = images.map((image, idx) => (
+        <Slide image={image} key={idx} />
+    ));
+
+    const slideLeft = () => {
         let last = images[images.length - 1];
         let rest = images.slice(0, images.length - 1);
         let newImages = [last, ...rest];
         setImages(newImages);
-    }
+    };
 
-    const slideRight = (e) => {
-        e.preventDefault();
+    const slideRight = () => {
         let first = images[0];
         let rest = images.slice(1);
         let newImages = [...rest, first];
         setImages(newImages);
-    }
+    };
 
-    const slides = images.map((image, index) => (
-        <Slide key={index} image={image}/>
+    const slide = (direction) => {
+        if (direction === "left")
+            return slideLeft;
+        else
+            return slideRight;
+    };
+
+    const arrows = DIRECTIONS.map((DIRECTION, idx) => (
+        <Arrow direction={DIRECTION} onClick={slide(DIRECTION)} key={idx} />
     ));
 
     return (
         <>
-            <div className="carousel-arrows">
-                <button className="arrow left" onClick={slideLeft}>
-                    <i className="fas fa-chevron-circle-left"></i>
-                </button>
-                <button className="arrow right" onClick={slideRight}>
-                    <i className="fas fa-chevron-circle-right"></i>
-                </button>
-            </div>
-            <div className="business-carousel">
-                {slides}
-            </div>
+            <div className="arrows">{arrows}</div>
+            <div className="slides">{slides}</div>
         </>
     );
-}
+};
 
 export default Carousel;
 
