@@ -1,20 +1,18 @@
+import "./index.css";
 import { useHistory } from "react-router-dom";
 import RatingStars from "../../RatingStars";
 import Categories from "../../Categories";
-import "./index.css";
 
 const isBusinessOpen = (business) => {
     let open = new Date(business.open).getUTCHours();
     let closed = new Date(business.close).getUTCHours();
     let now = new Date(Date().toLocaleString("en-US")).getUTCHours();
-    if (open >= closed) {
+    if (open >= closed)
         closed += 24;
-    }
-    if (open > now) {
+    if (open > now)
         now += 24;
-    }
     return open <= now && now < closed;
-}
+};
 
 const twelveHourFormat = (dateString) => {
     const date = new Date(dateString);
@@ -23,9 +21,9 @@ const twelveHourFormat = (dateString) => {
     const period = hour >= 0 && hour < 12 ? "AM" : "PM";
     return `${hour % 12 === 0 ? 12 : hour % 12}:${minute < 10 ?
         "0" + minute : minute} ${period}`;
-}
+};
 
-const Card = ({ business, idx, keywordQuery, setKeywordQuery }) => {
+const Card = ({ business, idx }) => {
     const history = useHistory();
 
     const toBusinessShow = () => {
@@ -49,8 +47,8 @@ const Card = ({ business, idx, keywordQuery, setKeywordQuery }) => {
     return (
         <div className="card">
             <div onClick={toBusinessShow}>
-                <img 
-                    className="thumbnail" 
+                <img
+                    className="thumbnail"
                     src={business.photoUrls[0].url}
                     alt={`${business.name} thumbnail`}
                 />
@@ -58,9 +56,7 @@ const Card = ({ business, idx, keywordQuery, setKeywordQuery }) => {
             <div onClick={toBusinessShow}>
                 <h1 className="name">{`${idx + 1}. ${business.name}`}</h1>
             </div>
-            <div>
-                <RatingStars business={business} component={"card"} />
-            </div>
+            <div><RatingStars business={business} component={"card"} /></div>
             <div>
                 <span className="price">{business.price}</span>
                 <span className="dot"><i className="fas fa-circle"></i></span>
@@ -68,15 +64,11 @@ const Card = ({ business, idx, keywordQuery, setKeywordQuery }) => {
                     business={business}
                     component={"card"}
                     separator={<>&nbsp;</>}
-                    keywordQuery={keywordQuery}
-                    setKeywordQuery={setKeywordQuery}
                 />
             </div>
-            <div onClick={toBusinessShow}>
-                {hours}
-            </div>
+            <div onClick={toBusinessShow}>{hours}</div>
         </div>
     );
-}
+};
 
 export default Card;
