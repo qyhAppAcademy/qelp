@@ -4,14 +4,14 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* background-color: pink; */
+    background-color: pink;
 }
 
 nav > div {
     margin: 0 0 0 2vw;
     display: flex;
     align-items: center;
-    /* background-color: lightgreen; */
+    background-color: lightgreen;
 }
 
 nav > div:last-child {
