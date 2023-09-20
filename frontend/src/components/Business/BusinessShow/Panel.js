@@ -1,8 +1,8 @@
 import "./Panel.css";
-import { EST_OFFSET, toLocalTime, isOpen } from "../../../store/time.js";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import RatingStars from "../RatingStars";
 import Categories from "../Categories";
+import Hours from "../Hours";
 
 const Panel = ({ business }) => {
 
@@ -50,7 +50,7 @@ const Panel = ({ business }) => {
                     separator={<>, </>}
                 />
             </div>
-            <div onClick={toBusinessShow}>{hours}</div>
+            <div onClick={toBusinessShow}><Hours business={business} /></div>
             {/* <div>
                 <span>{business.price}</span>
                 <span className="icon-circle-container"><i className="fas fa-circle"></i></span>
