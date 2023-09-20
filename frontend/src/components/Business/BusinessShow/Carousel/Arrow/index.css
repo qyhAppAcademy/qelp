@@ -1,9 +1,0 @@
-.arrows .arrow {
-    font-size: 4vw;
-    color: rgb(255, 255, 255, 0.75);
-    cursor: pointer;
-}
-
-.arrows .arrow:hover {
-    color: rgb(255, 255, 255, 1);
-}

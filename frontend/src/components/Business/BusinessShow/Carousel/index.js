@@ -1,46 +1,73 @@
 import "./index.css";
-import { useState } from "react";
-import Arrow from "./Arrow";
-import Slide from "./Slide.js";
+import { useRef } from "react";
 
 const DIRECTIONS = ["left", "right"];
 
 const Carousel = ({ business }) => {
-    const [images, setImages] = useState(business.photoUrls);
+    const leftArrowRef = useRef();
+    const rightArrowRef = useRef();
 
-    const slides = images.map((image, idx) => (
-        <Slide image={image} key={idx} />
-    ));
+    const slidesRef = useRef();
 
-    const slideLeft = () => {
-        let last = images[images.length - 1];
-        let rest = images.slice(0, images.length - 1);
-        let newImages = [last, ...rest];
-        setImages(newImages);
-    };
+    const transition = (direction) => {
+        leftArrowRef.current.classList.remove("disable");
+        rightArrowRef.current.classList.remove("disable");
+        
+        const arrow = direction === "left" ?
+            leftArrowRef.current : rightArrowRef.current;
 
-    const slideRight = () => {
-        let first = images[0];
-        let rest = images.slice(1);
-        let newImages = [...rest, first];
-        setImages(newImages);
-    };
+        const imgs = slidesRef.current.children;
+        const left = slidesRef.current.style.left.slice(0, -2) * -1.0;
+        const lefts = [0];
 
-    const slide = (direction) => {
-        if (direction === "left")
-            return slideLeft;
-        else
-            return slideRight;
+        let accumulator = 0;
+        for (let i = 0; i <= imgs.length; i++) {
+            if (accumulator > window.innerWidth)
+                lefts.push(accumulator - window.innerWidth);
+            if (i < imgs.length)
+                accumulator += imgs[i].clientWidth;
+        }
+
+        const newLeft = direction === "left" ?
+            lefts.reverse().find(ele => ele < left) :
+            lefts.find(ele => ele > left);
+
+        if (newLeft !== undefined)
+            slidesRef.current.style.left = `-${newLeft}px`;
+        if (!newLeft || newLeft === 0 || newLeft === accumulator)
+            arrow.classList.add("disable");
+
+        console.log("Screen Width: " + window.innerWidth);
+        console.log("Slides Left: " + left);
+        console.log("Slides New Left: " + newLeft);
+        console.log(lefts);
     };
 
     const arrows = DIRECTIONS.map((DIRECTION, idx) => (
-        <Arrow direction={DIRECTION} onClick={slide(DIRECTION)} key={idx} />
+        <button
+            ref={DIRECTION === "left" ? leftArrowRef : rightArrowRef}
+            className={`arrow ${DIRECTION} ${idx === 0 ? "disable" : ""}`}
+            onClick={() => transition(DIRECTION)}
+            key={idx}
+        >
+            <i className={`fas fa-chevron-circle-${DIRECTION}`}></i>
+        </button>
+    ));
+
+    const slides = business.photoUrls.map((photo, idx) => (
+        <img src={`${photo.url}`} alt={`slides-img-${idx}`} key={idx} />
     ));
 
     return (
         <>
             <div className="arrows">{arrows}</div>
-            <div className="slides">{slides}</div>
+            <div
+                ref={slidesRef}
+                className="slides"
+                style={{ left: 0 }}
+            >
+                {slides}
+            </div>
         </>
     );
 };
