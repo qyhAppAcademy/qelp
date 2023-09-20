@@ -10,32 +10,32 @@ const Carousel = ({ business }) => {
     const slidesRef = useRef();
 
     const transition = (direction) => {
-        leftArrowRef.current.classList.remove("disable");
-        rightArrowRef.current.classList.remove("disable");
-        
+        leftArrowRef.current.classList.remove("inactive");
+        rightArrowRef.current.classList.remove("inactive");
+
         const arrow = direction === "left" ?
             leftArrowRef.current : rightArrowRef.current;
 
         const imgs = slidesRef.current.children;
-        const left = slidesRef.current.style.left.slice(0, -2) * -1.0;
+        const left = slidesRef.current.style.left.slice(0, -2);
         const lefts = [0];
 
         let accumulator = 0;
         for (let i = 0; i <= imgs.length; i++) {
-            if (accumulator > window.innerWidth)
-                lefts.push(accumulator - window.innerWidth);
+            if (window.innerWidth < accumulator)
+                lefts.unshift(window.innerWidth - accumulator);
             if (i < imgs.length)
                 accumulator += imgs[i].clientWidth;
         }
 
         const newLeft = direction === "left" ?
-            lefts.reverse().find(ele => ele < left) :
-            lefts.find(ele => ele > left);
+            lefts.find(ele => ele > left) :
+            [...lefts].reverse().find(ele => ele < left);
 
         if (newLeft !== undefined)
-            slidesRef.current.style.left = `-${newLeft}px`;
-        if (!newLeft || newLeft === 0 || newLeft === accumulator)
-            arrow.classList.add("disable");
+            slidesRef.current.style.left = `${newLeft}px`;
+        if (!newLeft || newLeft === 0 || newLeft === lefts[0])
+            arrow.classList.add("inactive");
 
         console.log("Screen Width: " + window.innerWidth);
         console.log("Slides Left: " + left);
@@ -46,7 +46,6 @@ const Carousel = ({ business }) => {
     const arrows = DIRECTIONS.map((DIRECTION, idx) => (
         <button
             ref={DIRECTION === "left" ? leftArrowRef : rightArrowRef}
-            className={`arrow ${DIRECTION} ${idx === 0 ? "disable" : ""}`}
             onClick={() => transition(DIRECTION)}
             key={idx}
         >

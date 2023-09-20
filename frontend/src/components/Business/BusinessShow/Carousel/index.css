@@ -14,14 +14,18 @@
     z-index: 1;
 }
 
-.arrows .arrow {
+.arrows > button {
     font-size: 4vw;
-    color: rgb(255, 255, 255, 0.75);
-
-    &:not(.disable):hover {
+    color: rgb(255, 255, 255, 0.66);
+        
+    &:not(.inactive):hover {
         color: rgb(255, 255, 255, 1);
         cursor: pointer;
     }
+}
+
+.arrows > .inactive {
+    color: rgb(255, 255, 255, 0.33);
 }
 
 .slides {
