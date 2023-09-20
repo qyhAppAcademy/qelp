@@ -41,13 +41,9 @@ const BusinessShowPage = () => {
     return (
         <>
             <Carousel business={business} />
-
+            <Panel business={business} />
             {/* <section>
                 <div>
-                    <div className="business-panel-container">
-                        <Panel business={business} />
-                    </div>
-
                     <div className="business-reviews-container">
                         {currentUser && (
                         <ReviewButtons hasReviewed={hasReviewed} setShowReviewForm={setShowReviewForm} />

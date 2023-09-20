@@ -1,6 +1,8 @@
 import "./Panel.css";
 import { EST_OFFSET, toLocalTime, isOpen } from "../../../store/time.js";
-import { StarRatingShowInFloat } from "../../Review/StarRating";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import RatingStars from "../RatingStars";
+import Categories from "../Categories";
 
 const Panel = ({ business }) => {
 
@@ -17,16 +19,39 @@ const Panel = ({ business }) => {
     }
     const avg = sum * 1.0 / arr.length;
 
+    business.avgRating = avg;
+
+    const history = useHistory();
+
+    const toBusinessShow = () => {
+        history.push(`/businesses/${business.id}`);
+    };
+
     return (
         <>
-            <div className="business-panel-item">
-                <h1>{business.name}</h1>
+            <div onClick={toBusinessShow}>
+                <h1 className="name">{business.name}</h1>
             </div>
-            <div className="business-panel-item">
-                <StarRatingShowInFloat rating={avg} />
-                <span className="review-count">{arr.length} reviews</span>
+            <div>
+                <RatingStars business={business} component={"panel"} />
+                <span className="avg-rating" onClick={toBusinessShow}>
+                    {business.avgRating.toFixed(1)}
+                </span>
+                <span className="reviews-count" onClick={toBusinessShow}>
+                    ({business.reviewsCount} reviews)
+                </span>
             </div>
-            <div className="business-panel-item">
+            <div>
+                <span className="price">{business.price}</span>
+                <span className="dot"><i className="fas fa-circle"></i></span>
+                <Categories
+                    business={business}
+                    component={"panel"}
+                    separator={<>, </>}
+                />
+            </div>
+            <div onClick={toBusinessShow}>{hours}</div>
+            {/* <div>
                 <span>{business.price}</span>
                 <span className="icon-circle-container"><i className="fas fa-circle"></i></span>
                 <span>{categoryItems}</span>
@@ -41,7 +66,7 @@ const Panel = ({ business }) => {
                 <span className="business-closed">Closed</span>
                 <span style={{ fontWeight: "300" }}>until {toLocalTime(business.open, EST_OFFSET)}</span>
             </div>
-            )}
+            )} */}
         </>
     );
 }
