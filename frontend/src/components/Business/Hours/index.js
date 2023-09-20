@@ -23,6 +23,8 @@ const twelveHourFormat = (dateString) => {
 
 const Hours = (business) => {
     const open = businessIsOpen(business);
+    console.log(business);
+    console.log(open);
 
     return (
         <>
