@@ -33,7 +33,9 @@ const Card = ({ business, idx }) => {
                     separator={<>&nbsp;</>}
                 />
             </div>
-            <div onClick={toBusinessShow}><Hours business={business} /></div>
+            <div onClick={toBusinessShow}>
+                <Hours business={business} component={"card"} />
+            </div>
         </div>
     );
 };

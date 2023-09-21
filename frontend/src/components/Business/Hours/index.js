@@ -1,5 +1,12 @@
-const OPEN = { color: "#008055" };
-const CLOSED = { color: "#e00707" };
+const OPEN = {
+    name: "Open",
+    style: { color: "#008055" }
+};
+
+const CLOSED = {
+    name: "Closed",
+    style: { color: "#e00707" }
+};
 
 const businessIsOpen = (business) => {
     let open = new Date(business.open).getUTCHours();
@@ -9,9 +16,6 @@ const businessIsOpen = (business) => {
         closed += 24;
     if (open > now)
         now += 24;
-
-    console.log(business.business);
-    console.log(open);
     
     return open <= now && now < closed;
 };
@@ -25,20 +29,25 @@ const twelveHourFormat = (dateString) => {
         "0" + minute : minute} ${period}`;
 };
 
-const Hours = (business) => {
+const Hours = ({ business, component }) => {
     const open = businessIsOpen(business);
 
-    return (
-        <>
-            <span style={open ? OPEN : CLOSED}>
-                {open ? "Open" : "Closed"}
-            </span>
-            <span className="hours">
-                until {open ? twelveHourFormat(business.close) :
-                    twelveHourFormat(business.open)}
-            </span>
-        </>
-    );
+    const status = open ? OPEN : CLOSED;
+
+    const hours = new Array(2);
+
+    hours[0] = <span style={status.style}>{status.name}</span>;
+
+    switch (component) {
+        case "card":
+            const hour = twelveHourFormat(open ? business.close : business.open);
+            hours[1] = <span className="hours">until {hour}</span>;
+            break;
+        default:
+            break;
+    }
+
+    return <>{hours}</>;
 };
 
 export default Hours;
