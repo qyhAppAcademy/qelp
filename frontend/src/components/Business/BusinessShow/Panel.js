@@ -50,7 +50,9 @@ const Panel = ({ business }) => {
                     separator={<>, </>}
                 />
             </div>
-            <div onClick={toBusinessShow}><Hours business={business} /></div>
+            <div onClick={toBusinessShow}>
+                <Hours business={business} component={"panel"}/>
+            </div>
             {/* <div>
                 <span>{business.price}</span>
                 <span className="icon-circle-container"><i className="fas fa-circle"></i></span>

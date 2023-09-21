@@ -8,25 +8,49 @@ const CLOSED = {
     style: { color: "#e00707" }
 };
 
+const toUTCHours = (time) => {
+    return time.getHours() + time.getMinutes() / 60.0 +
+        new Date().getTimezoneOffset() / 60.0;
+};
+
 const businessIsOpen = (business) => {
-    let open = new Date(business.open).getUTCHours();
-    let closed = new Date(business.close).getUTCHours();
-    let now = new Date(Date().toLocaleString("en-US")).getUTCHours();
-    if (open >= closed)
-        closed += 24;
-    if (open > now)
-        now += 24;
+    let open = toUTCHours(new Date(business.open));
+
+    let closed = toUTCHours(new Date(business.close));
+    if (closed <= open) closed += 24;
+
+    let now = toUTCHours(new Date());
+    if (now < open) now += 24;
     
     return open <= now && now < closed;
 };
 
-const twelveHourFormat = (dateString) => {
-    const date = new Date(dateString);
-    const hour = date.getHours();
-    const minute = date.getMinutes();
-    const period = hour >= 0 && hour < 12 ? "AM" : "PM";
-    return `${hour % 12 === 0 ? 12 : hour % 12}:${minute < 10 ?
-        "0" + minute : minute} ${period}`;
+const twelveHourFormat = (time) => {
+    return new Date(time).toLocaleString("en-US", {
+        hour: "2-digit",
+        minute: "2-digit"
+    });
+    // let date = new Date(time);
+
+    // let hours = date.getUTCHours() - new Date().getTimezoneOffset() / 60;
+    
+    // let minutes = date.getUTCMinutes();
+
+    // if (hours < 0) hours += 24;
+
+    // // Check whether AM or PM
+    // const newformat = hours >= 12 ? "PM" : "AM";
+
+    // // Find current hour in AM-PM Format
+    // hours %= 12;
+
+    // // To display "0" as "12"
+    // hours = hours ? hours : 12;
+
+    // hours   = hours < 10 ? "0" + hours : hours;
+    // minutes = minutes < 10 ? "0" + minutes : minutes;
+
+    // return `${hours}:${minutes} ${newformat}`;
 };
 
 const Hours = ({ business, component }) => {
@@ -34,20 +58,27 @@ const Hours = ({ business, component }) => {
 
     const status = open ? OPEN : CLOSED;
 
-    const hours = new Array(2);
-
-    hours[0] = <span style={status.style}>{status.name}</span>;
-
+    let hours;
+    
     switch (component) {
         case "card":
-            const hour = twelveHourFormat(open ? business.close : business.open);
-            hours[1] = <span className="hours">until {hour}</span>;
+            hours = `until ${twelveHourFormat(open ?
+                        business.close : business.open)}`;
+            break;
+        case "panel":
+            hours = `${twelveHourFormat(business.open)} -
+                     ${twelveHourFormat(business.close)}`;
             break;
         default:
             break;
     }
 
-    return <>{hours}</>;
+    return (
+        <>
+            <span style={status.style}>{status.name}</span>
+            <span className="hours">{hours}</span>
+        </>
+    );
 };
 
 export default Hours;
