@@ -42,7 +42,7 @@ const BusinessShowPage = () => {
         <>
             <Carousel business={business} />
             <Panel business={business} />
-            {/* <section>
+            <section>
                 <div>
                     <div className="business-reviews-container">
                         {currentUser && (
@@ -58,7 +58,7 @@ const BusinessShowPage = () => {
                         <SideBar business={business} />
                     </div>
                 </div>
-            </section> */}
+            </section>
         </>
     );
 };

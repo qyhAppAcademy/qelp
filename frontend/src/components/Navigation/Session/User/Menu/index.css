@@ -16,6 +16,11 @@
     cursor: pointer;
 }
 
+#menu {
+    background-color: #ffffff;
+    z-index: 2;
+}
+
 #menu > .option:last-child {
     border-top: 0.12vw solid #ebebeb;
 }
