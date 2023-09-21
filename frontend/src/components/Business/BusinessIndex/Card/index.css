@@ -80,14 +80,6 @@
     font-weight: 600;
 }
 
-.card .open {
-    color: rgb(0, 128, 85);
-}
-
-.card .closed {
-    color: rgb(224, 7, 7);
-}
-
 .card .hours {
     font-weight: 300;
 }

@@ -9,6 +9,10 @@ const businessIsOpen = (business) => {
         closed += 24;
     if (open > now)
         now += 24;
+
+    console.log(business.business);
+    console.log(open);
+    
     return open <= now && now < closed;
 };
 
@@ -23,8 +27,6 @@ const twelveHourFormat = (dateString) => {
 
 const Hours = (business) => {
     const open = businessIsOpen(business);
-    console.log(business);
-    console.log(open);
 
     return (
         <>
