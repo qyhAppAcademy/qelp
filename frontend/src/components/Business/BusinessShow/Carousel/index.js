@@ -73,7 +73,7 @@ const Carousel = ({ business }) => {
             rightArrowRef.current.classList.add("inactive");
 
         arrowsResize();
-        
+
         console.log("Screen Width: " + window.innerWidth);
         console.log("Slides Left: " + left);
         console.log("Slides New Left: " + newLeft);
@@ -119,4 +119,3 @@ const Carousel = ({ business }) => {
 };
 
 export default Carousel;
-
