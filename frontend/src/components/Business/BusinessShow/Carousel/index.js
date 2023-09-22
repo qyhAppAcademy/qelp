@@ -113,6 +113,7 @@ const Carousel = ({ business }) => {
                 style={{width: `${window.innerWidth}px`}}
             >
                 {arrows}
+                {/* {slidesWidth.current > window.innerWidth && arrows} */}
             </div>
         </div>
     );
