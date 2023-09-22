@@ -25,19 +25,6 @@ const Carousel = ({ business }) => {
             rightArrowRef.current.classList.remove("inactive");
     };
 
-    const arrowsResize = () => {
-        const left = slidesRef.current.style.left.slice(0, -2) * 1.0;
-
-        if (left + slidesWidth.current <= window.innerWidth) {
-            arrowsRef.current.style.width = `${left + slidesWidth.current}px`;
-            rightArrowRef.current.classList.add("inactive");
-        }
-        else {
-            arrowsRef.current.style.width = `${window.innerWidth}px`;
-            rightArrowRef.current.classList.remove("inactive");
-        }
-    };
-
     const transition = (direction) => {
         if (direction === "left" &&
             leftArrowRef.current.classList.contains("inactive")) return;
@@ -72,15 +59,25 @@ const Carousel = ({ business }) => {
         if (direction === "right" && newLeft === lefts[0])
             rightArrowRef.current.classList.add("inactive");
 
-        arrowsResize();
-
         console.log("Screen Width: " + window.innerWidth);
         console.log("Slides Left: " + left);
         console.log("Slides New Left: " + newLeft);
         console.log(lefts);
     };
 
-    window.onresize = arrowsResize;
+    window.onresize = () => {
+        const left = slidesRef.current.style.left.slice(0, -2) * 1.0;
+
+        if (window.innerWidth > left + slidesWidth.current) {
+            slidesRef.current.style.left = 0;
+            leftArrowRef.current.classList.add("inactive");
+        }
+
+        if (window.innerWidth < slidesWidth.current)
+            rightArrowRef.current.classList.remove("inactive");
+        else
+            rightArrowRef.current.classList.add("inactive");
+    };
 
     const slides = business.photoUrls.map((photo, idx) => (
         <img
@@ -107,14 +104,7 @@ const Carousel = ({ business }) => {
             <div ref={slidesRef} className="slides" style={{left: 0}}>
                 {slides}
             </div>
-            <div
-                ref={arrowsRef}
-                className="arrows"
-                style={{width: `${window.innerWidth}px`}}
-            >
-                {arrows}
-                {/* {slidesWidth.current > window.innerWidth && arrows} */}
-            </div>
+            <div className="arrows">{arrows}</div>
         </div>
     );
 };
