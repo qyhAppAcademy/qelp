@@ -48,3 +48,7 @@ section > div {
 
     width: 360px;
 }
+
+#business-show {
+    overflow: hidden;
+}

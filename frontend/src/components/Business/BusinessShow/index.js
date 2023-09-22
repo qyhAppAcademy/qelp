@@ -39,10 +39,10 @@ const BusinessShowPage = () => {
     const hasReviewed = review !== undefined;
 
     return (
-        <>
+        <div id="business-show">
             <Carousel business={business} />
-            <Panel business={business} />
-            <section>
+            {/* <Panel business={business} /> */}
+            {/* <section>
                 <div>
                     <div className="business-reviews-container">
                         {currentUser && (
@@ -58,8 +58,8 @@ const BusinessShowPage = () => {
                         <SideBar business={business} />
                     </div>
                 </div>
-            </section>
-        </>
+            </section> */}
+        </div>
     );
 };
 

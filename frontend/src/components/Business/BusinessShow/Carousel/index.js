@@ -4,30 +4,27 @@ import { useRef } from "react";
 const DIRECTIONS = ["left", "right"];
 
 const Carousel = ({ business }) => {
-    const leftArrowRef = useRef();
+    const leftArrowRef  = useRef();
     const rightArrowRef = useRef();
 
-    const slidesRef = useRef();
-    const lefts = useRef(0);
+    const slidesRef     = useRef();
+    const slidesCount   = useRef(0);
 
-    const loadLefts = () => {
-        lefts.current += 1;
-        if (lefts.current < business.photoUrls.length)
-            return;
 
-        lefts.current = [0];
+    const onLoad = () => {
+        slidesCount.current += 1;
+        if (slidesCount.current < business.photoUrls.length) return;
+
         const imgs = slidesRef.current.children;
 
         let accumulator = 0;
-        for (let i = 0; i <= imgs.length; i++) {
-            if (window.innerWidth < accumulator)
-                lefts.current.unshift(window.innerWidth - accumulator);
-            if (i < imgs.length)
-                accumulator += imgs[i].clientWidth;
-        }
-
-        if (lefts.current.length > 1)
-            rightArrowRef.current.classList.remove("inactive");
+        for (let i = 0; i < imgs.length; i++) {
+            accumulator += imgs[i].clientWidth;
+            if (window.innerWidth < accumulator) {
+                rightArrowRef.current.classList.remove("inactive");
+                return;
+            }
+        }   
     };
 
     const transition = (direction) => {
@@ -39,15 +36,27 @@ const Carousel = ({ business }) => {
         leftArrowRef.current.classList.remove("inactive");
         rightArrowRef.current.classList.remove("inactive");
 
+        const imgs = slidesRef.current.children;
+
+        const lefts = [0];
+
+        let accumulator = 0;
+        for (let i = 0; i <= imgs.length; i++) {
+            if (window.innerWidth < accumulator)
+                lefts.unshift(window.innerWidth - accumulator);
+            if (i < imgs.length)
+                accumulator += imgs[i].clientWidth;
+        }
+
         const left = slidesRef.current.style.left.slice(0, -2);
 
         const newLeft = direction === "left" ?
-            lefts.current.find(ele => ele > left) :
-            [...lefts.current].reverse().find(ele => ele < left);
+            lefts.find(ele => ele > left) :
+            [...lefts].reverse().find(ele => ele < left);
 
         slidesRef.current.style.left = `${newLeft}px`;
 
-        if (newLeft === 0 || newLeft === lefts.current[0])
+        if (newLeft === 0 || newLeft === lefts[0])
             arrow.classList.add("inactive");
 
         console.log("Screen Width: " + window.innerWidth);
@@ -71,15 +80,15 @@ const Carousel = ({ business }) => {
         <img
             src={`${photo.url}`}
             alt={`slides-img-${idx}`}
-            onLoad={loadLefts}
+            onLoad={onLoad}
             key={idx}
         />
     ));
 
     return (
         <>
-            <div className="arrows">{arrows}</div>
             <div ref={slidesRef} className="slides" style={{ left: 0 }}>
+                <div className="arrows">{arrows}</div>
                 {slides}
             </div>
         </>
