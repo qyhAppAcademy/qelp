@@ -22,7 +22,6 @@
 .arrows {
     position: absolute;
 
-    width: 100%;
     height: 420px;
     padding: 0;
 
@@ -31,6 +30,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    transition: width 1s;
 }
 
 .arrows > button {
