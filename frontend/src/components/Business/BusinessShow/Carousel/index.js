@@ -7,7 +7,8 @@ const Carousel = ({ business }) => {
     const slidesRef     = useRef();
     const slidesCount   = useRef(0);
 
-    const leftArrowRef = useRef();
+    const arrowsRef     = useRef();
+    const leftArrowRef  = useRef();
     const rightArrowRef = useRef();
 
     const onLoad = () => {
@@ -17,13 +18,11 @@ const Carousel = ({ business }) => {
         const imgs = slidesRef.current.children;
 
         let slidesWidth = 0;
-        for (let i = 0; i < imgs.length; i++) {
+        for (let i = 0; i < imgs.length; i++)
             slidesWidth += imgs[i].clientWidth;
-            if (slidesWidth > window.innerWidth) {
-                rightArrowRef.current.classList.remove("inactive");
-                return;
-            }
-        }
+
+        if (slidesWidth > window.innerWidth)
+            rightArrowRef.current.classList.remove("inactive");
     };
 
     const transition = (direction) => {
@@ -40,11 +39,10 @@ const Carousel = ({ business }) => {
         const lefts = [0];
 
         let accumulator = 0;
-        for (let i = 0; i <= imgs.length; i++) {
+        for (let i = 0; i < imgs.length; i++) {
+            accumulator += imgs[i].clientWidth;
             if (window.innerWidth < accumulator)
                 lefts.unshift(window.innerWidth - accumulator);
-            if (i < imgs.length)
-                accumulator += imgs[i].clientWidth;
         }
 
         const left = slidesRef.current.style.left.slice(0, -2);
@@ -55,8 +53,10 @@ const Carousel = ({ business }) => {
 
         slidesRef.current.style.left = `${newLeft}px`;
 
-        if (newLeft === 0 || newLeft === lefts[0])
-            arrow.classList.add("inactive");
+        if (direction === "left" && newLeft === 0)
+            leftArrowRef.current.classList.add("inactive");
+        if (direction === "right" && newLeft === lefts[0])
+            rightArrowRef.current.classList.add("inactive");
 
         console.log("Screen Width: " + window.innerWidth);
         console.log("Slides Left: " + left);
@@ -89,7 +89,9 @@ const Carousel = ({ business }) => {
             <div ref={slidesRef} className="slides" style={{ left: 0 }}>
                 {slides}
             </div>
-            <div className="arrows">{arrows}</div>
+            <div ref={arrowsRef} className="arrows" style={{ }}>
+                {arrows}
+            </div>
         </div>
     );
 };
