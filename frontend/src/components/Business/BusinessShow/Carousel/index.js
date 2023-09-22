@@ -4,12 +4,11 @@ import { useRef } from "react";
 const DIRECTIONS = ["left", "right"];
 
 const Carousel = ({ business }) => {
-    const leftArrowRef  = useRef();
-    const rightArrowRef = useRef();
-
     const slidesRef     = useRef();
     const slidesCount   = useRef(0);
 
+    const leftArrowRef = useRef();
+    const rightArrowRef = useRef();
 
     const onLoad = () => {
         slidesCount.current += 1;
@@ -17,14 +16,14 @@ const Carousel = ({ business }) => {
 
         const imgs = slidesRef.current.children;
 
-        let accumulator = 0;
+        let slidesWidth = 0;
         for (let i = 0; i < imgs.length; i++) {
-            accumulator += imgs[i].clientWidth;
-            if (window.innerWidth < accumulator) {
+            slidesWidth += imgs[i].clientWidth;
+            if (slidesWidth > window.innerWidth) {
                 rightArrowRef.current.classList.remove("inactive");
                 return;
             }
-        }   
+        }
     };
 
     const transition = (direction) => {
@@ -62,8 +61,17 @@ const Carousel = ({ business }) => {
         console.log("Screen Width: " + window.innerWidth);
         console.log("Slides Left: " + left);
         console.log("Slides New Left: " + newLeft);
-        console.log(lefts.current);
+        console.log(lefts);
     };
+
+    const slides = business.photoUrls.map((photo, idx) => (
+        <img
+            src={`${photo.url}`}
+            alt={`slides-img-${idx}`}
+            onLoad={onLoad}
+            key={idx}
+        />
+    ));
 
     const arrows = DIRECTIONS.map((DIRECTION, idx) => (
         <button
@@ -76,22 +84,13 @@ const Carousel = ({ business }) => {
         </button>
     ));
 
-    const slides = business.photoUrls.map((photo, idx) => (
-        <img
-            src={`${photo.url}`}
-            alt={`slides-img-${idx}`}
-            onLoad={onLoad}
-            key={idx}
-        />
-    ));
-
     return (
-        <>
+        <div id="carousel">
             <div ref={slidesRef} className="slides" style={{ left: 0 }}>
-                <div className="arrows">{arrows}</div>
                 {slides}
             </div>
-        </>
+            <div className="arrows">{arrows}</div>
+        </div>
     );
 };
 
