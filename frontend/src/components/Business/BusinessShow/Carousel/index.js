@@ -1,5 +1,6 @@
 import "./index.css";
 import { useRef } from "react";
+import Panel from "./Panel";
 
 const DIRECTIONS = ["left", "right"];
 
@@ -105,6 +106,7 @@ const Carousel = ({ business }) => {
                 {slides}
             </div>
             <div className="arrows">{arrows}</div>
+            <Panel business={business} />
         </div>
     );
 };

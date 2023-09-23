@@ -1,46 +1,48 @@
-.business-panel-item {
+.panel {
+    position: absolute;
     display: flex;
     align-items: center;
     white-space: nowrap;
 
-    color: white;
     font-weight: 700;
     padding: 0;
     padding-bottom: 12px;
+
+    z-index: 2;
 }
 
-.business-panel-item span {
+/* .panel span {
     font-size: 18px;
     padding: 0;
     padding-right: 10px;
 }
 
-.business-panel-item h1 {
+.panel h1 {
     font-size: 50px;
     margin: 0;
     padding: 0;
     padding-bottom: 20px;
 }
 
-.business-panel-item .review-star {
+.panel .review-star {
     padding: 0 3px 0 0;
     font-size: 25px;
 }
 
-.business-panel-item .review-count {
+.panel .review-count {
     padding: 0 0 0 9px;
 }
 
-.business-panel-item .icon-circle-container {
+.panel .icon-circle-container {
     font-size: 5px;
 }
 
-.business-panel-item .business-open {
+.panel .business-open {
     color: #008055;
     font-weight: 600;
 }
 
-.business-panel-item .business-closed {
+.panel .business-closed {
     color: rgb(224, 7, 7);
     font-weight: 600;
 }
@@ -48,4 +50,4 @@
 .hoverable-categories:hover {
     cursor: not-allowed;
     text-decoration: underline;
-}
+} */

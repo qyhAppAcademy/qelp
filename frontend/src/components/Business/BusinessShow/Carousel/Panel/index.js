@@ -1,8 +1,8 @@
-import "./Panel.css";
+import "./index.css";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import RatingStars from "../RatingStars";
-import Categories from "../Categories";
-import Hours from "../Hours";
+import RatingStars from "../../../RatingStars";
+import Categories from "../../../Categories";
+import Hours from "../../../Hours";
 
 const Panel = ({ business }) => {
 
@@ -28,7 +28,7 @@ const Panel = ({ business }) => {
     };
 
     return (
-        <>
+        <div className="panel">
             <div onClick={toBusinessShow}>
                 <h1 className="name">{business.name}</h1>
             </div>
@@ -69,7 +69,7 @@ const Panel = ({ business }) => {
                 <span style={{ fontWeight: "300" }}>until {toLocalTime(business.open, EST_OFFSET)}</span>
             </div>
             )} */}
-        </>
+        </div>
     );
 }
 

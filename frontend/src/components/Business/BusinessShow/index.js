@@ -7,7 +7,6 @@ import { useState, useEffect } from "react";
 
 import Carousel from "./Carousel";
 
-import Panel from "./Panel";
 import SideBar from "./SideBar";
 import BusinessReviews from "./Reviews";
 import ReviewForm from "../../Review/Form";
@@ -41,7 +40,6 @@ const BusinessShowPage = () => {
     return (
         <div id="business-show">
             <Carousel business={business} />
-            {/* <Panel business={business} /> */}
             {/* <section>
                 <div>
                     <div className="business-reviews-container">
