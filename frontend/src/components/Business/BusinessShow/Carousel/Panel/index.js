@@ -37,9 +37,9 @@ const Panel = ({ business }) => {
                 <span className="avg-rating" onClick={toBusinessShow}>
                     {business.avgRating.toFixed(1)}
                 </span>
-                <span className="reviews-count" onClick={toBusinessShow}>
-                    ({arr.length} reviews)
-                </span>
+                (<span className="reviews-count" onClick={toBusinessShow}>
+                    {arr.length} reviews
+                </span>)
             </div>
             <div>
                 <span className="price">{business.price}</span>

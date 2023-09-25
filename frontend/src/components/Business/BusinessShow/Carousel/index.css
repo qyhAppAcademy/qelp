@@ -28,16 +28,18 @@
     align-items: center;
 }
 
+.arrows > .inactive {
+    color: rgb(255, 255, 255, 0.2);
+}
+
 .arrows > button {
-    font-size: 2.4vw;
+    font-size: 2.7vw;
     line-height: 0;
     color: rgb(255, 255, 255, 0.6);
+    z-index: 1;
+    
     &:not(.inactive):hover {
         color: rgb(255, 255, 255, 1);
         cursor: pointer;
     }
-}
-
-.arrows > .inactive {
-    color: rgb(255, 255, 255, 0.2);
 }

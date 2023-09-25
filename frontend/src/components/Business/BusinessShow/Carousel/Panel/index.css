@@ -38,11 +38,12 @@
 }
 
 .panel .avg-rating {
-    margin: 0 0 0 1.6vw;
+    margin: 0 0.8vw 0 1.6vw;
 }
 
-.panel .reviews-count {
-    margin: 0 0 0 0.8vw;
+.panel .reviews-count:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .panel .dot {
@@ -52,6 +53,11 @@
 
 .panel .category {
     font-weight: 600;
+}
+
+.panel .category:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .panel .hours {
