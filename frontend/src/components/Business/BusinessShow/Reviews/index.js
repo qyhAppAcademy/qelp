@@ -1,25 +1,17 @@
 import "./Reviews.css";
 
-import ReviewButtons from "./ReviewButtons";
-import ReviewForm from "../../../Review/Form";
-import Review from "../../../Review";
-
 import { useSelector } from "react-redux";
 import { getCurrentUser } from "../../../../store/session";
 import { useState } from "react";
 
+import ReviewButtons from "./ReviewButtons";
+import ReviewForm from "../../../Review/Form";
+import Review from "../../../Review";
+
 const Reviews = ({ business }) => {
-    const currentUser = useSelector(getCurrentUser);
+    const user = useSelector(getCurrentUser);
 
-    const review = currentUser ?
-        Object.values(business.reviews)
-            .find(review => review.user.id === currentUser.id) : undefined;
-
-    const [showReviewForm, setShowReviewForm] = useState(false);
-
-    const hasReviewed = review !== undefined;
-
-    const reviews = Object.values(business.reviews).map((review) => (
+    const reviews = Object.values(business.reviews).map((review, idx) => (
         <div key={review.id} id={`review-${review.id}`}>
             <div className="review-header">
                 <h1>{`${review.user.email.split("@")[0]}...`}</h1>
@@ -27,6 +19,13 @@ const Reviews = ({ business }) => {
             <Review key={review.id} review={review} />
         </div>
     ));
+
+    const review = user ? Object.values(business.reviews)
+        .find(review => review.user.id === user.id) : null;
+
+    const reviewed = review !== null;
+
+    const [showReviewForm, setShowReviewForm] = useState(false);
 
     return (
         <div className="business-reviews-container">
