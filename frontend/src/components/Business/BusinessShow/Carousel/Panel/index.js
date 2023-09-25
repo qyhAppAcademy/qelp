@@ -38,10 +38,10 @@ const Panel = ({ business }) => {
                     {business.avgRating.toFixed(1)}
                 </span>
                 <span className="reviews-count" onClick={toBusinessShow}>
-                    ({business.reviewsCount} reviews)
+                    ({arr.length} reviews)
                 </span>
             </div>
-            {/* <div>
+            <div>
                 <span className="price">{business.price}</span>
                 <span className="dot"><i className="fas fa-circle"></i></span>
                 <Categories
@@ -52,23 +52,7 @@ const Panel = ({ business }) => {
             </div>
             <div onClick={toBusinessShow}>
                 <Hours business={business} component={"panel"}/>
-            </div> */}
-            {/* <div>
-                <span>{business.price}</span>
-                <span className="icon-circle-container"><i className="fas fa-circle"></i></span>
-                <span>{categoryItems}</span>
             </div>
-            {isOpen(business) ? (
-            <div className="business-panel-item">
-                <span className="business-open">Open</span>
-                <span style={{ fontWeight: "300" }}>until {toLocalTime(business.close, EST_OFFSET)}</span>
-            </div>
-            ) : (
-            <div className="business-panel-item">
-                <span className="business-closed">Closed</span>
-                <span style={{ fontWeight: "300" }}>until {toLocalTime(business.open, EST_OFFSET)}</span>
-            </div>
-            )} */}
         </div>
     );
 }

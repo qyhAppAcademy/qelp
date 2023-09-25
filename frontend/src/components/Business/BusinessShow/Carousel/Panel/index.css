@@ -7,43 +7,43 @@
     align-items: center;
     white-space: nowrap; */
     color: #ffffff;
-    font-weight: 600;
+    font-size: 1.5vw;
+    font-weight: 400;
 
     background-color: #00b77a;
 }
 
 .panel > div {
-    background-color: #e50045;
+    border: 1px solid black;
 }
 
 .panel .name {
-    font-size: 3vw;
-}
-
-.panel .review-star {
-    padding: 0 3px 0 0;
-    font-size: 25px;
-}
-
-.panel .review-count {
-    padding: 0 0 0 9px;
-}
-
-.panel .icon-circle-container {
-    font-size: 5px;
-}
-
-.panel .business-open {
-    color: #008055;
+    font-size: 4vw;
     font-weight: 600;
 }
 
-.panel .business-closed {
-    color: rgb(224, 7, 7);
-    font-weight: 600;
+.panel .rating-star {
+    margin: 0 0 0 0.3vw;
+    font-size: 2.4vw;
 }
 
-.hoverable-categories:hover {
-    cursor: not-allowed;
-    text-decoration: underline;
+.panel .rating-star:first-child {
+    margin: 0;
+}
+
+.panel .avg-rating {
+    margin: 0 0 0 1.2vw;
+}
+
+.panel .reviews-count {
+    margin: 0 0 0 0.6vw;
+}
+
+.panel .dot {
+    margin: 0 0.6vw;
+    font-size: 0.36vw;
+}
+
+.panel .category {
+    font-weight: 600;
 }
