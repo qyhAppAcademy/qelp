@@ -32,14 +32,16 @@ const Reviews = ({ business }) => {
                     <button onClick={() => setShowReviewForm(true)}>
                         <a href="#review-form-location">
                             <span><i className="fas fa-star"></i></span>
-                            <span>{reviewed ? "Edit your" : "Write a"} review</span>
+                            <span>
+                                {reviewed ? "Edit your" : "Write a"} review
+                            </span>
                         </a>
                     </button>
                 </div>
             }
-            {/* <h1>Reviews</h1>
+            <h1>Reviews</h1>
             {reviews}
-            {user && (
+            {/* {user && (
                 <ReviewForm businessId={business.id} review={review} showReviewForm={showReviewForm} setShowReviewForm={setShowReviewForm} />
             )} */}
         </div>

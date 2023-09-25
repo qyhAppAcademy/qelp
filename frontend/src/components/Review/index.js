@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { StarRatingShow } from "./StarRating.js"
+import { StarRatingShow } from "./StarRating.js";
 import "./index.css";
 
 export const ReviewAtHomePage = ({ review }) => {
@@ -44,6 +44,6 @@ const Review = ({ review }) => {
             </div>
         </div>
     );
-}
+};
 
 export default Review;
