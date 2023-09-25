@@ -75,12 +75,9 @@ const Carousel = ({ business }) => {
 
         const { lefts, accumulator } = getLefts();
 
-        if (window.innerWidth < left + accumulator) {
+        if (window.innerWidth < left + accumulator)
             rightArrowRef.current.classList.remove("inactive");
-            return;
-        }
-
-        if (window.innerWidth > left + accumulator)
+        else
             setLeft(lefts[0]);
     };
 

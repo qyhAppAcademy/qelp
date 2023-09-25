@@ -4,9 +4,7 @@ import { getCurrentUser } from "../../../../store/session";
 import { useState } from "react";
 import Review from "../../../Review";
 
-import ReviewButtons from "./Button";
 import ReviewForm from "../../../Review/Form";
-import Button from "./Button";
 
 const Reviews = ({ business }) => {
     const user = useSelector(getCurrentUser);
@@ -23,15 +21,21 @@ const Reviews = ({ business }) => {
     const review = user ? Object.values(business.reviews)
         .find(review => review.user.id === user.id) : null;
 
+    const reviewed = review !== null;
+
     const [showReviewForm, setShowReviewForm] = useState(false);
 
     return (
-        <div className="business-reviews-container">
+        <div className="business-show-reviews">
             {user &&
-                <Button
-                    reviewed={review !== null}
-                    setShowReviewForm={setShowReviewForm}
-                />
+                <div className="reviews-button-container">
+                    <button onClick={() => setShowReviewForm(true)}>
+                        <a href="#review-form-location">
+                            <span><i className="fas fa-star"></i></span>
+                            <span>{reviewed ? "Edit your" : "Write a"} review</span>
+                        </a>
+                    </button>
+                </div>
             }
             {/* <h1>Reviews</h1>
             {reviews}

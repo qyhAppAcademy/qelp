@@ -26,13 +26,13 @@ section > div {
     margin-bottom: 40px;
 } */
 
-.business-reviews-container {
+.business-show-reviews {
     display: inline-block;
 
     width: 730px;
 }
 
-.business-reviews-container > h1 {
+.business-show-reviews > h1 {
     font-size: 24px;
     font-weight: 700;
 

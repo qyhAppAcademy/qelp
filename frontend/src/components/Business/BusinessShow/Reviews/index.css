@@ -2,3 +2,27 @@
     font-size: 18px;
     padding: 10px 0;
 }
+
+.reviews-button-container {
+    padding: 2.7vw 0 2.7vw 6vw;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.reviews-button-container>button {
+    width: 21vw;
+    height: 3.6vw;
+    background-color: #e20d14;
+    cursor: pointer;
+    border-radius: 0.3vw;
+}
+
+.reviews-button-container a {
+    font-size: 1.7vw;
+    color: white;
+    text-decoration: none;
+}
+
+.reviews-button-container a>span:first-child {
+    margin: 0 0.6vw 0 0;
+    line-height: 0;
+}
