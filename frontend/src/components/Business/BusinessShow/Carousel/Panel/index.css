@@ -1,27 +1,23 @@
 .panel {
     position: absolute;
-    display: flex;
+
+    width: 100%;
+
+    /* display: flex;
     align-items: center;
-    white-space: nowrap;
+    white-space: nowrap; */
+    color: #ffffff;
+    font-weight: 600;
 
-    font-weight: 700;
-    padding: 0;
-    padding-bottom: 12px;
-
-    z-index: 2;
+    background-color: #00b77a;
 }
 
-/* .panel span {
-    font-size: 18px;
-    padding: 0;
-    padding-right: 10px;
+.panel > div {
+    background-color: #e50045;
 }
 
-.panel h1 {
-    font-size: 50px;
-    margin: 0;
-    padding: 0;
-    padding-bottom: 20px;
+.panel .name {
+    font-size: 3vw;
 }
 
 .panel .review-star {
@@ -50,4 +46,4 @@
 .hoverable-categories:hover {
     cursor: not-allowed;
     text-decoration: underline;
-} */
+}

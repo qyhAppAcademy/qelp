@@ -41,7 +41,7 @@ const Panel = ({ business }) => {
                     ({business.reviewsCount} reviews)
                 </span>
             </div>
-            <div>
+            {/* <div>
                 <span className="price">{business.price}</span>
                 <span className="dot"><i className="fas fa-circle"></i></span>
                 <Categories
@@ -52,7 +52,7 @@ const Panel = ({ business }) => {
             </div>
             <div onClick={toBusinessShow}>
                 <Hours business={business} component={"panel"}/>
-            </div>
+            </div> */}
             {/* <div>
                 <span>{business.price}</span>
                 <span className="icon-circle-container"><i className="fas fa-circle"></i></span>
