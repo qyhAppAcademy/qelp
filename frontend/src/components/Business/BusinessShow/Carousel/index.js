@@ -59,10 +59,10 @@ const Carousel = ({ business }) => {
         if (direction === "right" && newLeft === lefts[0])
             rightArrowRef.current.classList.add("inactive");
 
-        console.log("Screen Width: " + window.innerWidth);
-        console.log("Slides Left: " + left);
-        console.log("Slides New Left: " + newLeft);
-        console.log(lefts);
+        // console.log("Screen Width: " + window.innerWidth);
+        // console.log("Slides Left: " + left);
+        // console.log("Slides New Left: " + newLeft);
+        // console.log(lefts);
     };
 
     window.onresize = () => {

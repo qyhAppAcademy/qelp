@@ -1,4 +1,4 @@
-import "./SideBar.css"
+import "./index.css"
 
 const SideBar = ({ business }) => {
     return (

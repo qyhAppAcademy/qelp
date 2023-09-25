@@ -12,7 +12,7 @@ import Home from "./components/Home";
 
 import BusinessIndex from "./components/Business/BusinessIndex";
 
-import BusinessShowPage from "./components/Business/BusinessShow";
+import BusinessShow from "./components/Business/BusinessShow";
 
 const App = () => {
   return (
@@ -34,8 +34,8 @@ const App = () => {
         <BusinessIndex />
       </Route>
       <Route exact path="/businesses/:businessId">
-        {/* <Navigation /> */}
-        <BusinessShowPage />
+        <Navigation />
+        <BusinessShow />
       </Route>
     </Switch>
   );
