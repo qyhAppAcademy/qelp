@@ -81,7 +81,7 @@ const Carousel = ({ business }) => {
         }
 
         if (window.innerWidth > left + accumulator)
-            setLeft(lefts[-1]);
+            setLeft(lefts[0]);
     };
 
     const slides = business.photoUrls.map((photo, idx) => (
