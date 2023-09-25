@@ -1,28 +1,36 @@
 .panel {
     position: absolute;
-
     width: 100%;
-    height: 420px;
-
-    color: #ffffff;
+    margin: 15vw 0 0 0;
+    padding: 0 6vw;
     font-size: 1.5vw;
     font-weight: 400;
+    color: #ffffff;
 
-    background-color: #00b77a;
+    /* background-color: #00b77a; */
 }
 
-.panel > div {
-    border: 1px solid black;
+/* .panel > div {
+    background-color: pink;
+} */
+
+.panel > div:not(:last-child) {
+    margin: 0 0 1vw 0;
+}
+
+.panel > div:first-child {
+    margin: 0 0 0.4vw 0;
 }
 
 .panel .name {
-    font-size: 4vw;
+    font-size: 4.2vw;
     font-weight: 600;
 }
 
 .panel .rating-star {
-    margin: 0 0 0 0.3vw;
+    margin: 0 0 0 0.4vw;
     font-size: 2.4vw;
+    line-height: 0;
 }
 
 .panel .rating-star:first-child {
@@ -30,22 +38,22 @@
 }
 
 .panel .avg-rating {
-    margin: 0 0 0 1.2vw;
+    margin: 0 0 0 1.6vw;
 }
 
 .panel .reviews-count {
-    margin: 0 0 0 0.6vw;
+    margin: 0 0 0 0.8vw;
 }
 
 .panel .dot {
-    margin: 0 0.6vw;
-    font-size: 0.36vw;
+    margin: 0 0.8vw;
+    font-size: 0.4vw;
 }
 
 .panel .category {
     font-weight: 600;
 }
 
-.panel > div:last-child > span:first-child {
-    margin: 0 0.6vw 0 0;
+.panel .hours {
+    margin: 0 0 0 0.8vw;
 }

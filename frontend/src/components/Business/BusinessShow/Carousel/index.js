@@ -105,7 +105,7 @@ const Carousel = ({ business }) => {
                 {slides}
             </div>
             <div className="arrows">{arrows}</div>
-            {/* <Panel business={business} /> */}
+            <Panel business={business} />
         </div>
     );
 };
