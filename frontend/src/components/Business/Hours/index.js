@@ -1,11 +1,17 @@
 const OPEN = {
     name: "Open",
-    style: { color: "#008055" }
+    style: {
+        color: "#008055",
+        fontWeight: "600"
+    }
 };
 
 const CLOSED = {
     name: "Closed",
-    style: { color: "#e00707" }
+    style: {
+        color: "#e00707",
+        fontWeight: "600"
+    }
 };
 
 const toUTCHours = (time) => {

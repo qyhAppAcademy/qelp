@@ -9,7 +9,6 @@ const Carousel = ({ business }) => {
     const slidesCount   = useRef(0);
     const slidesWidth   = useRef(0);
 
-    const arrowsRef     = useRef();
     const leftArrowRef  = useRef();
     const rightArrowRef = useRef();
 
@@ -106,7 +105,7 @@ const Carousel = ({ business }) => {
                 {slides}
             </div>
             <div className="arrows">{arrows}</div>
-            <Panel business={business} />
+            {/* <Panel business={business} /> */}
         </div>
     );
 };
