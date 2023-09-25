@@ -6,22 +6,42 @@ const DIRECTIONS = ["left", "right"];
 
 const Carousel = ({ business }) => {
     const slidesRef     = useRef();
-    const slidesCount   = useRef(0);
-    const slidesWidth   = useRef(0);
 
     const leftArrowRef  = useRef();
     const rightArrowRef = useRef();
 
-    const onLoad = () => {
-        slidesCount.current += 1;
-        if (slidesCount.current < business.photoUrls.length) return;
+    const getLeft = () => {
+        return slidesRef.current.style.left.slice(0, -2) * 1.0;
+    };
+
+    const setLeft = (newLeft) => {
+        slidesRef.current.style.left = `${newLeft}px`;
+    };
+
+    const getLefts = () => {
+        const lefts = [0];
 
         const slides = slidesRef.current.children;
 
-        for (let i = 0; i < slides.length; i++)
-            slidesWidth.current += slides[i].clientWidth;
+        let accumulator = 0;
 
-        if (window.innerWidth < slidesWidth.current)
+        for (let i = 0; i < slides.length; i++) {
+            accumulator += slides[i].clientWidth;
+
+            if (window.innerWidth < accumulator)
+                lefts.unshift(window.innerWidth - accumulator);
+        }
+
+        return { lefts, accumulator };
+    };
+
+    const onLoad = () => {
+        if (slidesRef.current.children.length < business.photoUrls.length)
+            return;
+
+        const { lefts } = getLefts();
+
+        if (lefts.length > 1)
             rightArrowRef.current.classList.remove("inactive");
     };
 
@@ -34,49 +54,34 @@ const Carousel = ({ business }) => {
         leftArrowRef.current.classList.remove("inactive");
         rightArrowRef.current.classList.remove("inactive");
 
-        const lefts = [0];
-
-        const slides = slidesRef.current.children;
-
-        let accumulator = 0;
-
-        for (let i = 0; i < slides.length; i++) {
-            accumulator += slides[i].clientWidth;
-            if (window.innerWidth < accumulator)
-                lefts.unshift(window.innerWidth - accumulator);
-        }
-
-        const left = slidesRef.current.style.left.slice(0, -2);
+        const left = getLeft();
+        
+        const { lefts } = getLefts();
 
         const newLeft = direction === "left" ?
             lefts.find(ele => ele > left) :
             [...lefts].reverse().find(ele => ele < left);
 
-        slidesRef.current.style.left = `${newLeft}px`;
+        setLeft(newLeft);
 
         if (direction === "left" && newLeft === 0)
             leftArrowRef.current.classList.add("inactive");
         if (direction === "right" && newLeft === lefts[0])
             rightArrowRef.current.classList.add("inactive");
-
-        // console.log("Screen Width: " + window.innerWidth);
-        // console.log("Slides Left: " + left);
-        // console.log("Slides New Left: " + newLeft);
-        // console.log(lefts);
     };
 
     window.onresize = () => {
-        const left = slidesRef.current.style.left.slice(0, -2) * 1.0;
+        const left = getLeft();
 
-        if (window.innerWidth > left + slidesWidth.current) {
-            slidesRef.current.style.left = 0;
-            leftArrowRef.current.classList.add("inactive");
+        const { lefts, accumulator } = getLefts();
+
+        if (window.innerWidth < left + accumulator) {
+            rightArrowRef.current.classList.remove("inactive");
+            return;
         }
 
-        if (window.innerWidth < slidesWidth.current)
-            rightArrowRef.current.classList.remove("inactive");
-        else
-            rightArrowRef.current.classList.add("inactive");
+        if (window.innerWidth > left + accumulator)
+            setLeft(lefts[-1]);
     };
 
     const slides = business.photoUrls.map((photo, idx) => (
