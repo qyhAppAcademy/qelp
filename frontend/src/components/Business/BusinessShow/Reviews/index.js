@@ -15,8 +15,6 @@ const Reviews = ({ business }) => {
     const review = user ? Object.values(business.reviews)
         .find(review => review.user.id === user.id) : null;
 
-    const reviewed = review !== null;
-
     const [showReviewForm, setShowReviewForm] = useState(false);
 
     return (
@@ -27,7 +25,8 @@ const Reviews = ({ business }) => {
                         <a href="#review-form-location">
                             <span><i className="fas fa-star"></i></span>
                             <span>
-                                {reviewed ? "Edit your" : "Write a"} review
+                                {review !== null ?
+                                    "Edit your" : "Write a"} review
                             </span>
                         </a>
                     </button>
