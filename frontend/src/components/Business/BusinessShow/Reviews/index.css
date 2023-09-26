@@ -1,13 +1,9 @@
-.review-header h1 {
-    font-size: 1.8vw;
-}
-
 .reviews-button-container {
     padding: 2.7vw 0;
     border-bottom: 1px solid #e5e5e5;
 }
 
-.reviews-button-container>button {
+.reviews-button-container > button {
     width: 21vw;
     height: 3.6vw;
     background-color: #e20d14;
@@ -21,7 +17,7 @@
     text-decoration: none;
 }
 
-.reviews-button-container a>span:first-child {
+.reviews-button-container a > span:first-child {
     margin: 0 0.6vw 0 0;
     line-height: 0;
 }

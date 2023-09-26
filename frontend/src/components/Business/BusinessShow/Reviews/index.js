@@ -2,7 +2,7 @@ import "./index.css";
 import { useSelector } from "react-redux";
 import { getCurrentUser } from "../../../../store/session";
 import { useState } from "react";
-import Review from "../../../Review";
+import { Review } from "../../../Review";
 
 import ReviewForm from "../../../Review/Form";
 

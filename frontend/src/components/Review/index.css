@@ -2,38 +2,41 @@
     border-bottom: 1px solid #e5e5e5;
 }
 
-.review > div {
-    padding: 0;
-    padding-bottom: 0px;
+.review > div:first-child {
+    margin: 1vw 0;
 }
 
-.review > .review-rating-container {
-    padding: 0;
-    padding-bottom: 6px;
+.review h1 {
+    font-size: 1.9vw;
+    font-weight: 600;
 }
 
-.review div .review-date {
-    padding: 0 0 0 6px;
+.review > div:nth-child(2) {
+    margin: 0 0 0.5vw 0;
+    font-size: 1.7vw;
+}
 
+.review .rating-star:not(:first-child) {
+    margin: 0 0 0 0.2vw;
+    line-height: 0;
+}
+
+.review .date {
+    margin: 0 0 0 1.2vw;
     color: #6d6d6d;
 }
 
-.review-body p {
-    padding: 0 0 20px 0;
+.review > div:last-child {
+    margin: 0 0 1vw 0;
+}
 
+.review p {
+    line-height: 1.5;
     color: #454545;
 }
 
-.review-star-rating {
-    display: inline-block;
-}
-
-.review-star-rating span {
-    font-size: 18px;
-}
-
-.review-star-rating .review-star {
-    color: #c9c9c9;
+.review p:not(:last-child) {
+    margin: 0 0 0.5vw 0;
 }
 
 
