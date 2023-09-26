@@ -1,6 +1,6 @@
+import "./index.css";
 import { NavLink } from "react-router-dom";
 import { StarRatingShow } from "./StarRating.js";
-import "./index.css";
 
 export const ReviewAtHomePage = ({ review }) => {
     const createdAt = new Date(review.createdAt);
