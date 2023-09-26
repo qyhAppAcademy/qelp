@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { getCurrentUser } from "../../../../store/session";
 import { useState } from "react";
 import { Review } from "../../../Review";
-
 import ReviewForm from "../../../Review/Form";
 
 const Reviews = ({ business }) => {
@@ -36,9 +35,14 @@ const Reviews = ({ business }) => {
             }
             <h1>Reviews</h1>
             {reviews}
-            {/* {user && (
-                <ReviewForm businessId={business.id} review={review} showReviewForm={showReviewForm} setShowReviewForm={setShowReviewForm} />
-            )} */}
+            {user && 
+                <ReviewForm
+                    businessId={business.id}
+                    review={review}
+                    showReviewForm={showReviewForm}
+                    setShowReviewForm={setShowReviewForm}
+                />
+            }
         </div>
     );
 };
