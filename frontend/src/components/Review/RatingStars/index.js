@@ -7,6 +7,14 @@ const COLORS = [
     "#fb503b"
 ];
 
+export const CONTENTS = [
+    "Not good",
+    "Could've been better",
+    "OK",
+    "Good",
+    "Great"
+];
+
 export const RatingStars = ({ review, component }) => {
     const ratingStars = new Array(5);
 

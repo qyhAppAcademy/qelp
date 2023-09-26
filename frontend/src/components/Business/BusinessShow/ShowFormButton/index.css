@@ -1,0 +1,19 @@
+#business-show > button {
+    width: 18vw;
+    height: 3.6vw;
+    font-size: 1.7vw;
+    color: #ffffff;
+    background-color: #e20d14;
+    cursor: pointer;
+    border-radius: 0.3vw;
+}
+
+#business-show > button:hover {
+    background-color: #ff0000;
+    transition: background-color 0.5s ease-out;
+}
+
+#business-show > button > span:first-child {
+    margin: 0 0.7vw 0 0;
+    line-height: 0;
+}
