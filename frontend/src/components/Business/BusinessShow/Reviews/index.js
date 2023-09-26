@@ -10,12 +10,7 @@ const Reviews = ({ business }) => {
     const user = useSelector(getCurrentUser);
 
     const reviews = Object.values(business.reviews).map((review, idx) => (
-        <div id={`review-${review.id}`} key={idx}>
-            <div className="review-header">
-                <h1>{`${review.user.email.split("@")[0]}...`}</h1>
-            </div>
-            <Review review={review} />
-        </div>
+        <Review review={review} key={idx} />
     ));
 
     const review = user ? Object.values(business.reviews)

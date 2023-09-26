@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 import { StarRatingShow } from "./StarRating.js";
 import "./index.css";
 
@@ -7,7 +7,7 @@ export const ReviewAtHomePage = ({ review }) => {
     const updatedAt = new Date(review.updatedAt);
 
     return (
-        <div className='review-at-home-page'>
+        <div className="review-at-home-page">
             <div className="review-email">
                 <h1>{`${review.user.email.split("@")[0]}...`}</h1>
                 <h2>{createdAt.getTime() < updatedAt.getTime() ? "Edited their " : "Wrote a "}review</h2>
@@ -24,22 +24,27 @@ export const ReviewAtHomePage = ({ review }) => {
             </div>
         </div>
     );
-}
+};
 
 const Review = ({ review }) => {
-    const reviewDate = new Date(review.updatedAt);
+    const date = new Date(review.updatedAt);
 
-    const paragraphs = review.body.split("\n").map((paragraph, index) => (
-        <p key={index}>{paragraph}</p>
+    const paragraphs = review.body.split("\n").map((paragraph, idx) => (
+        <p key={idx}>{paragraph}</p>
     ));
     
     return (
-        <div className="review-container">
-            <div className="review-rating-container">
-                <StarRatingShow rating={review.rating} />
-                <span className="review-date">{reviewDate.toLocaleDateString('en-US')}</span>
+        <div id={`review-${review.id}`} className="review">
+            <div>
+                <h1>{`${review.user.email.split("@")[0]}...`}</h1>
             </div>
-            <div className="review-body">
+            <div>
+                <StarRatingShow rating={review.rating} />
+                <span className="date">
+                    {date.toLocaleDateString("en-US")}
+                </span>
+            </div>
+            <div>
                 {paragraphs}
             </div>
         </div>

@@ -1,18 +1,18 @@
-.review-container {
+.review {
     border-bottom: 1px solid #e5e5e5;
 }
 
-.review-container > div {
+.review > div {
     padding: 0;
     padding-bottom: 0px;
 }
 
-.review-container > .review-rating-container {
+.review > .review-rating-container {
     padding: 0;
     padding-bottom: 6px;
 }
 
-.review-container div .review-date {
+.review div .review-date {
     padding: 0 0 0 6px;
 
     color: #6d6d6d;
@@ -35,6 +35,7 @@
 .review-star-rating .review-star {
     color: #c9c9c9;
 }
+
 
 .review-at-home-page {
     max-width: 360px;
