@@ -8,6 +8,7 @@ const COLORS = [
 ];
 
 export const CONTENTS = [
+    "Select your rating",
     "Not good",
     "Could've been better",
     "OK",

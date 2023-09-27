@@ -49,7 +49,7 @@ const BusinessShow = () => {
             />
             <Reviews business={business} />
             <Form
-                businessId={businessId}
+                businessId={business.id}
                 review={review}
                 showForm={showForm}
                 setShowForm={setShowForm}
