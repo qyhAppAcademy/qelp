@@ -70,9 +70,9 @@ export const SelectRatingStars = ({ rating, setRating }) => {
     }
 
     return (
-        <div className="review-star-container">
-            <div className="review-star-rating">{ratingStars}</div>
-            <span className="review-star-rating-content">
+        <div className="select-rating-stars">
+            {ratingStars}
+            <span className="content">
                 {hover.stars > 0 ? hover.content : rating.content}
             </span>
         </div>

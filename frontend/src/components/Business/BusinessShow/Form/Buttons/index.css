@@ -1,0 +1,39 @@
+#review-form .buttons button {
+    width: 18vw;
+    height: 3.6vw;
+    font-size: 1.7vw;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 0.3vw;
+}
+
+#business-show>button:hover {
+    background-color: #ff0000;
+    transition: background-color 0.5s ease-out;
+}
+
+#business-show>button>span:first-child {
+    margin: 0 0.7vw 0 0;
+    line-height: 0;
+}
+
+
+#review-form .buttons .submit {
+    background-color: #e20d14;
+}
+
+#review-form .buttons .cancel {
+    background-color: #999B9C;
+}
+
+#review-form .buttons .delete {
+    color: #909090;
+    /* background-color: blue; */
+    padding: 9px 0 0 0;
+    margin: 0;
+
+    font-size: 16px;
+    width: 14px;
+
+    float: right;
+}

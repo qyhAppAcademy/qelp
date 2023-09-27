@@ -1,4 +1,4 @@
-.review-form  .textarea-container {
+.review-form .textarea-container {
     border: 1px solid #c8c9ca;
     padding: 0 50px;
     margin: 0 0 20px 0;
@@ -12,55 +12,25 @@
     outline: none;
 }
 
-.review-form-buttons button {
-    margin: 0 10px 0 0;
-    padding: 8px 16px;
 
-    font-size: 16px;
-    color: #FFFFFF;
+.select-rating-stars {
+    font-size: 2.1vw;
+}
 
-    width: 200px;
-    border-radius: 3px;
-
+.select-rating-stars > button {
+    margin: 0 0 0 0.24vw;
+    line-height: 0;
     cursor: pointer;
 }
 
-.review-form-buttons .submit {
-    background-color: #e20d14;
-}
-
-.review-form-buttons .cancel {
-    background-color: #999B9C;
-}
-
-.review-form-buttons .delete {
-    color: #909090;
-    /* background-color: blue; */
-    padding: 9px 0 0 0;
+.select-rating-stars > button:first-child {
     margin: 0;
-
-    font-size: 16px;
-    width: 14px;
-
-    float: right;
 }
 
-.review-star-container {
-    padding: 15px 0 10px 0;
+.select-rating-stars > .content {
+    margin: 0 0 0 1.44vw;
 }
 
-.review-star-container .review-star-rating {
-    font-size: 18px;
-}
-
-.review-star-container .review-star-rating button:hover {
-    cursor: pointer;
-}
-
-.review-star-container .review-star-rating-content {
-    padding: 0;
-    padding-left: 10px;
-}
 
 .review-form-errors-container {
     margin-top: -18px;

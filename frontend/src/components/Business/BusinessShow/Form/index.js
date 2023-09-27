@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { CONTENTS, SelectRatingStars } from "../../../Review/RatingStars";
 // import { StarRatingNew } from "../../../Review/StarRating";
 import { createReview, updateReview, deleteReview } from "../../../../store/businesses";
+import Buttons from "./Buttons";
 
 const PLACEHOLDER = "Doesn’t look like much when you walk past, but I was practically dying of hunger so I popped in. The definition of a hole-in-the-wall. I got the regular hamburger and wow…  there are no words. A classic burger done right. Crisp bun, juicy patty, stuffed with all the essentials (ketchup, shredded lettuce, tomato, and pickles). There’s about a million options available between the menu board and wall full of specials, so it can get a little overwhelming, but you really can’t go wrong. Not much else to say besides go see for yourself! You won’t be disappointed.";
 
@@ -77,7 +78,7 @@ const Form = ({ businessId, review, showForm, setShowForm }) => {
                             rating={rating}
                             setRating={setRating}
                         />
-                        <textarea
+                        {/* <textarea
                             placeholder={PLACEHOLDER}
                             value={body}
                             onChange={(e) => setBody(e.target.value)}
@@ -86,10 +87,12 @@ const Form = ({ businessId, review, showForm, setShowForm }) => {
                             <div className="review-form-errors-container">
                                 <h1>{errors[0]}</h1>
                             </div>
-                        }
+                        } */}
                     </div>
 
-                    <div className="review-form-buttons">
+                    <Buttons handle={handle} reviewed={reviewed} />
+
+                    {/* <div className="review-form-buttons">
                         <button type="submit" className="submit">
                             Post Review
                         </button>
@@ -107,7 +110,7 @@ const Form = ({ businessId, review, showForm, setShowForm }) => {
                                 <i className="fas fa-trash"></i>
                             </button>
                         }
-                    </div>
+                    </div> */}
                 </form>
             </div>
         }
