@@ -54,9 +54,9 @@ const BusinessShow = () => {
                 showForm={showForm}
                 setShowForm={setShowForm}
             />
-            {/* <div className="side-bar-container">
+            <div className="side-bar-container">
                 <SideBar business={business} />
-            </div> */}
+            </div>
         </div>
     );
 };
