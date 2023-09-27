@@ -1,5 +1,5 @@
 import "./index.css";
-import { RatingStars } from "./RatingStars";
+import { RatingStarsInt } from "../RatingStars";
 import { NavLink } from "react-router-dom";
 
 export const ReviewAtHomePage = ({ review }) => {
@@ -16,7 +16,7 @@ export const ReviewAtHomePage = ({ review }) => {
                 <NavLink to={`/businesses/${review.business.id}`} className="continue-reading">{review.business.name}</NavLink>
             </div>
             <div className="review-rating">
-                <RatingStars rating={review.rating} />
+                <RatingStarsInt rating={review.rating} />
             </div>
             <div className="review-body">
                 <p>{`${review.body.substring(0, 63)}...`}</p>
@@ -37,7 +37,7 @@ export const Review = ({ review }) => {
         <div id={`review-${review.id}`} className="review">
             <div><h1>{`${review.user.email.split("@")[0]}...`}</h1></div>
             <div>
-                <RatingStars review={review} component={"review"} />
+                <RatingStarsInt review={review} component={"review"} />
                 <span className="date">{date}</span>
             </div>
             <div>{paragraphs}</div>

@@ -1,4 +1,4 @@
-#review-form .buttons button {
+#review-form .buttons > button {
     width: 18vw;
     height: 3.6vw;
     font-size: 1.7vw;
@@ -28,6 +28,12 @@
 
 #review-form .buttons > .delete {
     float: right;
-    width: 1.7vw;
+    width: 3vw;
+    font-size: 3vw;
     color: #c9c9c9;
+}
+
+#review-form .buttons > .delete:hover {
+    color: #b0b0b0;
+    transition: color 0.5s ease-out;
 }

@@ -1,6 +1,6 @@
 import "./index.css";
 import { useHistory } from "react-router-dom";
-import RatingStars from "../../RatingStars";
+import { RatingStarsFloat} from "../../../RatingStars";
 import Categories from "../../Categories";
 import Hours from "../../Hours";
 
@@ -23,7 +23,7 @@ const Card = ({ business, idx }) => {
             <div onClick={toBusinessShow}>
                 <h1 className="name">{`${idx + 1}. ${business.name}`}</h1>
             </div>
-            <div><RatingStars business={business} component={"card"} /></div>
+            <div><RatingStarsFloat business={business} component={"card"} /></div>
             <div>
                 <span className="price">{business.price}</span>
                 <span className="dot"><i className="fas fa-circle"></i></span>

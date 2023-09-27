@@ -1,6 +1,6 @@
 import "./index.css";
 import { useHistory } from "react-router-dom";
-import RatingStars from "../../../RatingStars";
+import { RatingStarsFloat } from "../../../../RatingStars";
 import Categories from "../../../Categories";
 
 const InfoWindow = ({ infoWindowRef, business }) => {
@@ -25,7 +25,7 @@ const InfoWindow = ({ infoWindowRef, business }) => {
                         <h1 className="name">{business.name}</h1>
                     </div>
                     <div>
-                        <RatingStars
+                        <RatingStarsFloat
                             business={business}
                             component={"info-window"}
                         />

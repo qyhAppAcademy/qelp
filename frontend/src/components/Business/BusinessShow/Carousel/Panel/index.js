@@ -1,6 +1,6 @@
 import "./index.css";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import RatingStars from "../../../RatingStars";
+import { RatingStarsFloat } from "../../../../RatingStars";
 import Categories from "../../../Categories";
 import Hours from "../../../Hours";
 
@@ -33,7 +33,7 @@ const Panel = ({ business }) => {
                 <h1 className="name">{business.name}</h1>
             </div>
             <div>
-                <RatingStars business={business} component={"panel"} />
+                <RatingStarsFloat business={business} component={"panel"} />
                 <span className="avg-rating" onClick={toBusinessShow}>
                     {business.avgRating.toFixed(1)}
                 </span>
