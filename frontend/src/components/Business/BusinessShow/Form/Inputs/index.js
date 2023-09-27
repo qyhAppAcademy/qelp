@@ -5,18 +5,20 @@ const PLACEHOLDER = "Doesn’t look like much when you walk past, but I was prac
 
 const Inputs = ({ rating, setRating, body, setBody, errors }) => {
     return (
-        <div className="textarea-container">
+        <div className="inputs">
             <SelectRatingStars
                 rating={rating}
                 setRating={setRating}
             />
-            <textarea
-                placeholder={PLACEHOLDER}
-                value={body}
-                onChange={(e) => setBody(e.target.value)}
-            />
+            <div>
+                <textarea
+                    placeholder={PLACEHOLDER}
+                    value={body}
+                    onChange={(e) => setBody(e.target.value)}
+                />
+            </div>
             {errors.length > 0 &&
-                <div className="review-form-errors-container">
+                <div className="errors">
                     <h1>{errors[0]}</h1>
                 </div>
             }

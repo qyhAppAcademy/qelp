@@ -1,9 +1,10 @@
 .review {
+    margin: 0 0 1.5vw 0;
     border-bottom: 1px solid #e5e5e5;
 }
 
-.review>div:first-child {
-    margin: 1vw 0;
+.review > div {
+    margin: 0 0 1vw 0;
 }
 
 .review h1 {
@@ -11,30 +12,28 @@
     font-weight: 600;
 }
 
-.review>div:nth-child(2) {
-    margin: 0 0 0.5vw 0;
+.review > div:nth-child(2) {
     font-size: 1.7vw;
 }
 
-.review .rating-star:not(:first-child) {
+.review .rating-star {
     margin: 0 0 0 0.2vw;
     line-height: 0;
 }
 
+.review .rating-star:first-child {
+    margin: 0;
+}
+
 .review .date {
     margin: 0 0 0 1.2vw;
+    font-weight: 300;
     color: #6d6d6d;
 }
 
-.review>div:last-child {
-    margin: 0 0 1vw 0;
-}
-
 .review p {
-    line-height: 1.5;
-    color: #454545;
-}
-
-.review p:not(:last-child) {
     margin: 0 0 0.5vw 0;
+    line-height: 1.5;
+    font-size: 1.5vw;
+    color: #454545;
 }
