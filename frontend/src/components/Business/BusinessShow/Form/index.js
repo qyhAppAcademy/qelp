@@ -1,7 +1,7 @@
 import "./index.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { CONTENTS, StarRatingNew } from "../../../Review/RatingStars";
+import { CONTENTS, SelectRatingStars } from "../../../Review/RatingStars";
 // import { StarRatingNew } from "../../../Review/StarRating";
 import { createReview, updateReview, deleteReview } from "../../../../store/businesses";
 
@@ -73,7 +73,10 @@ const Form = ({ businessId, review, showForm, setShowForm }) => {
                 <h1>{reviewed ? "Edit your" : "Write a"} review</h1>
                 <form onSubmit={(e) => handle(e, "submit")}>
                     <div className="textarea-container">
-                        <StarRatingNew rating={rating} setRating={setRating}/>
+                        <SelectRatingStars
+                            rating={rating}
+                            setRating={setRating}
+                        />
                         <textarea
                             placeholder={PLACEHOLDER}
                             value={body}

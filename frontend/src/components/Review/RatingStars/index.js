@@ -38,51 +38,43 @@ export const RatingStars = ({ review, component }) => {
     return <>{ratingStars}</>;
 };
 
-export const StarRatingNew = ({ rating, setRating }) => {
+export const SelectRatingStars = ({ rating, setRating }) => {
+    const ratingStars = new Array(5);
+
     const [hover, setHover] = useState({
-        star: 0,
-        content: "Select your rating"
+        stars: 0,
+        content: CONTENTS[0]
     });
 
-    const stars = STARS.map((star) => {
-        return (
+    for (let i = 1; i < COLORS.length; i++) {
+        ratingStars[i - 1] = (
             <button
-                key={star}
-                style={hover.star > 0 ?
-                    (star <= hover.star ? { color: COLORS[hover.star - 1] } : { color: "lightgray" }) :
-                    (star <= rating.star ? { color: COLORS[rating.star - 1] } : { color: "lightgray" })
-                }
+                style={hover.stars > 0 ?
+                    (i <= hover.stars ?
+                        { color: COLORS[hover.stars] } :
+                        { color: COLORS[0] }) :
+                    (i <= rating.stars ?
+                        { color: COLORS[rating.stars] } :
+                        { color: COLORS[0] })}
                 onClick={(e) => {
                     e.preventDefault();
-                    setRating({
-                        star: star,
-                        content: CONTENTS[star - 1]
-                    });
+                    setRating({stars: i, content: CONTENTS[i]});
                 }}
-                onMouseEnter={() => {
-                    setHover({
-                        star: star,
-                        content: CONTENTS[star - 1]
-                    });
-                }}
-                onMouseLeave={() => {
-                    setHover({
-                        star: 0,
-                        content: "Select your rating"
-                    });
-                }}
+                onMouseEnter={() => setHover({stars: i, content: CONTENTS[i]})}
+                onMouseLeave={() => setHover({stars: 0, content: CONTENTS[0]})}
+                key={i-1}
             >
                 <i className="fas fa-star"></i>
             </button>
         );
-    });
+    }
 
     return (
-        <div className='review-star-container'>
-            <div className="review-star-rating">
-                {stars}
-            </div>
-            <span className="review-star-rating-content">{hover.star > 0 ? hover.content : rating.content}</span>
+        <div className="review-star-container">
+            <div className="review-star-rating">{ratingStars}</div>
+            <span className="review-star-rating-content">
+                {hover.stars > 0 ? hover.content : rating.content}
+            </span>
         </div>
     );
 };
