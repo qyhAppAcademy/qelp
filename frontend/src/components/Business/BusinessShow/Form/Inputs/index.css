@@ -1,14 +1,14 @@
 .textarea-container {
+    padding: 0 0px;
+    margin: 0 0 2vw 0;
     border: 1px solid #c8c9ca;
-    padding: 0 50px;
-    margin: 0 0 20px 0;
 }
 
 textarea {
-    width: 626px;
-    height: 200px;
-    border-style: none;
-    outline: none;
+    width: 64vw;
+    height: 20vw;
+    /* border-style: none;
+    outline: none; */
 }
 
 .review-form-errors-container {
