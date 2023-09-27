@@ -1,37 +1,51 @@
-.review {
+.reviews {
+    margin: 0 0 2vw 0;
+}
+
+.reviews > h1 {
+    margin: 0 0 2vw 0;
+    font-size: 2.4vw;
+    font-weight: 600;
+}
+
+.reviews > .review {
     margin: 0 0 1.5vw 0;
     border-bottom: 1px solid #e5e5e5;
 }
 
-.review > div {
+.reviews > .review:last-child {
+    margin: 0;
+}
+
+.reviews > .review > div {
     margin: 0 0 1vw 0;
 }
 
-.review h1 {
+.reviews > .review h1 {
     font-size: 1.9vw;
     font-weight: 600;
 }
 
-.review > div:nth-child(2) {
+.reviews > .review > div:nth-child(2) {
     font-size: 1.7vw;
 }
 
-.review .rating-star {
+.reviews > .review .rating-star {
     margin: 0 0 0 0.2vw;
     line-height: 0;
 }
 
-.review .rating-star:first-child {
+.reviews > .review .rating-star:first-child {
     margin: 0;
 }
 
-.review .date {
+.reviews > .review .date {
     margin: 0 0 0 1.2vw;
     font-weight: 300;
     color: #6d6d6d;
 }
 
-.review p {
+.reviews > .review p {
     margin: 0 0 0.5vw 0;
     line-height: 1.5;
     font-size: 1.5vw;

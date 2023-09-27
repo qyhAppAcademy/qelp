@@ -1,15 +1,12 @@
 #review-form .inputs {
-    margin: 0 0 1.7vw 0;
-    font-size: 1.5vw;
+    width: 100%;
+    margin: 0 0 2vw 0;
+    padding: 1.5vw;
     border: 1px solid #c8c9ca;
 }
 
-#review-form .inputs > div {
-    margin: 0 0 1.2vw 0;
-}
-
-#review-form .inputs > div:first-child {
-    margin: 1.2vw 0;
+#review-form .inputs > div:not(:last-child) {
+    margin: 0 0 1.5vw 0;
 }
 
 #review-form .select-rating-stars {
@@ -28,15 +25,20 @@
 
 #review-form .select-rating-stars > .content {
     margin: 0 0 0 1.2vw;
+    font-weight: 300;
 }
 
 #review-form textarea {
     width: 100%;
-    height: 12vw;
+    height: 15vw;
+    padding: 0;
+    line-height: 1.5;
+    font-size: 1.5vw;
     border-style: none;
     outline: none;
 }
 
 #review-form .errors {
+    font-size: 1.7vw;
     color: #e20d14;
 }

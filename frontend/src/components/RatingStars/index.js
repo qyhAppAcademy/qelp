@@ -108,7 +108,13 @@ export const SelectRatingStars = ({ rating, setRating }) => {
     return (
         <div className="select-rating-stars">
             {ratingStars}
-            <span className="content">
+            <span
+                className="content"
+                style={hover.stars > 0 ?
+                    { color: COLORS[hover.stars] } :
+                    { color: rating.stars > 0 ?
+                        COLORS[rating.stars] : "#6d6d6d" }}
+            >
                 {hover.stars > 0 ? hover.content : rating.content}
             </span>
         </div>

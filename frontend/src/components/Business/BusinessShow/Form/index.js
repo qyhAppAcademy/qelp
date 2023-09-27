@@ -67,18 +67,16 @@ const Form = ({ businessId, review, showForm, setShowForm }) => {
     };
 
     return <>
-        {showForm &&
-            <div id="review-form">
+        {showForm &&    
+            <form id="review-form" onSubmit={(e) => handle(e, "submit")}>
                 <h1>{reviewed ? "Edit your" : "Write a"} review</h1>
-                <form onSubmit={(e) => handle(e, "submit")}>
-                    <Inputs
-                        rating={rating} setRating={setRating}
-                        body={body} setBody={setBody}
-                        errors={errors}
-                    />
-                    <Buttons handle={handle} reviewed={reviewed} />
-                </form>
-            </div>
+                <Inputs
+                    rating={rating} setRating={setRating}
+                    body={body} setBody={setBody}
+                    errors={errors}
+                />
+                <Buttons handle={handle} reviewed={reviewed} />
+            </form>
         }
     </>;
 };
