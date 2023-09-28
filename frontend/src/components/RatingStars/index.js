@@ -35,7 +35,7 @@ export const RatingStarsFloat = ({ business, component }) => {
         }
         else {
             idx = 0;
-            opacity = 0.2;
+            opacity = 0.5;
         }
         ratingStars[i - 1] = (
             <span
