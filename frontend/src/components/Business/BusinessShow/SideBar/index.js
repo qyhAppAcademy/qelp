@@ -1,7 +1,7 @@
 import "./index.css"
 
 export const NewSideBar = ({ business }) => {
-    const selections = [
+    const list = [
         {
             name: business.website,
             icon: "arrow-alt-circle-right",
@@ -19,21 +19,21 @@ export const NewSideBar = ({ business }) => {
         }
     ];
 
-    const sidebar = selections.map((selection, idx) => (
-        <li className="business-show-page-side-bar-item">
-            <button type="" onClick={selection.onClick}>
-                {selection.name}
-                {idx === selections.length - 1 ?
+    const sidebar = list.map((ele, idx) => (
+        <li key={idx}>
+            <button type="" onClick={ele.onClick}>
+                {ele.name}
+                {idx === list.length - 1 ?
                     `${business.address}, ${business.city}, ${business.state} ${business.zipCode}` : ""}
             </button>
             <span>
-                <i style={{ fontSize: "1.5vw" }} className={`fas fa-${selection.icon}`}></i>
+                <i style={{ fontSize: "1.5vw" }} className={`fas fa-${ele.icon}`}></i>
             </span>
         </li>
     ));
 
     return (
-        <ul className="business-show-page-side-bar">
+        <ul className="side-bar">
             {sidebar}
         </ul>
     );

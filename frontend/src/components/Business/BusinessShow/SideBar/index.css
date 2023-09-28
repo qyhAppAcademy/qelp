@@ -1,12 +1,16 @@
 #business-show > .side-bar {
     position: sticky;
     float: right;
-    top: 2vw;
     right: 4vw;
-    width: 20vw;
-    border: 1px solid #EBEBEB;
+    width: 24vw;
+    border: 1px solid #ebebeb;
     border-radius: 0.3vw;
     display: block;
+}
+
+#business-show > .side-bar > li {
+    /* padding: 1.3vw; */
+    border-bottom: 1px solid #ebebeb;
 }
 
 .business-show-page-side-bar {
