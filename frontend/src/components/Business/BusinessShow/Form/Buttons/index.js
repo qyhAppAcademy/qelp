@@ -4,7 +4,7 @@ const Buttons = ({ handle, reviewed }) => {
     return (
         <div className="buttons">
             <button type="submit" className="submit">
-                Post Review
+                Post review
             </button>
             <button
                 className="cancel"

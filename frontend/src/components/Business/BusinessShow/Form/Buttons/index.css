@@ -1,7 +1,7 @@
 #review-form .buttons > button {
-    width: 18vw;
-    height: 3.6vw;
-    font-size: 1.7vw;
+    width: 16vw;
+    height: 3.2vw;
+    font-size: 1.5vw;
     color: #ffffff;
     cursor: pointer;
     border-radius: 0.3vw;
@@ -28,8 +28,8 @@
 
 #review-form .buttons > .delete {
     float: right;
-    width: 3vw;
-    font-size: 3vw;
+    width: 2.5vw;
+    font-size: 2.5vw;
     color: #c9c9c9;
 }
 

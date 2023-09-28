@@ -10,7 +10,7 @@
 }
 
 #review-form .select-rating-stars {
-    font-size: 1.7vw;
+    font-size: 1.5vw;
 }
 
 #review-form .select-rating-stars > button {
@@ -32,13 +32,13 @@
     width: 100%;
     height: 15vw;
     padding: 0;
-    line-height: 1.5;
-    font-size: 1.5vw;
+    line-height: 1.3;
+    font-size: 1.3vw;
     border-style: none;
     outline: none;
 }
 
 #review-form .errors {
-    font-size: 1.7vw;
+    font-size: 1.5vw;
     color: #e20d14;
 }
