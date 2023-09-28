@@ -34,7 +34,7 @@ const App = () => {
         <BusinessIndex />
       </Route>
       <Route exact path="/businesses/:businessId">
-        {/* <Navigation /> */}
+        <Navigation />
         <BusinessShow />
       </Route>
     </Switch>
