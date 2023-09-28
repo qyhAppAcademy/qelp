@@ -12,7 +12,7 @@ const SideBar = ({ business }) => {
                     </p>
                     <span>
                         <a href={`${business.website}`} target="_blank" rel="noreferrer">
-                            <i style={{ fontSize: "22px" }} className="fas fa-arrow-alt-circle-right"></i>
+                            <i style={{ fontSize: "1.5vw" }} className="fas fa-arrow-alt-circle-right"></i>
                         </a>
                     </span>
                 </div>
@@ -23,7 +23,7 @@ const SideBar = ({ business }) => {
                         {business.phoneNumber}
                     </p>
                     <span>
-                        <i style={{ fontSize: "22px" }} className="fas fa-phone-volume"></i>
+                        <i style={{ fontSize: "1.5vw" }} className="fas fa-phone-volume"></i>
                     </span>
                 </div>
             </li>
@@ -39,13 +39,13 @@ const SideBar = ({ business }) => {
                     </div>
                     <span>
                         <a href={`https://www.google.com/maps?q=${business.lat},${business.lng}`} target="_blank" rel="noreferrer">
-                            <i style={{ fontSize: "22px" }} className="fas fa-map-pin"></i>
+                            <i style={{ fontSize: "1.5vw" }} className="fas fa-map-pin"></i>
                         </a>
                     </span>
                 </div>
             </li>
         </ul>
     );
-}
+};
 
 export default SideBar;

@@ -1,14 +1,4 @@
-/* .reviews-button-container {
-    padding: 2.7vw 0;
-    border-bottom: 1px solid #e5e5e5;
-} */
-
-.side-bar-container {
-    display: block;
-
-    position: sticky;
-    float: right;
-    top: 20px;
-
-    width: 360px;
+section {
+    width: 70%;
+    padding: 0 0 0 4vw;
 }

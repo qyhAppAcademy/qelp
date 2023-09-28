@@ -1,4 +1,4 @@
-#business-show > button {
+#business-show .show-form-button {
     width: 18vw;
     height: 3.6vw;
     margin: 0 0 2vw 0;
@@ -9,12 +9,12 @@
     border-radius: 0.3vw;
 }
 
-#business-show > button:hover {
+#business-show .show-form-button:hover {
     background-color: #ff0000;
     transition: background-color 0.5s ease-out;
 }
 
-#business-show > button > span:first-child {
+#business-show .show-form-button > span:first-child {
     margin: 0 0.7vw 0 0;
     line-height: 0;
 }

@@ -42,21 +42,21 @@ const BusinessShow = () => {
     return (
         <div id="business-show">
             <Carousel business={business} />
-            <ShowFormButton
-                user={user}
-                setShowForm={setShowForm}
-                reviewed={review !== undefined}
-            />
-            <Reviews business={business} />
-            <Form
-                businessId={business.id}
-                review={review}
-                showForm={showForm}
-                setShowForm={setShowForm}
-            />
-            <div className="side-bar-container">
-                <SideBar business={business} />
-            </div>
+            <SideBar business={business} />
+            <section>
+                <ShowFormButton
+                    user={user}
+                    setShowForm={setShowForm}
+                    reviewed={review !== undefined}
+                />
+                <Reviews business={business} />
+                <Form
+                    businessId={business.id}
+                    review={review}
+                    showForm={showForm}
+                    setShowForm={setShowForm}
+                />
+            </section>
         </div>
     );
 };

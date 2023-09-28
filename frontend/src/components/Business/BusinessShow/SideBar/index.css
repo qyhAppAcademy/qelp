@@ -1,11 +1,16 @@
 .business-show-page-side-bar {
-    border-radius: 3px;
-    /* border: 1px solid #EBEBEB; */
+    position: sticky;
+    top: 2vw;
+    right: 4vw;
+    float: right;
+    width: 25%;
     border: 1px solid #EBEBEB;
+    border-radius: 0.3vw;
+    display: block;
 }
 
 .business-show-page-side-bar-item {
-    padding: 19px 16px;
+    padding: 1.3vw;
     border-bottom: 1px solid #EBEBEB;
 }
 
@@ -15,12 +20,8 @@
     align-items: center;
 }
 
-.business-show-page-side-bar div svg {
-    font-size: 23px;
-}
-
 .business-show-page-side-bar-item p {
-    font-size: 16px;
+    font-size: 1.3vw;
 }
 
 .business-show-page-side-bar-item p a {
@@ -34,13 +35,13 @@
 }
 
 .business-show-page-side-bar-item span {
-    width: 26px;
+    width: 1.5vw;
     text-align: center;
     vertical-align: middle;
 }
 
 .business-show-page-side-bar li:last-child {
-    border-bottom: 0px;
+    border-bottom: 0;
 }
 
 .business-show-page-side-bar li:last-child div div{
@@ -52,7 +53,7 @@
 .business-show-page-side-bar li:last-child div div a,
 .business-show-page-side-bar li:last-child div div p {
     flex: 0 0 100%;
-    font-size: 16px;
+    font-size: 1.3vw;
 }
 
 .business-show-page-side-bar li:last-child div div a {
@@ -65,5 +66,5 @@
     color: #8B8D8E;
     font-weight: 500;
     padding: 0;
-    padding-top: 6px;
+    padding-top: 0.65vw;
 }
