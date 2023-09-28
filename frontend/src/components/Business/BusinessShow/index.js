@@ -9,8 +9,6 @@ import Carousel from "./Carousel";
 import ShowFormButton from "./ShowFormButton";
 import Reviews from "./Reviews";
 import Form from "./Form";
-import { NewSideBar } from "./SideBar";
-
 import SideBar from "./SideBar";
 
 const BusinessShow = () => {
@@ -43,8 +41,7 @@ const BusinessShow = () => {
     return (
         <div id="business-show">
             <Carousel business={business} />
-            <NewSideBar business={business} />
-            {/* <SideBar business={business} /> */}
+            <SideBar business={business} />
             <section>
                 <ShowFormButton
                     user={user}

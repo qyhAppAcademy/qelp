@@ -1,90 +1,42 @@
-import "./index.css"
+import "./index.css";
 
-export const NewSideBar = ({ business }) => {
+const SideBar = ({ business }) => {
+    const businessAddress = `${business.address}, ${business.city}, ${business.state} ${business.zipCode}`;
+
     const list = [
         {
-            name: business.website,
+            names: [business.website],
             icon: "arrow-alt-circle-right",
             onClick: () => {}
         },
         {
-            name: business.phoneNumber,
+            names: [business.phoneNumber],
             icon: "phone-volume",
             onClick: null
         },
         {
-            name: "Go to maps",
+            names: ["Go to maps", businessAddress],
             icon: "map-pin",
             onClick: () => {}
         }
     ];
 
+    const names = (arr) => {
+        return arr.map((ele, idx) => (
+            <span className="name" key={idx}>{ele}</span>
+        ));
+    };
+
     const sidebar = list.map((ele, idx) => (
         <li key={idx}>
-            <button type="" onClick={ele.onClick}>
-                {ele.name}
-                {idx === list.length - 1 ?
-                    `${business.address}, ${business.city}, ${business.state} ${business.zipCode}` : ""}
+            <button onClick={ele.onClick}>{names(ele.names)}</button>
+            <button onClick={ele.onClick}>
+                <i className={`fas fa-${ele.icon}`}></i>
             </button>
-            <span>
-                <i style={{ fontSize: "1.5vw" }} className={`fas fa-${ele.icon}`}></i>
-            </span>
         </li>
     ));
 
-    return (
-        <ul className="side-bar">
-            {sidebar}
-        </ul>
-    );
-};
-
-const SideBar = ({ business }) => {
-    return (
-        <ul className="business-show-page-side-bar">
-            <li className="business-show-page-side-bar-item">
-                <div>
-                    <p>
-                        <a href={`${business.website}`} target="_blank" rel="noreferrer">
-                            {business.website}
-                        </a>
-                    </p>
-                    <span>
-                        <a href={`${business.website}`} target="_blank" rel="noreferrer">
-                            <i style={{ fontSize: "1.5vw" }} className="fas fa-arrow-alt-circle-right"></i>
-                        </a>
-                    </span>
-                </div>
-            </li>
-            <li className="business-show-page-side-bar-item">
-                <div>
-                    <p>
-                        {business.phoneNumber}
-                    </p>
-                    <span>
-                        <i style={{ fontSize: "1.5vw" }} className="fas fa-phone-volume"></i>
-                    </span>
-                </div>
-            </li>
-            <li className="business-show-page-side-bar-item">
-                <div>
-                    <div>
-                        <a href={`https://www.google.com/maps?q=${business.lat},${business.lng}`} target="_blank" rel="noreferrer">
-                            Get Directions
-                        </a>
-                        <p>
-                            {`${business.address}, ${business.city}, ${business.state} ${business.zipCode}`}
-                        </p>
-                    </div>
-                    <span>
-                        <a href={`https://www.google.com/maps?q=${business.lat},${business.lng}`} target="_blank" rel="noreferrer">
-                            <i style={{ fontSize: "1.5vw" }} className="fas fa-map-pin"></i>
-                        </a>
-                    </span>
-                </div>
-            </li>
-        </ul>
-    );
+    return <ul className="side-bar">{sidebar}</ul>;
 };
 
 export default SideBar;
