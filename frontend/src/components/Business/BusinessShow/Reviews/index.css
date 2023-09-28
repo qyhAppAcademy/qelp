@@ -4,7 +4,7 @@
 
 .reviews > h1 {
     margin: 0 0 2vw 0;
-    font-size: 2.4vw;
+    font-size: 2.1vw;
     font-weight: 600;
 }
 
@@ -22,12 +22,12 @@
 }
 
 .reviews > .review h1 {
-    font-size: 1.9vw;
+    font-size: 1.7vw;
     font-weight: 600;
 }
 
 .reviews > .review > div:nth-child(2) {
-    font-size: 1.7vw;
+    font-size: 1.5vw;
 }
 
 .reviews > .review .rating-star {
@@ -47,7 +47,7 @@
 
 .reviews > .review p {
     padding: 0 0 0.5vw 0;
-    line-height: 1.5;
-    font-size: 1.5vw;
+    line-height: 1.3;
+    font-size: 1.3vw;
     color: #454545;
 }
