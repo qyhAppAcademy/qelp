@@ -1,5 +1,44 @@
 import "./index.css"
 
+export const NewSideBar = ({ business }) => {
+    const selections = [
+        {
+            name: business.website,
+            icon: "arrow-alt-circle-right",
+            onClick: () => {}
+        },
+        {
+            name: business.phoneNumber,
+            icon: "phone-volume",
+            onClick: null
+        },
+        {
+            name: "Go to maps",
+            icon: "map-pin",
+            onClick: () => {}
+        }
+    ];
+
+    const sidebar = selections.map((selection, idx) => (
+        <li className="business-show-page-side-bar-item">
+            <button type="" onClick={selection.onClick}>
+                {selection.name}
+                {idx === selections.length - 1 ?
+                    `${business.address}, ${business.city}, ${business.state} ${business.zipCode}` : ""}
+            </button>
+            <span>
+                <i style={{ fontSize: "1.5vw" }} className={`fas fa-${selection.icon}`}></i>
+            </span>
+        </li>
+    ));
+
+    return (
+        <ul className="business-show-page-side-bar">
+            {sidebar}
+        </ul>
+    );
+};
+
 const SideBar = ({ business }) => {
     return (
         <ul className="business-show-page-side-bar">

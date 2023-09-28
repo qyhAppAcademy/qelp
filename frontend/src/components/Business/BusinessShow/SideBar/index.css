@@ -1,3 +1,14 @@
+#business-show > .side-bar {
+    position: sticky;
+    float: right;
+    top: 2vw;
+    right: 4vw;
+    width: 20vw;
+    border: 1px solid #EBEBEB;
+    border-radius: 0.3vw;
+    display: block;
+}
+
 .business-show-page-side-bar {
     position: sticky;
     top: 2vw;
