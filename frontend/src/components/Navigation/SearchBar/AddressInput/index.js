@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-const TIMEOUT = 3000;
+const TIMEOUT = 5000;
 
 const CENTER = {
     lat: 40.748439,

@@ -1,13 +1,16 @@
+import { useHistory } from "react-router-dom";
 import "./index.css";
 
 const SideBar = ({ business }) => {
+    const history = useHistory();
+
     const businessAddress = `${business.address}, ${business.city}, ${business.state} ${business.zipCode}`;
 
     const list = [
         {
-            names: [business.website],
+            names: [business.website.split("https://www.").join("")],
             icon: "arrow-alt-circle-right",
-            onClick: () => {}
+            onClick: () => window.location.href = business.website
         },
         {
             names: [business.phoneNumber],
@@ -15,21 +18,27 @@ const SideBar = ({ business }) => {
             onClick: null
         },
         {
-            names: ["Go to maps", businessAddress],
+            names: ["Get Directions", businessAddress],
             icon: "map-pin",
-            onClick: () => {}
+            onClick: () => window.location.href = `https://www.google.com/maps?q=${business.lat},${business.lng}`
         }
     ];
 
-    const names = (arr) => {
-        return arr.map((ele, idx) => (
-            <span className="name" key={idx}>{ele}</span>
+    const getNames = (ele) => {
+        return ele.names.map((name, idx) => (
+            <button
+                className="name"
+                onClick={idx === 0 ? ele.onClick : null}
+                key={idx}
+            >
+                {name}
+            </button>
         ));
     };
 
     const sidebar = list.map((ele, idx) => (
         <li key={idx}>
-            <button onClick={ele.onClick}>{names(ele.names)}</button>
+            <div>{getNames(ele)}</div>
             <button onClick={ele.onClick}>
                 <i className={`fas fa-${ele.icon}`}></i>
             </button>

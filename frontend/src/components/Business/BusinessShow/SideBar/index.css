@@ -1,76 +1,52 @@
-#business-show > .side-bar {
+.side-bar {
     position: sticky;
-    float: right;
+    top: 2vw;
     right: 4vw;
-    width: 25vw;
+    float: right;
+    width: 24vw;
+    margin: 0 0 0 2vw;
     border: 1px solid #ebebeb;
     border-radius: 0.3vw;
 }
 
-#business-show > .side-bar > li {
+.side-bar > li {
+    padding: 1.2vw;
+    font-size: 1.5vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-#business-show > .side-bar > li:not(:last-child) {
-    /* padding: 1.3vw; */
+.side-bar > li:not(:last-child) {
     border-bottom: 1px solid #ebebeb;
 }
 
-#business-show > .side-bar .name {
+.side-bar .name {
     text-align: left;
     display: block;
 }
 
-#business-show > .side-bar .icon {
-}
-
-.business-show-page-side-bar-item p {
-    font-size: 1.3vw;
-}
-
-.business-show-page-side-bar-item p a {
-    color: rgba(2, 122, 151, 1);
+.side-bar > li:first-child .name, .side-bar > li:last-child .name:first-child {
     font-weight: 600;
-    text-decoration: none;
+    color: #027a97;
+    cursor: pointer;
 }
 
-.business-show-page-side-bar-item span a {
-    color: #2D2E2F;
+.side-bar > li:nth-child(2) .name {
+    color: #2d2e2f;
 }
 
-.business-show-page-side-bar-item span {
+.side-bar > li:last-child .name:last-child {
+    margin: 1vw 0 0 0;
+    font-size: 1.3vw;
+    color: #8b8d8e;
+}
+
+.side-bar > li > button {
     width: 1.5vw;
-    text-align: center;
-    vertical-align: middle;
+    color: #2d2e2f;
 }
 
-.business-show-page-side-bar li:last-child {
-    border-bottom: 0;
-}
-
-.business-show-page-side-bar li:last-child div div{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-.business-show-page-side-bar li:last-child div div a,
-.business-show-page-side-bar li:last-child div div p {
-    flex: 0 0 100%;
-    font-size: 1.3vw;
-}
-
-.business-show-page-side-bar li:last-child div div a {
-    color: rgba(2, 122, 151, 1);
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.business-show-page-side-bar li:last-child div div p {
-    color: #8B8D8E;
-    font-weight: 500;
-    padding: 0;
-    padding-top: 0.65vw;
+.side-bar > li:not(:nth-child(2)) > button {
+    cursor: pointer;
 }
