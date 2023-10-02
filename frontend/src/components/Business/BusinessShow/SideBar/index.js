@@ -1,9 +1,6 @@
-import { useHistory } from "react-router-dom";
 import "./index.css";
 
 const SideBar = ({ business }) => {
-    const history = useHistory();
-
     const businessAddress = `${business.address}, ${business.city}, ${business.state} ${business.zipCode}`;
 
     const list = [
